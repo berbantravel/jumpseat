@@ -1,4 +1,4 @@
-# Postfolio Web App
+# Jumpseat
 
 ## Getting started
 
