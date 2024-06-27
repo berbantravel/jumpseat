@@ -115,7 +115,7 @@ export function Footer() {
       <div className="mt-0">
         <div className="relative flex h-40 w-full bg-transparent">
           <div className="flex h-full w-1/2 bg-white"></div>
-          <div className="flex h-full w-1/2 bg-[#565555]"></div>
+          <div className="flex h-full w-1/2 bg-[#c57c30]"></div>
         </div>
         <div
           className="relative isolate -mt-40 overflow-hidden py-28"
@@ -293,7 +293,7 @@ export function Footer() {
               </div>
             </div>
             <div className="mt-14 border-t border-gray-900/10 pt-8">
-              <p className="captionLight text-white hover:text-text-white-primary cursor-pointer">
+              <p className="captionLight cursor-pointer text-white hover:text-text-white-primary">
                 &copy; Darrel Mendoza
               </p>
             </div>
