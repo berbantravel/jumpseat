@@ -120,7 +120,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
                   <div className="flex flex-shrink-0 items-center">
                     <div className="mr-5 flex">
                       <Popover.Button
-                        className="hover relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
+                        className="hover relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-[#555555]"
                         onClick={() => setOpen(true)}
                       >
                         <span className="absolute -inset-0.5" />

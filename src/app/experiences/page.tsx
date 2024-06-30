@@ -79,53 +79,88 @@ const products = [
     imageAlt:
       'Textured gray felt pouch for paper cards with snap button flap and elastic pen holder loop.',
   },
-  // More products...
 ]
 const destinations = [
   {
-    name: 'KOREA',
+    name: 'SOUTH KOREA',
     description:
       'EXPERIENCE GRAND VACATION AND SPECTACULAR INSTAGRAMMABLE KPOP SPOTS',
     price: 500,
     href: '#',
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg',
+      'https://images.pexels.com/photos/2246789/pexels-photo-2246789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
-    name: 'KOREA',
+    name: 'TAIWAN',
     description:
-      'EXPERIENCE GRAND VACATION AND SPECTACULAR INSTAGRAMMABLE KPOP SPOTS',
+      'EXPERIENCE TAIWAN\'S RICH CULTURE',
     price: 500,
     href: '#',
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-01-category-02.jpg',
+      'https://images.pexels.com/photos/1474157/pexels-photo-1474157.jpeg',
   },
   {
-    name: 'KOREA',
+    name: 'THAILAND',
     description:
-      'EXPERIENCE GRAND VACATION AND SPECTACULAR INSTAGRAMMABLE KPOP SPOTS',
+      'A MOUTH WATERING JOURNEY THAT WILL TREAT YOUR TASTE BUDS',
     price: 500,
     href: '#',
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-01-category-04.jpg',
+      'https://images.pexels.com/photos/1682748/pexels-photo-1682748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
-    name: 'KOREA',
+    name: 'SINGAPORE',
     description:
-      'EXPERIENCE GRAND VACATION AND SPECTACULAR INSTAGRAMMABLE KPOP SPOTS',
+      'LEAVE YOURSELF BEHIND AND GO BEYOND WHAT SINGAPORE HAS TO OFFER',
     price: 500,
     href: '#',
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-01-category-05.jpg',
+      'https://images.pexels.com/photos/1507730/pexels-photo-1507730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
-    name: 'KOREA',
+    name: 'MALAYSIA',
     description:
-      'EXPERIENCE GRAND VACATION AND SPECTACULAR INSTAGRAMMABLE KPOP SPOTS',
+      'FULLFILL YOURSELF WITH A BREATHTAKING VOYAGE',
     price: 500,
     href: '#',
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-01-category-03.jpg',
+      'https://images.pexels.com/photos/433989/pexels-photo-433989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  },
+  {
+    name: 'JAPAN',
+    description:
+      'DISCOVER UNRIVALED SCENERIES AND A PLACE RICH IN HISTORY IN THE EAST',
+    price: 500,
+    href: '#',
+    imageSrc:
+      'https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  },
+  {
+    name: 'INDONESIA',
+    description:
+      'EXPERIENCE WHAT NATURE HAS TO OFFER',
+    price: 500,
+    href: '#',
+    imageSrc:
+      'https://images.pexels.com/photos/2659475/pexels-photo-2659475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  },
+  {
+    name: 'HONG KONG',
+    description:
+      'LOOSEN UP AND EXPERIENCE A MARVELOUS HOLIDAY!',
+    price: 500,
+    href: '#',
+    imageSrc:
+      'https://images.pexels.com/photos/3957774/pexels-photo-3957774.jpeg?auto=compress&cs=tinysrgb&w=600',
+  },
+  {
+    name: 'THE PHILIPPINES',
+    description:
+      'HEART-WARMING DESTINATION THAT UNCOVERS NATURE\'S GLAMOR',
+    price: 500,
+    href: '#',
+    imageSrc:
+      'https://images.pexels.com/photos/2407265/pexels-photo-2407265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
 ]
 const features = [
@@ -160,17 +195,11 @@ export default function Experiences() {
           objectFit="cover"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         />
+
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
         >
-          {/* <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          /> */}
         </div>
         <div className="mx-auto max-w-5xl py-32 sm:py-48 lg:py-56">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
@@ -196,6 +225,7 @@ export default function Experiences() {
             </div>
           </div>
         </div>
+
       </div>
 
       <div className="-mt-14">
@@ -312,19 +342,16 @@ export default function Experiences() {
           </div>
         </div>
       </div>
- 
+
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-          <h2 id="products-heading" className="sr-only">
-            Products
-          </h2>
 
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {destinations.map((destination) => (
               <a
                 key={destination.name}
-                href={destination.href}
-                className="relative flex h-full w-56 flex-col rounded-lg p-6 hover:opacity-75 xl:w-auto pt-40 px-8"
+                href="/destination-details"
+                className="relative flex h-full w-56 flex-col rounded-lg p-6 hover:opacity-95 xl:w-auto pt-40 px-8"
               >
                 <span aria-hidden="true" className="absolute inset-0">
                   <img
@@ -332,32 +359,34 @@ export default function Experiences() {
                     alt=""
                     className="h-full w-full object-cover object-center"
                   />
+                  <span className="absolute inset-0 bg-black opacity-30"></span>
                 </span>
                 <span
                   aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-gray-950 opacity-50"
+                  className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-gray-950 opacity-25"
                 />
-                <span className="text-md relative text-left font-normal text-white mb-4">
-                  {destination.name}
-                </span>
-                <span className="text-md relative text-left font-normal text-white">
-                  {destination.description}
-                </span>
-                <span className="text-md mt-4 relative text-center font-normal text-white">
-                  STARTS FROM {destination.price}
-                </span>
-                <span className="text-md relative text-left font-normal text-white">
-                  <span className="mt-10 flex items-center justify-start gap-x-6">
+                <div className="relative mt-auto flex flex-col text-white">
+                  <span className="text-md text-left font-bold mb-4">
+                    {destination.name}
+                  </span>
+                  <span className="text-md text-left font-semibold">
+                    {destination.description}
+                  </span>
+                  <span className="text-md mt-4 text-center font-semibold">
+                    STARTS FROM <span className='text-[#ff9e39]'>${destination.price}</span>
+                  </span>
+                  <span className="mt-10 flex items-center justify-start gap-x-6 hover:bg-[#ff9e39]">
                     <span
-                      className="w-full max-w-80 rounded-md py-2.5 text-center text-sm font-semibold text-white shadow-sm ring-2 ring-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+                      className="w-full max-w-80 rounded-md py-2.5 text-center text-sm font-semibold text-white shadow-sm ring-2 ring-white hover:ring-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
                     >
                       VIEW DETAILS
                     </span>
                   </span>
-                </span>
+                </div>
               </a>
             ))}
           </div>
+
         </div>
       </div>
     </>

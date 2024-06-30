@@ -320,6 +320,32 @@ export default function ProductDetails() {
           </div>
         </div>
       </div>
+      <div className="flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row md:px-24">
+        <div className="w-full md:w-full md:max-w-xl">
+          <img
+            className="w-full object-cover object-center shadow-2xl"
+            src="https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+        <div className="z-10 mt-0 w-full bg-white px-10 shadow-md md:-ml-32 md:mt-0 md:w-full md:max-w-xl">
+          <div className="relative space-y-6 px-6 py-16 text-left">
+            <h2
+              className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
+              id="join-heading"
+            >
+              DAY 3
+            </h2>
+            <p className="text-lg leading-none text-black">
+              Arrive in South Korea
+            </p>
+            <p className="text-lg leading-none text-black">Registration</p>
+            <p className="text-lg leading-none text-black">Breakfast</p>
+            <p className="text-lg leading-none text-black">Lunch</p>
+            <p className="text-lg leading-none text-black">Check In</p>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
