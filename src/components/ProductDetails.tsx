@@ -135,7 +135,7 @@ export default function ProductDetails() {
                           </span>
                           <span
                             className={classNames(
-                              selected ? 'ring-indigo-500' : 'ring-transparent',
+                              selected ? 'ring-[#ff9e39] focus:ring-[#ff9e39]' : 'ring-transparent',
                               'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2',
                             )}
                             aria-hidden="true"

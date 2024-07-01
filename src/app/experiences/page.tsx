@@ -343,15 +343,15 @@ export default function Experiences() {
         </div>
       </div>
 
+
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {destinations.map((destination) => (
               <a
                 key={destination.name}
                 href="/destination-details"
-                className="relative flex h-full w-56 flex-col rounded-lg p-6 hover:opacity-95 xl:w-auto pt-40 px-8"
+                className="relative flex h-full w-56 flex-col p-6 hover:opacity-95 xl:w-auto pt-40 px-8 hover-zoom overflow-hidden"
               >
                 <span aria-hidden="true" className="absolute inset-0">
                   <img
@@ -386,7 +386,6 @@ export default function Experiences() {
               </a>
             ))}
           </div>
-
         </div>
       </div>
     </>
