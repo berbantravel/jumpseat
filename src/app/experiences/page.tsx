@@ -7,6 +7,8 @@ import destinationsphoto from '@/images/destinations.png'
 import whatsapp from '@/images/logos/whatsapp.png'
 import viber from '@/images/logos/viber.png'
 import kakaotalk from '@/images/logos/kakaotalk.png'
+import { useRouter } from 'next/navigation';
+
 import {
   CloudArrowUpIcon,
   LockClosedIcon,
@@ -163,28 +165,15 @@ const destinations = [
       'https://images.pexels.com/photos/2407265/pexels-photo-2407265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
 ]
-const features = [
-  {
-    name: 'Push to deploy.',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
-    icon: CloudArrowUpIcon,
-  },
-  {
-    name: 'SSL certificates.',
-    description:
-      'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
-    icon: LockClosedIcon,
-  },
-  {
-    name: 'Database backups.',
-    description:
-      'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.',
-    icon: ServerIcon,
-  },
-]
+
 
 export default function Experiences() {
+  const router = useRouter();
+
+  const handleCardClick = (destination: string) => {
+    router.push(`/destination/${destination.toLowerCase().replace(/\s+/g, '-')}`);
+  };
+
   return (
     <>
       <div className="relative isolate -mt-16 overflow-hidden py-28">
@@ -348,11 +337,11 @@ export default function Experiences() {
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {destinations.map((destination) => (
-              <a
-                key={destination.name}
-                href="/destination-details"
-                className="relative flex h-full w-56 flex-col p-6 hover:opacity-95 xl:w-auto pt-40 px-8 hover-zoom overflow-hidden"
-              >
+            <div
+              key={destination.name}
+              onClick={() => handleCardClick(destination.name)}
+              className="relative flex h-full w-56 flex-col p-6 hover:opacity-95 xl:w-auto pt-40 px-8 hover-zoom overflow-hidden cursor-pointer"
+            >
                 <span aria-hidden="true" className="absolute inset-0">
                   <img
                     src={destination.imageSrc}
@@ -383,7 +372,7 @@ export default function Experiences() {
                     </span>
                   </span>
                 </div>
-              </a>
+              </div>
             ))}
           </div>
         </div>

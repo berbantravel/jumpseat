@@ -24,7 +24,51 @@ const stats = [
   { label: 'New users annually', value: '46,000' },
 ]
 
-export default function DestinationDetails() {
+interface DestinationDetailsProps {
+  name: string;
+  description: string;
+  bestTimeToVisit: string;
+  daysOfStay: string;
+  pricePerPerson: string;
+  minimumGuests: string;
+}
+
+export default function DestinationDetails({
+  name,
+  description,
+  bestTimeToVisit,
+  daysOfStay,
+  pricePerPerson,
+  minimumGuests,
+}: DestinationDetailsProps) {
+
+  const product = {
+    name: name,
+    price: pricePerPerson,
+    rating: 4, // You might want to add this to your DestinationDetailsProps if it's variable
+    images: [
+      {
+        id: 1,
+        name: 'Destination Image',
+        src: 'https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', // Replace with actual image URL
+        alt: `Image of ${name}`,
+      },
+      // Add more images as needed
+    ],
+    description: description,
+    details: [
+      {
+        name: 'Trip Details',
+        items: [
+          `Best Time to Visit: ${bestTimeToVisit}`,
+          `Days of Stay: ${daysOfStay}`,
+          `Minimum Guests: ${minimumGuests}`,
+        ],
+      },
+      // Add more details as needed
+    ],
+  };
+
   return (
     <>
       <div className="relative isolate -mt-16 overflow-hidden py-28">
@@ -43,13 +87,10 @@ export default function DestinationDetails() {
 
           <div className="text-center pb-36">
             <h1 className="font-poppinsSemiBold text-4xl tracking-tight text-white sm:text-7xl">
-              SOUTH KOREA
+              {name}
             </h1>
             <p className="bodyRegular mt-0 text-lg text-white">
-            Spend some time exploring trending kpop spots. A
-            thought-provoking location that will give you a
-            mindblowing intimacy towards Sout Korea&apos;s history and
-            culture.
+            {description}
             </p>
           </div>
         </div>
@@ -73,10 +114,7 @@ export default function DestinationDetails() {
                 <div className="mt-6 flex flex-col items-center gap-y-20 lg:flex-row">
                   <div className="lg:w-full lg:max-w-4xl lg:flex-auto">
                     <p className="text-left text-xl leading-8 text-gray-600">
-                      Spend some time exploring trending kpop spots. A
-                      thought-provoking location that will give you a
-                      mindblowing intimacy towards Sout Korea&apos;s history and
-                      culture.
+                    {description}
                     </p>
                   </div>
                   <div className="lg:flex lg:flex-auto lg:justify-center">
@@ -100,7 +138,7 @@ export default function DestinationDetails() {
                               Best Time to Visit
                             </dt>
                             <dd className="text-md font-normal tracking-tight text-gray-500">
-                              August - November
+                            {bestTimeToVisit}
                             </dd>
                           </div>
                         </div>
@@ -120,7 +158,7 @@ export default function DestinationDetails() {
                             Days of Stay
                             </dt>
                             <dd className="text-md font-normal tracking-tight text-gray-500">
-                            5 Days
+                            {daysOfStay}
                             </dd>
                           </div>
                         </div>
@@ -138,10 +176,10 @@ export default function DestinationDetails() {
                               Price per Person
                             </dt>
                             <dd className="text-md font-bold tracking-tight text-gray-950">
-                              USD 109.00
+                            {pricePerPerson}
                             </dd>
                             <dd className="text-sm font-normal tracking-tight text-gray-500">
-                              No Minimum Guests
+                            {minimumGuests}
                             </dd>
                           </div>
                         </div>
@@ -157,10 +195,8 @@ export default function DestinationDetails() {
       </div>
 
       <div className="mt-0">
-
-          <ProductDetails></ProductDetails>
+        <ProductDetails product={product} />
       </div>
-
       
     </>
   )

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link'
 import clsx from 'clsx'
 import { useState } from 'react'
@@ -5,8 +7,6 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Radio,
-  RadioGroup,
   Tab,
   TabGroup,
   TabList,
@@ -16,101 +16,28 @@ import {
 import { StarIcon, CheckIcon } from '@heroicons/react/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 
-export default function ProductDetails() {
-  const product = {
-    name: 'South Korea',
-    price: '$109',
-    rating: 4,
-    images: [
-      {
-        id: 1,
-        name: 'Angled view',
-        src: 'https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        alt: 'Angled front view with bag zipped and handles upright.',
-      },
-      {
-        id: 2,
-        name: 'Angled view',
-        src: 'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        alt: 'Angled front view with bag zipped and handles upright.',
-      },
-      {
-        id: 3,
-        name: 'Angled view',
-        src: 'https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        alt: 'Angled front view with bag zipped and handles upright.',
-      },
-      {
-        id: 4,
-        name: 'Angled view',
-        src: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        alt: 'Angled front view with bag zipped and handles upright.',
-      },
-    ],
-    colors: [
-      {
-        name: 'Washed Black',
-        bgColor: 'bg-gray-700',
-        selectedColor: 'ring-gray-700',
-      },
-      { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
-      {
-        name: 'Washed Gray',
-        bgColor: 'bg-gray-500',
-        selectedColor: 'ring-gray-500',
-      },
-    ],
-    description: `
-    <p>Spend some time exploring trending kpop spots. A thought-provoking location that will give you a mindblowing intimacy towards Sout Korea's history and culture.</p>
-  `,
-    details: [
-      {
-        name: 'Inclusions',
-        icon: 'CheckIcon',
-        items: [
-          'Hotel accomodation of your choice',
-          'Daily breakfast at the hotel',
-          'Transfers, guide and driver',
-          'Environmental fees and taxes',
-          'Local tourist taxes and fees',
-        ],
-      },
-      {
-        name: 'Exclusions',
-        icon: 'CheckIcon',
-        items: [
-          'International flights from your destination',
-          'Additional stay in Manila for flight connections',
-          'Domestic flights within the Philippines',
-          'Tips for the driver and guides',
-          'Food and beverage',
-        ],
-      },
-      {
-        name: 'Things to Consider',
-        icon: 'CheckIcon',
-        items: [
-          'Additonal nights in Manila may be needed for flight connections to the destinations.',
-          'All experiences are subject to confirmation and weather conditions',
-          'Cancellations of experience due to weather are non-refundable',
-          'Re-bookings are subject to change and are upon the discretion of airlines, accommodations, and other suppliers.',
-          'Cancellations within three months of the departure date are not permitted.',
-          'Expect flight delays due to the small airports on the islands.',
-        ],
-      },
-    ],
-  }
-  const [selectedColor, setSelectedColor] = useState(product.colors[0])
+interface ProductDetailsProps {
+  product: {
+    name: string;
+    price: string;
+    rating: number;
+    images: Array<{ id: number; name: string; src: string; alt: string }>;
+    description: string;
+    details: Array<{ name: string; items: string[] }>;
+    colors?: Array<{ name: string; bgColor: string; selectedColor: string }>;
+  };
+}
 
-  function classNames(
-    ...classes: (string | undefined | null | false)[]
-  ): string {
+export default function ProductDetails({ product }: ProductDetailsProps) {
+  const [selectedColor, setSelectedColor] = useState(product.colors ? product.colors[0] : null)
+
+  function classNames(...classes: (string | undefined | null | false)[]): string {
     return classes.filter(Boolean).join(' ')
   }
 
   return (
     <>
-      <div className="bg-white ">
+      <div className="bg-white">
         <div className="mx-auto max-w-2xl divide-y divide-gray-200 border-t px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
             {/* Image gallery */}
