@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import Link from 'next/link'
 import clsx from 'clsx'
 import { useState } from 'react'
@@ -25,6 +27,12 @@ interface ProductDetailsProps {
     description: string;
     details: Array<{ name: string; items: string[] }>;
     colors?: Array<{ name: string; bgColor: string; selectedColor: string }>;
+    itinerary?: Array<{
+      day: number;
+      title: string;
+      activities: string[];
+      image: string;
+    }>;
   };
 }
 
@@ -193,86 +201,76 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           </div>
         </div>
       </div>
+  
+      {product.itinerary && (
+        <div className="mt-0">
+          {product.itinerary.map((day, index) => (
+            <div key={day.day} className={`flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row${index % 2 === 1 ? '-reverse' : ''} md:px-24`}>
+              <div className="w-full md:w-full md:max-w-xl hover-zoom overflow-hidden">
+                <Image
+                  className="w-full object-cover object-center shadow-2xl"
+                  src={day.image}
+                  alt={`Day ${day.day} - ${day.title}`}
+                  width={800}
+                  height={600}
+                  layout="responsive"
+                />
+              </div>
+              <div className={`z-10 mt-0 w-full bg-white px-10 shadow-md md:${index % 2 === 0 ? '-ml-32' : '-mr-32'} md:mt-0 md:w-full md:max-w-xl`}>
+                <div className="relative space-y-6 px-6 py-16 text-left">
+                  <h2
+                    className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
+                    id={`day-${day.day}-heading`}
+                  >
+                    DAY {day.day}
+                  </h2>
+                  <h3 className="text-xl font-semibold text-gray-900">{day.title}</h3>
+                  {day.activities.map((activity, actIndex) => (
+                    <p key={actIndex} className="text-lg leading-none text-black">
+                      {activity}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
 
-      <div className="flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row md:px-24">
+{/* 
+      {product.itinerary && (
+  <div className="mt-16">
+    {product.itinerary.map((day, index) => (
+      <div key={day.day} className={`flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row${index % 2 === 1 ? '-reverse' : ''} md:px-24`}>
         <div className="w-full md:w-full md:max-w-xl hover-zoom overflow-hidden">
           <img
             className="w-full object-cover object-center shadow-2xl"
-            src="https://images.pexels.com/photos/380707/pexels-photo-380707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
+            src={day.image}
+            alt={`Day ${day.day} - ${day.title}`}
           />
         </div>
-        <div className="z-10 mt-0 w-full bg-white px-10 shadow-md md:-ml-32 md:mt-0 md:w-full md:max-w-xl">
+        <div className={`z-10 mt-0 w-full bg-white px-10 shadow-md md:${index % 2 === 0 ? '-ml-32' : '-mr-32'} md:mt-0 md:w-full md:max-w-xl`}>
           <div className="relative space-y-6 px-6 py-16 text-left">
             <h2
               className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
-              id="join-heading"
+              id={`day-${day.day}-heading`}
             >
-              DAY 1
+              DAY {day.day}
             </h2>
-            <p className="text-lg leading-none text-black">
-              Arrive in South Korea
-            </p>
-            <p className="text-lg leading-none text-black">Registration</p>
-            <p className="text-lg leading-none text-black">Breakfast</p>
-            <p className="text-lg leading-none text-black">Lunch</p>
-            <p className="text-lg leading-none text-black">Check In</p>
+            <h3 className="text-xl font-semibold text-gray-900">{day.title}</h3>
+            {day.activities.map((activity, actIndex) => (
+              <p key={actIndex} className="text-lg leading-none text-black">
+                {activity}
+              </p>
+            ))}
           </div>
         </div>
       </div>
+    ))}
+  </div>
+)} */}
 
-      <div className="flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row-reverse md:px-24">
-        <div className="w-full md:w-full md:max-w-xl hover-zoom overflow-hidden">
-          <img
-            className="w-full object-cover object-center shadow-2xl"
-            src="https://images.pexels.com/photos/19271537/pexels-photo-19271537/free-photo-of-jagyeongjeon-palace-in-seoul-south-korea.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-          />
-        </div>
-        <div className="z-10 mt-0 w-full bg-white px-10 shadow-md md:-mr-32 md:mt-0 md:w-full md:max-w-xl">
-          <div className="relative space-y-6 px-6 py-16 text-left">
-            <h2
-              className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
-              id="join-heading"
-            >
-              DAY 2
-            </h2>
-            <p className="text-lg leading-none text-black">
-              Arrive in South Korea
-            </p>
-            <p className="text-lg leading-none text-black">Registration</p>
-            <p className="text-lg leading-none text-black">Breakfast</p>
-            <p className="text-lg leading-none text-black">Lunch</p>
-            <p className="text-lg leading-none text-black">Check In</p>
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row md:px-24">
-        <div className="w-full md:w-full md:max-w-xl hover-zoom overflow-hidden">
-          <img
-            className="w-full object-cover object-center shadow-2xl"
-            src="https://images.pexels.com/photos/11314621/pexels-photo-11314621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-          />
-        </div>
-        <div className="z-10 mt-0 w-full bg-white px-10 shadow-md md:-ml-32 md:mt-0 md:w-full md:max-w-xl">
-          <div className="relative space-y-6 px-6 py-16 text-left">
-            <h2
-              className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
-              id="join-heading"
-            >
-              DAY 3
-            </h2>
-            <p className="text-lg leading-none text-black">
-              Arrive in South Korea
-            </p>
-            <p className="text-lg leading-none text-black">Registration</p>
-            <p className="text-lg leading-none text-black">Breakfast</p>
-            <p className="text-lg leading-none text-black">Lunch</p>
-            <p className="text-lg leading-none text-black">Check In</p>
-          </div>
-        </div>
-      </div>
+     
     </>
   )
 }

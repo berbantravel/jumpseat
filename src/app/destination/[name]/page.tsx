@@ -79,6 +79,43 @@ const dummyData = {
         ],
       },
     ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Seoul",
+        activities: [
+          "Arrive at Incheon International Airport",
+          "Transfer to hotel in Seoul",
+          "Welcome dinner at a local Korean BBQ restaurant",
+          "Evening walk in Myeongdong shopping district"
+        ],
+        image: "https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg"
+      },
+      {
+        day: 2,
+        title: "Seoul City Tour",
+        activities: [
+          "Visit Gyeongbokgung Palace",
+          "Explore Bukchon Hanok Village",
+          "Lunch at a traditional Korean restaurant",
+          "Afternoon at N Seoul Tower",
+          "Evening cruise on Han River"
+        ],
+        image: "https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg"
+      },
+      {
+        day: 3,
+        title: "K-pop and Modern Culture",
+        activities: [
+          "Visit to K-pop entertainment company",
+          "K-pop dance class",
+          "Lunch at a trendy cafe in Gangnam",
+          "Shopping in Apgujeong Rodeo Street",
+          "Evening K-pop concert (subject to availability)"
+        ],
+        image: "https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg"
+      }
+    ],
   },
   'japan': {
     name: 'Japan',
@@ -88,7 +125,7 @@ const dummyData = {
     bestTimeToVisit: 'March - May and September - November',
     daysOfStay: '7 Days',
     minimumGuests: 'No Minimum Guests',
-    heroImage: 'https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    heroImage: 'https://images.pexels.com/photos/2676642/pexels-photo-2676642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     images: [
       {
         id: 1,
@@ -144,6 +181,43 @@ const dummyData = {
           'Day 7: Departure from Osaka',
         ],
       },
+    ],
+    itinerary: [
+      {
+        day: 1,
+        title: "Arrival in Seoul",
+        activities: [
+          "Arrive at Incheon International Airport",
+          "Transfer to hotel in Seoul",
+          "Welcome dinner at a local Korean BBQ restaurant",
+          "Evening walk in Myeongdong shopping district"
+        ],
+        image: "https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg"
+      },
+      {
+        day: 2,
+        title: "Seoul City Tour",
+        activities: [
+          "Visit Gyeongbokgung Palace",
+          "Explore Bukchon Hanok Village",
+          "Lunch at a traditional Korean restaurant",
+          "Afternoon at N Seoul Tower",
+          "Evening cruise on Han River"
+        ],
+        image: "https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg"
+      },
+      {
+        day: 3,
+        title: "K-pop and Modern Culture",
+        activities: [
+          "Visit to K-pop entertainment company",
+          "K-pop dance class",
+          "Lunch at a trendy cafe in Gangnam",
+          "Shopping in Apgujeong Rodeo Street",
+          "Evening K-pop concert (subject to availability)"
+        ],
+        image: "https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg"
+      }
     ],
   },
   // Add more destinations here
