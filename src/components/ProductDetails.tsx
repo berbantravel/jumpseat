@@ -25,25 +25,25 @@ export default function ProductDetails() {
       {
         id: 1,
         name: 'Angled view',
-        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
+        src: 'https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Angled front view with bag zipped and handles upright.',
       },
       {
         id: 2,
         name: 'Angled view',
-        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
+        src: 'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Angled front view with bag zipped and handles upright.',
       },
       {
         id: 3,
         name: 'Angled view',
-        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
+        src: 'https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Angled front view with bag zipped and handles upright.',
       },
       {
         id: 4,
         name: 'Angled view',
-        src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
+        src: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         alt: 'Angled front view with bag zipped and handles upright.',
       },
     ],
@@ -268,10 +268,10 @@ export default function ProductDetails() {
       </div>
 
       <div className="flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row md:px-24">
-        <div className="w-full md:w-full md:max-w-xl">
+        <div className="w-full md:w-full md:max-w-xl hover-zoom overflow-hidden">
           <img
             className="w-full object-cover object-center shadow-2xl"
-            src="https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src="https://images.pexels.com/photos/380707/pexels-photo-380707.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt=""
           />
         </div>
@@ -295,10 +295,10 @@ export default function ProductDetails() {
       </div>
 
       <div className="flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row-reverse md:px-24">
-        <div className="w-full md:w-full md:max-w-xl">
+        <div className="w-full md:w-full md:max-w-xl hover-zoom overflow-hidden">
           <img
             className="w-full object-cover object-center shadow-2xl"
-            src="https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src="https://images.pexels.com/photos/19271537/pexels-photo-19271537/free-photo-of-jagyeongjeon-palace-in-seoul-south-korea.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt=""
           />
         </div>
@@ -321,10 +321,10 @@ export default function ProductDetails() {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row md:px-24">
-        <div className="w-full md:w-full md:max-w-xl">
+        <div className="w-full md:w-full md:max-w-xl hover-zoom overflow-hidden">
           <img
             className="w-full object-cover object-center shadow-2xl"
-            src="https://images.pexels.com/photos/3018977/pexels-photo-3018977.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            src="https://images.pexels.com/photos/11314621/pexels-photo-11314621.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt=""
           />
         </div>

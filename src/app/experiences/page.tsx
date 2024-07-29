@@ -359,7 +359,7 @@ export default function Experiences() {
                     alt=""
                     className="h-full w-full object-cover object-center"
                   />
-                  <span className="absolute inset-0 bg-black opacity-30"></span>
+                  <span className="absolute inset-0 bg-black opacity-10"></span>
                 </span>
                 <span
                   aria-hidden="true"
