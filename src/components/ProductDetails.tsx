@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
+import Image from 'next/image'
 
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -20,26 +20,31 @@ import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 
 interface ProductDetailsProps {
   product: {
-    name: string;
-    price: string;
-    rating: number;
-    images: Array<{ id: number; name: string; src: string; alt: string }>;
-    description: string;
-    details: Array<{ name: string; items: string[] }>;
-    colors?: Array<{ name: string; bgColor: string; selectedColor: string }>;
+    name: string
+    price: string
+    rating: number
+    images: Array<{ id: number; name: string; src: string; alt: string }>
+    description: string
+    details: Array<{ name: string; items: string[] }>
+    colors?: Array<{ name: string; bgColor: string; selectedColor: string }>
     itinerary?: Array<{
-      day: number;
-      title: string;
-      activities: string[];
-      image: string;
-    }>;
-  };
+      day: number | string // Allow both number and string
+      title: string
+      activities: string[]
+      image: string
+    }>
+    listingDescription: string
+  }
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
-  const [selectedColor, setSelectedColor] = useState(product.colors ? product.colors[0] : null)
+  const [selectedColor, setSelectedColor] = useState(
+    product.colors ? product.colors[0] : null,
+  )
 
-  function classNames(...classes: (string | undefined | null | false)[]): string {
+  function classNames(
+    ...classes: (string | undefined | null | false)[]
+  ): string {
     return classes.filter(Boolean).join(' ')
   }
 
@@ -62,15 +67,25 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                         <>
                           <span className="sr-only">{image.name}</span>
                           <span className="absolute inset-0 overflow-hidden rounded-md">
-                            <img
+                            {/* <img
                               src={image.src}
                               alt=""
                               className="h-full w-full object-cover object-center"
+                            /> */}
+                            <Image
+                              className="h-full w-full object-cover object-center"
+                              src={image.src}
+                              alt=""
+                              width={1200}
+                              height={1000}
+                              layout="responsive"
                             />
                           </span>
                           <span
                             className={classNames(
-                              selected ? 'ring-[#ff9e39] focus:ring-[#ff9e39]' : 'ring-transparent',
+                              selected
+                                ? 'ring-[#ff9e39] focus:ring-[#ff9e39]'
+                                : 'ring-transparent',
                               'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2',
                             )}
                             aria-hidden="true"
@@ -105,7 +120,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 <div className="mr-8 mt-3">
                   <div className="font-semibold">Price per Person</div>
                   <p className="text-3xl font-medium tracking-tight text-[#ff9e39]">
-                    {product.price}.00
+                    {product.price}
                   </p>
                   <dd className="text-sm font-normal tracking-tight text-gray-500">
                     No Minimum Guests
@@ -124,7 +139,9 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
                 <div
                   className="space-y-6 text-base text-gray-700"
-                  dangerouslySetInnerHTML={{ __html: product.description }}
+                  dangerouslySetInnerHTML={{
+                    __html: product.listingDescription,
+                  }}
                 />
               </div>
 
@@ -201,76 +218,58 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           </div>
         </div>
       </div>
-  
-      {product.itinerary && (
-  <div className="mt-0">
-    {product.itinerary.map((day, index) => (
-      <div key={day.day} className={`flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row ${index % 2 === 1 ? 'md:flex-row-reverse' : ''} md:px-24`}>
-        <div className="w-full md:w-1/2 md:max-w-xl hover-zoom overflow-hidden">
-          <Image
-            className="w-full object-cover object-center shadow-2xl"
-            src={day.image}
-            alt={`Day ${day.day} - ${day.title}`}
-            width={800}
-            height={600}
-            layout="responsive"
-          />
-        </div>
-        <div className={`z-10 mt-8 w-full bg-white px-10 shadow-md md:mt-0 md:w-1/2 md:max-w-xl ${index % 2 === 0 ? 'md:-ml-32' : 'md:-mr-32'}`}>
-          <div className="relative space-y-6 px-6 py-16 text-left">
-            <h2
-              className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
-              id={`day-${day.day}-heading`}
-            >
-              DAY {day.day}
-            </h2>
-            <h3 className="text-xl font-semibold text-gray-900">{day.title}</h3>
-            {day.activities.map((activity, actIndex) => (
-              <p key={actIndex} className="text-lg leading-none text-black">
-                {activity}
-              </p>
-            ))}
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-)}
 
-{/* 
-      {product.itinerary && (
-  <div className="mt-16">
-    {product.itinerary.map((day, index) => (
-      <div key={day.day} className={`flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row${index % 2 === 1 ? '-reverse' : ''} md:px-24`}>
-        <div className="w-full md:w-full md:max-w-xl hover-zoom overflow-hidden">
-          <img
-            className="w-full object-cover object-center shadow-2xl"
-            src={day.image}
-            alt={`Day ${day.day} - ${day.title}`}
-          />
-        </div>
-        <div className={`z-10 mt-0 w-full bg-white px-10 shadow-md md:${index % 2 === 0 ? '-ml-32' : '-mr-32'} md:mt-0 md:w-full md:max-w-xl`}>
-          <div className="relative space-y-6 px-6 py-16 text-left">
-            <h2
-              className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
-              id={`day-${day.day}-heading`}
-            >
-              DAY {day.day}
-            </h2>
-            <h3 className="text-xl font-semibold text-gray-900">{day.title}</h3>
-            {day.activities.map((activity, actIndex) => (
-              <p key={actIndex} className="text-lg leading-none text-black">
-                {activity}
-              </p>
-            ))}
-          </div>
-        </div>
+      <div className="bg-white text-center font-poppinsSemiBold text-4xl tracking-tight text-[#ff9e39] sm:text-5xl">
+        Itineraries
       </div>
-    ))}
-  </div>
-)} */}
 
-     
+      {product.itinerary && (
+        <div className="mt-0">
+          {product.itinerary.map((day, index) => (
+            <div
+              key={day.day}
+              className={`flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row ${
+                index % 2 === 1 ? 'md:flex-row-reverse' : ''
+              } md:px-24`}
+            >
+              <div className="hover-zoom w-full overflow-hidden md:w-1/2 md:max-w-xl">
+                <Image
+                  className="w-full object-cover object-center shadow-2xl"
+                  src={day.image}
+                  alt={`Day ${day.day} - ${day.title}`}
+                  width={800}
+                  height={600}
+                  layout="responsive"
+                />
+              </div>
+              <div
+                className={`z-10 mt-8 w-full bg-white px-10 shadow-md md:mt-0 md:w-1/2 md:max-w-xl ${
+                  index % 2 === 0 ? 'md:-ml-32' : 'md:-mr-32'
+                }`}
+              >
+                <div className="relative space-y-6 px-6 py-16 text-left">
+                  <h2
+                    className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
+                    id={`day-${day.day}-heading`}
+                  >
+                    DAY {day.day}
+                  </h2>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {day.title}
+                  </h3>
+                  <ul className="list-disc space-y-2 pl-5">
+                    {day.activities.map((activity, actIndex) => (
+                      <li key={actIndex} className="text-lg text-black">
+                        {activity}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </>
   )
 }

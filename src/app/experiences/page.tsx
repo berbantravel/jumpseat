@@ -15,79 +15,12 @@ import {
   ServerIcon,
 } from '@heroicons/react/20/solid'
 
-const products = [
-  {
-    id: 1,
-    name: 'Focus Paper Refill',
-    href: '#',
-    price: '$13',
-    description: '3 sizes available',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-01.jpg',
-    imageAlt:
-      'Person using a pen to cross a task off a productivity paper card.',
-  },
-  {
-    id: 2,
-    name: 'Focus Card Holder',
-    href: '#',
-    price: '$64',
-    description: 'Walnut',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-02.jpg',
-    imageAlt: 'Paper card sitting upright in walnut card holder on desk.',
-  },
-  {
-    id: 3,
-    name: 'Focus Carry Case',
-    href: '#',
-    price: '$32',
-    description: 'Heather Gray',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-03.jpg',
-    imageAlt:
-      'Textured gray felt pouch for paper cards with snap button flap and elastic pen holder loop.',
-  },
-  {
-    id: 4,
-    name: 'Focus Carry Case',
-    href: '#',
-    price: '$32',
-    description: 'Heather Gray',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-03.jpg',
-    imageAlt:
-      'Textured gray felt pouch for paper cards with snap button flap and elastic pen holder loop.',
-  },
-  {
-    id: 5,
-    name: 'Focus Carry Case',
-    href: '#',
-    price: '$32',
-    description: 'Heather Gray',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-03.jpg',
-    imageAlt:
-      'Textured gray felt pouch for paper cards with snap button flap and elastic pen holder loop.',
-  },
-  {
-    id: 6,
-    name: 'Focus Carry Case',
-    href: '#',
-    price: '$32',
-    description: 'Heather Gray',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-01-image-card-03.jpg',
-    imageAlt:
-      'Textured gray felt pouch for paper cards with snap button flap and elastic pen holder loop.',
-  },
-]
 const destinations = [
   {
-    name: 'SOUTH KOREA',
+    name: 'PROSPEROUS HONGKONG',
     description:
-      'EXPERIENCE GRAND VACATION AND SPECTACULAR INSTAGRAMMABLE KPOP SPOTS',
-    price: 500,
+      'A FUSION OF DAZZLING INNOVATION AND RICH TRADITION',
+    price: '20,000',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/2246789/pexels-photo-2246789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -96,7 +29,7 @@ const destinations = [
     name: 'TAIWAN',
     description:
       'EXPERIENCE TAIWAN\'S RICH CULTURE',
-    price: 500,
+    price: '22,000',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/1474157/pexels-photo-1474157.jpeg',
@@ -105,7 +38,7 @@ const destinations = [
     name: 'THAILAND',
     description:
       'A MOUTH WATERING JOURNEY THAT WILL TREAT YOUR TASTE BUDS',
-    price: 500,
+    price: '24,000',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/1682748/pexels-photo-1682748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -114,7 +47,7 @@ const destinations = [
     name: 'SINGAPORE',
     description:
       'LEAVE YOURSELF BEHIND AND GO BEYOND WHAT SINGAPORE HAS TO OFFER',
-    price: 500,
+    price: '25,000',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/1507730/pexels-photo-1507730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -123,7 +56,7 @@ const destinations = [
     name: 'MALAYSIA',
     description:
       'FULLFILL YOURSELF WITH A BREATHTAKING VOYAGE',
-    price: 500,
+    price: '22,000',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/433989/pexels-photo-433989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -132,7 +65,7 @@ const destinations = [
     name: 'JAPAN',
     description:
       'DISCOVER UNRIVALED SCENERIES AND A PLACE RICH IN HISTORY IN THE EAST',
-    price: 500,
+    price: '24,000',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -141,16 +74,16 @@ const destinations = [
     name: 'INDONESIA',
     description:
       'EXPERIENCE WHAT NATURE HAS TO OFFER',
-    price: 500,
+    price: '21,000',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/2659475/pexels-photo-2659475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
   {
-    name: 'HONG KONG',
+    name: 'SOUTH KOREA',
     description:
       'LOOSEN UP AND EXPERIENCE A MARVELOUS HOLIDAY!',
-    price: 500,
+    price: '24,000',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/3957774/pexels-photo-3957774.jpeg?auto=compress&cs=tinysrgb&w=600',
@@ -159,7 +92,7 @@ const destinations = [
     name: 'THE PHILIPPINES',
     description:
       'HEART-WARMING DESTINATION THAT UNCOVERS NATURE\'S GLAMOR',
-    price: 500,
+    price: '21,000',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/2407265/pexels-photo-2407265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -362,7 +295,7 @@ export default function Experiences() {
                     {destination.description}
                   </span>
                   <span className="text-md mt-4 text-center font-semibold">
-                    STARTS FROM <span className='text-[#ff9e39]'>${destination.price}</span>
+                    STARTS FROM <span className='text-[#ff9e39] font-bold bg-neutral-800 px-1'>Php{destination.price}/pax</span>
                   </span>
                   <span className="mt-10 flex items-center justify-start gap-x-6 hover:bg-[#ff9e39]">
                     <span
