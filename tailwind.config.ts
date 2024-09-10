@@ -6,7 +6,8 @@ import typographyStyles from './typography'
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'selector',
-  plugins: [typographyPlugin],
+  plugins: [typographyPlugin, require('@tailwindcss/forms'),
+      require('@tailwindcss/aspect-ratio'),],
   theme: {
     extend: {
       maxHeight: {

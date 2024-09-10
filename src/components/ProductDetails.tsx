@@ -17,18 +17,25 @@ import {
 } from '@headlessui/react'
 import { StarIcon, CheckIcon } from '@heroicons/react/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { useRouter } from 'next/navigation';
 
 interface ProductDetailsProps {
   product: {
     name: string
-    price: string
+    price: number
+    imageSrc: string
     rating: number
     images: Array<{ id: number; name: string; src: string; alt: string }>
     description: string
+    longDescription?: string
+    bestTimeToVisit?: string
+    daysOfStay?: string
+    minimumGuests?: string
+    heroImage?: string
     details: Array<{ name: string; items: string[] }>
     colors?: Array<{ name: string; bgColor: string; selectedColor: string }>
     itinerary?: Array<{
-      day: number | string // Allow both number and string
+      day: number | string
       title: string
       activities: string[]
       image: string
@@ -38,6 +45,20 @@ interface ProductDetailsProps {
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
+  const router = useRouter();
+  const handleBookNow = () => {
+    const imageSrc = product.images[0]?.src || '';
+    console.log("Image source before redirect:", imageSrc);
+    
+    const queryParams = new URLSearchParams({
+      productName: product.name,
+      productPrice: product.price.toString(), // Convert to string
+      imageSrc: imageSrc
+    }).toString();
+  
+    router.push(`/checkout?${queryParams}`);
+  };
+
   const [selectedColor, setSelectedColor] = useState(
     product.colors ? product.colors[0] : null,
   )
@@ -48,6 +69,14 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
     return classes.filter(Boolean).join(' ')
   }
 
+  function formatPrice(price: number): string {
+    return new Intl.NumberFormat('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(price);
+  }
+  
   return (
     <>
       <div className="bg-white">
@@ -120,7 +149,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 <div className="mr-8 mt-3">
                   <div className="font-semibold">Price per Person</div>
                   <p className="text-3xl font-medium tracking-tight text-[#ff9e39]">
-                    {product.price}
+                  Php {formatPrice(product.price)}
                   </p>
                   <dd className="text-sm font-normal tracking-tight text-gray-500">
                     No Minimum Guests
@@ -147,12 +176,13 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
               <form className="mt-6">
                 <div className="mt-10 flex">
-                  <button
-                    type="submit"
-                    className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-[#ff9e39] px-8 py-3 text-base font-medium text-white hover:bg-[#b26e27] focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
-                  >
-                    Book Now
-                  </button>
+                <button
+  onClick={handleBookNow}
+  type="button" // Change from "submit" to "button"
+  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-[#ff9e39] px-8 py-3 text-base font-medium text-white hover:bg-[#b26e27] focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+>
+  Book Now
+</button>
 
                   <button
                     type="submit"

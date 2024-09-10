@@ -15,7 +15,7 @@ const ProductDetails = dynamic(() => import('../../../components/ProductDetails'
 const dummyData = {
   'prosperous-hongkong': {
     name: 'Prosperous Hongkong',
-    price: 'Php 20,000/pax',
+    price: 20000,
     rating: 4,
     description: 'A fusion of dazzling innovation and rich tradition',
     longDescription: '<div class="font-bold mb-3 text-2xl">Prosperous Hongkong- Macau Guangdong 4 in 1 5D4N Tour (Sept)</div> <div class="font-semibold mb-4 text-lg">  Traveler: Family, Friends, Cultural Explorers, Tourists and Travelers</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Guangdong</span> - is also famous for its Cantonese culture, including the Cantonese language, cuisine and traditional festivals. The Province attracts business professionals, investors, tourists, and cultural enthusiasts alike, making it a dynamic and diverse area with a global influence.</span> </div> <div class="text-normal"> <span class="text-lg"><span class="font-medium">Macau</span> - the city\'s historic center, a UNESCO World Heritage site, features beautifully preserved colonial architecture, including churches, temples, and fortresses. Macau is also known for its diverse culinary scene, combining Portuguese and Cantonese flavors, making it a haven for food lovers.</span></div>',
@@ -161,7 +161,7 @@ const dummyData = {
   },
   'japan': {
     name: 'Japan',
-    price: '$129',
+    price: 20000,
     rating: 5,
     description: 'Discover the perfect blend of tradition and modernity in Japan. From ancient temples to futuristic cities, immerse yourself in a unique cultural experience.',
     longDescription: '<p class="text-lg leading-relaxed mb-4">Discover the perfect blend of <span class="font-semibold text-red-600">tradition and modernity</span> in Japan. From ancient temples to futuristic cities, immerse yourself in a <span class="italic">unique cultural experience</span>.</p><p class="text-lg leading-relaxed">Explore <span class="underline">iconic landmarks</span> and savor <span class="text-green-600">exquisite Japanese cuisine</span>.</p>',
@@ -274,6 +274,14 @@ export default function DestinationPage({ params }: { params: { name: string } }
     return <div>Destination not found</div>;
   }
 
+  function formatPrice(price: number): string {
+    return new Intl.NumberFormat('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(price);
+  }
+
   return (
     <>
        <div className="relative isolate -mt-16 overflow-hidden py-28">
@@ -370,7 +378,7 @@ export default function DestinationPage({ params }: { params: { name: string } }
                               Price per Person
                             </dt>
                             <dd className="text-md font-bold tracking-tight text-gray-950">
-                              {destinationData.price}
+                              Php {formatPrice(destinationData.price)}
                             </dd>
                             <dd className="text-sm font-normal tracking-tight text-gray-500">
                               {destinationData.minimumGuests}
@@ -389,8 +397,10 @@ export default function DestinationPage({ params }: { params: { name: string } }
 
       <div className="mt-0">
         <Suspense fallback={<div>Loading...</div>}>
-          <ProductDetails product={destinationData} />
-        </Suspense>
+        <ProductDetails product={{
+  ...destinationData,
+  imageSrc: destinationData.heroImage, // Add this line
+}} />        </Suspense>
       </div>
     </>
   );

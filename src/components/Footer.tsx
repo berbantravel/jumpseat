@@ -114,7 +114,7 @@ export function Footer() {
       </h2>
       <div className="mt-0">
         <div className="relative flex h-40 w-full bg-transparent">
-          <div className="flex h-full w-1/2 bg-white"></div>
+          <div className="flex h-full w-1/2 bg-transparent"></div>
           <div className="flex h-full w-1/2 bg-[#c57c30]"></div>
         </div>
         <div
