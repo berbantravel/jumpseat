@@ -17,7 +17,7 @@ import {
 } from '@headlessui/react'
 import { StarIcon, CheckIcon } from '@heroicons/react/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 
 interface ProductDetailsProps {
   product: {
@@ -45,19 +45,19 @@ interface ProductDetailsProps {
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
-  const router = useRouter();
+  const router = useRouter()
   const handleBookNow = () => {
-    const imageSrc = product.images[0]?.src || '';
-    console.log("Image source before redirect:", imageSrc);
-    
+    const imageSrc = product.images[0]?.src || ''
+    console.log('Image source before redirect:', imageSrc)
+
     const queryParams = new URLSearchParams({
       productName: product.name,
       productPrice: product.price.toString(), // Convert to string
-      imageSrc: imageSrc
-    }).toString();
-  
-    router.push(`/checkout?${queryParams}`);
-  };
+      imageSrc: imageSrc,
+    }).toString()
+
+    router.push(`/checkout?${queryParams}`)
+  }
 
   const [selectedColor, setSelectedColor] = useState(
     product.colors ? product.colors[0] : null,
@@ -74,9 +74,9 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       style: 'decimal',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    }).format(price);
+    }).format(price)
   }
-  
+
   return (
     <>
       <div className="bg-white">
@@ -129,10 +129,13 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               <TabPanels className="aspect-h-1 aspect-w-1 w-full">
                 {product.images.map((image) => (
                   <TabPanel key={image.id}>
-                    <img
+                    <Image
                       src={image.src}
                       alt={image.alt}
                       className="h-full w-full object-cover object-center sm:rounded-lg"
+                      width={800}
+                      height={600}
+                      layout="responsive"
                     />
                   </TabPanel>
                 ))}
@@ -149,7 +152,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 <div className="mr-8 mt-3">
                   <div className="font-semibold">Price per Person</div>
                   <p className="text-3xl font-medium tracking-tight text-[#ff9e39]">
-                  Php {formatPrice(product.price)}
+                    Php {formatPrice(product.price)}
                   </p>
                   <dd className="text-sm font-normal tracking-tight text-gray-500">
                     No Minimum Guests
@@ -176,13 +179,13 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
 
               <form className="mt-6">
                 <div className="mt-10 flex">
-                <button
-  onClick={handleBookNow}
-  type="button" // Change from "submit" to "button"
-  className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-[#ff9e39] px-8 py-3 text-base font-medium text-white hover:bg-[#b26e27] focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
->
-  Book Now
-</button>
+                  <button
+                    onClick={handleBookNow}
+                    type="button" // Change from "submit" to "button"
+                    className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-[#ff9e39] px-8 py-3 text-base font-medium text-white hover:bg-[#b26e27] focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+                  >
+                    Book Now
+                  </button>
 
                   <button
                     type="submit"

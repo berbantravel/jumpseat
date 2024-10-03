@@ -7,7 +7,7 @@ import destinationsphoto from '@/images/destinations.png'
 import whatsapp from '@/images/logos/whatsapp.png'
 import viber from '@/images/logos/viber.png'
 import kakaotalk from '@/images/logos/kakaotalk.png'
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 
 import {
   CloudArrowUpIcon,
@@ -18,8 +18,7 @@ import {
 const destinations = [
   {
     name: 'PROSPEROUS HONGKONG',
-    description:
-      'A FUSION OF DAZZLING INNOVATION AND RICH TRADITION',
+    description: 'A FUSION OF DAZZLING INNOVATION AND RICH TRADITION',
     price: '20,000',
     href: '#',
     imageSrc:
@@ -27,8 +26,7 @@ const destinations = [
   },
   {
     name: 'TAIWAN',
-    description:
-      'EXPERIENCE TAIWAN\'S RICH CULTURE',
+    description: "EXPERIENCE TAIWAN'S RICH CULTURE",
     price: '22,000',
     href: '#',
     imageSrc:
@@ -36,8 +34,7 @@ const destinations = [
   },
   {
     name: 'THAILAND',
-    description:
-      'A MOUTH WATERING JOURNEY THAT WILL TREAT YOUR TASTE BUDS',
+    description: 'A MOUTH WATERING JOURNEY THAT WILL TREAT YOUR TASTE BUDS',
     price: '24,000',
     href: '#',
     imageSrc:
@@ -54,8 +51,7 @@ const destinations = [
   },
   {
     name: 'MALAYSIA',
-    description:
-      'FULLFILL YOURSELF WITH A BREATHTAKING VOYAGE',
+    description: 'FULLFILL YOURSELF WITH A BREATHTAKING VOYAGE',
     price: '22,000',
     href: '#',
     imageSrc:
@@ -72,8 +68,7 @@ const destinations = [
   },
   {
     name: 'INDONESIA',
-    description:
-      'EXPERIENCE WHAT NATURE HAS TO OFFER',
+    description: 'EXPERIENCE WHAT NATURE HAS TO OFFER',
     price: '21,000',
     href: '#',
     imageSrc:
@@ -81,8 +76,7 @@ const destinations = [
   },
   {
     name: 'SOUTH KOREA',
-    description:
-      'LOOSEN UP AND EXPERIENCE A MARVELOUS HOLIDAY!',
+    description: 'LOOSEN UP AND EXPERIENCE A MARVELOUS HOLIDAY!',
     price: '24,000',
     href: '#',
     imageSrc:
@@ -90,8 +84,7 @@ const destinations = [
   },
   {
     name: 'THE PHILIPPINES',
-    description:
-      'HEART-WARMING DESTINATION THAT UNCOVERS NATURE\'S GLAMOR',
+    description: "HEART-WARMING DESTINATION THAT UNCOVERS NATURE'S GLAMOR",
     price: '21,000',
     href: '#',
     imageSrc:
@@ -99,13 +92,14 @@ const destinations = [
   },
 ]
 
-
 export default function Experiences() {
-  const router = useRouter();
+  const router = useRouter()
 
   const handleCardClick = (destination: string) => {
-    router.push(`/destination/${destination.toLowerCase().replace(/\s+/g, '-')}`);
-  };
+    router.push(
+      `/destination/${destination.toLowerCase().replace(/\s+/g, '-')}`,
+    )
+  }
 
   return (
     <>
@@ -113,16 +107,17 @@ export default function Experiences() {
         <Image
           src={background}
           alt=""
-          layout="fill"
+          layout="responsive"
           objectFit="cover"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
+          width={800}
+          height={600}
         />
 
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
-        >
-        </div>
+        ></div>
         <div className="mx-auto max-w-5xl py-32 sm:py-48 lg:py-56">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
             {/* Add any additional elements if needed */}
@@ -147,7 +142,6 @@ export default function Experiences() {
             </div>
           </div>
         </div>
-
       </div>
 
       <div className="-mt-14">
@@ -186,6 +180,8 @@ export default function Experiences() {
                   className="mr-2 h-7 w-auto cursor-pointer"
                   src={whatsapp}
                   alt="Your Company Icon"
+                  width={800}
+                  height={600}
                 />
                 <span className="font-medium text-black">WhatsApp</span>
                 <span className="ml-2 text-black">+63-995-015-8869</span>
@@ -195,6 +191,8 @@ export default function Experiences() {
                   className="mr-2 h-7 w-auto cursor-pointer"
                   src={viber}
                   alt="Your Company Icon"
+                  width={800}
+                  height={600}
                 />
                 <span className="font-medium text-black">Viber</span>
                 <span className="ml-2 text-black">+63-918-746-6894</span>
@@ -204,6 +202,8 @@ export default function Experiences() {
                   className="mr-2 h-6 w-auto cursor-pointer"
                   src={kakaotalk}
                   alt="Your Company Icon"
+                  width={800}
+                  height={600}
                 />
                 <span className="font-medium text-black">KakaoTalk</span>
                 <span className="ml-2 text-black">+63-912-746-6894</span>
@@ -258,6 +258,8 @@ export default function Experiences() {
                   src={destinationsphoto}
                   alt="Product screenshot"
                   className="h-auto w-full"
+                  width={800}
+                  height={600}
                 />
               </div>
             </div>
@@ -265,21 +267,22 @@ export default function Experiences() {
         </div>
       </div>
 
-
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {destinations.map((destination) => (
-            <div
-              key={destination.name}
-              onClick={() => handleCardClick(destination.name)}
-              className="relative flex h-full w-56 flex-col p-6 hover:opacity-95 xl:w-auto pt-40 px-8 hover-zoom overflow-hidden cursor-pointer"
-            >
+              <div
+                key={destination.name}
+                onClick={() => handleCardClick(destination.name)}
+                className="hover-zoom relative flex h-full w-56 cursor-pointer flex-col overflow-hidden p-6 px-8 pt-40 hover:opacity-95 xl:w-auto"
+              >
                 <span aria-hidden="true" className="absolute inset-0">
-                  <img
+                  <Image
                     src={destination.imageSrc}
                     alt=""
                     className="h-full w-full object-cover object-center"
+                    width={800}
+                    height={600}
                   />
                   <span className="absolute inset-0 bg-black opacity-10"></span>
                 </span>
@@ -288,19 +291,20 @@ export default function Experiences() {
                   className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-gray-950 opacity-25"
                 />
                 <div className="relative mt-auto flex flex-col text-white">
-                  <span className="text-md text-left font-bold mb-4">
+                  <span className="text-md mb-4 text-left font-bold">
                     {destination.name}
                   </span>
                   <span className="text-md text-left font-semibold">
                     {destination.description}
                   </span>
                   <span className="text-md mt-4 text-center font-semibold">
-                    STARTS FROM <span className='text-[#ff9e39] font-bold bg-neutral-800 px-1'>Php{destination.price}/pax</span>
+                    STARTS FROM{' '}
+                    <span className="bg-neutral-800 px-1 font-bold text-[#ff9e39]">
+                      Php{destination.price}/pax
+                    </span>
                   </span>
                   <span className="mt-10 flex items-center justify-start gap-x-6 hover:bg-[#ff9e39]">
-                    <span
-                      className="w-full max-w-80 rounded-md py-2.5 text-center text-sm font-semibold text-white shadow-sm ring-2 ring-white hover:ring-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-                    >
+                    <span className="w-full max-w-80 rounded-md py-2.5 text-center text-sm font-semibold text-white shadow-sm ring-2 ring-white hover:ring-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">
                       VIEW DETAILS
                     </span>
                   </span>

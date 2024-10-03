@@ -1,8 +1,8 @@
 'use client'
 
-import { Fragment, useState, useEffect } from 'react'
+import { Fragment, useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
-
+import Image from 'next/image'
 import {
   Dialog,
   DialogPanel,
@@ -164,16 +164,12 @@ const footerNavigation = {
   ],
 }
 
-export default function Checkout() {
-  const [open, setOpen] = useState(false)
-  const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
-    deliveryMethods[0],
-  )
+function CheckoutContent() {
   const searchParams = useSearchParams()
   const [productDetails, setProductDetails] = useState({
     id: '',
     name: '',
-    price: 0, // Change this to a number
+    price: 0,
     imageSrc: '',
   })
   const [quantity, setQuantity] = useState(1)
@@ -187,7 +183,7 @@ export default function Checkout() {
     setProductDetails({
       id: productId || '',
       name: productName || '',
-      price: productPrice ? parseFloat(productPrice) : 0, // Parse the price as a float
+      price: productPrice ? parseFloat(productPrice) : 0,
       imageSrc: imageSrc ? decodeURIComponent(imageSrc) : '',
     })
     console.log('Image source in checkout:', imageSrc)
@@ -208,6 +204,7 @@ export default function Checkout() {
     }).format(price)
   }
 
+  // Move the entire JSX from the original Checkout component here
   return (
     <div className="bg-[#f8f8f8]">
       {/* Mobile menu */}
@@ -230,10 +227,12 @@ export default function Checkout() {
                     className="flex px-4 py-6 sm:px-6"
                   >
                     <div className="flex-shrink-0">
-                      <img
+                      <Image
                         alt=""
                         src={productDetails.imageSrc}
                         className="w-20 rounded-md"
+                        width={800}
+                        height={600}
                       />
                     </div>
 
@@ -513,36 +512,34 @@ export default function Checkout() {
                       />
                     </div>
                   </div>
-
-                 
                 </div>
-                <div className="relative flex items-start mt-10">
-                    <div className="flex h-6 items-center">
-                      <input
-                        id="offers"
-                        name="offers"
-                        type="checkbox"
-                        aria-describedby="offers-description"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      />
-                    </div>
-                    <div className="ml-3 text-sm leading-6">
-                      <label
-                        htmlFor="offers"
-                        className="font-medium text-gray-900"
-                      >
-                        Terms and Conditions
-                      </label>
-                      <p id="offers-description" className="text-gray-500">
-                        I certify that I have read and accept the Terms of Use
-                        and Privacy Statement and I have read and understand the
-                        Rate Description and Rate Rules for my reservation. I am
-                        at least 18 years of age and at least one guest in my
-                        party will meet the minimum check-in age requirement for
-                        the hotel upon arrival. Minimum Check-ln Age: 18
-                      </p>
-                    </div>
+                <div className="relative mt-10 flex items-start">
+                  <div className="flex h-6 items-center">
+                    <input
+                      id="offers"
+                      name="offers"
+                      type="checkbox"
+                      aria-describedby="offers-description"
+                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    />
                   </div>
+                  <div className="ml-3 text-sm leading-6">
+                    <label
+                      htmlFor="offers"
+                      className="font-medium text-gray-900"
+                    >
+                      Terms and Conditions
+                    </label>
+                    <p id="offers-description" className="text-gray-500">
+                      I certify that I have read and accept the Terms of Use and
+                      Privacy Statement and I have read and understand the Rate
+                      Description and Rate Rules for my reservation. I am at
+                      least 18 years of age and at least one guest in my party
+                      will meet the minimum check-in age requirement for the
+                      hotel upon arrival. Minimum Check-ln Age: 18
+                    </p>
+                  </div>
+                </div>
                 <div className="mt-10 border-t border-gray-200 py-6">
                   <button
                     type="submit"
@@ -664,5 +661,13 @@ export default function Checkout() {
         </div>
       </main>
     </div>
+  )
+}
+
+export default function Checkout() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CheckoutContent />
+    </Suspense>
   )
 }

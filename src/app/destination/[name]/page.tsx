@@ -1,15 +1,14 @@
-import Image from 'next/image';
-import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
-import southKorea from '@/images/south-korea.jpg';  // Make sure this import path is correct
-import {
-  CalendarIcon,
-  HomeIcon,
-  TagIcon
-} from '@heroicons/react/24/outline';
+import Image from 'next/image'
+import { Suspense } from 'react'
+import dynamic from 'next/dynamic'
+import southKorea from '@/images/south-korea.jpg' // Make sure this import path is correct
+import { CalendarIcon, HomeIcon, TagIcon } from '@heroicons/react/24/outline'
 
 // Dynamically import the ProductDetails component with no SSR
-const ProductDetails = dynamic(() => import('../../../components/ProductDetails'), { ssr: false });
+const ProductDetails = dynamic(
+  () => import('../../../components/ProductDetails'),
+  { ssr: false },
+)
 
 // Dummy data (you can move this to a separate file later)
 const dummyData = {
@@ -18,12 +17,15 @@ const dummyData = {
     price: 20000,
     rating: 4,
     description: 'A fusion of dazzling innovation and rich tradition',
-    longDescription: '<div class="font-bold mb-3 text-2xl">Prosperous Hongkong- Macau Guangdong 4 in 1 5D4N Tour (Sept)</div> <div class="font-semibold mb-4 text-lg">  Traveler: Family, Friends, Cultural Explorers, Tourists and Travelers</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Guangdong</span> - is also famous for its Cantonese culture, including the Cantonese language, cuisine and traditional festivals. The Province attracts business professionals, investors, tourists, and cultural enthusiasts alike, making it a dynamic and diverse area with a global influence.</span> </div> <div class="text-normal"> <span class="text-lg"><span class="font-medium">Macau</span> - the city\'s historic center, a UNESCO World Heritage site, features beautifully preserved colonial architecture, including churches, temples, and fortresses. Macau is also known for its diverse culinary scene, combining Portuguese and Cantonese flavors, making it a haven for food lovers.</span></div>',
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Prosperous Hongkong- Macau Guangdong 4 in 1 5D4N Tour (Sept)</div> <div class="font-semibold mb-4 text-lg">  Traveler: Family, Friends, Cultural Explorers, Tourists and Travelers</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Guangdong</span> - is also famous for its Cantonese culture, including the Cantonese language, cuisine and traditional festivals. The Province attracts business professionals, investors, tourists, and cultural enthusiasts alike, making it a dynamic and diverse area with a global influence.</span> </div> <div class="text-normal"> <span class="text-lg"><span class="font-medium">Macau</span> - the city\'s historic center, a UNESCO World Heritage site, features beautifully preserved colonial architecture, including churches, temples, and fortresses. Macau is also known for its diverse culinary scene, combining Portuguese and Cantonese flavors, making it a haven for food lovers.</span></div>',
     bestTimeToVisit: 'September',
-    listingDescription: ' <div class="text-xl font-bold">Tour Dates Available:</div> <div class="text-normal font-semibold"> Sept. 12-16</div> <div class="text-normal font-semibold"> Sept. 19-23</div> <div class="text-normal font-bold">Child with bed(6-17 yrs.old):same rate as adults</div> <div class="text-normal font-bold">Child without bed(2-5 yrs. old):From USD 229/pax</div>',
+    listingDescription:
+      ' <div class="text-xl font-bold">Tour Dates Available:</div> <div class="text-normal font-semibold"> Sept. 12-16</div> <div class="text-normal font-semibold"> Sept. 19-23</div> <div class="text-normal font-bold">Child with bed(6-17 yrs.old):same rate as adults</div> <div class="text-normal font-bold">Child without bed(2-5 yrs. old):From USD 229/pax</div>',
     daysOfStay: '5 Days & 4 Nights',
     minimumGuests: 'No Minimum Guests',
-    heroImage: 'https://images.pexels.com/photos/2410300/pexels-photo-2410300.jpeg',
+    heroImage:
+      'https://images.pexels.com/photos/2410300/pexels-photo-2410300.jpeg',
     images: [
       {
         id: 1,
@@ -60,7 +62,7 @@ const dummyData = {
           'Sightseeing tours as specified above include the first way entrance fee needed.',
           'Meal as listed.',
           'Roundtrip airfare via Cebu Pacific (7kg. Hand Carry only).',
-          '144 Group visa.'
+          '144 Group visa.',
         ],
       },
       {
@@ -72,7 +74,7 @@ const dummyData = {
           'Optional Tour.',
           'Tips for driver and guide: USD25/pax',
           'Single supplement: USD99/pax',
-          'Covid-19 test if needed.'
+          'Covid-19 test if needed.',
         ],
       },
       {
@@ -85,91 +87,100 @@ const dummyData = {
     itinerary: [
       {
         day: '1 ETA',
-        title: "Arrive in Macau",
+        title: 'Arrive in Macau',
         activities: [
-          "Meet the Macau guide at the airport.",
-          "Transfer to Macau-Zhuhai Port (queued yourself to pass the border).",
-          "Entry to Zhuhai and meet the Guangdong guide.",
-          "Transfer to hotel and check in."
+          'Meet the Macau guide at the airport.',
+          'Transfer to Macau-Zhuhai Port (queued yourself to pass the border).',
+          'Entry to Zhuhai and meet the Guangdong guide.',
+          'Transfer to hotel and check in.',
         ],
-        image: "https://images.pexels.com/photos/730778/pexels-photo-730778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        image:
+          'https://images.pexels.com/photos/730778/pexels-photo-730778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       },
       {
         day: '2',
-        title: "",
+        title: '',
         activities: [
-          "Check out and transfer to Guangzhou.",
-          "Explore Bukchon Hanok Village",
-          "Take Zuiguanguang Tram",
-          "Visit Haixinsha Asian Games Park (tram tour).",
-          "Visit Canton Tower (outside view).",
-          "Visit Haixin Bridge.",
-          "Visit Huacheng Square.",
-          "Transfer to Hotel and Check in.",
-          "Special Complementary Romantic Show of Guangdong: ‘Eternal Show’"
+          'Check out and transfer to Guangzhou.',
+          'Explore Bukchon Hanok Village',
+          'Take Zuiguanguang Tram',
+          'Visit Haixinsha Asian Games Park (tram tour).',
+          'Visit Canton Tower (outside view).',
+          'Visit Haixin Bridge.',
+          'Visit Huacheng Square.',
+          'Transfer to Hotel and Check in.',
+          'Special Complementary Romantic Show of Guangdong: ‘Eternal Show’',
         ],
-        image: "https://images.pexels.com/photos/1677358/pexels-photo-1677358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        image:
+          'https://images.pexels.com/photos/1677358/pexels-photo-1677358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       },
       {
         day: '3',
-        title: "",
+        title: '',
         activities: [
-          "Hotel Breakfast.",
-          "Check out and Transfer to Zhongshan.",
-          "Visit Sun Yat-sen’s Former Residence.",
-          "Visit Latex Shop.",
-          "Visit Zhuhai Fisher Girl, Lovers Road.",
-          "Visit Haitian Posthouse Landscape Trestle Road.",
-          "Transfer to hotel and check in."
+          'Hotel Breakfast.',
+          'Check out and Transfer to Zhongshan.',
+          'Visit Sun Yat-sen’s Former Residence.',
+          'Visit Latex Shop.',
+          'Visit Zhuhai Fisher Girl, Lovers Road.',
+          'Visit Haitian Posthouse Landscape Trestle Road.',
+          'Transfer to hotel and check in.',
         ],
-        image: "https://images.pexels.com/photos/18137607/pexels-photo-18137607/free-photo-of-zhongshan-studio-city-in-china.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        image:
+          'https://images.pexels.com/photos/18137607/pexels-photo-18137607/free-photo-of-zhongshan-studio-city-in-china.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       },
       {
         day: '4',
-        title: "",
+        title: '',
         activities: [
-          "Hotel Breakfast.",
-          "Visit Zhuhai Grand Theater.",
-          "Look far Hong Kong-Zhuhai-Macau Bridge.",
-          "Visit a Chinese Medicine Shop.",
-          "Visit New Yuan Ming Palace.",
-          "Visit the Silk Store.",
-          "Visit Huangyucheng Shopping Mall.",
-          "Back to the hotel."
+          'Hotel Breakfast.',
+          'Visit Zhuhai Grand Theater.',
+          'Look far Hong Kong-Zhuhai-Macau Bridge.',
+          'Visit a Chinese Medicine Shop.',
+          'Visit New Yuan Ming Palace.',
+          'Visit the Silk Store.',
+          'Visit Huangyucheng Shopping Mall.',
+          'Back to the hotel.',
         ],
-        image: "https://images.pexels.com/photos/20599712/pexels-photo-20599712/free-photo-of-zhuhai-opera-on-sea-coast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        image:
+          'https://images.pexels.com/photos/20599712/pexels-photo-20599712/free-photo-of-zhuhai-opera-on-sea-coast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       },
       {
         day: '5 ETD',
-        title: "",
+        title: '',
         activities: [
-          "Hotel Breakfast.",
-          "Check out",
-          "Visit the Jewelry Store.",
-          "Transfer to the border and entry to Macau.",
-          "Visit the Venetian Macau.",
-          "Lunch: Lisboeta Macau Meal Voucher.",
-          "Enjoy the Diamond Light Show.",
-          "Visit Macau Parisian Tower (outside view).",
-          "Visit Ruin of St.Paul’s Macau Souvenir Shop.",
-          "Visit Wynn Palace, Performance Lake+ Water Dance Show.",
-          "Transfer to the airport and fly back home."
+          'Hotel Breakfast.',
+          'Check out',
+          'Visit the Jewelry Store.',
+          'Transfer to the border and entry to Macau.',
+          'Visit the Venetian Macau.',
+          'Lunch: Lisboeta Macau Meal Voucher.',
+          'Enjoy the Diamond Light Show.',
+          'Visit Macau Parisian Tower (outside view).',
+          'Visit Ruin of St.Paul’s Macau Souvenir Shop.',
+          'Visit Wynn Palace, Performance Lake+ Water Dance Show.',
+          'Transfer to the airport and fly back home.',
         ],
-        image: "https://images.pexels.com/photos/4369493/pexels-photo-4369493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-      }
+        image:
+          'https://images.pexels.com/photos/4369493/pexels-photo-4369493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      },
     ],
   },
-  'japan': {
+  japan: {
     name: 'Japan',
     price: 20000,
     rating: 5,
-    description: 'Discover the perfect blend of tradition and modernity in Japan. From ancient temples to futuristic cities, immerse yourself in a unique cultural experience.',
-    longDescription: '<p class="text-lg leading-relaxed mb-4">Discover the perfect blend of <span class="font-semibold text-red-600">tradition and modernity</span> in Japan. From ancient temples to futuristic cities, immerse yourself in a <span class="italic">unique cultural experience</span>.</p><p class="text-lg leading-relaxed">Explore <span class="underline">iconic landmarks</span> and savor <span class="text-green-600">exquisite Japanese cuisine</span>.</p>',
+    description:
+      'Discover the perfect blend of tradition and modernity in Japan. From ancient temples to futuristic cities, immerse yourself in a unique cultural experience.',
+    longDescription:
+      '<p class="text-lg leading-relaxed mb-4">Discover the perfect blend of <span class="font-semibold text-red-600">tradition and modernity</span> in Japan. From ancient temples to futuristic cities, immerse yourself in a <span class="italic">unique cultural experience</span>.</p><p class="text-lg leading-relaxed">Explore <span class="underline">iconic landmarks</span> and savor <span class="text-green-600">exquisite Japanese cuisine</span>.</p>',
     bestTimeToVisit: 'March - May and September - November',
-    listingDescription: ' <div class="text-lg font-bold">Tour Dates Available:</div> <div class="text-normal"> Sept. 12-16</div> <div class="text-normal"> Sept. 19-23</div>',
+    listingDescription:
+      ' <div class="text-lg font-bold">Tour Dates Available:</div> <div class="text-normal"> Sept. 12-16</div> <div class="text-normal"> Sept. 19-23</div>',
     daysOfStay: '7 Days',
     minimumGuests: 'No Minimum Guests',
-    heroImage: 'https://images.pexels.com/photos/2676642/pexels-photo-2676642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    heroImage:
+      'https://images.pexels.com/photos/2676642/pexels-photo-2676642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     images: [
       {
         id: 1,
@@ -229,49 +240,62 @@ const dummyData = {
     itinerary: [
       {
         day: '1',
-        title: "Arrival in Seoul",
+        title: 'Arrival in Seoul',
         activities: [
-          "Arrive at Incheon International Airport",
-          "Transfer to hotel in Seoul",
-          "Welcome dinner at a local Korean BBQ restaurant",
-          "Evening walk in Myeongdong shopping district"
+          'Arrive at Incheon International Airport',
+          'Transfer to hotel in Seoul',
+          'Welcome dinner at a local Korean BBQ restaurant',
+          'Evening walk in Myeongdong shopping district',
         ],
-        image: "https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg"
+        image:
+          'https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg',
       },
       {
         day: '2',
-        title: "Seoul City Tour",
+        title: 'Seoul City Tour',
         activities: [
-          "Visit Gyeongbokgung Palace",
-          "Explore Bukchon Hanok Village",
-          "Lunch at a traditional Korean restaurant",
-          "Afternoon at N Seoul Tower",
-          "Evening cruise on Han River"
+          'Visit Gyeongbokgung Palace',
+          'Explore Bukchon Hanok Village',
+          'Lunch at a traditional Korean restaurant',
+          'Afternoon at N Seoul Tower',
+          'Evening cruise on Han River',
         ],
-        image: "https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg"
+        image:
+          'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg',
       },
       {
         day: '3',
-        title: "K-pop and Modern Culture",
+        title: 'K-pop and Modern Culture',
         activities: [
-          "Visit to K-pop entertainment company",
-          "K-pop dance class",
-          "Lunch at a trendy cafe in Gangnam",
-          "Shopping in Apgujeong Rodeo Street",
-          "Evening K-pop concert (subject to availability)"
+          'Visit to K-pop entertainment company',
+          'K-pop dance class',
+          'Lunch at a trendy cafe in Gangnam',
+          'Shopping in Apgujeong Rodeo Street',
+          'Evening K-pop concert (subject to availability)',
         ],
-        image: "https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg"
-      }
+        image:
+          'https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg',
+      },
     ],
   },
   // Add more destinations here
-};
+}
 
-export default function DestinationPage({ params }: { params: { name: string } }) {
-  const destinationData = dummyData[params.name as keyof typeof dummyData];
+export async function generateStaticParams() {
+  return Object.keys(dummyData).map((name) => ({
+    name: name,
+  }))
+}
+
+export default function DestinationPage({
+  params,
+}: {
+  params: { name: string }
+}) {
+  const destinationData = dummyData[params.name as keyof typeof dummyData]
 
   if (!destinationData) {
-    return <div>Destination not found</div>;
+    return <div>Destination not found</div>
   }
 
   function formatPrice(price: number): string {
@@ -279,12 +303,12 @@ export default function DestinationPage({ params }: { params: { name: string } }
       style: 'decimal',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
-    }).format(price);
+    }).format(price)
   }
 
   return (
     <>
-       <div className="relative isolate -mt-16 overflow-hidden py-28">
+      <div className="relative isolate -mt-16 overflow-hidden py-28">
         {/* <Image
           src={destinationData.heroImage}
           alt={`Hero image of ${destinationData.name}`}
@@ -293,16 +317,20 @@ export default function DestinationPage({ params }: { params: { name: string } }
           className="absolute inset-0 -z-10 h-full w-full object-cover"
         /> */}
         <Image
-           src={destinationData.heroImage}
-           alt={`Hero image of ${destinationData.name}`}
-          layout="fill"
+          src={destinationData.heroImage}
+          alt={`Hero image of ${destinationData.name}`}
           objectFit="cover"
           className="absolute inset-0 -z-10 h-full w-full object-cover"
+          width={800}
+          height={600}
         />
-        <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true"></div>
+        <div
+          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+          aria-hidden="true"
+        ></div>
         <div className="mx-auto max-w-5xl py-32 sm:py-48 lg:py-56">
-          <div className="text-center pb-36">
-            <h1 className="font-poppinsSemiBold text-4xl tracking-tight text-white sm:text-7xl mb-4">
+          <div className="pb-36 text-center">
+            <h1 className="mb-4 font-poppinsSemiBold text-4xl tracking-tight text-white sm:text-7xl">
               {destinationData.name}
             </h1>
             <p className="bodyRegular mt-0 text-lg text-white">
@@ -318,7 +346,7 @@ export default function DestinationPage({ params }: { params: { name: string } }
           <div className="flex h-full w-1/2 bg-[#565555]"></div>
         </div>
         <div
-          className="relative isolate -mt-40 overflow-hidden bg-white pt-28 pb-14"
+          className="relative isolate -mt-40 overflow-hidden bg-white pb-14 pt-28"
           style={{
             clipPath: 'polygon(50% 0%, 100% 10%, 100% 100%, 0 100%, 0 10%)',
             backgroundColor: '#ffffff',
@@ -328,20 +356,22 @@ export default function DestinationPage({ params }: { params: { name: string } }
             <div className="mx-auto -mt-12 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-8">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                 <div className="mt-6 flex flex-col items-center gap-y-20 lg:flex-row">
-                <div className="lg:w-full lg:max-w-4xl lg:flex-auto">
-  <div 
-    className="text-left"
-    dangerouslySetInnerHTML={{ __html: destinationData.longDescription }}
-  />
-</div>
+                  <div className="lg:w-full lg:max-w-4xl lg:flex-auto">
+                    <div
+                      className="text-left"
+                      dangerouslySetInnerHTML={{
+                        __html: destinationData.longDescription,
+                      }}
+                    />
+                  </div>
                   <div className="lg:flex lg:flex-auto lg:justify-center">
                     <dl className="w-64 space-y-8 xl:w-80">
                       <div className="flex items-center justify-center gap-y-4">
-                        <div className="flex items-center justify-center px-6 py-3 ring-1 ring-gray-300 rounded-md min-w-60">
-                          <div className='mr-2'>
+                        <div className="flex min-w-60 items-center justify-center rounded-md px-6 py-3 ring-1 ring-gray-300">
+                          <div className="mr-2">
                             <CalendarIcon className="mr-2 h-8 w-auto cursor-pointer text-gray-500" />
                           </div>
-                          <div className='min-w-11 w-full text-left'>
+                          <div className="w-full min-w-11 text-left">
                             <dt className="text-lg font-semibold leading-7 text-[#ff9e39]">
                               Best Time to Visit
                             </dt>
@@ -353,11 +383,11 @@ export default function DestinationPage({ params }: { params: { name: string } }
                       </div>
 
                       <div className="flex items-center justify-center gap-y-4">
-                        <div className="flex items-center justify-center px-6 py-3 ring-1 ring-gray-300 rounded-md min-w-60">
-                          <div className='mr-2'>
+                        <div className="flex min-w-60 items-center justify-center rounded-md px-6 py-3 ring-1 ring-gray-300">
+                          <div className="mr-2">
                             <HomeIcon className="mr-2 h-8 w-auto cursor-pointer text-gray-500" />
                           </div>
-                          <div className='min-w-11 w-full text-left'>
+                          <div className="w-full min-w-11 text-left">
                             <dt className="text-lg font-semibold leading-7 text-[#ff9e39]">
                               Days of Stay
                             </dt>
@@ -369,11 +399,11 @@ export default function DestinationPage({ params }: { params: { name: string } }
                       </div>
 
                       <div className="flex items-center justify-center gap-y-4">
-                        <div className="flex items-center justify-center px-6 py-3 ring-1 ring-gray-300 rounded-md min-w-60">
-                          <div className='mr-2'>
+                        <div className="flex min-w-60 items-center justify-center rounded-md px-6 py-3 ring-1 ring-gray-300">
+                          <div className="mr-2">
                             <TagIcon className="mr-2 h-8 w-auto cursor-pointer text-gray-500" />
                           </div>
-                          <div className='min-w-11 w-full text-left'>
+                          <div className="w-full min-w-11 text-left">
                             <dt className="text-lg font-semibold leading-7 text-[#ff9e39]">
                               Price per Person
                             </dt>
@@ -397,11 +427,14 @@ export default function DestinationPage({ params }: { params: { name: string } }
 
       <div className="mt-0">
         <Suspense fallback={<div>Loading...</div>}>
-        <ProductDetails product={{
-  ...destinationData,
-  imageSrc: destinationData.heroImage, // Add this line
-}} />        </Suspense>
+          <ProductDetails
+            product={{
+              ...destinationData,
+              imageSrc: destinationData.heroImage, // Add this line
+            }}
+          />{' '}
+        </Suspense>
       </div>
     </>
-  );
+  )
 }
