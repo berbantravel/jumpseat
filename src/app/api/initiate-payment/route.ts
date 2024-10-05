@@ -16,12 +16,14 @@ export async function POST(request: NextRequest) {
     const merchantKey = process.env.IPAY88_MERCHANT_KEY as string;
 
     const signature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
+    console.log('Generated Signature:', signature);
 
     // Add the signature to your payment request payload
     const paymentPayload = {
         ...body,
         Signature: signature
     };
+    console.log('Full Payment Payload:', paymentPayload);
 
     // Here you would typically send paymentPayload to iPay88 API
     // For now, we'll just return it
