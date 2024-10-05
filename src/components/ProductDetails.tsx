@@ -15,17 +15,18 @@ import {
   TabPanel,
   TabPanels,
 } from '@headlessui/react'
-import { StarIcon, CheckIcon } from '@heroicons/react/20/solid'
-import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
+import { useProductContext } from '@/contexts/ProductContext'
+import { MinusIcon, PlusIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/navigation'
 
 interface ProductDetailsProps {
   product: {
-    name: string
-    price: number
-    imageSrc: string
-    rating: number
-    images: Array<{ id: number; name: string; src: string; alt: string }>
+    id: string; // Add this line
+    name: string;
+    price: number;
+    imageSrc: string;
+    rating: number;
+    images: Array<{ id: number; name: string; src: string; alt: string }>;
     description: string
     longDescription?: string
     bestTimeToVisit?: string
@@ -45,23 +46,18 @@ interface ProductDetailsProps {
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
-  const router = useRouter()
+  const router = useRouter();
+  const { setProductDetails } = useProductContext();
+
   const handleBookNow = () => {
-    const imageSrc = product.images[0]?.src || ''
-    console.log('Image source before redirect:', imageSrc)
-
-    const queryParams = new URLSearchParams({
-      productName: product.name,
-      productPrice: product.price.toString(), // Convert to string
-      imageSrc: imageSrc,
-    }).toString()
-
-    router.push(`/checkout?${queryParams}`)
-  }
-
-  const [selectedColor, setSelectedColor] = useState(
-    product.colors ? product.colors[0] : null,
-  )
+    setProductDetails({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      imageSrc: product.images[0]?.src || '',
+    });
+    router.push('/checkout');
+  };
 
   function classNames(
     ...classes: (string | undefined | null | false)[]
@@ -82,25 +78,18 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       <div className="bg-white">
         <div className="mx-auto max-w-2xl divide-y divide-gray-200 border-t px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
-            {/* Image gallery */}
             <TabGroup className="flex flex-col-reverse">
-              {/* Image selector */}
               <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
                 <TabList className="grid grid-cols-4 gap-6">
                   {product.images.map((image) => (
                     <Tab
                       key={image.id}
-                      className="relative flex h-24 cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
+                      className="relative flex h-[80px] cursor-pointer items-center justify-center rounded-md bg-white text-sm font-medium uppercase text-gray-900 hover:bg-gray-50 focus:outline-none focus:ring focus:ring-opacity-50 focus:ring-offset-4"
                     >
                       {({ selected }) => (
                         <>
                           <span className="sr-only">{image.name}</span>
                           <span className="absolute inset-0 overflow-hidden rounded-md">
-                            {/* <img
-                              src={image.src}
-                              alt=""
-                              className="h-full w-full object-cover object-center"
-                            /> */}
                             <Image
                               className="h-full w-full object-cover object-center"
                               src={image.src}
@@ -125,7 +114,6 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                   ))}
                 </TabList>
               </div>
-
               <TabPanels className="aspect-h-1 aspect-w-1 w-full">
                 {product.images.map((image) => (
                   <TabPanel key={image.id}>
@@ -141,13 +129,10 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 ))}
               </TabPanels>
             </TabGroup>
-
-            {/* Product info */}
             <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">
                 {product.name}
               </h1>
-
               <div className="flex items-start justify-start">
                 <div className="mr-8 mt-3">
                   <div className="font-semibold">Price per Person</div>
@@ -165,10 +150,8 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                   </p>
                 </div>
               </div>
-
               <div className="mt-6">
                 <h3 className="sr-only">Description</h3>
-
                 <div
                   className="space-y-6 text-base text-gray-700"
                   dangerouslySetInnerHTML={{
@@ -176,7 +159,6 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                   }}
                 />
               </div>
-
               <form className="mt-6">
                 <div className="mt-10 flex">
                   <button
@@ -186,7 +168,6 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                   >
                     Book Now
                   </button>
-
                   <button
                     type="submit"
                     className="ml-4 flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-[#ff9e39] ring-2 ring-[#ff9e39] hover:bg-warning-50 focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
@@ -195,12 +176,10 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                   </button>
                 </div>
               </form>
-
               <section aria-labelledby="details-heading" className="mt-12">
                 <h2 id="details-heading" className="sr-only">
                   Additional details
                 </h2>
-
                 <div className="divide-y divide-gray-200 border-t">
                   {product.details.map((detail) => (
                     <Disclosure as="div" key={detail.name}>
@@ -251,11 +230,9 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           </div>
         </div>
       </div>
-
       <div className="bg-white text-center font-poppinsSemiBold text-4xl tracking-tight text-[#ff9e39] sm:text-5xl">
         Itineraries
       </div>
-
       {product.itinerary && (
         <div className="mt-0">
           {product.itinerary.map((day, index) => (

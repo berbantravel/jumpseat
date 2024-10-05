@@ -3,34 +3,17 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import clsx from 'clsx'
 import { usePathname } from 'next/navigation'
-import { useTheme } from 'next-themes'
 import {
   Dialog,
   DialogPanel,
-  DialogTitle,
   Transition,
   TransitionChild,
   Popover,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
 } from '@headlessui/react'
-import clsx from 'clsx'
-import { myProfile, navigation as navData } from '@/constants/dummyData'
-import {
-  MagnifyingGlassIcon,
-  ChatBubbleLeftEllipsisIcon,
-  TagIcon,
-  UserCircleIcon,
-} from '@heroicons/react/20/solid'
-import {
-  Bars3Icon,
-  BellIcon,
-  XMarkIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from '@heroicons/react/24/outline'
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { Bars3Icon, ChevronLeftIcon } from '@heroicons/react/24/outline'
 import jumpseatLogo from '@/images/logos/jumpseat-logo.png'
 import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
 
@@ -48,22 +31,10 @@ function classNames(...classes: (string | undefined)[]) {
 
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
   const currentPath = usePathname()
-  const [enabled, setEnabled] = useState(false)
-  const [isBellDisabled, setIsBellDisabled] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-
-  const redirectProfile = () => {
-    window.location.href = '/profile'
-  }
-
-  const handleSeeAllClick = () => {
-    setIsBellDisabled(true)
-    setIsDropdownOpen(false)
-    window.location.href = '/notifications'
-  }
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -222,7 +193,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
                             <div className="absolute right-0 top-0 -mr-8 flex pr-2 pt-4 sm:-mr-10 sm:pr-4">
                               <button
                                 type="button"
-                                className="hover relative rounded-full text-black p-3.5 bg-white"
+                                className="hover relative rounded-full bg-white p-3.5 text-black"
                                 onClick={() => setOpen(false)}
                               >
                                 <span className="absolute -inset-2.5" />

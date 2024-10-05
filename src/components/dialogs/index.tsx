@@ -1,15 +1,4 @@
-export { default as BackgroundPhotoDialog } from './BackgroundPhotoDialog';
-export { default as PostDialog } from './PostDialog';
-export { default as DiscoverDialog } from './DiscoverDialog';
-export { default as CreateCategoryDialog } from './CreateCategoryDialog';
 export { default as DeleteConfirmationDialog } from './DeleteConfirmationDialog';
-export { default as AddToCategoryDialog } from './AddToCategoryDialog';
-export { default as AddPostDialog } from './AddPostDialog';
-export { default as SharePostDialog } from './SharePostDialog';
-export { default as ViewBackgroundPhotoDialog } from './ViewBackgroundPhotoDialog';
-export { default as ViewProfilePhotoDialog } from './ViewProfilePhotoDialog';
-export { default as EditProfileDialog } from './EditProfileDialog';
 export { default as EmptyFormDialog } from './EmptyFormDialog';
 export { default as EmptyDialogContainer } from './EmptyDialogContainer';
-export { default as ClearDataDialog } from './ClearDataDialog';
 export { default as DeleteAccountDialog } from './DeleteAccountDialog';
