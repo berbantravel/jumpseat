@@ -4,6 +4,14 @@ import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import { useProductContext } from '@/contexts/ProductContext'
+
+type PaymentResponse = {
+  success: boolean;
+  payload: {
+    [key: string]: string;
+  };
+};
+
 function CheckoutContent() {
   const { productDetails } = useProductContext();
   const [quantity, setQuantity] = useState(1)
