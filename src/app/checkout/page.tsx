@@ -12,8 +12,15 @@ type PaymentResponse = {
   };
 };
 
+const productDetails = {
+  id: '1',
+  name: 'Test Product',
+  price: 15.00,
+  imageSrc: '/images/homebackground.jpg', // Replace with an actual image path
+};
+
 function CheckoutContent() {
-  const { productDetails } = useProductContext();
+  // const { productDetails } = useProductContext();
   const [quantity, setQuantity] = useState(1)
 
   if (!productDetails) {
