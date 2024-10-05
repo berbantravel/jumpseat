@@ -19,6 +19,72 @@ function CheckoutContent() {
     setQuantity(parseInt(e.target.value, 10))
   }
 
+  //IPAY88 INTEGRATION TESTING
+
+  const initiatePayment = async () => {
+    try {
+      const response = await fetch('/api/initiate-payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          MerchantCode: 'PH01663', // Replace with your actual merchant code
+          PaymentId: '1',
+          RefNo: `REF-${Date.now()}-BRBTEST00001`, // Generate a unique reference number
+          // Amount: total.toFixed(2),
+          Amount: '15.00',
+          Currency: 'PHP', // Adjust if you're using a different currency
+          // ProductDescription: productDetails.name,
+          ProdDesc: 'Test 1',
+          UserName: 'Darrel Mendoza', // You might want to get this from a form input
+          UserEmail: 'darrelmendoza85@gmail.com', // You might want to get this from a form input
+          UserContact: '09176510945', // You might want to get this from a form input
+          Remark: `Test 1 Remarks`,
+          Lang: 'UTF-8',
+          SignatureType: 'SHA256',
+          // ResponseURL: `${window.location.origin}/payment-response`, // Adjust this to your actual response URL
+          // BackendURL: `${window.location.origin}/api/payment-backend`, // Adjust this to your actual backend URL
+          // ResponseURL: `${window.location.origin}/checkout`, // Adjust this to your actual response URL
+          ResponseURL: `${window.location.origin}/api/payment-response`,
+          BackendURL: `${window.location.origin}/api/payment-backend`, // Adjust this to your actual backend URL
+        }),
+      });
+
+      const data: PaymentResponse = await response.json();
+      if (data.success) {
+        console.log('Payment initiated:', data.payload);
+        submitToIPay88(data.payload);
+      } else {
+        console.error('Failed to initiate payment');
+      }
+    } catch (error) {
+      console.error('Error initiating payment:', error);
+    }
+  }
+
+  const submitToIPay88 = (payload: PaymentResponse['payload']) => {
+    // Create a form element
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'; // Use the appropriate URL for production
+
+    // Create input fields for each parameter
+    Object.entries(payload).forEach(([key, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value;
+      form.appendChild(input);
+    });
+
+    // Append the form to the body and submit it
+    document.body.appendChild(form);
+    form.submit();
+  };
+
+  //
+
   function formatPrice(price: number): string {
     return new Intl.NumberFormat('en-US', {
       style: 'decimal',
@@ -344,7 +410,9 @@ function CheckoutContent() {
                 </div>
                 <div className="mt-10 border-t border-gray-200 py-6">
                   <button
-                    type="submit"
+                    // type="submit"
+                    type="button"
+                    onClick={initiatePayment}
                     className="w-full rounded-md border border-transparent bg-[#ff9e39] px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-[#ff9e39] focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50"
                   >
                     Confirm order
