@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
-export default function PaymentResponse() {
+function PaymentResponseContent() {
   const searchParams = useSearchParams()
   const [paymentStatus, setPaymentStatus] = useState<string>('Processing...')
 
@@ -39,5 +39,13 @@ export default function PaymentResponse() {
         </Link>
       </div>
     </div>
+  )
+}
+
+export default function PaymentResponse() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PaymentResponseContent />
+    </Suspense>
   )
 }
