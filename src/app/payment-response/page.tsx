@@ -9,7 +9,6 @@ function PaymentResponseContent() {
   const [paymentStatus, setPaymentStatus] = useState<string>('Processing...')
 
   useEffect(() => {
-    // Extract payment response parameters
     const status = searchParams.get('Status')
     const refNo = searchParams.get('RefNo')
     const transId = searchParams.get('TransId')

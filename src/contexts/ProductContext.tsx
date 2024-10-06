@@ -12,6 +12,7 @@ interface ProductDetails {
   name: string;
   price: number;
   imageSrc: string;
+  description: string;
 }
 
 // Create the context with a default value
@@ -23,8 +24,14 @@ interface ProductProviderProps {
 }
 
 export function ProductProvider({ children }: ProductProviderProps) {
-  const [productDetails, setProductDetails] = useState<ProductDetails | null>(null);
-
+  const [productDetails, setProductDetails] = useState<ProductDetails | null>(() => {
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('SELECTED_DESTINATION');
+      return stored ? JSON.parse(stored) : null;
+    }
+    return null;
+  });
+  
   return (
     <ProductContext.Provider value={{ productDetails, setProductDetails }}>
       {children}

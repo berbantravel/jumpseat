@@ -1,7 +1,4 @@
-// lib/ipay88.ts
-
 import crypto from 'crypto';
-
 interface SignatureParams {
   MerchantCode: string;
   RefNo: string;
@@ -12,7 +9,6 @@ interface SignatureParams {
 export function generateSignature(params: SignatureParams, merchantKey: string): string {
   const { MerchantCode, RefNo, Amount, Currency } = params;
   
-  // Ensure Amount is in the correct format (two decimal places, no thousands separator)
   const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '');
   
   const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
@@ -20,9 +16,5 @@ export function generateSignature(params: SignatureParams, merchantKey: string):
   
   // Generate SHA256 hash
   const signature = crypto.createHash('sha256').update(stringToHash).digest('hex');
-  
-  // Log the generated signature
-  console.log('Generated Signature:', signature);
-  
   return signature;
 }

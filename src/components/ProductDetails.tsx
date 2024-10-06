@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 import Link from 'next/link'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Disclosure,
   DisclosureButton,
@@ -47,17 +47,28 @@ interface ProductDetailsProps {
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
   const router = useRouter();
-  const { setProductDetails } = useProductContext();
+  const { productDetails, setProductDetails } = useProductContext();
+  const [shouldNavigate, setShouldNavigate] = useState(false);
 
   const handleBookNow = () => {
-    setProductDetails({
+    const selectedDestination = {
       id: product.id,
       name: product.name,
       price: product.price,
       imageSrc: product.images[0]?.src || '',
-    });
-    router.push('/checkout');
+      description: product.description,
+    };
+
+    setProductDetails(selectedDestination);
+    localStorage.setItem('SELECTED_DESTINATION', JSON.stringify(selectedDestination));
+    setShouldNavigate(true);
   };
+
+  useEffect(() => {
+    if (shouldNavigate) {
+      router.push('/checkout');
+    }
+  }, [shouldNavigate, router]);
 
   function classNames(
     ...classes: (string | undefined | null | false)[]

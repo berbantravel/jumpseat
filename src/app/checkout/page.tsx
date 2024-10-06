@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useState, Suspense, useEffect } from 'react'
 import Image from 'next/image'
 import { useProductContext } from '@/contexts/ProductContext'
+import { CheckoutProvider, useCheckoutContext } from '@/contexts/CheckoutContext'
 
 type PaymentResponse = {
   success: boolean;
@@ -12,19 +12,45 @@ type PaymentResponse = {
   };
 };
 
-const productDetails = {
-  id: '1',
-  name: 'Test Product',
-  price: 15.00,
-  imageSrc: '/images/homebackground.jpg', 
-};
-
 function CheckoutContent() {
-  // const { productDetails } = useProductContext();
+  const { productDetails, setProductDetails } = useProductContext();
+  const { formData, setFormData } = useCheckoutContext();
   const [quantity, setQuantity] = useState(1)
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [emailTouched, setEmailTouched] = useState(false);
+
+  const isFormValid = () => {
+    return (
+      isValidEmail(formData.email) &&
+      formData.firstName &&
+      formData.lastName &&
+      formData.address &&
+      formData.city &&
+      formData.country &&
+      formData.postalCode &&
+      formData.phone &&
+      termsAccepted
+    );
+  };
+
+  useEffect(() => {
+    if (!productDetails) {
+      const stored = localStorage.getItem('SELECTED_DESTINATION');
+      if (stored) {
+        setProductDetails(JSON.parse(stored));
+      }
+    }
+    setIsLoading(false);
+  }, [productDetails, setProductDetails]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (!productDetails) {
-    return <div>No product selected. Please go back and select a product.</div>
+    return <div>No product selected. Please go back and select a product.</div>;
   }
 
   const subtotal = productDetails.price * quantity
@@ -34,35 +60,47 @@ function CheckoutContent() {
     setQuantity(parseInt(e.target.value, 10))
   }
 
-  //IPAY88 INTEGRATION TESTING
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [name]: value
+    }));
+    console.log(formData);
+  };
+
+  const generateRefNo = () => {
+    const timestamp = Date.now()
+    const fullName = `${formData.firstName}${formData.lastName}`.replace(/\s+/g, '').toLowerCase()
+    return `REF-${timestamp}-${productDetails.id}-${fullName}`
+  }
 
   const initiatePayment = async () => {
     try {
+      localStorage.setItem('USER_INFORMATION', JSON.stringify(formData));
+
+      setIsProcessing(true);
+
       const response = await fetch('/api/initiate-payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          MerchantCode: 'PH01663', // Replace with your actual merchant code
-          PaymentId: '1',
-          RefNo: `REF-${Date.now()}-BRBTEST00001`, // Generate a unique reference number
-          // Amount: total.toFixed(2),
-          Amount: '15.00',
-          Currency: 'PHP', // Adjust if you're using a different currency
-          // ProductDescription: productDetails.name,
-          ProdDesc: 'Test 1',
-          UserName: 'Darrel Mendoza', // You might want to get this from a form input
-          UserEmail: 'darrelmendoza85@gmail.com', // You might want to get this from a form input
-          UserContact: '09176510945', // You might want to get this from a form input
-          Remark: `Test 1 Remarks`,
-          Lang: 'UTF-8',
-          SignatureType: 'SHA256',
-          // ResponseURL: `${window.location.origin}/payment-response`, // Adjust this to your actual response URL
-          // BackendURL: `${window.location.origin}/api/payment-backend`, // Adjust this to your actual backend URL
-          // ResponseURL: `${window.location.origin}/checkout`, // Adjust this to your actual response URL
+          MerchantCode: process.env.IPAY88_MERCHANT_CODE,
+          PaymentId: '1', // Pending Business Requirements
+          RefNo: generateRefNo(),
+          Amount: total.toFixed(2),
+          Currency: process.env.IPAY88_CURRENCY,
+          ProdDesc: `${productDetails.name} - ${productDetails.description}`,
+          UserName: `${formData.firstName} ${formData.lastName}`,
+          UserEmail: formData.email,
+          UserContact: formData.phone,
+          Remark: `Test 1 Remarks`, // Add new field
+          Lang: process.env.IPAY88_LANG,
+          SignatureType: process.env.IPAY88_SIGNATURE_TYPE,
           ResponseURL: `${window.location.origin}/api/payment-response`,
-          BackendURL: `${window.location.origin}/api/payment-backend`, // Adjust this to your actual backend URL
+          BackendURL: `${window.location.origin}/api/payment-backend`,
         }),
       });
 
@@ -98,7 +136,10 @@ function CheckoutContent() {
     form.submit();
   };
 
-  //
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   function formatPrice(price: number): string {
     return new Intl.NumberFormat('en-US', {
@@ -203,19 +244,26 @@ function CheckoutContent() {
                 </h2>
                 <div className="mt-4">
                   <label
-                    htmlFor="email-address"
+                    htmlFor="email"
                     className="block text-sm font-medium text-gray-700"
                   >
                     Email address
                   </label>
                   <div className="mt-1">
                     <input
-                      id="email-address"
-                      name="email-address"
+                      id="email"
+                      name="email"
                       type="email"
                       autoComplete="email"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      onBlur={() => setEmailTouched(true)}
+                      className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm ${emailTouched && !isValidEmail(formData.email) ? 'border-red-500' : ''
+                        }`}
                     />
+                    {emailTouched && !isValidEmail(formData.email) && (
+                      <p className="mt-2 text-sm text-red-600">Please enter a valid email address.</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -226,34 +274,38 @@ function CheckoutContent() {
                 <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
                   <div>
                     <label
-                      htmlFor="first-name"
+                      htmlFor="firstName"
                       className="block text-sm font-medium text-gray-700"
                     >
                       First name
                     </label>
                     <div className="mt-1">
                       <input
-                        id="first-name"
-                        name="first-name"
+                        id="firstName"
+                        name="firstName"
                         type="text"
                         autoComplete="given-name"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       />
                     </div>
                   </div>
                   <div>
                     <label
-                      htmlFor="last-name"
+                      htmlFor="lastName"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Last name
                     </label>
                     <div className="mt-1">
                       <input
-                        id="last-name"
-                        name="last-name"
+                        id="lastName"
+                        name="lastName"
                         type="text"
                         autoComplete="family-name"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       />
                     </div>
@@ -270,6 +322,8 @@ function CheckoutContent() {
                         id="company"
                         name="company"
                         type="text"
+                        value={formData.company}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       />
                     </div>
@@ -287,6 +341,8 @@ function CheckoutContent() {
                         name="address"
                         type="text"
                         autoComplete="street-address"
+                        value={formData.address}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       />
                     </div>
@@ -303,6 +359,8 @@ function CheckoutContent() {
                         id="apartment"
                         name="apartment"
                         type="text"
+                        value={formData.apartment}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       />
                     </div>
@@ -320,6 +378,8 @@ function CheckoutContent() {
                         name="city"
                         type="text"
                         autoComplete="address-level2"
+                        value={formData.city}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       />
                     </div>
@@ -336,11 +396,15 @@ function CheckoutContent() {
                         id="country"
                         name="country"
                         autoComplete="country-name"
+                        value={formData.country}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       >
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>Mexico</option>
+                        <option value="">- Please select country -</option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Mexico">Mexico</option>
+                        {/* Add more countries as needed */}
                       </select>
                     </div>
                   </div>
@@ -357,23 +421,27 @@ function CheckoutContent() {
                         name="region"
                         type="text"
                         autoComplete="address-level1"
+                        value={formData.region}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       />
                     </div>
                   </div>
                   <div>
                     <label
-                      htmlFor="postal-code"
+                      htmlFor="postalCode"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Postal code
                     </label>
                     <div className="mt-1">
                       <input
-                        id="postal-code"
-                        name="postal-code"
+                        id="postalCode"
+                        name="postalCode"
                         type="text"
                         autoComplete="postal-code"
+                        value={formData.postalCode}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       />
                     </div>
@@ -391,6 +459,8 @@ function CheckoutContent() {
                         name="phone"
                         type="text"
                         autoComplete="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm"
                       />
                     </div>
@@ -399,10 +469,11 @@ function CheckoutContent() {
                 <div className="relative mt-10 flex items-start">
                   <div className="flex h-6 items-center">
                     <input
-                      id="offers"
-                      name="offers"
+                      id="terms"
+                      name="terms"
                       type="checkbox"
-                      aria-describedby="offers-description"
+                      checked={termsAccepted}
+                      onChange={(e) => setTermsAccepted(e.target.checked)}
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                   </div>
@@ -425,12 +496,15 @@ function CheckoutContent() {
                 </div>
                 <div className="mt-10 border-t border-gray-200 py-6">
                   <button
-                    // type="submit"
                     type="button"
                     onClick={initiatePayment}
-                    className="w-full rounded-md border border-transparent bg-[#ff9e39] px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-[#ff9e39] focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50"
+                    disabled={isProcessing || !isFormValid()}
+                    className={`w-full rounded-md border border-transparent px-4 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 ${isProcessing || !isFormValid()
+                      ? 'bg-gray-400 cursor-not-allowed'
+                      : 'bg-[#ff9e39] hover:bg-[#ff9e39]'
+                      }`}
                   >
-                    Confirm order
+                    {isProcessing ? 'Processing...' : 'Confirm order'}
                   </button>
                 </div>
               </div>
@@ -444,8 +518,10 @@ function CheckoutContent() {
 
 export default function Checkout() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <CheckoutContent />
-    </Suspense>
+    <CheckoutProvider>
+      <Suspense fallback={<div>Loading...</div>}>
+        <CheckoutContent />
+      </Suspense>
+    </CheckoutProvider>
   )
 }

@@ -144,12 +144,12 @@ export default function DestinationPage({
       </div>
       <div className="mt-0">
         <Suspense fallback={<div>Loading...</div>}>
-        <ProductDetails
-  product={{
-    ...destinationData,
-    imageSrc: destinationData.heroImage,
-  }}
-/>{' '}
+          <ProductDetails
+            product={{
+              ...destinationData,
+              imageSrc: destinationData.heroImage,
+            }}
+          />{' '}
         </Suspense>
       </div>
     </>
