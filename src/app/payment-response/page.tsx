@@ -13,7 +13,8 @@ function PaymentResponseContent() {
     const refNo = searchParams.get('RefNo')
     const transId = searchParams.get('TransId')
 
-    console.log('Payment response:', Object.fromEntries(searchParams.entries()))
+    localStorage.removeItem('SELECTED_DESTINATION');
+    localStorage.removeItem('USER_INFORMATION');
 
     // Update payment status based on the response
     if (status === '1') {
@@ -23,9 +24,6 @@ function PaymentResponseContent() {
     } else {
       setPaymentStatus('Payment Status Unknown')
     }
-
-    // Here you would typically make an API call to your backend to verify the payment
-    // and update your database accordingly
   }, [searchParams])
 
   return (

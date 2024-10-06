@@ -2,7 +2,7 @@ export const travelPackages = {
     'prosperous-hongkong': {
       id: "1",
       name: 'Prosperous Hongkong',
-      price: 20000,
+      price: 100,
       rating: 4,
       description: 'A fusion of dazzling innovation and rich tradition',
       longDescription:

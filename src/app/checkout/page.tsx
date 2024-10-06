@@ -66,13 +66,12 @@ function CheckoutContent() {
       ...prevData,
       [name]: value
     }));
-    console.log(formData);
   };
 
   const generateRefNo = () => {
     const timestamp = Date.now()
-    const fullName = `${formData.firstName}${formData.lastName}`.replace(/\s+/g, '').toLowerCase()
-    return `REF-${timestamp}-${productDetails.id}-${fullName}`
+    const fullName = `${formData.firstName}${formData.lastName}`.replace(/\s+/g, '').toUpperCase()
+    return `REF-${timestamp}-${productDetails.id}`
   }
 
   const initiatePayment = async () => {
@@ -106,7 +105,6 @@ function CheckoutContent() {
 
       const data: PaymentResponse = await response.json();
       if (data.success) {
-        console.log('Payment initiated:', data.payload);
         submitToIPay88(data.payload);
       } else {
         console.error('Failed to initiate payment');
