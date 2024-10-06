@@ -45,7 +45,14 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    NEXT_PUBLIC_IPAY88_MERCHANT_CODE: process.env.IPAY88_MERCHANT_CODE,
+    NEXT_PUBLIC_IPAY88_CURRENCY: process.env.IPAY88_CURRENCY,
+    NEXT_PUBLIC_IPAY88_LANG: process.env.IPAY88_LANG,
+    NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE: process.env.IPAY88_SIGNATURE_TYPE,
+  },
 }
+
 const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
