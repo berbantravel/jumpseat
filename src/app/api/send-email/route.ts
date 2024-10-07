@@ -8,14 +8,14 @@ export async function POST(request: Request) {
 
   // Configure nodemailer with your email service
   const transporter = nodemailer.createTransport({
-    // Add your email service configuration here
-    // For example, using Gmail:
-    service: 'gmail',
+    host: 'smtp.hostinger.com',
+    port: 465,
+    secure: true, // use SSL
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
-  })
+  });
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
@@ -36,9 +36,10 @@ export async function POST(request: Request) {
 
   try {
     await transporter.sendMail(mailOptions)
+    console.log('Email sent successfully')
     return NextResponse.json({ success: true }, { status: 200 })
   } catch (error) {
     console.error('Error sending email:', error)
-    return NextResponse.json({ success: false, error: 'Failed to send email' }, { status: 500 })
+    return NextResponse.json({ success: false }, { status: 500 })
   }
 }
