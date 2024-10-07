@@ -1,28 +1,34 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext } from 'react'
 
 type FormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  company: string;
-  address: string;
-  apartment: string;
-  city: string;
-  country: string;
-  region: string;
-  postalCode: string;
-};
+  message: string
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  company: string
+  address: string
+  apartment: string
+  city: string
+  country: string
+  region: string
+  postalCode: string
+}
 
 type CheckoutContextType = {
-  formData: FormData;
-  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
-};
+  formData: FormData
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>
+}
 
-const CheckoutContext = createContext<CheckoutContextType | undefined>(undefined);
+const CheckoutContext = createContext<CheckoutContextType | undefined>(
+  undefined,
+)
 
-export const CheckoutProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const CheckoutProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [formData, setFormData] = useState<FormData>({
+    message: '',
     firstName: '',
     lastName: '',
     email: '',
@@ -34,19 +40,19 @@ export const CheckoutProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     country: '',
     region: '',
     postalCode: '',
-  });
+  })
 
   return (
     <CheckoutContext.Provider value={{ formData, setFormData }}>
       {children}
     </CheckoutContext.Provider>
-  );
-};
+  )
+}
 
 export const useCheckoutContext = () => {
-  const context = useContext(CheckoutContext);
+  const context = useContext(CheckoutContext)
   if (context === undefined) {
-    throw new Error('useCheckout must be used within a CheckoutProvider');
+    throw new Error('useCheckout must be used within a CheckoutProvider')
   }
-  return context;
-};
+  return context
+}

@@ -3,6 +3,7 @@ import { Suspense } from 'react'
 import dynamic from 'next/dynamic'
 import { CalendarIcon, HomeIcon, TagIcon } from '@heroicons/react/24/outline'
 import { travelPackages } from '@/constants/travelPackages'
+import CircleLoader from '@/components/CircleLoader'
 
 const ProductDetails = dynamic(
   () => import('../../../components/ProductDetails'),
@@ -20,7 +21,8 @@ export default function DestinationPage({
 }: {
   params: { name: string }
 }) {
-  const destinationData = travelPackages[params.name as keyof typeof travelPackages]
+  const destinationData =
+    travelPackages[params.name as keyof typeof travelPackages]
 
   if (!destinationData) {
     return <div>Destination not found</div>
@@ -143,7 +145,7 @@ export default function DestinationPage({
         </div>
       </div>
       <div className="mt-0">
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<CircleLoader></CircleLoader>}>
           <ProductDetails
             product={{
               ...destinationData,

@@ -11,7 +11,7 @@ function classNames(...classes: (string | undefined | null | false)[]): string {
 const HeroSection = () => {
   return (
     <>
-      <div className="relative isolate overflow-hidden py-28 -mt-16">
+      <div className="relative isolate -mt-16 overflow-hidden py-28">
         <Image
           src={homebackground}
           alt=""
@@ -31,19 +31,18 @@ const HeroSection = () => {
             }}
           />
         </div>
-        <div className="mx-auto max-w-8xl py-32 sm:py-48 lg:py-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-           
-          </div>
+        <div className="max-w-8xl mx-auto py-32 sm:py-48 lg:py-56">
+          <div className="hidden sm:mb-8 sm:flex sm:justify-center"></div>
           <div className="text-center">
-            <h1 className="text-4xl font-poppinsSemiBold tracking-tight text-white sm:text-7xl">
+            <h1 className="font-poppinsSemiBold text-4xl tracking-tight text-white sm:text-7xl">
               OUR FAVOURITE EXPERIENCES
             </h1>
-            <p className="mt-6 text-lg leading-8 text-white bodySemiBold">
+            <p className="bodySemiBold mt-6 text-lg leading-8 text-white">
               Wander to see Asia&apos;s Sanctuary
             </p>
-            <p className="mt-0 text-lg  text-white bodyRegular">
-              Are you ready to experience Asia? Learn more about our exclusive tours and curated experiences.
+            <p className="bodyRegular mt-0  text-lg text-white">
+              Are you ready to experience Asia? Learn more about our exclusive
+              tours and curated experiences.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a

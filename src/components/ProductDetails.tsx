@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-
 import Link from 'next/link'
 import clsx from 'clsx'
 import { useEffect, useState } from 'react'
@@ -21,12 +20,12 @@ import { useRouter } from 'next/navigation'
 
 interface ProductDetailsProps {
   product: {
-    id: string; // Add this line
-    name: string;
-    price: number;
-    imageSrc: string;
-    rating: number;
-    images: Array<{ id: number; name: string; src: string; alt: string }>;
+    id: string // Add this line
+    name: string
+    price: number
+    imageSrc: string
+    rating: number
+    images: Array<{ id: number; name: string; src: string; alt: string }>
     description: string
     longDescription?: string
     bestTimeToVisit?: string
@@ -46,9 +45,9 @@ interface ProductDetailsProps {
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
-  const router = useRouter();
-  const { productDetails, setProductDetails } = useProductContext();
-  const [shouldNavigate, setShouldNavigate] = useState(false);
+  const router = useRouter()
+  const { productDetails, setProductDetails } = useProductContext()
+  const [shouldNavigate, setShouldNavigate] = useState(false)
 
   const handleBookNow = () => {
     const selectedDestination = {
@@ -57,18 +56,21 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
       price: product.price,
       imageSrc: product.images[0]?.src || '',
       description: product.description,
-    };
+    }
 
-    setProductDetails(selectedDestination);
-    localStorage.setItem('SELECTED_DESTINATION', JSON.stringify(selectedDestination));
-    setShouldNavigate(true);
-  };
+    setProductDetails(selectedDestination)
+    localStorage.setItem(
+      'SELECTED_DESTINATION',
+      JSON.stringify(selectedDestination),
+    )
+    setShouldNavigate(true)
+  }
 
   useEffect(() => {
     if (shouldNavigate) {
-      router.push('/checkout');
+      router.push('/checkout')
     }
-  }, [shouldNavigate, router]);
+  }, [shouldNavigate, router])
 
   function classNames(
     ...classes: (string | undefined | null | false)[]
@@ -291,6 +293,19 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           ))}
         </div>
       )}
+      <div className="bg-white">
+        <div className="mx-auto max-w-2xl divide-y divide-gray-200 border-t px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">
+          <div className="flex items-center justify-center gap-x-6">
+            <button
+              onClick={handleBookNow}
+              type="button" // Change from "submit" to "button"
+              className="flex  flex-1 items-center justify-center rounded-md border border-transparent bg-[#ff9e39] px-8 py-3 text-base font-medium text-white hover:bg-[#b26e27] focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
