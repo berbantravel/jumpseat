@@ -18,17 +18,38 @@ function PaymentResponseContent() {
     const refNo = searchParams.get('RefNo')
     const transId = searchParams.get('TransId')
 
-    localStorage.removeItem('SELECTED_DESTINATION')
-    localStorage.removeItem('USER_INFORMATION')
+    const sendEmailOnSuccess = async () => {
+      const userInfo = JSON.parse(localStorage.getItem('USER_INFORMATION') || '{}')
+      const tripDetails = JSON.parse(localStorage.getItem('SELECTED_DESTINATION') || '{}')
 
-    // Update payment status based on the response
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userInfo, tripDetails }),
+        })
+
+        if (!response.ok) {
+          console.error('Failed to send email')
+        }
+      } catch (error) {
+        console.error('Error sending email:', error)
+      }
+    }
+
     if (status === '1') {
       setPaymentStatus('Success')
+      sendEmailOnSuccess()
     } else if (status === '0') {
       setPaymentStatus('Failed')
     } else {
       setPaymentStatus('Unknown')
     }
+
+    localStorage.removeItem('SELECTED_DESTINATION')
+    localStorage.removeItem('USER_INFORMATION')
   }, [searchParams])
 
   return (

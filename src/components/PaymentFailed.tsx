@@ -25,7 +25,7 @@ export default function PaymentFailed() {
             There was a problem with your payment please try again.
           </p>
         </div>
-        <div className="mt-10 flex items-center justify-center gap-x-6">
+        <div className="mt-10 flex items-center justify-center gaxp-x-6">
           <a
             href="/checkout"
             className="mt-4 w-full rounded-md bg-[#ff9e39] py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
