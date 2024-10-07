@@ -100,18 +100,18 @@ function CheckoutContent() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          MerchantCode: process.env.IPAY88_MERCHANT_CODE,
+          MerchantCode: process.env.NEXT_PUBLIC_IPAY88_MERCHANT_CODE,
           PaymentId: '1', // Pending Business Requirements
           RefNo: generateRefNo(),
           Amount: total.toFixed(2),
-          Currency: process.env.IPAY88_CURRENCY,
+          Currency: process.env.NEXT_PUBLIC_IPAY88_CURRENCY,
           ProdDesc: `${productDetails.name} - ${productDetails.description}`,
           UserName: `${formData.firstName} ${formData.lastName}`,
           UserEmail: formData.email,
           UserContact: formData.phone,
           Remark: `Test 1 Remarks`, // Add new field
-          Lang: process.env.IPAY88_LANG,
-          SignatureType: process.env.IPAY88_SIGNATURE_TYPE,
+          Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
+          SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
           ResponseURL: `${window.location.origin}/api/payment-response`,
           BackendURL: `${window.location.origin}/api/payment-backend`,
         }),

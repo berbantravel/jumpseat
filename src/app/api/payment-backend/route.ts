@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     Signature,
   } = body;
 
-  const merchantKey = process.env.IPAY88_MERCHANT_KEY as string;
+  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
   const calculatedSignature = generateSignature({
     MerchantCode,
     RefNo,
