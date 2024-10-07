@@ -110,7 +110,7 @@ function CheckoutContent() {
           UserEmail: formData.email,
           UserContact: formData.phone,
           Remark: `Test 1 Remarks`, // Add new field
-          Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
+          Lang: process.env.IPAY88_LANG,
           SignatureType: process.env.IPAY88_SIGNATURE_TYPE,
           ResponseURL: `${window.location.origin}/api/payment-response`,
           BackendURL: `${window.location.origin}/api/payment-backend`,
