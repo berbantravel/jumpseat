@@ -70,11 +70,11 @@ export default function DestinationPage({
         <div
           className="relative isolate -mt-40 overflow-hidden bg-white pb-14 pt-28"
           style={{
-            clipPath: 'polygon(50% 0%, 100% 10%, 100% 100%, 0 100%, 0 10%)',
+            clipPath: 'polygon(50% 0%, 100% 4%, 100% 100%, 0 100%, 0 4%)',
             backgroundColor: '#ffffff',
           }}
         >
-          <div className="mx-auto max-w-full py-32 text-center sm:py-48 lg:py-10">
+          <div className="mx-auto max-w-full py-4 text-center sm:py-5 lg:py-10">
             <div className="mx-auto -mt-12 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-8">
               <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                 <div className="mt-6 flex flex-col items-center gap-y-20 lg:flex-row">

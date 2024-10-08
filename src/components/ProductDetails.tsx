@@ -92,8 +92,8 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
         <div className="mx-auto max-w-2xl divide-y divide-gray-200 border-t px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
             <TabGroup className="flex flex-col-reverse">
-              <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
-                <TabList className="grid grid-cols-4 gap-6">
+              <div className="mx-auto mt-6 w-full max-w-2xl block lg:max-w-none">
+                <TabList className="grid grid-cols-2 sm:grid-cols-4 gap-6">
                   {product.images.map((image) => (
                     <Tab
                       key={image.id}
@@ -109,7 +109,6 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                               alt=""
                               width={1200}
                               height={1000}
-                              layout="responsive"
                             />
                           </span>
                           <span
@@ -136,7 +135,6 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                       className="h-full w-full object-cover object-center sm:rounded-lg"
                       width={800}
                       height={600}
-                      layout="responsive"
                     />
                   </TabPanel>
                 ))}
@@ -146,7 +144,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">
                 {product.name}
               </h1>
-              <div className="flex items-start justify-start">
+              <div className="flex items-start flex-wrap justify-start">
                 <div className="mr-8 mt-3">
                   <div className="font-semibold">Price per Person</div>
                   <p className="text-3xl font-medium tracking-tight text-[#ff9e39]">
@@ -173,17 +171,17 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 />
               </div>
               <form className="mt-6">
-                <div className="mt-10 flex">
+                <div className="mt-10 flex flex-wrap justify-center gap-4">
                   <button
                     onClick={handleBookNow}
                     type="button" // Change from "submit" to "button"
-                    className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-[#ff9e39] px-8 py-3 text-base font-medium text-white hover:bg-[#b26e27] focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+                    className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent bg-[#ff9e39] px-14 py-3 text-base font-medium text-white hover:bg-[#b26e27] focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
                   >
                     Book Now
                   </button>
                   <button
                     type="submit"
-                    className="ml-4 flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-[#ff9e39] ring-2 ring-[#ff9e39] hover:bg-warning-50 focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
+                    className="flex max-w-xs flex-1 items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-[#ff9e39] ring-2 ring-[#ff9e39] hover:bg-warning-50 focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 sm:w-full"
                   >
                     Customize
                   </button>
@@ -251,9 +249,9 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           {product.itinerary.map((day, index) => (
             <div
               key={day.day}
-              className={`flex flex-col items-center justify-center bg-white px-4 py-12 md:flex-row ${
-                index % 2 === 1 ? 'md:flex-row-reverse' : ''
-              } md:px-24`}
+              className={`flex flex-col items-center justify-center bg-white px-4 py-12 lg:flex-row ${
+                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+              } lg:px-24`}
             >
               <div className="hover-zoom w-full overflow-hidden md:w-1/2 md:max-w-xl">
                 <Image
@@ -266,7 +264,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 />
               </div>
               <div
-                className={`z-10 mt-8 w-full bg-white px-10 shadow-md md:mt-0 md:w-1/2 md:max-w-xl ${
+                className={`z-10 mt-8 w-full bg-white px-10 shadow-md md:mt-0 md:w-full md:max-w-xl ${
                   index % 2 === 0 ? 'md:-ml-32' : 'md:-mr-32'
                 }`}
               >

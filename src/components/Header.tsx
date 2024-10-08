@@ -144,7 +144,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
                     </div>
                   </div>
                 </div>
-                <div className="my-2.5 flex lg:flex lg:items-center lg:justify-end xl:col-span-2">
+                <div className="my-2.5 hidden sm:flex lg:flex lg:items-center lg:justify-end xl:col-span-2">
                   <button
                     type="button"
                     className="rounded-md bg-[#565555] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"

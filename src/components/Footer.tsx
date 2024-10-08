@@ -113,14 +113,14 @@ export function Footer() {
         Footer
       </h2>
       <div className="mt-0">
-        <div className="relative flex h-40 w-full bg-transparent">
+        <div className="relative flex h-40 w-full bg-white">
           <div className="flex h-full w-1/2 bg-transparent"></div>
           <div className="flex h-full w-1/2 bg-[#c57c30]"></div>
         </div>
         <div
           className="relative isolate -mt-40 overflow-hidden py-28"
           style={{
-            clipPath: 'polygon(50% 0%, 100% 10%, 100% 100%, 0 100%, 0 10%)',
+            clipPath: 'polygon(50% 0%, 100% 2%, 100% 100%, 0 100%, 0 2%)',
             backgroundColor: '#ff9e39',
           }}
         >

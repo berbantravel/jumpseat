@@ -85,7 +85,7 @@ function PaymentResponseContent() {
             </main>
           </div>
         )}
-        {paymentStatus === 'Processing...' && <div>Processing payment...</div>}
+        {paymentStatus === 'Processing...' && <CircleLoader></CircleLoader>}
       </div>
     </div>
   )
