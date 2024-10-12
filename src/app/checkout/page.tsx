@@ -10,6 +10,7 @@ import {
 import { countries } from '@/constants/countries'
 import NoProductSeletcted from '@/components/NoProductSelected'
 import CircleLoader from '@/components/CircleLoader'
+import PaymentMethodSection from '@/components/PaymentMethodSection'
 
 type PaymentResponse = {
   success: boolean
@@ -27,6 +28,11 @@ function CheckoutContent() {
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [checkoutConfirmed, setcheckoutConfirmed] = useState(false)
   const [emailTouched, setEmailTouched] = useState(false)
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<number | null>(null);
+
+  const handlePaymentMethodSelect = (methodId: number) => {
+    setSelectedPaymentMethod(methodId);
+  };
 
   const isFormValid = () => {
     return (
@@ -60,9 +66,6 @@ function CheckoutContent() {
   if (!productDetails) {
     return <NoProductSeletcted />
   }
-
-  const subtotal = productDetails.price * quantity
-  const total = subtotal
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setQuantity(parseInt(e.target.value, 10))
@@ -101,7 +104,7 @@ function CheckoutContent() {
         },
         body: JSON.stringify({
           MerchantCode: process.env.NEXT_PUBLIC_IPAY88_MERCHANT_CODE,
-          PaymentId: '1', // Pending Business Requirements
+          PaymentId: selectedPaymentMethod, 
           RefNo: generateRefNo(),
           Amount: total.toFixed(2),
           Currency: process.env.NEXT_PUBLIC_IPAY88_CURRENCY,
@@ -109,7 +112,7 @@ function CheckoutContent() {
           UserName: `${formData.firstName} ${formData.lastName}`,
           UserEmail: formData.email,
           UserContact: formData.phone,
-          Remark: `Test 1 Remarks`, // Add new field
+          Remark: formData.message, // Add new field
           Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
           SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
           ResponseURL: `${window.location.origin}/api/payment-response`,
@@ -129,12 +132,11 @@ function CheckoutContent() {
   }
 
   const submitToIPay88 = (payload: PaymentResponse['payload']) => {
-    // Create a form element
     const form = document.createElement('form')
     form.method = 'POST'
-    form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp' // Use the appropriate URL for production
+    // form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp' 
+    form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
 
-    // Create input fields for each parameter
     Object.entries(payload).forEach(([key, value]) => {
       const input = document.createElement('input')
       input.type = 'hidden'
@@ -143,7 +145,6 @@ function CheckoutContent() {
       form.appendChild(input)
     })
 
-    // Append the form to the body and submit it
     document.body.appendChild(form)
     form.submit()
   }
@@ -161,6 +162,109 @@ function CheckoutContent() {
     }).format(price)
   }
 
+  const getProcessingFee = (paymentMethodId: number | null, subtotal: number): number => {
+    if (paymentMethodId === null) return 0;
+
+    const calculateWithVAT = (percentage: number) => {
+      const fee = subtotal * (percentage / 100);
+      return fee + (fee * 0.12); // Add 12% VAT
+    };
+
+    switch (paymentMethodId) {
+      case 1:
+      case 7:
+      case 37:
+      case 94:
+      case 72:
+      case 104:
+      case 97:
+      case 134:
+      case 139:
+        return calculateWithVAT(0.50); // 0.50% + 12% VAT
+
+      case 3: // GCash
+        return calculateWithVAT(2.10); // 2.10% + 12% VAT
+
+      case 6: // PayPal
+        return 5.00;
+
+      case 38: // GrabPay
+        return calculateWithVAT(2.30); // 2.30% + 12% VAT
+
+      case 57: // Maya
+        return calculateWithVAT(2.00); // 2.00% + 12% VAT
+
+      case 103: // ShopeePay
+        return calculateWithVAT(2.00); // Assuming 2.00% + 12% VAT, please adjust if different
+
+      case 129: // WeChatPay QR via AUB
+        return subtotal * 0.02; // 2.00%
+
+      case 130: // AliPay QR via AUB
+        return subtotal * 0.025; // 2.50%
+
+      case 58: // BPI Online
+      case 69: // Brankas Online
+        return 25.00 + (25.00 * 0.12); // Php 25.00 + 12% VAT
+
+      case 18: // DragonPay Online
+        return 25.00; // Php 25.00 per transaction
+
+      case 19: // DragonPay OTC Non-Bank
+        return 25.00; // Php 25.00 per transaction
+
+      case 20: // DragonPay OTC Bank
+        return 20.00; // Php 20.00 per transaction
+
+      default:
+        return 0;
+    }
+  };
+
+  const getProcessingFeeDescription = (paymentMethodId: number | null): string => {
+    if (paymentMethodId === null) return '';
+
+    switch (paymentMethodId) {
+      case 1:
+      case 7:
+      case 37:
+      case 94:
+      case 72:
+      case 104:
+      case 97:
+      case 134:
+      case 139:
+        return '0.50% + 12% VAT';
+      case 3:
+        return '2.10% + 12% VAT';
+      case 6:
+        return 'Php 5.00';
+      case 38:
+        return '2.30% + 12% VAT';
+      case 57:
+      case 103:
+        return '2.00% + 12% VAT';
+      case 129:
+        return '2.00%';
+      case 130:
+        return '2.50%';
+      case 58:
+      case 69:
+        return 'Php 25.00 + 12% VAT';
+      case 18:
+      case 19:
+        return 'Php 25.00';
+      case 20:
+        return 'Php 20.00';
+      default:
+        return '';
+    }
+  };
+
+  const subtotal = productDetails.price * quantity;
+  const processingFee = getProcessingFee(selectedPaymentMethod, subtotal);
+  const total = subtotal + processingFee;
+
   return (
     <>
       <div className="bg-[#f8f8f8]">
@@ -168,91 +272,9 @@ function CheckoutContent() {
           <div className="mx-auto max-w-2xl lg:max-w-none">
             <h1 className="sr-only">Checkout</h1>
             <form className="lg:grid lg:grid-cols-1 lg:gap-x-12 xl:gap-x-16">
-              <div className="mt-10 lg:mt-0">
-                <h2 className="text-lg font-medium text-gray-900">
-                  Order summary
-                </h2>
-                <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
-                  <h3 className="sr-only">Items in your cart</h3>
-                  <ul role="list" className="divide-y divide-gray-200">
-                    <li
-                      key={productDetails.id}
-                      className="flex px-4 py-6 sm:px-6"
-                    >
-                      <div className="flex-shrink-0">
-                        <Image
-                          alt=""
-                          src={productDetails.imageSrc}
-                          className="w-20 rounded-md"
-                          width={800}
-                          height={600}
-                        />
-                      </div>
-                      <div className="ml-6 flex flex-1 flex-col">
-                        <div className="flex">
-                          <div className="min-w-0 flex-1">
-                            <h4 className="text-sm">
-                              <div className="font-bold text-gray-700 hover:text-gray-800">
-                                {productDetails.name}
-                              </div>
-                            </h4>
-                          </div>
-                          {/* <div className="ml-4 flow-root flex-shrink-0">
-                  <button
-                    type="button"
-                    className="-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="sr-only">Remove</span>
-                    <TrashIcon aria-hidden="true" className="h-5 w-5" />
-                  </button>
-                </div> */}
-                        </div>
-                        <div className="flex flex-1 items-start justify-between">
-                          <p className="mt-1 text-sm font-medium text-gray-900">
-                            Php {formatPrice(productDetails.price)}/ pax
-                          </p>
-
-                          <div className="ml-4">
-                            <label htmlFor="quantity" className="sr-only">
-                              Quantity
-                            </label>
-                            <select
-                              id="quantity"
-                              name="quantity"
-                              value={quantity}
-                              onChange={handleQuantityChange}
-                              className="rounded-md border border-gray-300 text-left text-base font-medium text-gray-700 shadow-sm focus:border-[#ff9e39] focus:outline-none focus:ring-1 focus:ring-[#ff9e39] sm:text-sm"
-                            >
-                              {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                                <option key={num} value={num}>
-                                  {num}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                  <dl className="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
-                    <div className="flex items-center justify-between">
-                      <dt className="text-sm">Subtotal</dt>
-                      <dd className="text-sm font-medium text-gray-900">
-                        Php {formatPrice(subtotal)}
-                      </dd>
-                    </div>
-                    <div className="flex items-center justify-between border-t border-gray-200 pt-6">
-                      <dt className="text-base font-medium">Total</dt>
-                      <dd className="text-base font-medium text-gray-900">
-                        Php {formatPrice(total)}
-                      </dd>
-                    </div>
-                  </dl>
-                </div>
-              </div>
               <div>
                 <div>
-                  <h2 className="mt-10 text-lg font-medium text-gray-900">
+                  <h2 className="text-lg font-medium text-gray-900">
                     Contact information
                   </h2>
                   <div className="mt-4">
@@ -272,11 +294,10 @@ function CheckoutContent() {
                         value={formData.email}
                         onChange={handleInputChange}
                         onBlur={() => setEmailTouched(true)}
-                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm ${
-                          emailTouched && !isValidEmail(formData.email)
-                            ? 'border-red-500'
-                            : ''
-                        }`}
+                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm ${emailTouched && !isValidEmail(formData.email)
+                          ? 'border-red-500'
+                          : ''
+                          }`}
                       />
                       {emailTouched && !isValidEmail(formData.email) && (
                         <p className="mt-2 text-sm text-red-600">
@@ -515,6 +536,99 @@ function CheckoutContent() {
                           </div>
                         </div>
                       </div>
+                      <PaymentMethodSection onPaymentMethodSelect={handlePaymentMethodSelect} />
+                      <div className="mt-10 lg:mt-0 border-t border-gray-200 pt-10">
+                        <h2 className="text-lg font-medium text-gray-900">
+                          Order summary
+                        </h2>
+                        <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
+                          <h3 className="sr-only">Items in your cart</h3>
+                          <ul role="list" className="divide-y divide-gray-200">
+                            <li
+                              key={productDetails.id}
+                              className="flex px-4 py-6 sm:px-6"
+                            >
+                              <div className="flex-shrink-0">
+                                <Image
+                                  alt=""
+                                  src={productDetails.imageSrc}
+                                  className="w-20 rounded-md"
+                                  width={800}
+                                  height={600}
+                                />
+                              </div>
+                              <div className="ml-6 flex flex-1 flex-col">
+                                <div className="flex">
+                                  <div className="min-w-0 flex-1">
+                                    <h4 className="text-sm">
+                                      <div className="font-bold text-gray-700 hover:text-gray-800">
+                                        {productDetails.name}
+                                      </div>
+                                    </h4>
+                                  </div>
+                                  {/* <div className="ml-4 flow-root flex-shrink-0">
+                  <button
+                    type="button"
+                    className="-m-2.5 flex items-center justify-center bg-white p-2.5 text-gray-400 hover:text-gray-500"
+                  >
+                    <span className="sr-only">Remove</span>
+                    <TrashIcon aria-hidden="true" className="h-5 w-5" />
+                  </button>
+                </div> */}
+                                </div>
+                                <div className="flex flex-1 items-start justify-between">
+                                  <p className="mt-1 text-sm font-medium text-gray-900">
+                                    Php {formatPrice(productDetails.price)}/ pax
+                                  </p>
+
+                                  <div className="ml-4">
+                                    <label htmlFor="quantity" className="sr-only">
+                                      Quantity
+                                    </label>
+                                    <select
+                                      id="quantity"
+                                      name="quantity"
+                                      value={quantity}
+                                      onChange={handleQuantityChange}
+                                      className="rounded-md border border-gray-300 text-left text-base font-medium text-gray-700 shadow-sm focus:border-[#ff9e39] focus:outline-none focus:ring-1 focus:ring-[#ff9e39] sm:text-sm"
+                                    >
+                                      {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                                        <option key={num} value={num}>
+                                          {num}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                          <dl className="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
+                            <div className="flex items-center justify-between">
+                              <dt className="text-sm">Subtotal</dt>
+                              <dd className="text-sm font-medium text-gray-900">
+                                Php {formatPrice(subtotal)}
+                              </dd>
+                            </div>
+                            {processingFee > 0 && (
+                              <div className="flex items-center justify-between">
+                                <dt className="text-sm">
+                                  Processing Fee ({getProcessingFeeDescription(selectedPaymentMethod)})
+                                </dt>
+                                <dd className="text-sm font-medium text-gray-900">
+                                  Php {formatPrice(processingFee)}
+                                </dd>
+                              </div>
+                            )}
+                            <div className="flex items-center justify-between border-t border-gray-200 pt-6">
+                              <dt className="text-base font-medium">Total</dt>
+                              <dd className="text-base font-medium text-gray-900">
+                                Php {formatPrice(total)}
+                              </dd>
+                            </div>
+                          </dl>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="relative mt-10 flex items-start">
@@ -589,11 +703,10 @@ function CheckoutContent() {
                       type="button"
                       onClick={initiatePayment}
                       disabled={isProcessing || !isFormValid()}
-                      className={`w-full rounded-md border border-transparent px-4 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 ${
-                        isProcessing || !isFormValid()
-                          ? 'cursor-not-allowed bg-gray-400'
-                          : 'bg-[#ff9e39] hover:bg-[#ff9e39]'
-                      }`}
+                      className={`w-full rounded-md border border-transparent px-4 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 ${isProcessing || !isFormValid()
+                        ? 'cursor-not-allowed bg-gray-400'
+                        : 'bg-[#ff9e39] hover:bg-[#ff9e39]'
+                        }`}
                     >
                       {isProcessing ? 'Processing...' : 'Confirm order'}
                     </button>
