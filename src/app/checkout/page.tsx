@@ -167,7 +167,7 @@ function CheckoutContent() {
 
     const calculateWithVAT = (percentage: number) => {
       const fee = subtotal * (percentage / 100);
-      return fee + (fee * 0.12); // Add 12% VAT
+      return fee + (fee * 0.12); // 12% VAT
     };
 
     switch (paymentMethodId) {
