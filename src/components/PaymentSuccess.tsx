@@ -1,3 +1,12 @@
+'use client'
+import Link from "next/link"
+import { OrderDetails } from "@/types/models"
+import Image from "next/image"
+
+interface PaymentSuccessProps {
+  orderDetails: OrderDetails | null;
+}
+
 const products = [
   {
     id: 1,
@@ -13,7 +22,9 @@ const products = [
   },
 ]
 
-export default function PaymentSuccess() {
+export default function PaymentSuccess({ orderDetails }: PaymentSuccessProps) {
+  const { userInfo, tripDetails, paymentDetails, ipay88Payload } = orderDetails || {}
+
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
@@ -23,12 +34,12 @@ export default function PaymentSuccess() {
             It&apos;s on the way!
           </p>
           <p className="mt-2 text-base text-gray-500">
-            Your order #14034056 has shipped and will be with you soon.
+            Your order {ipay88Payload?.RefNo} has been confirmed and will be processed soon.
           </p>
 
           <dl className="mt-12 text-sm font-medium">
-            <dt className="text-gray-900">Tracking number</dt>
-            <dd className="mt-2 text-indigo-600">51547878755545848512</dd>
+            <dt className="text-gray-900">Transaction Reference</dt>
+            <dd className="mt-2 text-indigo-600">{ipay88Payload?.RefNo}</dd>
           </dl>
         </div>
 
@@ -36,86 +47,56 @@ export default function PaymentSuccess() {
           <h2 className="sr-only">Your order</h2>
 
           <h3 className="sr-only">Items</h3>
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="flex space-x-6 border-b border-gray-200 py-10"
-            >
-              <img
-                alt={product.imageAlt}
-                src={product.imageSrc}
+          <div className="flex space-x-6 border-b border-gray-200 py-10">
+          <Image
+                alt='test'
+                src={tripDetails?.imageSrc || ''}
+                width={1000}
+                height={1000}
                 className="h-20 w-20 flex-none rounded-lg bg-gray-100 object-cover object-center sm:h-40 sm:w-40"
               />
-              <div className="flex flex-auto flex-col">
-                <div>
-                  <h4 className="font-medium text-gray-900">
-                    <a href={product.href}>{product.name}</a>
-                  </h4>
-                  <p className="mt-2 text-sm text-gray-600">
-                    {product.description}
-                  </p>
-                </div>
-                <div className="mt-6 flex flex-1 items-end">
-                  <dl className="flex space-x-4 divide-x divide-gray-200 text-sm sm:space-x-6">
-                    <div className="flex">
-                      <dt className="font-medium text-gray-900">Quantity</dt>
-                      <dd className="ml-2 text-gray-700">{product.quantity}</dd>
-                    </div>
-                    <div className="flex pl-4 sm:pl-6">
-                      <dt className="font-medium text-gray-900">Price</dt>
-                      <dd className="ml-2 text-gray-700">{product.price}</dd>
-                    </div>
-                  </dl>
-                </div>
+            <div className="flex flex-auto flex-col">
+              <div>
+                <h4 className="font-medium text-gray-900">{tripDetails?.name}</h4>
+                <p className="mt-2 text-sm text-gray-600">{tripDetails?.description}</p>
+              </div>
+              <div className="mt-6 flex flex-1 items-end">
+                <dl className="flex space-x-4 divide-x divide-gray-200 text-sm sm:space-x-6">
+                  <div className="flex">
+                    <dt className="font-medium text-gray-900">Quantity</dt>
+                    <dd className="ml-2 text-gray-700">{tripDetails?.quantity}</dd>
+                  </div>
+                  <div className="flex pl-4 sm:pl-6">
+                    <dt className="font-medium text-gray-900">Price</dt>
+                    <dd className="ml-2 text-gray-700">PHP {ipay88Payload?.Amount}</dd>
+                  </div>
+                </dl>
               </div>
             </div>
-          ))}
+          </div>
 
           <div className="sm:ml-40 sm:pl-6">
             <h3 className="sr-only">Your information</h3>
 
-            <h4 className="sr-only">Addresses</h4>
+            <h4 className="sr-only">Contact information</h4>
             <dl className="grid grid-cols-2 gap-x-6 py-10 text-sm">
+              <div>
+                <dt className="font-medium text-gray-900">Contact information</dt>
+                <dd className="mt-2 text-gray-700">
+                  <p>{userInfo?.firstName} {userInfo?.lastName}</p>
+                  <p>{userInfo?.email}</p>
+                  <p>{userInfo?.phone}</p>
+                </dd>
+              </div>
               <div>
                 <dt className="font-medium text-gray-900">Shipping address</dt>
                 <dd className="mt-2 text-gray-700">
                   <address className="not-italic">
-                    <span className="block">Kristin Watson</span>
-                    <span className="block">7363 Cynthia Pass</span>
-                    <span className="block">Toronto, ON N3Y 4H8</span>
+                    <span className="block">{userInfo?.address}</span>
+                    <span className="block">{userInfo?.apartment}</span>
+                    <span className="block">{userInfo?.city}, {userInfo?.region} {userInfo?.postalCode}</span>
+                    <span className="block">{userInfo?.country}</span>
                   </address>
-                </dd>
-              </div>
-              <div>
-                <dt className="font-medium text-gray-900">Billing address</dt>
-                <dd className="mt-2 text-gray-700">
-                  <address className="not-italic">
-                    <span className="block">Kristin Watson</span>
-                    <span className="block">7363 Cynthia Pass</span>
-                    <span className="block">Toronto, ON N3Y 4H8</span>
-                  </address>
-                </dd>
-              </div>
-            </dl>
-
-            <h4 className="sr-only">Payment</h4>
-            <dl className="grid grid-cols-2 gap-x-6 border-t border-gray-200 py-10 text-sm">
-              <div>
-                <dt className="font-medium text-gray-900">Payment method</dt>
-                <dd className="mt-2 text-gray-700">
-                  <p>Apple Pay</p>
-                  <p>Mastercard</p>
-                  <p>
-                    <span aria-hidden="true">••••</span>
-                    <span className="sr-only">Ending in </span>1545
-                  </p>
-                </dd>
-              </div>
-              <div>
-                <dt className="font-medium text-gray-900">Shipping method</dt>
-                <dd className="mt-2 text-gray-700">
-                  <p>DHL</p>
-                  <p>Takes up to 3 working days</p>
                 </dd>
               </div>
             </dl>
@@ -125,34 +106,21 @@ export default function PaymentSuccess() {
             <dl className="space-y-6 border-t border-gray-200 pt-10 text-sm">
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Subtotal</dt>
-                <dd className="text-gray-700">$36.00</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="flex font-medium text-gray-900">
-                  Discount
-                  <span className="ml-2 rounded-full bg-gray-200 px-2 py-0.5 text-xs text-gray-600">
-                    STUDENT50
-                  </span>
-                </dt>
-                <dd className="text-gray-700">-$18.00 (50%)</dd>
-              </div>
-              <div className="flex justify-between">
-                <dt className="font-medium text-gray-900">Shipping</dt>
-                <dd className="text-gray-700">$5.00</dd>
+                <dd className="text-gray-700">{ipay88Payload?.Currency} {ipay88Payload?.Amount}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Total</dt>
-                <dd className="text-gray-900">$23.00</dd>
+                <dd className="text-gray-900">{ipay88Payload?.Currency} {ipay88Payload?.Amount}</dd>
               </div>
             </dl>
           </div>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a
+            <Link
               href="/experiences"
               className="mt-4 w-full rounded-md bg-[#ff9e39] px-32 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
             >
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </div>

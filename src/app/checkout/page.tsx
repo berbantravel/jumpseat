@@ -122,6 +122,7 @@ function CheckoutContent() {
 
       const data: PaymentResponse = await response.json()
       if (data.success) {
+        localStorage.setItem('IPAY88_PAYLOAD', JSON.stringify(data.payload))
         submitToIPay88(data.payload)
       } else {
         console.error('Failed to initiate payment')

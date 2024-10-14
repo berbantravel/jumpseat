@@ -8,10 +8,13 @@ import PaymentFailed from '@/components/PaymentFailed'
 import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
 import Image from 'next/image'
 import CircleLoader from '@/components/CircleLoader'
+import { OrderDetails } from '@/types/models'
 
 function PaymentResponseContent() {
   const searchParams = useSearchParams()
   const [paymentStatus, setPaymentStatus] = useState<string>('Processing...')
+  const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null)
+
 
   useEffect(() => {
     const status = searchParams.get('Status')
@@ -21,6 +24,7 @@ function PaymentResponseContent() {
     const sendEmailOnSuccess = async () => {
       const userInfo = JSON.parse(localStorage.getItem('USER_INFORMATION') || '{}')
       const tripDetails = JSON.parse(localStorage.getItem('SELECTED_DESTINATION') || '{}')
+      const ipay88Payload = JSON.parse(localStorage.getItem('IPAY88_PAYLOAD') || '{}')
 
       try {
         const response = await fetch('/api/send-email', {
@@ -37,6 +41,18 @@ function PaymentResponseContent() {
       } catch (error) {
         console.error('Error sending email:', error)
       }
+
+      // Set order details for PaymentSuccess component
+      setOrderDetails({
+        userInfo,
+        tripDetails,
+        ipay88Payload,
+        paymentDetails: {
+          refNo: refNo || '',
+          transId: transId || '',
+          status: 'Success',
+        },
+      })
     }
 
     if (status === '1') {
@@ -48,14 +64,18 @@ function PaymentResponseContent() {
       setPaymentStatus('Unknown')
     }
 
-    localStorage.removeItem('SELECTED_DESTINATION')
-    localStorage.removeItem('USER_INFORMATION')
+    // Clear local storage after setting the order details
+    return () => {
+      localStorage.removeItem('SELECTED_DESTINATION')
+      localStorage.removeItem('USER_INFORMATION')
+      localStorage.removeItem('IPAY88_PAYLOAD')
+    }
   }, [searchParams])
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl">
-        {paymentStatus === 'Success' && <PaymentSuccess />}
+        {paymentStatus === 'Success' && <PaymentSuccess orderDetails={orderDetails} />}
         {paymentStatus === 'Failed' && <PaymentFailed />}
         {paymentStatus === 'Unknown' && (
           <div className="bg-white">
@@ -74,14 +94,6 @@ function PaymentResponseContent() {
                   contact support.
                 </p>
               </div>
-              {/* <div className="mt-10 flex items-center justify-center gap-x-6">
-                  <a
-                    href="/checkout"
-                    className="rounded-md bg-[#ff9e39] py-2.5 w-full mt-4 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-                  >
-                    Return to Checkout
-                  </a>
-                </div> */}
             </main>
           </div>
         )}
