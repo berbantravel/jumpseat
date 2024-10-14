@@ -64,11 +64,11 @@ export default function PaymentSuccess({ orderDetails }: PaymentSuccessProps) {
                 <dl className="flex space-x-4 divide-x divide-gray-200 text-sm sm:space-x-6">
                   <div className="flex">
                     <dt className="font-medium text-gray-900">Quantity</dt>
-                    <dd className="ml-2 text-gray-700">{tripDetails?.quantity}</dd>
+                    <dd className="ml-2 text-gray-700">{ipay88Payload?.Quantity}</dd>
                   </div>
                   <div className="flex pl-4 sm:pl-6">
                     <dt className="font-medium text-gray-900">Price</dt>
-                    <dd className="ml-2 text-gray-700">PHP {ipay88Payload?.Amount}</dd>
+                    <dd className="ml-2 text-gray-700">PHP {tripDetails?.price}</dd>
                   </div>
                 </dl>
               </div>
@@ -106,7 +106,11 @@ export default function PaymentSuccess({ orderDetails }: PaymentSuccessProps) {
             <dl className="space-y-6 border-t border-gray-200 pt-10 text-sm">
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Subtotal</dt>
-                <dd className="text-gray-700">{ipay88Payload?.Currency} {ipay88Payload?.Amount}</dd>
+                <dd className="text-gray-700">{ipay88Payload?.Currency} {ipay88Payload?.SubTotal}</dd>
+              </div>
+              <div className="flex justify-between">
+                <dt className="font-medium text-gray-900">Processing Fee</dt>
+                <dd className="text-gray-700">{ipay88Payload?.Currency} {ipay88Payload?.ProcessingFee}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="font-medium text-gray-900">Total</dt>

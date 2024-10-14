@@ -44,6 +44,10 @@ export interface UserInfo {
     Currency: string;
     MerchantCode: string;
     RefNo: string;
+    Quantity: number;
+    SubTotal: number;
+    Total: number;
+    ProcessingFee: number;
   }
   
   export interface OrderDetails {
