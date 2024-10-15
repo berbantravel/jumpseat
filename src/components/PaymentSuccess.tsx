@@ -29,7 +29,7 @@ export default function PaymentSuccess({ orderDetails }: PaymentSuccessProps) {
     <div className="bg-white">
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="max-w-xl">
-          <h1 className="text-base font-medium text-indigo-600">Thank you!</h1>
+          <h1 className="text-base font-medium text-[#ff9e39]">Thank you!</h1>
           <p className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
             It&apos;s on the way!
           </p>
@@ -39,7 +39,7 @@ export default function PaymentSuccess({ orderDetails }: PaymentSuccessProps) {
 
           <dl className="mt-12 text-sm font-medium">
             <dt className="text-gray-900">Transaction Reference</dt>
-            <dd className="mt-2 text-indigo-600">{ipay88Payload?.RefNo}</dd>
+            <dd className="mt-2 text-[#ff9e39]">{ipay88Payload?.RefNo}</dd>
           </dl>
         </div>
 
