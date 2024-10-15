@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   // });
 
   const formatPrice = (price: number | undefined) => {
-    return price ? price.toFixed(2) : 'N/A';
+    return price ? price.toFixed(2) : 'N/A';  
   };
 
   const emailStyle = `
