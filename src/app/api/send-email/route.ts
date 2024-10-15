@@ -232,20 +232,38 @@ export async function POST(request: Request) {
               ${userInfo?.country || 'N/A'}
             </p>
 
-            <div style="margin-top: 40px; border-top: 1px solid #e5e7eb; padding-top: 40px;">
-              <div style="display: flex; justify-content: space-between; font-size: 14px;">
-                <span style="font-weight: 500; color: #111827;">Subtotal</span>
-                <span style="color: #4b5563;">${ipay88Payload?.Currency} ${ipay88Payload?.SubTotal?.toFixed(2) || 'N/A'}</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 14px; margin-top: 24px;">
-                <span style="font-weight: 500; color: #111827;">Processing Fee</span>
-                <span style="color: #4b5563;">${ipay88Payload?.Currency} ${ipay88Payload?.ProcessingFee?.toFixed(2) || 'N/A'}</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; font-size: 14px; margin-top: 24px;">
-                <span style="font-weight: 500; color: #111827;">Total</span>
-                <span style="font-weight: 500; color: #111827;">${ipay88Payload?.Currency} ${ipay88Payload?.Amount || 'N/A'}</span>
-              </div>
-            </div>
+          <table cellpadding="0" cellspacing="0" border="0" width="100%" style="font-size: 14px; margin-top: 40px; border-top: 1px solid #e5e7eb; padding-top: 20px;">
+            <tr>
+              <td style="padding: 10px 0;">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                  <tr>
+                    <td style="font-weight: 500; color: #111827;"><strong>Subtotal</strong></td>
+                    <td style="text-align: right; color: #4b5563;">${ipay88Payload?.Currency} ${ipay88Payload?.SubTotal?.toFixed(2) || 'N/A'}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0;">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                  <tr>
+                    <td style="font-weight: 500; color: #111827;"><strong>Processing Fee</strong></td>
+                    <td style="text-align: right; color: #4b5563;">${ipay88Payload?.Currency} ${ipay88Payload?.ProcessingFee?.toFixed(2) || 'N/A'}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0;">
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                  <tr>
+                    <td style="font-weight: 500; color: #111827;"><strong>Total</strong></td>
+                    <td style="text-align: right; font-weight: 500; color: #111827;">${ipay88Payload?.Currency} ${ipay88Payload?.Amount || 'N/A'}</td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
           </div>
         </div>
 
