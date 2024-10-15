@@ -45,7 +45,8 @@ function CheckoutContent() {
       formData.postalCode &&
       formData.phone &&
       termsAccepted &&
-      checkoutConfirmed
+      checkoutConfirmed &&
+      selectedPaymentMethod !== null
     )
   }
 
