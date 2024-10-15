@@ -1,5 +1,3 @@
-// app/api/send-email/route.ts
-
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
@@ -15,6 +13,13 @@ export async function POST(request: Request) {
       pass: process.env.EMAIL_PASS,
     },
   });
+
+  // const transporter = nodemailer.createTransport({
+  //   host: 'localhost',
+  //   port: 1025,
+  //   secure: false,
+  //   ignoreTLS: true,
+  // });
 
   const formatPrice = (price: number | undefined) => {
     return price ? price.toFixed(2) : 'N/A';
@@ -38,6 +43,8 @@ export async function POST(request: Request) {
   const adminMailOptions = {
     from: process.env.EMAIL_USER,
     to: 'admin@berbantravel.com',
+    // from: 'angelicramirez@su.edu.ph',
+    // to: 'darrelmendoza85@gmail.com',
     subject: 'New Successful Booking',
     html: `
       ${emailStyle}
@@ -95,10 +102,22 @@ export async function POST(request: Request) {
 
   const customerMailOptions = {
     from: process.env.EMAIL_USER,
+    // from: 'angelicramirez@su.edu.ph',
     to: userInfo?.email || 'customer@example.com',
     subject: 'Booking Confirmation - BerBan Travel Corporation',
     html: `
-      ${emailStyle}
+      <style>
+      body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+      .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+      h1 { color: #ff9e39; }
+      h2 { margin-top: 20px; }
+      .order-details { margin-top: 20px; border-top: 1px solid #ddd; padding-top: 20px; }
+      .item { display: flex; border-bottom: 1px solid #ddd; padding: 10px 0; }
+      .item-details { flex-grow: 1; }
+      .item-price { text-align: right; }
+      .total { font-weight: bold; margin-top: 10px; text-align: right; }
+      .address { margin-top: 20px; }
+    </style>
       <div class="container">
         <h1>Thank you!</h1>
         <p>Your order ${ipay88Payload?.RefNo} has been confirmed and will be processed soon.</p>
