@@ -32,7 +32,7 @@ function PaymentResponseContent() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ userInfo, tripDetails }),
+          body: JSON.stringify({ userInfo, tripDetails, ipay88Payload }),
         })
 
         if (!response.ok) {
