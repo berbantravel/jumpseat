@@ -206,26 +206,24 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
                             </div>
                           </TransitionChild>
                          <div className="flex h-full flex-col items-center justify-center overflow-y-auto bg-white py-6 shadow-xl">
-                         <nav className="space-y-4 text-center">
+                         <nav className="space-y-4 text-center"> 
   {navigation.map((item) => (
     <ul role="list" className="-mx-2 space-y-1" key={item.name}>
       <li className="group" key={item.name}>
         <a
           href={item.href}
           className={classNames(
-            isCurrent(item.href)
-              ? 'underline' // Apply underline when active
-              : 'hover:underline',
+            isCurrent(item.href) ? 'underline' : 'hover:underline',
             'block py-2 pl-10 pr-10 text-sm font-semibold leading-6 text-gray-700 relative'
           )}
         >
           {item.name}
           <span
             className={classNames(
-              'absolute left-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-opacity duration-200',
-              isCurrent(item.href)
-                ? 'bg-[#FF9E39] opacity-100' // Circle color when active
-                : 'bg-transparent opacity-0' // Hide circle when not active
+              'absolute left-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full transition-all duration-200 ease-in-out',
+              isCurrent(item.href) 
+                ? 'bg-[#FF9E39] opacity-100'
+                : 'group-hover:bg-[#FF9E39] group-hover:opacity-100 bg-transparent opacity-0' // Circle styles when hovered
             )}
           />
         </a>
