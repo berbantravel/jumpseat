@@ -1,16 +1,94 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import homebackground from '@/images/homebackground.jpg'
+import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
+import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react'
+import modalImage from '@/images/modalImage.jpg'
+import { Checkbox } from '@headlessui/react'
+import { CheckIcon } from '@heroicons/react/16/solid'
 
 function classNames(...classes: (string | undefined | null | false)[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
 const HeroSection = () => {
+  
+  const [isOpen, setIsOpen] = useState(false)
+  const [enabled, setEnabled] = useState(true)
+
+  // Open the modal when the component mounts
+  useEffect(() => {
+    setIsOpen(true)
+  }, [])
+
+  const closeModal = () => {
+    setIsOpen(false)
+  }
   return (
     <>
+        {/* Modal */}
+      <Dialog open={isOpen} onClose={closeModal}>
+        <div className="fixed inset-0 bg-black bg-opacity-30" aria-hidden="true" />
+        <div className="fixed inset-0 flex items-center justify-center p-4">
+          <DialogPanel className="mx-auto max-w-4xl rounded bg-white grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex flex-col p-8 gap-2">
+              {/* Logo */}
+              <div className="flex items-center mb-4">
+                <Image
+                  src={jumpseatIcon}
+                  alt="Jumpseat Logo"
+                  width={50} 
+                  height={50} 
+                />
+              </div>
+              <DialogTitle className="text-5xl font-medium text-[#ff9e39]">Experience Asia</DialogTitle>
+              <div className="mt-2">
+                <p>Get to know more about our latest travel deals and promos freshly delivered directly to your email.</p>
+              </div>
+              <input  
+                type="email"
+                placeholder="Enter your email"
+                className="mt-4 p-2 border-gray-300 rounded"
+              />
+              <button
+                onClick={() => {
+                
+                  alert("Email submitted!");
+                }}
+                className="mt-2 rounded-md bg-[#ff9e39] px-4 py-2 text-sm font-semibold text-white"
+              >
+                SIGN UP
+              </button>
+              <div className="flex items-center mt-4">
+  <Checkbox
+    checked={enabled}
+    onChange={(e) => setEnabled(e)}
+    className="border border-slate-500 group rounded-sm bg-white/10 p-1 ring-1 ring-white/15 ring-inset data-[checked]:bg-white w-5 h-5" // Set fixed width and height
+  >
+    <CheckIcon className="hidden size-3 fill-black group-data-[checked]:block" />
+  </Checkbox>
+  <span className="ml-2 text-xs text-gray-700">Yes, I want to experience Asia and know the latest updates, travel deals, and promos.</span>
+</div>
+            </div>
+
+            {/* Right Column: Image */}
+            <div className="flex items-center justify-center">
+              <Image
+                src={modalImage} 
+                alt="Welcome Image"
+                className="w-full h-full object-cover rounded" 
+                layout="responsive"
+                width={200} 
+                height={200} 
+              />
+            </div>
+          </DialogPanel>
+        </div>
+      </Dialog>
+
+    
       <div className="relative isolate -mt-16 overflow-hidden py-28">
         <Image
           src={homebackground}
