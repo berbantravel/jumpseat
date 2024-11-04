@@ -1,5 +1,4 @@
 'use client'
-
 import Image from 'next/image'
 import React from 'react'
 import background from '@/images/our-travel-experiences.jpg'
@@ -95,12 +94,14 @@ export default function WhoWeAre() {
 
   {/* Right Column - Image */}
   <div className="lg:w-1/2 mt-8 lg:mt-0 flex justify-center">
-    <img
-      src="https://via.placeholder.com/500x300" // Replace this with your actual image URL
-      alt="Asia's Finest Destinations"
-      className="w-full max-w-md object-cover"
-    />
-  </div>
+  <Image
+    src=""
+    alt="Asia's Finest Destinations"
+    width={500}
+    height={300}
+    className="w-full max-w-md object-cover"
+  />
+</div>
 </div>
         </div>
       </div>
