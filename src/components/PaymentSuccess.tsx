@@ -16,7 +16,7 @@ export default function PaymentSuccess({ orderDetails }: PaymentSuccessProps) {
         <div className="max-w-xl">
           <h1 className="text-base font-medium text-[#ff9e39]">Thank you!</h1>
           <p className="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
-            It&apos;s on the way!
+            It's on the way!
           </p>
           <p className="mt-2 text-base text-gray-500">
             Your order {ipay88Payload?.RefNo} has been confirmed and will be processed soon.

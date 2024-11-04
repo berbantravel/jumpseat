@@ -90,7 +90,7 @@ function PaymentResponseContent() {
                   Payment Status Unknown
                 </h1>
                 <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-6 sm:text-lg sm:leading-8">
-                  We couldn&apos;t determine the status of your payment. Please
+                  We couldn't determine the status of your payment. Please
                   contact support.
                 </p>
               </div>

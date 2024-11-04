@@ -116,7 +116,7 @@ const HeroSection = () => {
               OUR FAVOURITE EXPERIENCES
             </h1>
             <p className="bodySemiBold mt-6 text-lg leading-8 text-white">
-              Wander to see Asia&apos;s Sanctuary
+              Wander to see Asia's Sanctuary
             </p>
             <p className="bodyRegular mt-0  text-lg text-white">
               Are you ready to experience Asia? Learn more about our exclusive
