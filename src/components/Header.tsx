@@ -149,7 +149,7 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
                     type="button"
                     className="rounded-md bg-[#565555] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"
                   >
-                    Let's Plan Your Trip!
+                    Let&apos;s Plan Your Trip!
                   </button>
                 </div>
               </div>

@@ -694,7 +694,7 @@ function CheckoutContent() {
                         Confirmation <span className="text-red-600">*</span>
                       </label>
                       <p className="mb-4 text-sm text-gray-600">
-                        Please carefully review all the information you've
+                        Please carefully review all the information you&apos;ve
                         provided above to ensure its accuracy. By proceeding,
                         you confirm that all details, including your personal
                         information, shipping address, and order details, are

@@ -208,7 +208,7 @@ export function Footer() {
                           href="#"
                           className="body2Regular text-sm text-white hover:text-text-white-primary"
                         >
-                          Let's Plan Your Trip
+                          Let&apos;s Plan Your Trip
                         </a>
                       </li>
                     </ul>
