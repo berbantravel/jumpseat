@@ -44,7 +44,7 @@ export default function WhoWeAre() {
     OUR MISSION
   </p>
   <p className="bodyRegular mt-0 text-base text-white max-w-2xl items-center text-center">
-    To provide an excellent custom-made and hassle-free travel experience fulfilling every client's travel goal.
+    To provide an excellent custom-made and hassle-free travel experience fulfilling every client&apos;s travel goal.
   </p>
 </div>
 </div>
@@ -65,7 +65,7 @@ export default function WhoWeAre() {
   {/* Left Column - Text and Button */}
   <div className="lg:w-1/2 text-center lg:text-left">
     <h2 className="mb-1 text-xl font-medium tracking-tight text-black sm:text-3xl">
-      We'll take you to Asia's Finest Destinations
+      We&apos;ll take you to Asia&apos;s Finest Destinations
     </h2>
     <div className='border w-56 mb-3'></div>
     <p className="mt-0 font-bold text-lg text-black">
@@ -76,19 +76,19 @@ export default function WhoWeAre() {
 </p>
 
 <p className="mt-0 text-xs font-normal text-black whitespace-normal mb-4">
-  We are eager to introduce you to Asia's wonderful travel destinations. Lead you to discover our rich culture, mouth-watering dishes, and adventure-filled mountain trails in different islands.
+  We are eager to introduce you to Asia&apos;s wonderful travel destinations. Lead you to discover our rich culture, mouth-watering dishes, and adventure-filled mountain trails in different islands.
 </p>
 
 <p className="mt-0 text-xs font-normal text-black whitespace-normal mb-4">
   Just like you, we also love going places. We enjoy exploring where we get to have real and unique encounters with nature and different people. We prefer things off-season and beyond the beaten track.
-  We appreciate being pampered rather than treated like a simple traveler. We dare to test our limits with all sorts of activities – whether it's food and drink, a long walk, or a retreat, we're always ready for it.
+  We appreciate being pampered rather than treated like a simple traveler. We dare to test our limits with all sorts of activities – whether it&apos;s food and drink, a long walk, or a retreat, we&apos;re always ready for it.
 </p>
 
 <p className="mt-0 text-xs font-normal text-black whitespace-normal">
   Come and travel with us! Meet Asia!
 </p>
     <button className="rounded-md bg-[#ff9e39] px-10 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39] mt-4">
-      Let's Go
+      Let&apos;s Go
     </button>
   </div>
 
