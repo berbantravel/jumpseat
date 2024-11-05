@@ -3,6 +3,8 @@ import { generateSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
+  console.log('Received body:', body); // Log the incoming request body
+  
   const {
     MerchantCode,
     RefNo,
@@ -20,6 +22,11 @@ export async function POST(request: NextRequest) {
     Currency,
   }, merchantKey);
 
+ // Log the calculated signature
+ console.log('Calculated Signature:', calculatedSignature);
+ console.log('Received Signature:', Signature);
+
+
   if (calculatedSignature !== Signature) {
     console.error('Invalid signature');
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
@@ -35,5 +42,6 @@ export async function POST(request: NextRequest) {
     // Implement logic here
   }
 
+  console.log('Returning: RECEIVEOK');
   return NextResponse.json({ message: 'RECEIVEOK' });
 }
