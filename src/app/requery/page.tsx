@@ -1,112 +1,110 @@
 'use client'
+import React, { useState } from 'react';
 
-import { useEffect, useState, Suspense } from 'react'
-import { useSearchParams } from 'next/navigation'
-import Link from 'next/link'
-import PaymentSuccess from '@/components/PaymentSuccess'
-import PaymentFailed from '@/components/PaymentFailed'
-import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
-import Image from 'next/image'
-import CircleLoader from '@/components/CircleLoader'
-import { OrderDetails } from '@/types/models'
+interface RequeryResponse {
+  [key: string]: any; // Define the structure of your expected response here
+}
 
-function PaymentResponseContent() {
-  const searchParams = useSearchParams()
-  const [paymentStatus, setPaymentStatus] = useState<string>('Processing...')
-  const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null)
+const PaymentRequery: React.FC = () => {
+  const [merchantCode, setMerchantCode] = useState<string>('');
+  const [refNo, setRefNo] = useState<string>('');
+  const [amount, setAmount] = useState<string>('');
+  const [requeryData, setRequeryData] = useState<RequeryResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
+  const handleRequery = async () => {
+    if (!merchantCode || !refNo || !amount) {
+      setError('All fields are required');
+      return;
+    }
 
-  useEffect(() => {
-    const status = searchParams.get('Status')
-    const refNo = searchParams.get('RefNo')
-    const transId = searchParams.get('TransId')
+    setLoading(true);
+    setError(null); // Reset error before making a request
 
-    const sendEmailOnSuccess = async () => {
-      const userInfo = JSON.parse(localStorage.getItem('USER_INFORMATION') || '{}')
-      const tripDetails = JSON.parse(localStorage.getItem('SELECTED_DESTINATION') || '{}')
-      const ipay88Payload = JSON.parse(localStorage.getItem('IPAY88_PAYLOAD') || '{}')
-
-      try {
-        const response = await fetch('/api/send-email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ userInfo, tripDetails, ipay88Payload }),
-        })
-
-        if (!response.ok) {
-          console.error('Failed to send email')
-        }
-      } catch (error) {
-        console.error('Error sending email:', error)
+    try {
+      // Call the backend API to make the requery request
+      const response = await fetch(`/api/requery?MerchantCode=${merchantCode}&RefNo=${refNo}&Amount=${amount}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch requery data');
       }
 
-      // Set order details for PaymentSuccess component
-      setOrderDetails({
-        userInfo,
-        tripDetails,
-        ipay88Payload,
-        paymentDetails: {
-          refNo: refNo || '',
-          transId: transId || '',
-          status: 'Success',
-        },
-      })
+      const data: RequeryResponse = await response.json();
+      setRequeryData(data); // Update the state with the result
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message); // If the error is an instance of Error, use the message property
+      } else {
+        setError('An unknown error occurred'); // Fallback error message if the error is not an instance of Error
+      }
+    } finally {
+      setLoading(false); // Turn off loading indicator
     }
-
-    if (status === '1') {
-      setPaymentStatus('Success')
-      sendEmailOnSuccess()
-    } else if (status === '0') {
-      setPaymentStatus('Failed')
-    } else {
-      setPaymentStatus('Unknown')
-    }
-
-    // Clear local storage after setting the order details
-    return () => {
-      localStorage.removeItem('SELECTED_DESTINATION')
-      localStorage.removeItem('USER_INFORMATION')
-      localStorage.removeItem('IPAY88_PAYLOAD')
-    }
-  }, [searchParams])
+  };
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl">
-        {paymentStatus === 'Success' && <PaymentSuccess orderDetails={orderDetails} />}
-        {paymentStatus === 'Failed' && <PaymentFailed />}
-        {paymentStatus === 'Unknown' && (
-          <div className="bg-white">
-            <main className="mx-auto w-full max-w-7xl px-6 pb-8 pt-10 sm:pb-20 lg:px-8">
-              <Image
-                className="mx-auto h-20 w-auto"
-                src={jumpseatIcon}
-                alt="Your Company Icon"
-              />
-              <div className="mx-auto mt-10 max-w-2xl text-center sm:mt-14">
-                <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
-                  Payment Status Unknown
-                </h1>
-                <p className="mt-4 text-base leading-7 text-gray-600 sm:mt-6 sm:text-lg sm:leading-8">
-                  We couldn&apos;t determine the status of your payment. Please
-                  contact support.
-                </p>
-              </div>
-            </main>
-          </div>
-        )}
-        {paymentStatus === 'Processing...' && <CircleLoader></CircleLoader>}
+    <div style={{ maxWidth: '600px', margin: 'auto', padding: '20px' }}>
+      <h1>Payment Requery</h1>
+      
+      {/* Merchant Code Input */}
+      <div>
+        <label>Merchant Code</label>
+        <input
+          type="text"
+          value={merchantCode}
+          onChange={(e) => setMerchantCode(e.target.value)}
+          placeholder="Enter Merchant Code"
+          style={{ width: '100%', padding: '8px', margin: '10px 0' }}
+        />
       </div>
-    </div>
-  )
-}
+      
+      {/* Reference No. Input */}
+      <div>
+        <label>Reference No.</label>
+        <input
+          type="text"
+          value={refNo}
+          onChange={(e) => setRefNo(e.target.value)}
+          placeholder="Enter Reference Number"
+          style={{ width: '100%', padding: '8px', margin: '10px 0' }}
+        />
+      </div>
 
-export default function PaymentResponse() {
-  return (
-    <Suspense fallback={<CircleLoader></CircleLoader>}>
-      <PaymentResponseContent />
-    </Suspense>
-  )
-}
+      {/* Amount Input */}
+      <div>
+        <label>Amount</label>
+        <input
+          type="text"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          placeholder="Enter Amount"
+          style={{ width: '100%', padding: '8px', margin: '10px 0' }}
+        />
+      </div>
+
+      {/* Trigger Requery Button */}
+      <button 
+        onClick={handleRequery} 
+        disabled={loading}
+        style={{ padding: '10px 15px', backgroundColor: '#4CAF50', color: 'white', border: 'none', cursor: 'pointer' }}
+      >
+        {loading ? 'Loading...' : 'Trigger Requery'}
+      </button>
+
+      {/* Error Display */}
+      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+
+      {/* Display Requery Data */}
+      {requeryData && (
+        <div style={{ marginTop: '20px' }}>
+          <h3>Requery Response:</h3>
+          <pre style={{ whiteSpace: 'pre-wrap', wordWrap: 'break-word' }}>
+            {JSON.stringify(requeryData, null, 2)}
+          </pre>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default PaymentRequery;
