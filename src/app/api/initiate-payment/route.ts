@@ -1,25 +1,28 @@
-import { generateSignature } from '@/lib/ipay88';  // Import your signature function
+// app/api/initiate-payment/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { generateSignature } from '@/lib/ipay88';
 
-export async function handlePaymentResponse(response: any) {
-    const { MerchantCode, RefNo, Amount, Currency, Signature } = response;
-    
+interface PaymentRequestBody {
+    MerchantCode: string;
+    RefNo: string;
+    Amount: string;
+    Currency: string;
+    [key: string]: string;
+}
+
+export async function POST(request: NextRequest) {
+    const body: PaymentRequestBody = await request.json();
+    const { MerchantCode, RefNo, Amount, Currency } = body;
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-
-    // Check if a signature exists in the response
-    if (!Signature) {
-        console.log('No signature found in the response.');
-        return;
-    }
-
-    // Recompute the signature on the server side
-    const recomputedSignature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
     
-    // Compare the recomputed signature with the one returned from the response
-    if (recomputedSignature === Signature) {
-        console.log('Signatures match, the request is valid.');
-        // Process the successful transaction
-    } else {
-        console.log('Signature not match.');
-        // Handle the error: possible fraudulent request
-    }
+    // console.log(merchantKey);
+    const signature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
+    // console.log(signature);
+
+    const paymentPayload = {
+        ...body,
+        Signature: signature
+    };
+
+    return NextResponse.json({ success: true, payload: paymentPayload });
 }
