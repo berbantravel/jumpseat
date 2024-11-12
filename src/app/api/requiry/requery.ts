@@ -11,8 +11,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   const queryString = `MerchantCode=${MerchantCode}&RefNo=${RefNo}&Amount=${Amount}`;
-  const apiUrl = `https://payment.ipay88.com.ph/epayment/enquiry.asp?${queryString}`;
-
+  const apiUrl = `https://payment.ipay88.com.ph/MerchantService/Payment/Inquiry`;
+  // const apiUrl = `https://payment.ipay88.com.ph/epayment/enquiry.asp?${queryString}`;
   try {
     // Make the request to iPay88 sandbox URL
     const response = await axios.get(apiUrl);
