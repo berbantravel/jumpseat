@@ -1,16 +1,19 @@
 // app/api/payment-response/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { generateResponseSignature } from '@/lib/ipay88';
+import { generateResponseSignature } from '@/lib/ipay88';  // Ensure this function is correct
 
 export async function POST(request: NextRequest) {
-  let body: Record<string, string>;
+  const contentType = request.headers.get('content-type');
+  console.log('Content-Type:', contentType);
 
-  // Parse the request body based on content type
-  if (request.headers.get('content-type') === 'application/json') {
+  let body;
+  if (contentType === 'application/json') {
     body = await request.json();
-  } else {
+  } else if (contentType === 'application/x-www-form-urlencoded') {
     const formData = await request.formData();
-    body = Object.fromEntries(formData.entries()) as Record<string, string>;
+    body = Object.fromEntries(formData.entries());
+  } else {
+    return NextResponse.json({ error: 'Unsupported content type' }, { status: 400 });
   }
 
   console.log('Received body:', body);
@@ -27,12 +30,15 @@ export async function POST(request: NextRequest) {
 
   const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
-  // Generate the response signature using the same parameters
+  // Ensure amount is formatted correctly (no commas, two decimals)
+  const formattedAmount = Amount.replace(',', '').trim();
+
+  // Generate signature for response
   const calculatedSignature = generateResponseSignature({
     MerchantCode,
     PaymentId,
     RefNo,
-    Amount,
+    Amount: formattedAmount,  // Ensure proper formatting
     Currency,
     Status,
   }, merchantKey);
@@ -43,20 +49,19 @@ export async function POST(request: NextRequest) {
   // Validate the signature
   if (calculatedSignature !== Signature) {
     console.error('Invalid signature');
-    return new Response('Invalid signature', { status: 400 });
+    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
 
   // Handle payment success or failure
   if (Status === '1') {
     console.log(`Payment successful for RefNo: ${RefNo}`);
-    // Implement logic here for successful payment (e.g., update order status)
+    // Implement logic for successful payment
   } else {
     console.log(`Payment failed or other status for RefNo: ${RefNo}`);
-    // Implement logic here for payment failure (e.g., notify user)
+    // Implement logic for failed payment
   }
 
-  console.log('Returning: RECEIVEOK');
-  return new Response('RECEIVEOK', { status: 200 });
+  return NextResponse.json({ message: 'RECEIVEOK' });
 }
 
 
