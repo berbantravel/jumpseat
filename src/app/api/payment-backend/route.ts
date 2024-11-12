@@ -4,28 +4,24 @@ import { generateSignature } from '@/lib/ipay88';
 export async function POST(request: NextRequest) {
   let body: Record<string, string>;
 
-  // Check content-type header to determine parsing method
   const contentType = request.headers.get('content-type');
   console.log('Content-Type:', contentType);
 
+  // Determine how to parse the request body based on content type
   if (contentType?.includes('application/json')) {
-    // Parse as JSON if the content type is JSON
     body = await request.json();
   } else if (contentType?.includes('application/x-www-form-urlencoded')) {
-    // Parse as URL encoded if the content type is application/x-www-form-urlencoded
     const formData = await request.formData();
-
-    // Convert formData to a plain object with string values
     body = Object.fromEntries(
       Array.from(formData.entries()).map(([key, value]) => [key, String(value)])
     );
   } else {
-    // Return error if the content type is not supported
     return NextResponse.json({ error: 'Unsupported content type' }, { status: 400 });
   }
 
-  console.log('Received body:', body); // Log the incoming request body
+  console.log('Received body:', body);
 
+  // Destructure necessary fields from the body
   const {
     MerchantCode,
     RefNo,
@@ -33,25 +29,30 @@ export async function POST(request: NextRequest) {
     Currency,
     Status,
     Signature,
-  } = body;
+    PaymentId,
+  } = body; 
 
   const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
-  // Ensure amount is formatted correctly (no commas, two decimals)
-  const formattedAmount = Amount.replace(',', '').trim();
+  // Format the amount correctly (remove commas and ensure two decimals)
+  const formattedAmount = Number(Amount).toFixed(2).replace(',', '').trim();
 
-  // Generate signature for response
-  const calculatedSignature = generateSignature({
-    MerchantCode,
-    RefNo,
-    Amount: formattedAmount,  // Ensure proper formatting
-    Currency,
-  }, merchantKey);
+  // Generate the calculated signature based on iPay88 response signature requirements
+  const calculatedSignature = generateSignature(
+    {
+      MerchantCode,
+      RefNo,
+      Amount: formattedAmount,
+      Currency,
+ 
+    },
+    merchantKey
+  );
 
   console.log('Calculated Signature:', calculatedSignature);
   console.log('Received Signature:', Signature);
 
-  // Validate the signature
+  // Compare calculated and received signatures
   if (calculatedSignature !== Signature) {
     console.error('Invalid signature');
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
@@ -66,6 +67,7 @@ export async function POST(request: NextRequest) {
     // Implement logic for failed payment
   }
 
+  // Respond with 'RECEIVEOK' to acknowledge the payment status
   return NextResponse.json({ message: 'RECEIVEOK' });
 }
 
