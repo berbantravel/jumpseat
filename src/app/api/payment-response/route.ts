@@ -119,7 +119,7 @@ export async function POST(request: NextRequest) {
       const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '').trim();
 
       const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
-      console.log('String to Hash:', stringToHash);  // Verify the string
+      console.log('String to Hash:', stringToHash);
 
       const calculatedSignature = generateSignature(
         {
@@ -137,10 +137,11 @@ export async function POST(request: NextRequest) {
       console.log('RefNo:', RefNo);
       console.log('Formatted Amount:', formattedAmount);
       console.log('Currency:', Currency);
+      console.log('Status:', Status);
 
       if (calculatedSignature !== Signature) {
         console.error('Invalid signature');
-        return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
+        return new NextResponse("Invalid signature", { status: 400 });
       }
 
       if (Status === '1') {
@@ -151,12 +152,12 @@ export async function POST(request: NextRequest) {
         // Implement logic for failed payment
       }
 
-      return NextResponse.json({ message: 'RECEIVEOK' });
+      return new NextResponse('RECEIVEOK', { status: 200, headers: { 'Content-Type': 'text/plain' } });
     } else {
-      return NextResponse.json({ error: 'Unsupported content type' }, { status: 400 });
+      return new NextResponse('Unsupported content type', { status: 400 });
     }
   } catch (error) {
     console.error('Error processing payment response:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return new NextResponse('Internal server error', { status: 500 });
   }
 }
