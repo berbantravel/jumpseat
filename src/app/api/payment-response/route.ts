@@ -117,7 +117,11 @@ export async function POST(request: NextRequest) {
 
       const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
       const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '').trim();
+      // Debug formattedAmount
+      console.log('Original Amount:', Amount);
+      console.log('Formatted Amount:', formattedAmount);
 
+      // Generate the string to hash
       const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
       console.log('String to Hash:', stringToHash);
 
@@ -152,6 +156,7 @@ export async function POST(request: NextRequest) {
         // Implement logic for failed payment
       }
 
+      // Return plain text "RECEIVEOK"
       return new NextResponse('RECEIVEOK', { status: 200, headers: { 'Content-Type': 'text/plain' } });
     } else {
       return new NextResponse('Unsupported content type', { status: 400 });
