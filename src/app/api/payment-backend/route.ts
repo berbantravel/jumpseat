@@ -5,7 +5,7 @@ export async function POST(request: NextRequest) {
   try {
     const contentType = request.headers.get('content-type') || '';
 
-    if (contentType.includes('application/x-www-form-urlencoded')) {
+    if (contentType.indexOf('application/x-www-form-urlencoded') !== -1) {
       const formData = await request.formData();
       const data = Object.fromEntries(
         Array.from(formData.entries()).map(([key, value]) => [key, String(value)])
@@ -25,8 +25,13 @@ export async function POST(request: NextRequest) {
       const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
       const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '').trim();
 
+      // Debug formattedAmount
+      console.log('Original Amount:', Amount);
+      console.log('Formatted Amount:', formattedAmount);
+
+      // Ensure formattedAmount is included in stringToHash
       const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
-      console.log('String to Hash:', stringToHash);  // Verify the string
+      console.log('String to Hash:', stringToHash);
 
       const calculatedSignature = generateSignature(
         {
@@ -69,8 +74,6 @@ export async function POST(request: NextRequest) {
     return new NextResponse('Internal server error', { status: 500 });
   }
 }
-
-
 
 
 // import { NextRequest, NextResponse } from 'next/server';
