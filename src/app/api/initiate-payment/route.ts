@@ -11,22 +11,31 @@ interface PaymentRequestBody {
 }
 
 export async function POST(request: NextRequest) {
-  const body: PaymentRequestBody = await request.json();
-  const { MerchantCode, RefNo, Amount, Currency } = body;
-  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-  
-  const signature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
+  try {
+    const body: PaymentRequestBody = await request.json();
+    const { MerchantCode, RefNo, Amount, Currency } = body;
 
-  // Prepare the payload for iPay88 request
-  const paymentPayload = {
-    ...body,
-    Signature: signature,
-  };
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+    const formattedAmount = Number(Amount).toFixed(2).replace(',', '').trim();
 
-  console.log('Payment request payload:', paymentPayload);
+    const signature = generateSignature({ MerchantCode, RefNo, Amount: formattedAmount, Currency }, merchantKey);
 
-  return NextResponse.json({ success: true, payload: paymentPayload });
+    // Prepare the payload for iPay88 request
+    const paymentPayload = {
+      ...body,
+      Amount: formattedAmount,
+      Signature: signature,
+    };
+
+    console.log('Payment request payload:', paymentPayload);
+
+    return NextResponse.json({ success: true, payload: paymentPayload });
+  } catch (error) {
+    console.error('Error processing payment request:', error);
+    return NextResponse.json({ success: false, error: 'Failed to process payment request' });
+  }
 }
+
 
 
 // app/api/initiate-payment/route.ts
