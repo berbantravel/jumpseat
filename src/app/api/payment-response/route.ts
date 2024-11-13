@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
   try {
     const contentType = request.headers.get('content-type') || '';
 
-    if (contentType.includes('application/x-www-form-urlencoded')) {
+    if (contentType.indexOf('application/x-www-form-urlencoded') !== -1) {
       const formData = await request.formData();
       const data = Object.fromEntries(
         Array.from(formData.entries()).map(([key, value]) => [key, String(value)])
