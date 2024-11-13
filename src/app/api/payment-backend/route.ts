@@ -7,7 +7,6 @@ export async function POST(request: NextRequest) {
   const contentType = request.headers.get('content-type');
   console.log('Content-Type:', contentType);
 
-  // Determine how to parse the request body based on content type
   if (contentType?.includes('application/json')) {
     body = await request.json();
   } else if (contentType?.includes('application/x-www-form-urlencoded')) {
@@ -21,7 +20,6 @@ export async function POST(request: NextRequest) {
 
   console.log('Received body:', body);
 
-  // Destructure necessary fields from the body
   const {
     MerchantCode,
     RefNo,
@@ -33,18 +31,14 @@ export async function POST(request: NextRequest) {
   } = body; 
 
   const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-
-  // Format the amount correctly (remove commas and ensure two decimals)
   const formattedAmount = Number(Amount).toFixed(2).replace(',', '').trim();
-
-  // Generate the calculated signature based on iPay88 response signature requirements
+  
   const calculatedSignature = generateSignature(
     {
       MerchantCode,
       RefNo,
       Amount: formattedAmount,
       Currency,
- 
     },
     merchantKey
   );
@@ -52,13 +46,11 @@ export async function POST(request: NextRequest) {
   console.log('Calculated Signature:', calculatedSignature);
   console.log('Received Signature:', Signature);
 
-  // Compare calculated and received signatures
   if (calculatedSignature !== Signature) {
     console.error('Invalid signature');
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
 
-  // Handle payment success or failure
   if (Status === '1') {
     console.log(`Payment successful for RefNo: ${RefNo}`);
     // Implement logic for successful payment
@@ -67,9 +59,9 @@ export async function POST(request: NextRequest) {
     // Implement logic for failed payment
   }
 
-  // Respond with 'RECEIVEOK' to acknowledge the payment status
   return NextResponse.json({ message: 'RECEIVEOK' });
 }
+
 
 // import { NextRequest, NextResponse } from 'next/server';
 // import { generateSignature } from '@/lib/ipay88';
