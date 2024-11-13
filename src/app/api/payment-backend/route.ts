@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
 
       if (calculatedSignature !== Signature) {
         console.error('Invalid signature');
-        return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
+        return new NextResponse("Invalid signature", { status: 400 });
       }
 
       if (Status === '1') {
@@ -54,19 +54,16 @@ export async function POST(request: NextRequest) {
         // Implement logic for failed payment
       }
 
-      return NextResponse.json({ message: 'RECEIVEOK' });
+      // Return plain text "RECEIVEOK"
+      return new NextResponse('RECEIVEOK', { status: 200, headers: { 'Content-Type': 'text/plain' } });
     } else {
-      return NextResponse.json({ error: 'Unsupported content type' }, { status: 400 });
+      return new NextResponse('Unsupported content type', { status: 400 });
     }
   } catch (error) {
     console.error('Error processing payment response:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return new NextResponse('Internal server error', { status: 500 });
   }
 }
-
-
-
-
 
 
 

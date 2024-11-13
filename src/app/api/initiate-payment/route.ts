@@ -1,5 +1,4 @@
-// app/api/initiate-payment/route.ts
-// app/api/initiate-payment/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
