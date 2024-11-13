@@ -40,6 +40,11 @@ export async function POST(request: NextRequest) {
 
       console.log('Calculated Signature:', calculatedSignature);
       console.log('Received Signature:', Signature);
+      console.log('MerchantCode:', MerchantCode);
+      console.log('RefNo:', RefNo);
+      console.log('Formatted Amount:', formattedAmount);
+      console.log('Currency:', Currency);
+      console.log('Status:', Status);
 
       if (calculatedSignature !== Signature) {
         console.error('Invalid signature');
@@ -64,6 +69,7 @@ export async function POST(request: NextRequest) {
     return new NextResponse('Internal server error', { status: 500 });
   }
 }
+
 
 
 
