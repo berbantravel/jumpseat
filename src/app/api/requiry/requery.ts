@@ -28,7 +28,7 @@
 //   }
 // }
 
-
+// pages/api/requery.ts
 // pages/api/requery.ts
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
@@ -41,11 +41,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'Missing required parameters' });
   }
 
-  const queryString = `MerchantCode=${encodeURIComponent(MerchantCode as string)}&RefNo=${encodeURIComponent(RefNo as string)}&Amount=${encodeURIComponent(Amount as string)}`;
+  const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', ''); // Format Amount
+  const queryString = `MerchantCode=${encodeURIComponent(MerchantCode as string)}&RefNo=${encodeURIComponent(RefNo as string)}&Amount=${encodeURIComponent(formattedAmount)}`;
   const apiUrl = `https://payment.ipay88.com.ph/MerchantService/Payment/Inquiry?${queryString}`;
 
   try {
-    // Make the request to iPay88 sandbox URL
+    // Make the request to iPay88 URL
     const response = await axios.get(apiUrl);
 
     // Return the result back to the frontend
