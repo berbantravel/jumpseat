@@ -23,9 +23,11 @@ export async function POST(request: NextRequest) {
       } = data;
 
       const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-      const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '').trim();
 
-      // Debug formattedAmount
+      // Ensure amount is formatted correctly (no commas, two decimals)
+      const formattedAmount = Number(Amount.replace(',', '').trim()).toFixed(2).replace('.', '');
+
+      // Debug formattedAmount and stringToHash
       console.log('Original Amount:', Amount);
       console.log('Formatted Amount:', formattedAmount);
 
@@ -33,15 +35,13 @@ export async function POST(request: NextRequest) {
       const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
       console.log('String to Hash:', stringToHash);
 
-      const calculatedSignature = generateSignature(
-        {
-          MerchantCode,
-          RefNo,
-          Amount: formattedAmount,
-          Currency,
-        },
-        merchantKey
-      );
+      // Generate the signature for the response
+      const calculatedSignature = generateSignature({
+        MerchantCode,
+        RefNo,
+        Amount: formattedAmount,
+        Currency,
+      }, merchantKey);
 
       console.log('Calculated Signature:', calculatedSignature);
       console.log('Received Signature:', Signature);
