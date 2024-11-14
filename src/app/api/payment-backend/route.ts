@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateResponseSignature } from '@/lib/ipay88';
+import { generateSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
   let body;
@@ -27,13 +27,11 @@ export async function POST(request: NextRequest) {
   const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
   // Recreate the signature based on received data
-  const calculatedSignature = generateResponseSignature({
+  const calculatedSignature = generateSignature({
     MerchantCode,
-    PaymentId,
     RefNo,
     Amount,
     Currency,
-    Status,
   }, merchantKey);
 
   console.log('Calculated Signature:', calculatedSignature);

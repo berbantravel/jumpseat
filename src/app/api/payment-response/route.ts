@@ -90,27 +90,23 @@
 //     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
 //   }
 // }
-// app/api/payment-response/route.ts
+// payment-response route
+
 import { NextRequest, NextResponse } from 'next/server';
-import { generateResponseSignature } from '@/lib/ipay88';
+import { generateSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
   let body: Record<string, string>;
 
-  try {
-    // Check content type and parse accordingly
-    if (request.headers.get('content-type') === 'application/json') {
-      body = await request.json();
-    } else {
-      // For form data (e.g., application/x-www-form-urlencoded), parse using URLSearchParams
-      const rawBody = await request.text();
-      body = Object.fromEntries(new URLSearchParams(rawBody));
-    }
-  } catch (error) {
-    console.error('Error parsing request body:', error);
-    return new Response('Invalid request format', { status: 400 });
+  // Parse the request body based on content type
+  if (request.headers.get('content-type') === 'application/json') {
+    body = await request.json();
+  } else {
+    const formData = await request.formData();
+    body = Object.fromEntries(formData.entries()) as Record<string, string>;
   }
 
+  // Log the full body received for verification
   console.log('Received body:', body);
 
   const {
@@ -125,54 +121,40 @@ export async function POST(request: NextRequest) {
 
   const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
-  // Recalculate the signature using the received parameters
-  const calculatedSignature = generateResponseSignature({
+  // Log each parameter to ensure they match expected values
+  console.log('MerchantCode:', MerchantCode);
+  console.log('PaymentId:', PaymentId);
+  console.log('RefNo:', RefNo);
+  console.log('Amount:', Amount);
+  console.log('Currency:', Currency);
+  console.log('Status:', Status);
+
+  // Calculate the signature using the received parameters
+  const calculatedSignature = generateSignature({
     MerchantCode,
-    PaymentId,
     RefNo,
     Amount,
     Currency,
-    Status,
   }, merchantKey);
 
   console.log('Calculated Signature:', calculatedSignature);
   console.log('Received Signature:', Signature);
 
-  // Validate the received signature
+  // Validate the signature
   if (calculatedSignature !== Signature) {
     console.error('Invalid signature');
     return new Response('Invalid signature', { status: 400 });
   }
 
-  // Process payment success or failure based on Status
+  // Handle payment success or failure
   if (Status === '1') {
     console.log(`Payment successful for RefNo: ${RefNo}`);
-    // Add logic for successful payment handling (e.g., update database)
+    // Implement logic here for successful payment (e.g., update order status)
   } else {
-    console.log(`Payment failed or has a different status for RefNo: ${RefNo}`);
-    // Add logic for payment failure handling (e.g., notify user)
+    console.log(`Payment failed or other status for RefNo: ${RefNo}`);
+    // Implement logic here for payment failure (e.g., notify user)
   }
 
   console.log('Returning: RECEIVEOK');
   return new Response('RECEIVEOK', { status: 200 });
 }
-
-
-
-// import { NextRequest, NextResponse } from 'next/server';
-
-// export async function POST(request: NextRequest) {
-//   try {
-//     const formData = await request.formData();
-//     const data = Object.fromEntries(formData);
-
-//     // Process the payment data here if needed
-//     // Update your database or perform other actions
-
-//     const searchParams = new URLSearchParams(data as Record<string, string>);
-//     return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
-//   } catch (error) {
-//     console.error('Error processing payment response:', error);
-//     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
-//   }
-// }
