@@ -20,7 +20,8 @@ export async function POST(request: NextRequest) {
 
     const signature = generateSignature({ MerchantCode, RefNo, Amount: formattedAmount, Currency }, merchantKey);
 
-    // Prepare the payload for iPay88 request
+    console.log('Generated Signature:', signature);
+
     const paymentPayload = {
       ...body,
       Amount: formattedAmount,
@@ -35,7 +36,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: false, error: 'Failed to process payment request' });
   }
 }
-
 
 
 // app/api/initiate-payment/route.ts
