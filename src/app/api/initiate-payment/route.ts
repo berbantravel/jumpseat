@@ -43,27 +43,26 @@ import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
 interface PaymentRequestBody {
-  MerchantCode: string;
-  RefNo: string;
-  Amount: string;
-  Currency: string;
-  [key: string]: string;
+    MerchantCode: string;
+    RefNo: string;
+    Amount: string;
+    Currency: string;
+    [key: string]: string;
 }
 
 export async function POST(request: NextRequest) {
-  const body: PaymentRequestBody = await request.json();
-  const { MerchantCode, RefNo, Amount, Currency } = body;
-  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-  
-  const signature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
+    const body: PaymentRequestBody = await request.json();
+    const { MerchantCode, RefNo, Amount, Currency } = body;
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+    
+    console.log(merchantKey);
+    const signature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
+    console.log(signature);
 
-  // Prepare the payload for iPay88 request
-  const paymentPayload = {
-    ...body,
-    Signature: signature,
-  };
+    const paymentPayload = {
+        ...body,
+        Signature: signature
+    };
 
-  console.log('Payment request payload:', paymentPayload);
-
-  return NextResponse.json({ success: true, payload: paymentPayload });
+    return NextResponse.json({ success: true, payload: paymentPayload });
 }
