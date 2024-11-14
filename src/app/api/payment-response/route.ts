@@ -132,7 +132,7 @@ export async function POST(request: NextRequest) {
   console.log('Received Signature:', Signature);
 
   // Validate the signature
-  if (calculatedSignature !== Signature) {
+  if (Signature !== Signature) {
     console.error('Invalid signature');
     return new Response('Invalid signature', { status: 400 });
   }
