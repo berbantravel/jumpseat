@@ -12,11 +12,12 @@ interface PaymentRequestBody {
 export async function POST(request: NextRequest) {
   const body: PaymentRequestBody = await request.json();
   const { MerchantCode, RefNo, Amount, Currency } = body;
-  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-  
+  const merchantKey = process.env.IPAY88_MERCHANT_KEY as string;
+
+  // Generate the signature for initiate payment
   const signature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
 
-  // Prepare the payload for iPay88 request, including the signature
+  // Prepare the payload with the generated signature
   const paymentPayload = {
     ...body,
     Signature: signature,
@@ -26,7 +27,6 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ success: true, payload: paymentPayload });
 }
-
 
 
 // app/api/initiate-payment/route.ts
