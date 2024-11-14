@@ -44,9 +44,11 @@
 //   // Generate signature for response (correct field order)
 //   const calculatedSignature = generateSignature({
 //     MerchantCode,
+//     PaymentId,
 //     RefNo,
 //     Amount: formattedAmount,
 //     Currency,
+//     Status,
 //   }, merchantKey); // Pass the merchantKey as the second argument
 
 //   console.log('Calculated Signature:', calculatedSignature);
@@ -88,10 +90,9 @@
 //     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
 //   }
 // }
-
 // app/api/payment-response/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { generateSignature } from '@/lib/ipay88';
+import { generateResponseSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
   let body: Record<string, string>;
@@ -119,11 +120,13 @@ export async function POST(request: NextRequest) {
   const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
   // Generate the response signature using the same parameters
-  const calculatedSignature = generateSignature({
+  const calculatedSignature = generateResponseSignature({
     MerchantCode,
+    PaymentId,
     RefNo,
     Amount,
     Currency,
+    Status,
   }, merchantKey);
 
   console.log('Calculated Signature:', calculatedSignature);
