@@ -23,8 +23,6 @@ export async function POST(request: NextRequest) {
       } = data;
 
       const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-
-      // Ensure amount is formatted correctly (no commas, two decimals)
       const formattedAmount = Number(Amount.replace(',', '').trim()).toFixed(2).replace('.', '');
 
       // Debug formattedAmount and stringToHash
