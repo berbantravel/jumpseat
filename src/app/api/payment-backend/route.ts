@@ -1,75 +1,54 @@
+// app/api/payment-response/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { generateSignature } from '@/lib/ipay88';
+import { generateResponseSignature } from '@/lib/ipay88';  // Use the response signature function
 
 export async function POST(request: NextRequest) {
-  try {
-    const contentType = request.headers.get('content-type') || '';
+  const body = await request.json();
+  console.log('Received body:', body); // Log the incoming request body
+  
+  const {
+    MerchantCode,
+    PaymentId,
+    RefNo,
+    Amount,
+    Currency,
+    Status,
+    Signature,
+  } = body;
 
-    if (contentType.indexOf('application/x-www-form-urlencoded') !== -1) {
-      const formData = await request.formData();
-      const data = Object.fromEntries(
-        Array.from(formData.entries()).map(([key, value]) => [key, String(value)])
-      ) as Record<string, string>;
+  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
-      console.log('Received body:', data);
+  // Calculate the response signature
+  const calculatedSignature = generateResponseSignature({
+    MerchantCode,
+    PaymentId,
+    RefNo,
+    Amount,
+    Currency,
+    Status,
+  }, merchantKey);
 
-      const {
-        MerchantCode,
-        RefNo,
-        Amount,
-        Currency,
-        Status,
-        Signature,
-      } = data;
+  // Log the calculated and received signature for debugging
+  console.log('Calculated Signature:', calculatedSignature);
+  console.log('Received Signature:', Signature);
 
-      const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-      const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '').trim();
-
-      console.log('Original Amount:', Amount);
-      console.log('Formatted Amount:', formattedAmount);
-
-      const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
-      console.log('String to Hash:', stringToHash);
-
-      const calculatedSignature = generateSignature(
-        {
-          MerchantCode,
-          RefNo,
-          Amount: formattedAmount,
-          Currency,
-        },
-        merchantKey
-      );
-
-      console.log('Calculated Signature:', calculatedSignature);
-      console.log('Received Signature:', Signature);
-      console.log('MerchantCode:', MerchantCode);
-      console.log('RefNo:', RefNo);
-      console.log('Formatted Amount:', formattedAmount);
-      console.log('Currency:', Currency);
-      console.log('Status:', Status);
-
-      if (calculatedSignature !== Signature) {
-        console.error('Invalid signature');
-        return new NextResponse("Invalid signature", { status: 400 });
-      }
-
-      if (Status === '1') {
-        console.log(`Payment successful for RefNo: ${RefNo}`);
-        // Implement logic for successful payment
-      } else {
-        console.log(`Payment failed or other status for RefNo: ${RefNo}`);
-        // Implement logic for failed payment
-      }
-
-      return new NextResponse('RECEIVEOK', { status: 200, headers: { 'Content-Type': 'text/plain' } });
-    } else {
-      return new NextResponse('Unsupported content type', { status: 400 });
-    }
-  } catch (error) {
-    console.error('Error processing payment response:', error);
-    return new NextResponse('Internal server error', { status: 500 });
+  // Check if the calculated signature matches the received signature
+  if (calculatedSignature !== Signature) {
+    console.error('Invalid signature');
+    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
+
+  // Handle the payment status
+  if (Status === '1') {
+    console.log(`Payment successful for RefNo: ${RefNo}`);
+    // Implement logic for successful payment (e.g., updating order status)
+  } else {
+    console.log(`Payment failed or other status for RefNo: ${RefNo}`);
+    // Implement logic for failed payment (e.g., notify user)
+  }
+
+  console.log('Returning: RECEIVEOK');
+  return NextResponse.json({ message: 'RECEIVEOK' });
 }
 
 
