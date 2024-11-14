@@ -1,5 +1,3 @@
-// File: lib/ipay88.ts
-
 import crypto from 'crypto';
 
 interface SignatureParams {

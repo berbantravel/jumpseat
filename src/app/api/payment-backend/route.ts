@@ -1,4 +1,3 @@
-// File: pages/api/payment-backend.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
@@ -52,7 +51,7 @@ export async function POST(request: NextRequest) {
     }, merchantKey);
 
     console.log('Calculated Signature:', calculatedSignature);
-    console.log('Received Signature:', Signature);
+    console.log('Received Signature:', Signature || 'No signature received');
     console.log('MerchantCode:', MerchantCode);
     console.log('RefNo:', RefNo);
     console.log('Formatted Amount:', formattedAmount);
@@ -82,6 +81,7 @@ export async function POST(request: NextRequest) {
     return new NextResponse('Internal server error', { status: 500 });
   }
 }
+
 
 
 
