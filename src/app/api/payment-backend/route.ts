@@ -2,16 +2,17 @@ import { NextRequest, NextResponse } from 'next/server';
 import { generateResponseSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
-  let body;
-  
+  let body: Record<string, string>;
+
   try {
-    // Attempt to parse the request body as JSON
-    body = await request.json();
+    // Parse the raw text of the body to handle URL-encoded form data
+    const rawBody = await request.text();
+    body = Object.fromEntries(new URLSearchParams(rawBody));
   } catch (error) {
-    console.error('Failed to parse JSON:', error);
-    return NextResponse.json({ error: 'Invalid JSON format' }, { status: 400 });
+    console.error('Failed to parse form-encoded body:', error);
+    return NextResponse.json({ error: 'Invalid body format' }, { status: 400 });
   }
-  
+
   console.log('Received body:', body);
 
   const {
