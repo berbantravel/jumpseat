@@ -99,6 +99,7 @@ export async function POST(request: NextRequest) {
   let body: Record<string, string>;
 
   try {
+    // Parse the request body as form data
     const formData = await request.formData();
     body = Object.fromEntries(formData.entries()) as Record<string, string>;
 
@@ -111,8 +112,10 @@ export async function POST(request: NextRequest) {
       Amount,
       Currency,
       Status,
-      Signature, // Received signature from iPay88
+      Signature, // Signature from iPay88
     } = body;
+
+    console.log('Received Signature:', Signature);
 
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
     if (!merchantKey) {
@@ -120,7 +123,7 @@ export async function POST(request: NextRequest) {
       return new Response('Server configuration issue', { status: 500 });
     }
 
-    // Generate the signature for response verification
+    // Generate the signature for verification
     const calculatedSignature = generateSignature({
       MerchantCode,
       PaymentId,
@@ -130,22 +133,22 @@ export async function POST(request: NextRequest) {
       Status,
     }, merchantKey);
 
+    console.log('String to hash:', `${merchantKey}${MerchantCode}${PaymentId}${RefNo}${Amount.replace('.', '')}${Currency}${Status}`);
     console.log('Calculated Signature:', calculatedSignature);
-    console.log('Received Signature:', Signature);
 
-    // Compare the received signature with the calculated one
+    // Validate the signature
     if (calculatedSignature !== Signature) {
       console.error('Invalid signature');
       return new Response('Invalid signature', { status: 400 });
     }
 
-    // Handle payment success or failure
+    // Handle payment success or failure based on Status
     if (Status === '1') {
       console.log(`Payment successful for RefNo: ${RefNo}`);
-      // Implement your successful payment logic here (e.g., update order status)
+      // Implement successful payment logic here (e.g., update order status)
     } else {
       console.log(`Payment failed or other status for RefNo: ${RefNo}`);
-      // Implement your payment failure logic here (e.g., notify the user)
+      // Implement failed payment logic here (e.g., notify the user)
     }
 
     console.log('Returning: RECEIVEOK');
