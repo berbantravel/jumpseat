@@ -1,4 +1,3 @@
-// app/api/initiate-payment/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
@@ -17,7 +16,7 @@ export async function POST(request: NextRequest) {
   
   const signature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
 
-  // Prepare the payload for iPay88 request
+  // Prepare the payload for iPay88 request, including the signature
   const paymentPayload = {
     ...body,
     Signature: signature,
@@ -27,6 +26,7 @@ export async function POST(request: NextRequest) {
 
   return NextResponse.json({ success: true, payload: paymentPayload });
 }
+
 
 
 // app/api/initiate-payment/route.ts

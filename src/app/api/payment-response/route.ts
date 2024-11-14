@@ -97,12 +97,18 @@ import { generateResponseSignature } from '@/lib/ipay88';
 export async function POST(request: NextRequest) {
   let body: Record<string, string>;
 
-  // Parse the request body based on content type
-  if (request.headers.get('content-type') === 'application/json') {
-    body = await request.json();
-  } else {
-    const formData = await request.formData();
-    body = Object.fromEntries(formData.entries()) as Record<string, string>;
+  try {
+    // Check content type and parse accordingly
+    if (request.headers.get('content-type') === 'application/json') {
+      body = await request.json();
+    } else {
+      // For form data (e.g., application/x-www-form-urlencoded), parse using URLSearchParams
+      const rawBody = await request.text();
+      body = Object.fromEntries(new URLSearchParams(rawBody));
+    }
+  } catch (error) {
+    console.error('Error parsing request body:', error);
+    return new Response('Invalid request format', { status: 400 });
   }
 
   console.log('Received body:', body);
@@ -119,7 +125,7 @@ export async function POST(request: NextRequest) {
 
   const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
-  // Generate the response signature using the same parameters
+  // Recalculate the signature using the received parameters
   const calculatedSignature = generateResponseSignature({
     MerchantCode,
     PaymentId,
@@ -132,24 +138,25 @@ export async function POST(request: NextRequest) {
   console.log('Calculated Signature:', calculatedSignature);
   console.log('Received Signature:', Signature);
 
-  // Validate the signature
+  // Validate the received signature
   if (calculatedSignature !== Signature) {
     console.error('Invalid signature');
     return new Response('Invalid signature', { status: 400 });
   }
 
-  // Handle payment success or failure
+  // Process payment success or failure based on Status
   if (Status === '1') {
     console.log(`Payment successful for RefNo: ${RefNo}`);
-    // Implement logic here for successful payment (e.g., update order status)
+    // Add logic for successful payment handling (e.g., update database)
   } else {
-    console.log(`Payment failed or other status for RefNo: ${RefNo}`);
-    // Implement logic here for payment failure (e.g., notify user)
+    console.log(`Payment failed or has a different status for RefNo: ${RefNo}`);
+    // Add logic for payment failure handling (e.g., notify user)
   }
 
   console.log('Returning: RECEIVEOK');
   return new Response('RECEIVEOK', { status: 200 });
 }
+
 
 
 // import { NextRequest, NextResponse } from 'next/server';

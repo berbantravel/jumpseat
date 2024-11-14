@@ -2,10 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { generateResponseSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
-  let body: Record<string, string>;
-
+  let body;
   try {
-    // Parse the raw text of the body to handle URL-encoded form data
+    // Parse raw body as URL-encoded data from iPay88
     const rawBody = await request.text();
     body = Object.fromEntries(new URLSearchParams(rawBody));
   } catch (error) {
@@ -22,11 +21,12 @@ export async function POST(request: NextRequest) {
     Amount,
     Currency,
     Status,
-    Signature,
+    Signature,  // This is the signature sent by iPay88
   } = body;
 
   const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
+  // Recreate the signature based on received data
   const calculatedSignature = generateResponseSignature({
     MerchantCode,
     PaymentId,
@@ -39,17 +39,19 @@ export async function POST(request: NextRequest) {
   console.log('Calculated Signature:', calculatedSignature);
   console.log('Received Signature:', Signature);
 
+  // Compare received signature with calculated one
   if (calculatedSignature !== Signature) {
     console.error('Invalid signature');
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
 
+  // Process payment status
   if (Status === '1') {
     console.log(`Payment successful for RefNo: ${RefNo}`);
-    // Add logic for successful payment here
+    // Implement successful payment logic
   } else {
     console.log(`Payment failed or other status for RefNo: ${RefNo}`);
-    // Add logic for failed payment here
+    // Implement failed payment logic
   }
 
   console.log('Returning: RECEIVEOK');
