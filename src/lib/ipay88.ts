@@ -2,29 +2,25 @@ import crypto from 'crypto';
 
 interface SignatureParams {
   MerchantCode: string;
-  PaymentId?: string; // Optional for initiate payment
   RefNo: string;
   Amount: string;
   Currency: string;
-  Status?: string; // Optional for initiate payment, required for response verification
 }
 
+
 export function generateSignature(params: SignatureParams, merchantKey: string): string {
-  const { MerchantCode, PaymentId, RefNo, Amount, Currency, Status } = params;
+  const { MerchantCode, RefNo, Amount, Currency } = params;
 
-  // Format Amount (no commas, no decimals)
-  const formattedAmount = Number(Amount).toFixed(2).replace('.', '').replace(',', '');
+  // Ensure Amount is formatted correctly (remove decimal and comma)
+  const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '');
 
-  // Construct the string for hashing
-  const stringToHash = Status
-    ? `${merchantKey}${MerchantCode}${PaymentId}${RefNo}${formattedAmount}${Currency}${Status}`
-    : `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
+  // Concatenate the parameters with the merchant key (verify order in the iPay88 docs)
+  const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
 
-  // Log the string for debugging
-  console.log('String to hash:', stringToHash);
-
-  // Create the SHA256 hash and return it as a Base64-encoded string
-  return crypto.createHash('sha256').update(stringToHash, 'utf8').digest('base64');
+  // Generate MD5 hash
+  const signature = crypto.createHash('md5').update(stringToHash).digest('hex').toUpperCase();
+  
+  return signature;
 }
 
 
