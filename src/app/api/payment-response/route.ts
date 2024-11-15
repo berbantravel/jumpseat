@@ -111,7 +111,6 @@ export async function POST(request: NextRequest) {
 
   const {
     MerchantCode,
-    PaymentId,
     RefNo,
     Amount,
     Currency,
