@@ -18,7 +18,7 @@ export function generateSignature(params: SignatureParams, merchantKey: string):
   const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
 
   // Generate MD5 hash
-  const signature = crypto.createHash('md5').update(stringToHash).digest('hex').toUpperCase();
+  const signature = crypto.createHash('sha256').update(stringToHash).digest('hex').toUpperCase();
   
   return signature;
 }
