@@ -5,7 +5,7 @@ import { generateSignature } from '@/lib/ipay88';
 export async function POST(request: NextRequest) {
   const body = await request.json();
   const { MerchantCode, RefNo, Amount, Currency } = body;
-  const merchantKey = process.env.IPAY88_MERCHANT_KEY as string;
+  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
   if (!merchantKey) {
     console.error('Merchant key is missing');
