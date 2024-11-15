@@ -119,16 +119,20 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Merchant key not found' }, { status: 500 });
   }
 
+  // Generate the expected signature
   const calculatedSignature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
+
   console.log('Calculated Signature:', calculatedSignature);
   console.log('Received Signature:', receivedSignature);
 
+  // Validate the signature
   if (calculatedSignature !== receivedSignature) {
     console.error('Invalid signature');
     return new Response('Invalid signature', { status: 400 });
   }
 
   console.log('Signature verified successfully');
+  // Send RECEIVEOK response to acknowledge the backend post
   return new Response('RECEIVEOK', { status: 200 });
 }
 

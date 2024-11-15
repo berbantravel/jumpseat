@@ -15,13 +15,18 @@ export async function POST(request: NextRequest) {
   const signature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
   console.log('Generated Signature:', signature);
 
+  // Create a payload with the signature
   const paymentPayload = {
     ...body,
     Signature: signature
   };
 
+  // You can store the signature in a database or cache for later validation
+  // Example: await saveSignatureToDB(RefNo, signature);
+
   return NextResponse.json({ success: true, payload: paymentPayload });
 }
+
 
 
 // app/api/initiate-payment/route.ts
