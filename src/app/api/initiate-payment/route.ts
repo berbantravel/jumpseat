@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
     const { MerchantCode, RefNo, Amount, Currency } = body;
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
-    // Debug check for undefined merchantKey
     if (!merchantKey) {
         console.error('Merchant key is undefined');
         return NextResponse.json({ success: false, error: 'Merchant key not found' });
@@ -29,6 +28,9 @@ export async function POST(request: NextRequest) {
 
     console.log('Generated signature:', signature);
 
+    // Store the signature along with transaction details in a database or a temporary store
+    // Example: await saveSignatureToDB(RefNo, signature);
+
     const paymentPayload = {
         ...body,
         Signature: signature
@@ -36,6 +38,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, payload: paymentPayload });
 }
+
 
 
 // app/api/initiate-payment/route.ts

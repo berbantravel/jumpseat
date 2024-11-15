@@ -94,12 +94,10 @@
 
 // app/api/payment-response/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { generateSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
   let body: Record<string, string>;
 
-  // Parse the request body based on content type
   if (request.headers.get('content-type') === 'application/json') {
     body = await request.json();
   } else {
@@ -109,36 +107,25 @@ export async function POST(request: NextRequest) {
 
   console.log('Received body:', body);
 
-  const {
-    MerchantCode,
-    RefNo,
-    Amount,
-    Currency,
-    Status,
-    Signature,
-  } = body;
+  const { RefNo, Signature } = body;
 
-  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+  // Retrieve the previously generated signature from the database or temporary store
+  // Example: const storedSignature = await getSignatureFromDB(RefNo);
 
-  // Generate the response signature using the same parameters
-  const calculatedSignature = generateSignature({
-    MerchantCode,
-    RefNo,
-    Amount,
-    Currency,
-  }, merchantKey);
+  // Simulated retrieval for demonstration
+  const storedSignature = 'fd9b39ea2010da52f43c61fa9115091a7dd6c35e5267aba4c4ba6090ffbb2b5d'; // Replace with actual retrieval logic
 
-  console.log('Calculated Signature:', calculatedSignature);
+  console.log('Stored Signature:', storedSignature);
   console.log('Received Signature:', Signature);
 
   // Validate the signature
-  if (calculatedSignature !== Signature) {
+  if (storedSignature !== Signature) {
     console.error('Invalid signature');
     return new Response('Invalid signature', { status: 400 });
   }
 
   // Handle payment success or failure
-  if (Status === '1') {
+  if (body.Status === '1') {
     console.log(`Payment successful for RefNo: ${RefNo}`);
     // Implement logic here for successful payment (e.g., update order status)
   } else {
