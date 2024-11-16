@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
       Signature: receivedSignature,
     } = body;
 
-    const merchantKey = process.env.IPAY88_MERCHANT_KEY as string;
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
     if (!merchantKey) {
       console.error('Merchant key is missing');
       return new Response('Merchant key not found', { status: 500 });
