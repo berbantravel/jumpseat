@@ -94,45 +94,19 @@
 
 // app/api/payment-response/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { generateSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
-  let body: Record<string, string>;
-
-  if (request.headers.get('content-type') === 'application/json') {
-    body = await request.json();
-  } else if (request.headers.get('content-type') === 'application/x-www-form-urlencoded') {
+  try {
     const formData = await request.formData();
-    body = Object.fromEntries(formData.entries()) as Record<string, string>;
-  } else {
-    console.error('Unsupported content type');
-    return NextResponse.json({ error: 'Unsupported content type' }, { status: 400 });
+    const data = Object.fromEntries(formData);
+
+    // Process the payment data here if needed
+    // Update your database or perform other actions
+
+    const searchParams = new URLSearchParams(data as Record<string, string>);
+    return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
+  } catch (error) {
+    console.error('Error processing payment response:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
-
-  console.log('Received body:', body);
-
-  const { MerchantCode, RefNo, Amount, Currency, Signature: receivedSignature } = body;
-  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-
-  if (!merchantKey) {
-    console.error('Merchant key is missing');
-    return NextResponse.json({ error: 'Merchant key not found' }, { status: 500 });
-  }
-
-  // Generate the expected signature
-  const calculatedSignature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
-
-  console.log('Calculated Signature:', calculatedSignature);
-  console.log('Received Signature:', receivedSignature);
-
-  // Validate the signature
-  if (calculatedSignature !== receivedSignature) {
-    console.error('Invalid signature');
-    return new Response('Invalid signature', { status: 400 });
-  }
-
-  console.log('Signature verified successfully');
-  // Send RECEIVEOK response to acknowledge the backend post
-  return new Response('RECEIVEOK', { status: 200 });
 }
-
