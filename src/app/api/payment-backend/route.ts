@@ -1,53 +1,66 @@
+// app/api/payment-backend/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  console.log('Received body:', body); // Log the incoming request body
-  
+  let body: Record<string, string>;
+
+  // Parse the request body based on content type
+  if (request.headers.get('content-type') === 'application/json') {
+    body = await request.json();
+  } else if (request.headers.get('content-type') === 'application/x-www-form-urlencoded') {
+    const formData = await request.formData();
+    body = Object.fromEntries(formData.entries()) as Record<string, string>;
+  } else {
+    console.error('Unsupported content type');
+    return NextResponse.json({ error: 'Unsupported content type' }, { status: 400 });
+  }
+
+  console.log('Received body:', body);
+
   const {
     MerchantCode,
     RefNo,
     Amount,
     Currency,
-    Status,
-    Signature,
+    Signature: receivedSignature,
+    Status
   } = body;
 
-  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-  const calculatedSignature = generateSignature({
-    MerchantCode,
-    RefNo,
-    Amount,
-    Currency,
-  }, merchantKey);
+  const merchantKey = process.env.IPAY88_MERCHANT_KEY as string;
 
- // Log the calculated signature
- console.log('Calculated Signature:', calculatedSignature);
- console.log('Received Signature:', Signature);
+  if (!merchantKey) {
+    console.error('Merchant key is missing');
+    return NextResponse.json({ error: 'Merchant key not found' }, { status: 500 });
+  }
 
+  // Generate the expected signature using the received parameters
+  const calculatedSignature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
 
-  if (calculatedSignature !== Signature) {
+  console.log('Calculated Signature:', calculatedSignature);
+  console.log('Received Signature:', receivedSignature);
+
+  // Validate the signature to ensure the data integrity
+  if (calculatedSignature !== receivedSignature) {
     console.error('Invalid signature');
-    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
+    return new Response('Invalid signature', { status: 400 });
   }
 
+  // Check if the payment status is '1' (successful)
   if (Status === '1') {
-    // Payment successful
     console.log(`Payment successful for RefNo: ${RefNo}`);
-    // Implement logic here
+    // Implement logic here to update the order status if it has not been updated yet
+    // Example: const order = await getOrder(RefNo);
+    // if (order.status !== 'completed') { await updateOrderStatus(RefNo, 'completed'); }
   } else {
-    // Payment failed or other status
     console.log(`Payment failed or other status for RefNo: ${RefNo}`);
-    // Implement logic here
+    // Implement logic for failed or other statuses if needed
   }
 
+  // Respond with RECEIVEOK to acknowledge receipt of the payment status
   console.log('Returning: RECEIVEOK');
-  return NextResponse.json({ message: 'RECEIVEOK' });
+  return new Response('RECEIVEOK', { status: 200 });
 }
-
-
-
 
 
 // import { NextRequest, NextResponse } from 'next/server';
