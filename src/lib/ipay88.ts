@@ -6,11 +6,11 @@ interface SignatureParams {
   Currency: string;
 }
 
-export function generateSignature(params: SignatureParams, merchantKey: string): string {
+export function generateSignature(merchantKey: string, params: SignatureParams): string {
   const { MerchantCode, RefNo, Amount, Currency } = params;
   
   const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '');
-  
+  console.log("paramters",merchantKey, MerchantCode, RefNo, formattedAmount, Currency);
   const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
   
   // Generate SHA256 hash

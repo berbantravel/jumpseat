@@ -104,6 +104,7 @@ export async function POST(request: NextRequest) {
     // Update your database or perform other actions
 
     const searchParams = new URLSearchParams(data as Record<string, string>);
+    console.log("Data:",data)
     return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
   } catch (error) {
     console.error('Error processing payment response:', error);

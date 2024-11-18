@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Generate the expected signature using the received parameters
-    const calculatedSignature = generateSignature({ MerchantCode, RefNo, Amount, Currency }, merchantKey);
+    const calculatedSignature = generateSignature(merchantKey,{ MerchantCode, RefNo, Amount, Currency });
     console.log('Calculated Signature:', calculatedSignature);
     console.log('Received Signature:', receivedSignature);
 
