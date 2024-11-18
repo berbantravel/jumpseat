@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
     
     // console.log(merchantKey);
     const signature = generateSignature(merchantKey, { MerchantCode, RefNo, Amount, Currency });
-    // console.log(signature);
+    console.log(signature);
 
     const paymentPayload = {
         ...body,
