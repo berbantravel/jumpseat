@@ -10,7 +10,7 @@ export function generateSignature(merchantKey: string, params: SignatureParams):
   const { MerchantCode, RefNo, Amount, Currency } = params;
   
   const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '');
-  console.log("paramters",merchantKey, MerchantCode, RefNo, formattedAmount, Currency);
+  console.log("parameters",merchantKey, MerchantCode, RefNo, formattedAmount, Currency);
   const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
   
   // Generate SHA256 hash
