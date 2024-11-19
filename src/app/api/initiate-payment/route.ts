@@ -16,10 +16,9 @@ export async function POST(request: NextRequest) {
     const { MerchantCode, RefNo, Amount, Currency } = body;
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
     
-    console.log("MERCHANT KEY",merchantKey);
+    // console.log(merchantKey);
     const signature = generateSignature(merchantKey, { MerchantCode, RefNo, Amount, Currency });
-    console.log("SIGNATURE",signature);
-    console.log("Payment Payload",body);
+    console.log(signature);
 
     const paymentPayload = {
         ...body,

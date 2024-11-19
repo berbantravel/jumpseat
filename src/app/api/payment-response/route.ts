@@ -94,50 +94,18 @@
 
 // app/api/payment-response/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import { generateSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
 
-    // Extract the relevant fields from the form data
-    const {
-      MerchantCode,
-      RefNo,
-      Amount,
-      Currency,
-      Status,
-      Signature: receivedSignature,
-    } = data as Record<string, string>;
+    // Process the payment data here if needed
+    // Update your database or perform other actions
 
-    // Fetch the merchant key from environment variables
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-    if (!merchantKey) {
-      console.error('Merchant key is missing');
-      return NextResponse.json({ error: 'Merchant key not found' }, { status: 500 });
-    }
-
-    // Generate the expected signature using the received parameters
-    const calculatedSignature = generateSignature(merchantKey, { MerchantCode, RefNo, Amount, Currency });
-    console.log('Calculated Signature:', calculatedSignature);
-    console.log('Received Signature:', receivedSignature);
-
-    // Validate the signature
-    if (calculatedSignature !== receivedSignature) {
-      console.error('Invalid signature');
-      return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
-    }
-
-    // Process the payment data if needed (e.g., update database)
-    // You can update the order status or perform any actions needed here
-    console.log('Payment data is valid. Proceeding with payment processing.');
-
-    // Redirect to the payment response page with query parameters
     const searchParams = new URLSearchParams(data as Record<string, string>);
-    console.log('Data:', data);
+    console.log("Data:",data)
     return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
-
   } catch (error) {
     console.error('Error processing payment response:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
