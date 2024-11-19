@@ -3,11 +3,14 @@ import { generateSignature } from '@/lib/ipay88';
 
 // Mock function for checking if the order has already been updated
 async function isOrderAlreadyUpdated(refNo: string): Promise<boolean> {
+  // Implement logic here to check if the order with the given `refNo` has been updated
+  // Example: Query the database to see if the order status is already 'completed' or updated
   return false; // Change this based on actual logic
 }
 
 // Mock function for updating the order status
 async function updateOrderStatus(refNo: string, status: string) {
+  // Implement logic here to update the order status in your database
   console.log(`Order ${refNo} status updated to ${status}`);
 }
 
@@ -45,12 +48,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Generate the expected signature using the received parameters
-    const calculatedSignature = generateSignature(merchantKey, { MerchantCode, RefNo, Amount, Currency });
+    const calculatedSignature = generateSignature(merchantKey,{ MerchantCode, RefNo, Amount, Currency });
     console.log('Calculated Signature:', calculatedSignature);
     console.log('Received Signature:', receivedSignature);
 
-    // Validate the signature (case-insensitive)
-    if (calculatedSignature.toLowerCase() !== receivedSignature.toLowerCase()) {
+    // Validate the signature
+    if (calculatedSignature !== receivedSignature) {
       console.error('Invalid signature');
       return new Response('Invalid signature', { status: 400 });
     }

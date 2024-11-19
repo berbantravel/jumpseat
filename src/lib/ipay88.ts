@@ -8,20 +8,15 @@ interface SignatureParams {
 
 export function generateSignature(merchantKey: string, params: SignatureParams): string {
   const { MerchantCode, RefNo, Amount, Currency } = params;
-
-  // Format the amount and remove extra characters
+  
   const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '');
-  console.log("parameters", merchantKey, MerchantCode, RefNo, formattedAmount, Currency);
-
-  // Create the string to hash
+  console.log("parameters",merchantKey, MerchantCode, RefNo, formattedAmount, Currency);
   const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
-  console.log('String to Hash:', stringToHash); // Log the string to hash for debugging
-
+  
   // Generate SHA256 hash
   const signature = crypto.createHash('sha256').update(stringToHash).digest('hex');
   return signature;
 }
-
 // import crypto from 'crypto';
 // interface SignatureParams {
 //   MerchantCode: string;
