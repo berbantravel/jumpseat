@@ -94,80 +94,67 @@ function CheckoutContent() {
 
   const initiatePayment = async () => {
     try {
-      // Store user information locally
-      localStorage.setItem('USER_INFORMATION', JSON.stringify(formData));
-  
-      setIsProcessing(true);
-  
-      // Format Amount in cents (e.g., 2011.20 -> 201120)
-      const formattedAmount = (total * 100).toFixed(0); // Convert to cents
-      console.log('Formatted Amount for iPay88:', formattedAmount);
-  
-      // Generate payload
-      const payload = {
-        MerchantCode: process.env.NEXT_PUBLIC_IPAY88_MERCHANT_CODE,
-        PaymentId: selectedPaymentMethod,
-        RefNo: generateRefNo(),
-        Quantity: quantity,
-        SubTotal: subtotal,
-        Total: total,
-        ProcessingFee: processingFee,
-        Amount: formattedAmount, // Send formatted amount
-        Currency: process.env.NEXT_PUBLIC_IPAY88_CURRENCY,
-        ProdDesc: `${productDetails.name} - ${productDetails.description}`,
-        UserName: `${formData.firstName} ${formData.lastName}`,
-        UserEmail: formData.email,
-        UserContact: formData.phone,
-        Remark: formData.message,
-        Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
-        SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
-        ResponseURL: `${window.location.origin}/api/payment-response`,
-        BackendURL: `${window.location.origin}/api/payment-backend`,
-      };
-  
-      console.log('Payload sent to iPay88:', payload);
-  
-      // Send payload to backend for signature generation
+      localStorage.setItem('USER_INFORMATION', JSON.stringify(formData))
+
+      setIsProcessing(true)
+
       const response = await fetch('/api/initiate-payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(payload),
-      });
-  
-      const data: PaymentResponse = await response.json();
-  
+        body: JSON.stringify({
+          MerchantCode: process.env.NEXT_PUBLIC_IPAY88_MERCHANT_CODE,
+          PaymentId: selectedPaymentMethod, 
+          RefNo: generateRefNo(),
+          Quantity: quantity,
+          SubTotal: subtotal,
+          Total: total,
+          ProcessingFee: processingFee,
+          Amount: total.toFixed(2),
+          Currency: process.env.NEXT_PUBLIC_IPAY88_CURRENCY,
+          ProdDesc: `${productDetails.name} - ${productDetails.description}`,
+          UserName: `${formData.firstName} ${formData.lastName}`,
+          UserEmail: formData.email,
+          UserContact: formData.phone,
+          Remark: formData.message, // Add new field
+          Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
+          SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
+          ResponseURL: `${window.location.origin}/api/payment-response`,
+          BackendURL: `${window.location.origin}/api/payment-backend`,
+        }),
+      })
+
+      const data: PaymentResponse = await response.json()
       if (data.success) {
-        localStorage.setItem('IPAY88_PAYLOAD', JSON.stringify(data.payload));
-        submitToIPay88(data.payload); // Redirect to iPay88 with the payload
+        localStorage.setItem('IPAY88_PAYLOAD', JSON.stringify(data.payload))
+        submitToIPay88(data.payload)
       } else {
-        console.error('Failed to initiate payment:', data);
+        console.error('Failed to initiate payment')
       }
     } catch (error) {
-      console.error('Error initiating payment:', error);
-    } finally {
-      setIsProcessing(false);
+      console.error('Error initiating payment:', error)
     }
-  };
+  }
 
   const submitToIPay88 = (payload: PaymentResponse['payload']) => {
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string; // Ensure iPay88 URL is set
-  
+    const form = document.createElement('form')
+    form.method = 'POST'
+    // form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp' 
+    form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
+
     Object.entries(payload).forEach(([key, value]) => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = value;
-      form.appendChild(input);
-    });
-  
-    document.body.appendChild(form);
-    console.log('Submitting form to iPay88 with payload:', payload);
-    form.submit();
-  };
+      const input = document.createElement('input')
+      input.type = 'hidden'
+      input.name = key
+      input.value = value
+      form.appendChild(input)
+    })
+
+    document.body.appendChild(form)
+    form.submit()
+  }
+
   const isValidEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
