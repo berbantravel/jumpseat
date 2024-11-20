@@ -47,14 +47,28 @@ export async function POST(request: NextRequest) {
       return new Response('Merchant key not found', { status: 500 });
     }
 
+    // Format amount to remove decimals and match iPay88 requirements
+    const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
+
     // Generate the expected signature using the received parameters
-    const calculatedSignature = generateSignature(merchantKey,{ MerchantCode, RefNo, Amount, Currency });
+    const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
+    console.log('String to Hash:', stringToHash); // Log the string to hash for debugging
+
+    const calculatedSignature = generateSignature(merchantKey, {
+      MerchantCode,
+      RefNo,
+      Amount: formattedAmount,
+      Currency,
+    });
+
     console.log('Calculated Signature:', calculatedSignature);
     console.log('Received Signature:', receivedSignature);
 
-    // Validate the signature
-    if (calculatedSignature !== calculatedSignature) {
-      console.error('Invalid signature');
+    // Validate the signature (case-insensitive)
+    if (calculatedSignature.toLowerCase() !== receivedSignature.toLowerCase()) {
+      console.error('Signature mismatch!');
+      console.error('Calculated Signature:', calculatedSignature);
+      console.error('Received Signature:', receivedSignature);
       return new Response('Invalid signature', { status: 400 });
     }
 
@@ -80,6 +94,7 @@ export async function POST(request: NextRequest) {
     return new Response('Error processing request', { status: 500 });
   }
 }
+
 
 
 // import { NextRequest, NextResponse } from 'next/server';

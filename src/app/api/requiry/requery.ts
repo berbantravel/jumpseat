@@ -43,7 +43,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', ''); // Format Amount
   const queryString = `MerchantCode=${encodeURIComponent(MerchantCode as string)}&RefNo=${encodeURIComponent(RefNo as string)}&Amount=${encodeURIComponent(formattedAmount)}`;
-  const apiUrl = `https://payment.ipay88.com.ph/MerchantService/Payment/Inquiry?${queryString}`;
+  const apiUrl = `https://sandbox.ipay88.com.ph/MerchantService/Payment/Inquiry?${queryString}`;
 
   try {
     // Make the request to iPay88 URL
