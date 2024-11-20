@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
   let body: Record<string, string>;
 
   try {
-    // Parse the request body based on content type
     const contentType = request.headers.get('content-type');
     if (contentType === 'application/json') {
       body = await request.json();
@@ -47,55 +46,53 @@ export async function POST(request: NextRequest) {
       return new Response('Merchant key not found', { status: 500 });
     }
 
-    // Format amount to remove decimals and match iPay88 requirements
+     // Format amount to remove decimals and match iPay88 requirements
     const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
+// Generate the expected signature using the received parameters
+const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
+console.log('String to Hash:', stringToHash); // Log the string to hash for debugging
 
-    // Generate the expected signature using the received parameters
-    const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
-    console.log('String to Hash:', stringToHash); // Log the string to hash for debugging
+const calculatedSignature = generateSignature(merchantKey, {
+  MerchantCode,
+  RefNo,
+  Amount: formattedAmount,
+  Currency,
+});
 
-    const calculatedSignature = generateSignature(merchantKey, {
-      MerchantCode,
-      RefNo,
-      Amount: formattedAmount,
-      Currency,
-    });
+console.log('Calculated Signature:', calculatedSignature);
+console.log('Received Signature:', receivedSignature);
 
-    console.log('Calculated Signature:', calculatedSignature);
-    console.log('Received Signature:', receivedSignature);
-
-    // Validate the signature (case-insensitive)
-    if (calculatedSignature.toLowerCase() !== receivedSignature.toLowerCase()) {
-      console.error('Signature mismatch!');
-      console.error('Calculated Signature:', calculatedSignature);
-      console.error('Received Signature:', receivedSignature);
-      return new Response('Invalid signature', { status: 400 });
-    }
-
-    // Check if the order has already been updated to avoid duplicate processing
-    if (await isOrderAlreadyUpdated(RefNo)) {
-      console.log(`Order ${RefNo} has already been updated. Skipping processing.`);
-      return new Response('RECEIVEOK'); // Return plain text acknowledgment
-    }
-
-    // Update the order status if payment was successful (Status '1' indicates success)
-    if (Status === '1') {
-      console.log(`Payment successful for RefNo: ${RefNo}`);
-      await updateOrderStatus(RefNo, 'completed');
-    } else {
-      console.log(`Payment failed or other status for RefNo: ${RefNo}`);
-      await updateOrderStatus(RefNo, 'failed');
-    }
-
-    // Respond with plain text 'RECEIVEOK' to acknowledge the response
-    return new Response('RECEIVEOK');
-  } catch (error) {
-    console.error('Error handling the request:', error);
-    return new Response('Error processing request', { status: 500 });
-  }
+// Validate the signature (case-insensitive)
+if (calculatedSignature.toLowerCase() !== receivedSignature.toLowerCase()) {
+  console.error('Signature mismatch!');
+  console.error('Calculated Signature:', calculatedSignature);
+  console.error('Received Signature:', receivedSignature);
+  return new Response('Invalid signature', { status: 400 });
 }
 
+console.log('Signature validation passed.');
 
+// Check if the order has already been updated to avoid duplicate processing
+if (await isOrderAlreadyUpdated(RefNo)) {
+  console.log(`Order ${RefNo} has already been updated. Skipping processing.`);
+  return new Response('RECEIVEOK');
+}
+
+// Update the order status if payment was successful
+if (Status === '1') {
+  console.log(`Payment successful for RefNo: ${RefNo}`);
+  await updateOrderStatus(RefNo, 'completed');
+} else {
+  console.log(`Payment failed for RefNo: ${RefNo}`);
+  await updateOrderStatus(RefNo, 'failed');
+}
+
+return new Response('RECEIVEOK');
+} catch (error) {
+console.error('Error handling the request:', error);
+return new Response('Error processing request', { status: 500 });
+}
+}
 
 // import { NextRequest, NextResponse } from 'next/server';
 // import { generateSignature } from '@/lib/ipay88';
