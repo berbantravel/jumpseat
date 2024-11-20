@@ -4,6 +4,7 @@ import { generateSignature } from '@/lib/ipay88';
 // Mock function for checking if the order has already been updated
 async function isOrderAlreadyUpdated(refNo: string): Promise<boolean> {
   // Implement logic here to check if the order with the given `refNo` has been updated
+  // Example: Query the database to see if the order status is already 'completed' or updated
   return false; // Change this based on actual logic
 }
 
@@ -12,12 +13,10 @@ async function updateOrderStatus(refNo: string, status: string) {
   // Implement logic here to update the order status in your database
   console.log(`Order ${refNo} status updated to ${status}`);
 }
-
 export async function POST(request: NextRequest) {
   let body: Record<string, string>;
 
   try {
-    // Parse the request body based on content type
     const contentType = request.headers.get('content-type');
     if (contentType === 'application/json') {
       body = await request.json();
@@ -46,23 +45,16 @@ export async function POST(request: NextRequest) {
       return new Response('Merchant key not found', { status: 500 });
     }
 
-    // Format Amount
-    const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
-    console.log('Formatted Amount:', formattedAmount);
+    // Correctly format Amount for hashing
+    const formattedAmount = (Number(Amount) * 100).toFixed(0); // Convert to cents
+    console.log('Raw Amount:', Amount);
+    console.log('Formatted Amount for Hashing:', formattedAmount);
 
-    // Log parameters for debugging
-    console.log('Parameters for Signature Generation:', {
-      MerchantKey: merchantKey,
-      MerchantCode,
-      RefNo,
-      Amount: formattedAmount,
-      Currency,
-    });
-
-    // Generate the expected signature using the received parameters
+    // Prepare String to Hash
     const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
     console.log('String to Hash:', stringToHash);
 
+    // Generate Signature
     const calculatedSignature = generateSignature(merchantKey, {
       MerchantCode,
       RefNo,
@@ -105,7 +97,6 @@ export async function POST(request: NextRequest) {
     return new Response('Error processing request', { status: 500 });
   }
 }
-
 
 
 // import { NextRequest, NextResponse } from 'next/server';
