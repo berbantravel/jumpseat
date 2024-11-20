@@ -23,7 +23,9 @@ export async function POST(request: NextRequest) {
     const paymentPayload = {
         ...body,
         Signature: signature
+        
     };
+    console.log('Payload sent to iPay88:', paymentPayload);
 
     return NextResponse.json({ success: true, payload: paymentPayload });
 }

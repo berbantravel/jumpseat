@@ -152,6 +152,7 @@ function CheckoutContent() {
     })
 
     document.body.appendChild(form)
+    console.log('Payload sent to iPay88:', payload);
     form.submit()
   }
 

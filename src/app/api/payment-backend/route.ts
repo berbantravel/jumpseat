@@ -4,7 +4,6 @@ import { generateSignature } from '@/lib/ipay88';
 // Mock function for checking if the order has already been updated
 async function isOrderAlreadyUpdated(refNo: string): Promise<boolean> {
   // Implement logic here to check if the order with the given `refNo` has been updated
-  // Example: Query the database to see if the order status is already 'completed' or updated
   return false; // Change this based on actual logic
 }
 
@@ -47,16 +46,42 @@ export async function POST(request: NextRequest) {
       return new Response('Merchant key not found', { status: 500 });
     }
 
+    // Format Amount
+    const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
+    console.log('Formatted Amount:', formattedAmount);
+
+    // Log parameters for debugging
+    console.log('Parameters for Signature Generation:', {
+      MerchantKey: merchantKey,
+      MerchantCode,
+      RefNo,
+      Amount: formattedAmount,
+      Currency,
+    });
+
     // Generate the expected signature using the received parameters
-    const calculatedSignature = generateSignature(merchantKey,{ MerchantCode, RefNo, Amount, Currency });
+    const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
+    console.log('String to Hash:', stringToHash);
+
+    const calculatedSignature = generateSignature(merchantKey, {
+      MerchantCode,
+      RefNo,
+      Amount: formattedAmount,
+      Currency,
+    });
     console.log('Calculated Signature:', calculatedSignature);
     console.log('Received Signature:', receivedSignature);
 
-    // Validate the signature
-    if (calculatedSignature !== receivedSignature) {
-      console.error('Invalid signature');
+    // Validate the signature (case-insensitive)
+    if (calculatedSignature.toLowerCase() !== receivedSignature.toLowerCase()) {
+      console.error('Signature mismatch!');
+      console.error('Calculated Signature:', calculatedSignature);
+      console.error('Received Signature:', receivedSignature);
+      console.error('String to Hash:', stringToHash);
       return new Response('Invalid signature', { status: 400 });
     }
+
+    console.log('Signature validation passed.');
 
     // Check if the order has already been updated to avoid duplicate processing
     if (await isOrderAlreadyUpdated(RefNo)) {
@@ -69,7 +94,7 @@ export async function POST(request: NextRequest) {
       console.log(`Payment successful for RefNo: ${RefNo}`);
       await updateOrderStatus(RefNo, 'completed');
     } else {
-      console.log(`Payment failed or other status for RefNo: ${RefNo}`);
+      console.log(`Payment failed for RefNo: ${RefNo}`);
       await updateOrderStatus(RefNo, 'failed');
     }
 
@@ -80,6 +105,7 @@ export async function POST(request: NextRequest) {
     return new Response('Error processing request', { status: 500 });
   }
 }
+
 
 
 // import { NextRequest, NextResponse } from 'next/server';
