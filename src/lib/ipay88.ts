@@ -1,4 +1,5 @@
 import crypto from 'crypto';
+
 interface SignatureParams {
   MerchantCode: string;
   RefNo: string;
@@ -6,27 +7,26 @@ interface SignatureParams {
   Currency: string;
 }
 
-export function generateSignature(merchantKey: string, params: { MerchantCode: string, RefNo: string, Amount: string, Currency: string }): string {
+export function generateSignature(merchantKey: string, params: SignatureParams): string {
   const { MerchantCode, RefNo, Amount, Currency } = params;
 
-  // Format Amount as integer (no decimal, as expected by iPay88)
-  const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
+  // Ensure amount is formatted correctly as iPay88 expects it
+  const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '');
 
-  // Concatenate the values in the exact order specified by iPay88 (MerchantKey + MerchantCode + RefNo + Amount + Currency)
+  // Create the string to hash (iPay88 expects this format)
   const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
-  
-  console.log('String to Hash:', stringToHash); // Debugging log to check what you're hashing
 
-  // Generate SHA256 hash of the concatenated string
+  // Generate the SHA256 hash
   const hash = crypto.createHash('sha256').update(stringToHash).digest('hex');
-  console.log('Generated Hash:', hash); // Log the SHA256 hash
+  console.log("Generated SHA256 Hash:", hash); // Debug log for the hash
 
   // Base64 encode the hash
-  const base64EncodedHash = Buffer.from(hash, 'hex').toString('base64');
-  console.log('Base64-Encoded Secret Key:', base64EncodedHash); // Log the final secret key
+  const base64Encoded = crypto.createHash('sha256').update(hash).digest('base64');
+  console.log("Base64-Encoded Secret Key:", base64Encoded); // Debug log for the base64-encoded key
 
-  return base64EncodedHash;
+  return base64Encoded;
 }
+
 // import crypto from 'crypto';
 // interface SignatureParams {
 //   MerchantCode: string;
