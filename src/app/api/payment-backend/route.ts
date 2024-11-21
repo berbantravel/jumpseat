@@ -1,24 +1,18 @@
 // app/api/payment-backend/route.ts
 
-// app/api/payment-backend/route.ts
-
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
 // Mock function to avoid processing duplicate transactions
 async function isOrderAlreadyUpdated(refNo: string): Promise<boolean> {
-  // Replace this with a database query to check if the order is already updated
-  return false;
+  return false; // Replace with actual database query
 }
 
 export async function POST(request: NextRequest) {
   try {
-    // Step 1: Parse the incoming form data
     const formData = await request.formData();
     const payload = Object.fromEntries(formData.entries());
-    console.log('Received Payload:', payload);
 
-    // Step 2: Extract necessary fields
     const {
       MerchantCode,
       RefNo,
@@ -28,54 +22,45 @@ export async function POST(request: NextRequest) {
       Signature: receivedSignature,
     } = payload as Record<string, string>;
 
-    // Step 3: Validate merchant key
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-    if (!merchantKey) {
-      console.error('Merchant Key is missing from the environment variables.');
-      return new Response('Merchant Key missing', { status: 500 });
-    }
+    const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
 
-    // Step 4: Recalculate the signature
     const calculatedSignature = generateSignature(merchantKey, {
       MerchantCode,
       RefNo,
-      Amount,
+      Amount: formattedAmount,
       Currency,
     });
-    console.log('Calculated Signature:', calculatedSignature);
-    console.log('Received Signature:', receivedSignature);
 
-    // Step 5: Verify signature
+    console.log('String to Hash in Backend:', `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`);
+    console.log('Calculated Signature in Backend:', calculatedSignature);
+    console.log('Received Signature from iPay88:', receivedSignature);
+
     if (calculatedSignature !== receivedSignature) {
-      console.error('Signature Mismatch:', {
-        calculatedSignature,
-        receivedSignature,
-      });
+      console.error('Signature Mismatch:', { calculatedSignature, receivedSignature });
       return new Response('Invalid signature', { status: 400 });
     }
 
-    // Step 6: Avoid duplicate processing
     if (await isOrderAlreadyUpdated(RefNo)) {
       console.log(`Order ${RefNo} has already been processed.`);
-      return new Response('RECEIVEOK'); // Acknowledge to iPay88
+      return new Response('RECEIVEOK');
     }
 
-    // Step 7: Process based on payment status
     if (Status === '1') {
       console.log(`Payment successful for RefNo: ${RefNo}`);
-      // Update your database to mark the payment as successful
+      // Update database to mark payment as successful
     } else {
       console.error(`Payment failed for RefNo: ${RefNo}`);
-      // Update your database to mark the payment as failed
+      // Update database to mark payment as failed
     }
 
-    // Step 8: Respond to iPay88 with acknowledgment
-    return new Response('RECEIVEOK'); // iPay88 expects this acknowledgment
+    return new Response('RECEIVEOK');
   } catch (error) {
     console.error('Error processing payment backend response:', error);
     return new Response('Error processing request', { status: 500 });
   }
 }
+
 
 
 // import { NextRequest, NextResponse } from 'next/server';

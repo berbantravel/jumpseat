@@ -1,5 +1,7 @@
 // app/api/initiate-payment/route.ts
 
+// app/api/initiate-payment/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
@@ -8,51 +10,35 @@ interface PaymentRequestBody {
   RefNo: string;
   Amount: string;
   Currency: string;
-  [key: string]: string; // Allows for additional dynamic fields
+  [key: string]: string;
 }
 
 export async function POST(request: NextRequest) {
-  try {
-    // Step 1: Parse the request body
-    const body: PaymentRequestBody = await request.json();
-    const { MerchantCode, RefNo, Amount, Currency } = body;
+  const body: PaymentRequestBody = await request.json();
+  const { MerchantCode, RefNo, Amount, Currency } = body;
 
-    // Step 2: Retrieve the merchantKey from the environment variables
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+  const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+  const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
 
-    if (!merchantKey || !MerchantCode || !RefNo || !Amount || !Currency) {
-      console.error('Missing required fields for signature generation');
-      return NextResponse.json(
-        { success: false, error: 'Missing required fields' },
-        { status: 400 }
-      );
-    }
+  const signature = generateSignature(merchantKey, {
+    MerchantCode,
+    RefNo,
+    Amount: formattedAmount,
+    Currency,
+  });
 
-    // Step 3: Generate the signature
-    const signature = generateSignature(merchantKey, {
-      MerchantCode,
-      RefNo,
-      Amount,
-      Currency,
-    });
-    console.log('Generated Signature:', signature);
+  console.log('String to Hash in Initiate Payment:', `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`);
+  console.log('Generated Signature in Initiate Payment:', signature);
 
-    // Step 4: Construct the payment payload
-    const paymentPayload = {
-      ...body,
-      Signature: signature,
-    };
-    console.log('Payload sent to iPay88:', paymentPayload);
+  const paymentPayload = {
+    ...body,
+    Amount: formattedAmount, // Ensure consistency
+    Signature: signature,
+  };
 
-    // Step 5: Return the constructed payload
-    return NextResponse.json({ success: true, payload: paymentPayload });
-  } catch (error) {
-    console.error('Error in initiate-payment:', error);
-    return NextResponse.json(
-      { success: false, error: 'Internal Server Error' },
-      { status: 500 }
-    );
-  }
+  console.log('Payload sent to iPay88:', paymentPayload);
+
+  return NextResponse.json({ success: true, payload: paymentPayload });
 }
 
 // import { NextRequest, NextResponse } from 'next/server';
