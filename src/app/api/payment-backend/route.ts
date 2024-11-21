@@ -1,35 +1,44 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
 import { generateSignature } from '@/lib/ipay88';
 
-// Mock function for checking if the order has already been updated
-async function isOrderAlreadyUpdated(refNo: string): Promise<boolean> {
-  // Implement logic here to check if the order with the given `refNo` has been updated
-  // Example: Query the database to see if the order status is already 'completed' or updated
-  return false; // Change this based on actual logic
-}
-
-// Mock function for updating the order status
-async function updateOrderStatus(refNo: string, status: string) {
-  // Implement logic here to update the order status in your database
-  console.log(`Order ${refNo} status updated to ${status}`);
-}
-export async function POST(request: NextRequest) {
-  let body: Record<string, string>;
+/**
+ * Payment Backend Handler
+ * Handles iPay88's response to the BackendURL.
+ */
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') {
+    return res.status(405).send('Method Not Allowed');
+  }
 
   try {
-    const contentType = request.headers.get('content-type');
+    const contentType = req.headers['content-type'];
+
+    // Parse the request body
+    let body: Record<string, string>;
     if (contentType === 'application/json') {
-      body = await request.json();
-    } else if (contentType === 'application/x-www-form-urlencoded' || contentType?.includes('form')) {
-      const formData = await request.formData();
-      body = Object.fromEntries(formData.entries()) as Record<string, string>;
+      body = req.body;
+    } else if (
+      contentType === 'application/x-www-form-urlencoded' ||
+      contentType?.includes('form')
+    ) {
+      const rawBody = await new Promise<string>((resolve, reject) => {
+        let data = '';
+        req.on('data', (chunk) => {
+          data += chunk;
+        });
+        req.on('end', () => resolve(data));
+        req.on('error', (err) => reject(err));
+      });
+      const formData = new URLSearchParams(rawBody);
+      body = Object.fromEntries(formData.entries());
     } else {
-      console.error('Unsupported content type:', contentType);
-      return new Response('Unsupported content type', { status: 400 });
+      console.error('Unsupported Content-Type:', contentType);
+      return res.status(400).send('Unsupported Content-Type');
     }
 
-    console.log('Received body:', body);
+    console.log('Received Body:', body);
 
+    // Destructure parameters
     const {
       MerchantCode,
       RefNo,
@@ -39,64 +48,53 @@ export async function POST(request: NextRequest) {
       Signature: receivedSignature,
     } = body;
 
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-    if (!merchantKey) {
-      console.error('Merchant key is missing');
-      return new Response('Merchant key not found', { status: 500 });
+    if (!MerchantCode || !RefNo || !Amount || !Currency || !Status || !receivedSignature) {
+      return res.status(400).json({ error: 'Missing required parameters' });
     }
 
-    // Correctly format Amount for hashing
-    const formattedAmount = (Number(Amount) * 100).toFixed(0); // Convert to cents
-    console.log('Raw Amount:', Amount);
-    console.log('Formatted Amount for Hashing:', formattedAmount);
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+    if (!merchantKey) {
+      throw new Error('MerchantKey is not set in environment variables.');
+    }
 
-    // Prepare String to Hash
-    const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
-    console.log('String to Hash:', stringToHash);
+    // Format the amount to match iPay88's format
+    const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
 
-    // Generate Signature
-    const calculatedSignature = generateSignature(merchantKey, {
-      MerchantCode,
-      RefNo,
-      Amount: formattedAmount,
-      Currency,
+    // Generate the signature for verification
+    const calculatedSignature = generateSignature({
+      merchantKey,
+      merchantCode: MerchantCode,
+      refNo: RefNo,
+      amount: formattedAmount,
+      currency: Currency,
     });
+
     console.log('Calculated Signature:', calculatedSignature);
     console.log('Received Signature:', receivedSignature);
 
-    // Validate the signature (case-insensitive)
-    if (calculatedSignature.toLowerCase() !== receivedSignature.toLowerCase()) {
+    // Validate the signature
+    if (calculatedSignature !== receivedSignature) {
       console.error('Signature mismatch!');
-      console.error('Calculated Signature:', calculatedSignature);
-      console.error('Received Signature:', receivedSignature);
-      console.error('String to Hash:', stringToHash);
-      return new Response('Invalid signature', { status: 400 });
+      return res.status(400).send('Invalid Signature');
     }
 
-    console.log('Signature validation passed.');
-
-    // Check if the order has already been updated to avoid duplicate processing
-    if (await isOrderAlreadyUpdated(RefNo)) {
-      console.log(`Order ${RefNo} has already been updated. Skipping processing.`);
-      return new Response('RECEIVEOK'); // Return plain text acknowledgment
-    }
-
-    // Update the order status if payment was successful (Status '1' indicates success)
+    // Process the transaction based on the Status
     if (Status === '1') {
       console.log(`Payment successful for RefNo: ${RefNo}`);
-      await updateOrderStatus(RefNo, 'completed');
+      // Add logic to update your order as "paid" in your database
     } else {
-      console.log(`Payment failed for RefNo: ${RefNo}`);
-      await updateOrderStatus(RefNo, 'failed');
+      console.log(`Payment failed or has a different status for RefNo: ${RefNo}`);
+      // Add logic to update your order as "failed" or "pending"
     }
 
-    // Respond with plain text 'RECEIVEOK' to acknowledge the response
-    return new Response('RECEIVEOK');
-  } catch (error) {
-    console.error('Error handling the request:', error);
-    return new Response('Error processing request', { status: 500 });
+    // Acknowledge receipt of the backend post with "RECEIVEOK"
+    return res.status(200).send('RECEIVEOK');
+  } catch (error: any) {
+    console.error('Error in payment backend:', error.message);
+    res.status(500).send('Internal Server Error');
   }
 }
+
 
 
 // import { NextRequest, NextResponse } from 'next/server';
