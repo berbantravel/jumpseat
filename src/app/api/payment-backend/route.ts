@@ -1,27 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
-/**
- * Handles iPay88's backend notification.
- */
-export async function POST(req: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    const contentType = req.headers.get('content-type');
-    let body: Record<string, string>;
+    const formData = await request.formData();
+    const parsedBody: Record<string, string> = {};
 
-    // Parse the request body based on content type
-    if (contentType === 'application/json') {
-      body = await req.json();
-    } else if (contentType === 'application/x-www-form-urlencoded' || contentType?.includes('form')) {
-      const rawBody = await req.text();
-      const formData = new URLSearchParams(rawBody);
-      body = Object.fromEntries(formData.entries());
-    } else {
-      console.error('Unsupported Content-Type:', contentType);
-      return NextResponse.json({ error: 'Unsupported Content-Type' }, { status: 400 });
+    // Convert FormDataEntryValue to string
+    for (const [key, value] of formData.entries()) {
+      parsedBody[key] = value instanceof File ? '' : value; // Ignore `File` type, set as empty string
     }
-
-    console.log('Received Body:', body);
 
     const {
       MerchantCode,
@@ -30,22 +18,25 @@ export async function POST(req: NextRequest) {
       Currency,
       Status,
       Signature: receivedSignature,
-    } = body;
+    } = parsedBody;
 
-    // Validate required parameters
-    if (!MerchantCode || !RefNo || !Amount || !Currency || !Status || !receivedSignature) {
-      return NextResponse.json({ error: 'Missing required parameters' }, { status: 400 });
+    // Validate required fields
+    if (
+      !MerchantCode ||
+      !RefNo ||
+      !Amount ||
+      !Currency ||
+      !Status ||
+      !receivedSignature
+    ) {
+      return new Response('Missing required parameters', { status: 400 });
     }
 
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY;
-    if (!merchantKey) {
-      return NextResponse.json({ error: 'MerchantKey not set in environment variables' }, { status: 500 });
-    }
-
-    // Format the amount to match iPay88's requirements
+    // Format amount for signature validation
     const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
 
-    // Generate the signature for validation
+    // Generate the expected signature
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
     const calculatedSignature = generateSignature({
       merchantKey,
       merchantCode: MerchantCode,
@@ -57,26 +48,19 @@ export async function POST(req: NextRequest) {
     console.log('Calculated Signature:', calculatedSignature);
     console.log('Received Signature:', receivedSignature);
 
-    // Validate the signature
+    // Compare signatures
     if (calculatedSignature !== receivedSignature) {
-      console.error('Signature mismatch!');
-      return NextResponse.json({ error: 'Invalid Signature' }, { status: 400 });
+      console.error('Signature mismatch');
+      return new Response('Invalid signature', { status: 400 });
     }
 
-    // Process payment status
-    if (Status === '1') {
-      console.log(`Payment successful for RefNo: ${RefNo}`);
-      // Logic to mark the order as "paid" in your database
-    } else {
-      console.log(`Payment failed or has a different status for RefNo: ${RefNo}`);
-      // Logic to mark the order as "failed" or "pending" in your database
-    }
+    console.log(`Transaction Status: ${Status}`);
 
-    // Respond with RECEIVEOK to acknowledge
-    return new Response('RECEIVEOK', { status: 200 });
-  } catch (error: any) {
-    console.error('Error in payment backend:', error.message);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+    // Acknowledge the response
+    return new Response('RECEIVEOK');
+  } catch (error) {
+    console.error('Error in payment-backend:', error instanceof Error ? error.message : error);
+    return new Response('Internal Server Error', { status: 500 });
   }
 }
 
