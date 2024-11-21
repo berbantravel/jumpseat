@@ -1,5 +1,3 @@
-// app/api/payment-backend/route.ts
-
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
@@ -32,12 +30,12 @@ export async function POST(request: NextRequest) {
       Currency,
     });
 
-    console.log('String to Hash in Backend:', `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`);
-    console.log('Calculated Signature in Backend:', calculatedSignature);
-    console.log('Received Signature from iPay88:', receivedSignature);
+    console.log('Backend String to Hash:', `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`);
+    console.log('Backend Calculated Signature:', calculatedSignature);
+    console.log('Backend Received Signature:', receivedSignature);
 
     if (calculatedSignature !== receivedSignature) {
-      console.error('Signature Mismatch:', { calculatedSignature, receivedSignature });
+      console.error('Signature mismatch in Backend:', { calculatedSignature, receivedSignature });
       return new Response('Invalid signature', { status: 400 });
     }
 
@@ -48,15 +46,16 @@ export async function POST(request: NextRequest) {
 
     if (Status === '1') {
       console.log(`Payment successful for RefNo: ${RefNo}`);
-      // Update database to mark payment as successful
+      // Update order to successful in your database here.
     } else {
       console.error(`Payment failed for RefNo: ${RefNo}`);
-      // Update database to mark payment as failed
+      // Update order to failed in your database here.
     }
 
+    // Send acknowledgment back to iPay88
     return new Response('RECEIVEOK');
   } catch (error) {
-    console.error('Error processing payment backend response:', error);
+    console.error('Error processing backend response:', error);
     return new Response('Error processing request', { status: 500 });
   }
 }
