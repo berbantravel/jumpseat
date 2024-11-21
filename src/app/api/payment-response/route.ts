@@ -93,21 +93,33 @@
 // payment-response route
 
 // app/api/payment-response/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
+    // Step 1: Retrieve form data from the request
     const formData = await request.formData();
-    const data = Object.fromEntries(formData);
 
-    // Process the payment data here if needed
-    // Update your database or perform other actions
+    // Step 2: Convert form data into a usable object
+    const data = Object.fromEntries(formData.entries());
+    console.log("Received Payment Response Data:", data);
 
+    // Step 3: Construct query parameters for redirection
     const searchParams = new URLSearchParams(data as Record<string, string>);
-    console.log("Data:",data)
-    return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
+
+    // Step 4: Redirect to a response page with query parameters
+    return NextResponse.redirect(
+      `${request.nextUrl.origin}/payment-response?${searchParams.toString()}`,
+      303 // Use a 303 status for redirect after POST
+    );
   } catch (error) {
     console.error('Error processing payment response:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+
+    // Return a JSON response indicating the error
+    return NextResponse.json(
+      { error: 'Internal Server Error', details: String(error) },
+      { status: 500 }
+    );
   }
 }
