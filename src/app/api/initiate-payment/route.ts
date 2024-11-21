@@ -13,40 +13,29 @@ interface PaymentRequestBody {
 
 export async function POST(request: NextRequest) {
   try {
-    // Parse the request body
     const body: PaymentRequestBody = await request.json();
     const { MerchantCode, RefNo, Amount, Currency } = body;
 
-    // Validate required fields
-    if (!MerchantCode || !RefNo || !Amount || !Currency) {
-      console.error('Missing required parameters in initiate-payment');
-      return NextResponse.json({ error: 'Missing required parameters' }, { status: 400 });
-    }
+    // Retrieve Merchant Key from environment
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
-    // Retrieve the merchant key from environment variables
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY;
     if (!merchantKey) {
-      console.error('Merchant key is missing in environment variables');
-      return NextResponse.json({ error: 'Merchant key is not configured' }, { status: 500 });
+      console.error('Missing Merchant Key');
+      return NextResponse.json({ error: 'Merchant Key is missing' }, { status: 500 });
     }
 
     // Generate the signature
-    const signature = generateSignature(merchantKey, {
-      MerchantCode,
-      RefNo,
-      Amount: Number(Amount).toFixed(2).replace('.', ''), // Format the amount as required
-      Currency,
-    });
+    const signature = generateSignature(merchantKey, { MerchantCode, RefNo, Amount, Currency });
 
-    console.log('Generated Signature:', signature);
-
-    // Construct the payload to be sent to iPay88
+    // Construct payment payload
     const paymentPayload = {
       ...body,
       Signature: signature,
+      ResponseURL: `${process.env.NEXT_PUBLIC_SITE_URL}/api/payment-response`,
+      BackendURL: `${process.env.NEXT_PUBLIC_SITE_URL}/api/payment-backend`,
     };
 
-    console.log('Payload sent to iPay88:', paymentPayload);
+    console.log('Payment Payload:', paymentPayload);
 
     return NextResponse.json({ success: true, payload: paymentPayload });
   } catch (error) {

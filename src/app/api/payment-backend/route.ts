@@ -1,38 +1,18 @@
+// app/api/payment-backend/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
-// Function to check if the order has already been updated
+// Mock function to avoid processing duplicate transactions
 async function isOrderAlreadyUpdated(refNo: string): Promise<boolean> {
-  // Implement your database query or logic here
-  console.log(`Checking if order ${refNo} has already been updated...`);
-  return false; // Example: always returns false for simplicity
-}
-
-// Function to update the order status in your database
-async function updateOrderStatus(refNo: string, status: string): Promise<void> {
-  // Implement your database update logic here
-  console.log(`Order ${refNo} status updated to ${status}`);
+  return false; // Replace with actual database query
 }
 
 export async function POST(request: NextRequest) {
   try {
-    let body: Record<string, string>;
+    const body = await request.formData();
+    const payload = Object.fromEntries(body.entries());
 
-    // Parse the request body based on content type
-    const contentType = request.headers.get('content-type');
-    if (contentType === 'application/json') {
-      body = await request.json();
-    } else if (contentType === 'application/x-www-form-urlencoded' || contentType?.includes('form')) {
-      const formData = await request.formData();
-      body = Object.fromEntries(formData.entries()) as Record<string, string>;
-    } else {
-      console.error('Unsupported content type:', contentType);
-      return new Response('Unsupported content type', { status: 400 });
-    }
-
-    console.log('Received body:', body);
-
-    // Extract required fields from the request body
     const {
       MerchantCode,
       RefNo,
@@ -40,60 +20,44 @@ export async function POST(request: NextRequest) {
       Currency,
       Status,
       Signature: receivedSignature,
-    } = body;
+    } = payload as Record<string, string>;
 
-    // Validate required fields
-    if (!MerchantCode || !RefNo || !Amount || !Currency || !Status || !receivedSignature) {
-      console.error('Missing required fields in the request body');
-      return new Response('Missing required fields', { status: 400 });
-    }
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
 
-    // Retrieve the merchant key from environment variables
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY;
     if (!merchantKey) {
-      console.error('Merchant key is missing in environment variables');
-      return new Response('Merchant key is not configured', { status: 500 });
+      console.error('Missing Merchant Key');
+      return new Response('Merchant Key missing', { status: 500 });
     }
 
-    // Format the amount as required by iPay88
-    const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
-
-    // Generate the expected signature using the received parameters
+    // Recalculate the signature
     const calculatedSignature = generateSignature(merchantKey, {
       MerchantCode,
       RefNo,
-      Amount: formattedAmount,
+      Amount,
       Currency,
     });
 
-    console.log('Calculated Signature:', calculatedSignature);
-    console.log('Received Signature:', receivedSignature);
-
-    // Validate the received signature
     if (calculatedSignature !== receivedSignature) {
-      console.error('Signature mismatch! Invalid signature.');
+      console.error('Signature mismatch:', { calculatedSignature, receivedSignature });
       return new Response('Invalid signature', { status: 400 });
     }
 
-    // Check if the order has already been updated
     if (await isOrderAlreadyUpdated(RefNo)) {
-      console.log(`Order ${RefNo} has already been updated. Skipping further processing.`);
-      return new Response('RECEIVEOK'); // Plain text acknowledgment
+      console.log(`Order ${RefNo} has already been processed.`);
+      return new Response('RECEIVEOK'); // Acknowledge to iPay88
     }
 
-    // Update the order status based on the payment status
     if (Status === '1') {
       console.log(`Payment successful for RefNo: ${RefNo}`);
-      await updateOrderStatus(RefNo, 'completed');
+      // Update order status to successful
     } else {
-      console.log(`Payment failed or other status for RefNo: ${RefNo}`);
-      await updateOrderStatus(RefNo, 'failed');
+      console.error(`Payment failed for RefNo: ${RefNo}`);
+      // Update order status to failed
     }
 
-    // Respond with plain text acknowledgment
-    return new Response('RECEIVEOK');
-  } catch (error: unknown) {
-    console.error('Error processing payment-backend request:', error);
+    return new Response('RECEIVEOK'); // Acknowledge success to iPay88
+  } catch (error) {
+    console.error('Error processing backend response:', error);
     return new Response('Error processing request', { status: 500 });
   }
 }
