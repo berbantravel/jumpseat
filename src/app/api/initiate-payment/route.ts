@@ -1,56 +1,54 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
+// This is the POST handler for the initiate-payment API
+export async function POST(req: NextRequest) {
   try {
-    const {
-      MerchantCode,
-      RefNo,
-      Amount,
-      Currency,
-      ProdDesc,
-      UserName,
-      UserEmail,
-      UserContact,
-      Remark,
-    } = req.body;
+    // Step 1: Parse incoming JSON body
+    const body = await req.json();
+    const { MerchantCode, RefNo, Amount, Currency, PaymentId } = body;
 
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-
-    if (!merchantKey) {
-      throw new Error('MerchantKey is not set in environment variables.');
+    // Validate required parameters
+    if (!MerchantCode || !RefNo || !Amount || !Currency || !PaymentId) {
+      return NextResponse.json({ error: 'Missing required parameters' }, { status: 400 });
     }
 
+    // Step 2: Format Amount to match iPay88's format
+    const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
+
+    // Step 3: Generate the signature
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY;
+    if (!merchantKey) {
+      return NextResponse.json({ error: 'MerchantKey not set in environment variables' }, { status: 500 });
+    }
     const signature = generateSignature({
       merchantKey,
       merchantCode: MerchantCode,
       refNo: RefNo,
-      amount: Amount,
+      amount: formattedAmount,
       currency: Currency,
     });
 
+    console.log('Generated Signature:', signature);
+
+    // Step 4: Construct the payload to be sent to iPay88
     const payload = {
       MerchantCode,
+      PaymentId,
       RefNo,
-      Amount,
+      Amount: formattedAmount,
       Currency,
-      ProdDesc,
-      UserName,
-      UserEmail,
-      UserContact,
-      Remark,
       Signature: signature,
+      Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
+      ResponseURL: `${process.env.NEXT_PUBLIC_SITE_URL}/api/payment-response`,
+      BackendURL: `${process.env.NEXT_PUBLIC_SITE_URL}/api/payment-backend`,
     };
 
-    console.log('Payload sent to iPay88:', payload);
-    res.status(200).json({ success: true, payload });
+    // Step 5: Return the payload for client-side form submission
+    return NextResponse.json({ success: true, payload });
   } catch (error: any) {
-    console.error('Error initiating payment:', error.message);
-    res.status(500).json({ error: error.message });
+    console.error('Error in initiate-payment route:', error.message);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
 
