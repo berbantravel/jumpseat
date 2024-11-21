@@ -1,44 +1,28 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
 /**
- * Payment Backend Handler
- * Handles iPay88's response to the BackendURL.
+ * Handles iPay88's backend notification.
  */
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') {
-    return res.status(405).send('Method Not Allowed');
-  }
-
+export async function POST(req: NextRequest) {
   try {
-    const contentType = req.headers['content-type'];
-
-    // Parse the request body
+    const contentType = req.headers.get('content-type');
     let body: Record<string, string>;
+
+    // Parse the request body based on content type
     if (contentType === 'application/json') {
-      body = req.body;
-    } else if (
-      contentType === 'application/x-www-form-urlencoded' ||
-      contentType?.includes('form')
-    ) {
-      const rawBody = await new Promise<string>((resolve, reject) => {
-        let data = '';
-        req.on('data', (chunk) => {
-          data += chunk;
-        });
-        req.on('end', () => resolve(data));
-        req.on('error', (err) => reject(err));
-      });
+      body = await req.json();
+    } else if (contentType === 'application/x-www-form-urlencoded' || contentType?.includes('form')) {
+      const rawBody = await req.text();
       const formData = new URLSearchParams(rawBody);
       body = Object.fromEntries(formData.entries());
     } else {
       console.error('Unsupported Content-Type:', contentType);
-      return res.status(400).send('Unsupported Content-Type');
+      return NextResponse.json({ error: 'Unsupported Content-Type' }, { status: 400 });
     }
 
     console.log('Received Body:', body);
 
-    // Destructure parameters
     const {
       MerchantCode,
       RefNo,
@@ -48,19 +32,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       Signature: receivedSignature,
     } = body;
 
+    // Validate required parameters
     if (!MerchantCode || !RefNo || !Amount || !Currency || !Status || !receivedSignature) {
-      return res.status(400).json({ error: 'Missing required parameters' });
+      return NextResponse.json({ error: 'Missing required parameters' }, { status: 400 });
     }
 
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY;
     if (!merchantKey) {
-      throw new Error('MerchantKey is not set in environment variables.');
+      return NextResponse.json({ error: 'MerchantKey not set in environment variables' }, { status: 500 });
     }
 
-    // Format the amount to match iPay88's format
+    // Format the amount to match iPay88's requirements
     const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
 
-    // Generate the signature for verification
+    // Generate the signature for validation
     const calculatedSignature = generateSignature({
       merchantKey,
       merchantCode: MerchantCode,
@@ -75,26 +60,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Validate the signature
     if (calculatedSignature !== receivedSignature) {
       console.error('Signature mismatch!');
-      return res.status(400).send('Invalid Signature');
+      return NextResponse.json({ error: 'Invalid Signature' }, { status: 400 });
     }
 
-    // Process the transaction based on the Status
+    // Process payment status
     if (Status === '1') {
       console.log(`Payment successful for RefNo: ${RefNo}`);
-      // Add logic to update your order as "paid" in your database
+      // Logic to mark the order as "paid" in your database
     } else {
       console.log(`Payment failed or has a different status for RefNo: ${RefNo}`);
-      // Add logic to update your order as "failed" or "pending"
+      // Logic to mark the order as "failed" or "pending" in your database
     }
 
-    // Acknowledge receipt of the backend post with "RECEIVEOK"
-    return res.status(200).send('RECEIVEOK');
+    // Respond with RECEIVEOK to acknowledge
+    return new Response('RECEIVEOK', { status: 200 });
   } catch (error: any) {
     console.error('Error in payment backend:', error.message);
-    res.status(500).send('Internal Server Error');
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
-
 
 
 // import { NextRequest, NextResponse } from 'next/server';
