@@ -94,20 +94,67 @@
 
 // app/api/payment-response/route.ts
 import { NextRequest, NextResponse } from 'next/server';
+import { generateSignature } from '@/lib/ipay88';
 
+// Payment Response handler
 export async function POST(request: NextRequest) {
   try {
+    // Step 1: Parse the form data received from iPay88
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
 
-    // Process the payment data here if needed
-    // Update your database or perform other actions
+    // Step 2: Extract parameters from the form data
+    const {
+      MerchantCode,
+      RefNo,
+      Amount,
+      Currency,
+      Status,
+      Signature: receivedSignature,
+    } = data as Record<string, string>;
 
-    const searchParams = new URLSearchParams(data as Record<string, string>);
-    console.log("Data:",data)
-    return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
+    // Step 3: Get the merchant key from the environment
+    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+
+    // Check if Merchant Key exists
+    if (!merchantKey) {
+      console.error('Merchant Key is missing');
+      return new Response('Merchant Key is missing', { status: 500 });
+    }
+
+    // Step 4: Recalculate the signature using the received data and merchant key
+    const calculatedSignature = generateSignature(merchantKey, {
+      MerchantCode,
+      RefNo,
+      Amount,
+      Currency,
+    });
+
+    console.log('Calculated Signature:', calculatedSignature);
+    console.log('Received Signature:', receivedSignature);
+
+    // Step 5: Compare the calculated signature with the received signature
+    if (calculatedSignature !== receivedSignature) {
+      console.error('Signature mismatch:');
+      console.error(`Calculated: ${calculatedSignature}`);
+      console.error(`Received: ${receivedSignature}`);
+      return new Response('Invalid signature', { status: 400 });
+    }
+
+    // Step 6: Take appropriate actions (e.g., updating the order status)
+    if (Status === '1') {
+      console.log(`Payment successful for RefNo: ${RefNo}`);
+      // Update order status to 'completed'
+    } else {
+      console.log(`Payment failed for RefNo: ${RefNo}`);
+      // Update order status to 'failed'
+    }
+
+    // Step 7: Send acknowledgment back to iPay88
+    return NextResponse.json({ success: true });
+
   } catch (error) {
     console.error('Error processing payment response:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json({ error: 'Error processing payment response' }, { status: 500 });
   }
 }
