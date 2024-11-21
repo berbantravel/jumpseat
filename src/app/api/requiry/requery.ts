@@ -32,38 +32,30 @@
 // pages/api/requery.ts
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { generateSecretKey } from '@/lib/ipay88';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { MerchantCode, RefNo, Amount } = req.query;
 
+  // Validate query parameters
   if (!MerchantCode || !RefNo || !Amount) {
     return res.status(400).json({ error: 'Missing required parameters' });
   }
 
+  const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', ''); // Format Amount
+  const queryString = `MerchantCode=${encodeURIComponent(MerchantCode as string)}&RefNo=${encodeURIComponent(RefNo as string)}&Amount=${encodeURIComponent(formattedAmount)}`;
+  const apiUrl = `https://sandbox.ipay88.com.ph/MerchantService/Payment/Inquiry?${queryString}`;
+
   try {
-    const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-
-    if (!merchantKey) {
-      throw new Error('MerchantKey is not set in environment variables.');
-    }
-
-    const secretKey = generateSecretKey(merchantKey, MerchantCode as string);
-
-    const queryString = new URLSearchParams({
-      MerchantCode: MerchantCode as string,
-      RefNo: RefNo as string,
-      Amount: formattedAmount,
-      secretkey: secretKey,
-    }).toString();
-
-    const apiUrl = `https://sandbox.ipay88.com.ph/MerchantService/Payment/Inquiry?${queryString}`;
-
+    // Make the request to iPay88 URL
     const response = await axios.get(apiUrl);
+
+    // Return the result back to the frontend
     res.status(200).json(response.data);
-  } catch (error: any) {
-    console.error('Error during requery:', error.message);
-    res.status(500).json({ error: error.message });
+  } catch (error) {
+    // Log the error for debugging purposes (optional, but useful for backend diagnostics)
+    console.error('Error during requery:', error);
+
+    // Send a generic error message without exposing the details
+    res.status(500).json({ error: 'There was an issue fetching requery data. Please try again later.' });
   }
 }
