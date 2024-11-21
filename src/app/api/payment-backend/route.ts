@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
-// Mock function to avoid processing duplicate transactions
-async function isOrderAlreadyUpdated(refNo: string): Promise<boolean> {
-  return false; // Replace with actual database query
-}
-
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -21,8 +16,11 @@ export async function POST(request: NextRequest) {
     } = payload as Record<string, string>;
 
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+
+    // Format Amount
     const formattedAmount = Number(Amount).toFixed(2).replace('.', '');
 
+    // Generate Signature
     const calculatedSignature = generateSignature(merchantKey, {
       MerchantCode,
       RefNo,
@@ -30,32 +28,33 @@ export async function POST(request: NextRequest) {
       Currency,
     });
 
+    // Log details
     console.log('Backend String to Hash:', `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`);
     console.log('Backend Calculated Signature:', calculatedSignature);
     console.log('Backend Received Signature:', receivedSignature);
 
+    // Validate Signature
     if (calculatedSignature !== receivedSignature) {
-      console.error('Signature mismatch in Backend:', { calculatedSignature, receivedSignature });
+      console.error('Signature mismatch:', { calculatedSignature, receivedSignature });
       return new Response('Invalid signature', { status: 400 });
     }
 
-    if (await isOrderAlreadyUpdated(RefNo)) {
-      console.log(`Order ${RefNo} has already been processed.`);
-      return new Response('RECEIVEOK');
-    }
+    // Log Status
+    console.log('Payment Status:', Status);
 
+    // Handle Status
     if (Status === '1') {
       console.log(`Payment successful for RefNo: ${RefNo}`);
-      // Update order to successful in your database here.
+      // Update your database for success
     } else {
       console.error(`Payment failed for RefNo: ${RefNo}`);
-      // Update order to failed in your database here.
+      // Update your database for failure
     }
 
-    // Send acknowledgment back to iPay88
+    // Respond to iPay88 with plain-text acknowledgment
     return new Response('RECEIVEOK');
   } catch (error) {
-    console.error('Error processing backend response:', error);
+    console.error('Error in payment-backend:', error);
     return new Response('Error processing request', { status: 500 });
   }
 }
