@@ -29,10 +29,10 @@ export async function POST(request: NextRequest) {
   const body = await request.formData();
   const payload = Object.fromEntries(body.entries());
 
-  const { MerchantCode, RefNo, Amount, Currency, Status, Signature: receivedSignature } = payload as Record<string, string>;
+  const { MerchantCode, RefNo, Amount, Currency, Signature: receivedSignature } = payload as Record<string, string>;
 
   const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-
+console.log("Payload",payload)
   if (!merchantKey) {
     console.error('Missing Merchant Key');
     return new Response('Merchant Key missing', { status: 500 });
