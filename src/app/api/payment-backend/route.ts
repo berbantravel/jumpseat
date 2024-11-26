@@ -31,8 +31,10 @@ export async function POST(request: NextRequest) {
     const payload = Object.fromEntries(body.entries());
 
     const { MerchantCode, RefNo, Amount, Currency, Status, Signature: receivedSignature } = payload as Record<string, string>;
-console.log("Payload: ",payload);
-console.log("Signature: ",receivedSignature);
+
+    console.log("Payload: ", payload);
+    console.log("Received Signature: ", receivedSignature);
+    
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
     if (!merchantKey) {
       console.error('Missing Merchant Key');
@@ -40,10 +42,16 @@ console.log("Signature: ",receivedSignature);
     }
 
     // Recalculate the signature to validate the request
-    const calculatedSignature = generateSignature(merchantKey,{MerchantCode,RefNo,Amount,Currency});
+    const calculatedSignature = generateSignature(merchantKey, { MerchantCode, RefNo, Amount, Currency });
     console.log('Calculated Signature:', calculatedSignature);
-    if (calculatedSignature !== receivedSignature) {
-      console.error('Signature mismatch:', { calculatedSignature, receivedSignature });
+
+    // Decode the received signature if it is Base64 encoded
+    const receivedSignatureDecoded = Buffer.from(receivedSignature, 'base64').toString();
+    console.log('Decoded Received Signature:', receivedSignatureDecoded);
+
+    // Compare calculated and received signatures
+    if (calculatedSignature !== receivedSignatureDecoded) {
+      console.error('Signature mismatch:', { calculatedSignature, receivedSignatureDecoded });
       return new Response('Invalid signature', { status: 400 });
     }
 
