@@ -93,18 +93,19 @@
 // payment-response route
 
 // app/api/payment-response/route.ts
-import { NextRequest, NextResponse } from 'next/server';
+// 
 
+import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
-    const formData = await request.formData();
-    const data = Object.fromEntries(formData);
+    const body = await request.formData();
+    const payload = Object.fromEntries(body.entries());
 
     // Process the payment data here if needed
     // Update your database or perform other actions
 
-    const searchParams = new URLSearchParams(data as Record<string, string>);
-    console.log("Data:",data)
+    const searchParams = new URLSearchParams(payload as Record<string, string>);
+    console.log("Body:",body)
     return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
   } catch (error) {
     console.error('Error processing payment response:', error);
