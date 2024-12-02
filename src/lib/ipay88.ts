@@ -15,7 +15,7 @@ export function generateSignature(merchantKey: string, params: SignatureParams):
   console.log("stringToHash",stringToHash);
   // Generate SHA256 hash
   const signature = crypto.createHash('sha256').update(stringToHash).digest('hex');
-  console.log("signature",signature);
+  console.log("IPAY88 SIGNATURE:",signature);
   return signature;
 
 }
