@@ -31,20 +31,16 @@ export async function POST(request: NextRequest) {
     const payload = Object.fromEntries(body.entries());
 
     const { MerchantCode, RefNo, Amount, Currency, Status, Signature: receivedSignature } = payload as Record<string, string>;
-
-    console.log("Payload: ", payload);
-    console.log("Signature: ", receivedSignature);
-
+    console.log("Payload: ",payload);
+    console.log("Signature: ",receivedSignature);
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-
     if (!merchantKey) {
       console.error('Missing Merchant Key');
       return new Response('Merchant Key missing', { status: 500 });
     }
 
     // Recalculate the signature to validate the request
-    const calculatedSignature = generateSignature(merchantKey, { MerchantCode, RefNo, Amount, Currency });
-
+    const calculatedSignature = generateSignature(merchantKey,{MerchantCode,RefNo,Amount,Currency});
     console.log('Calculated Signature:', calculatedSignature);
     if (calculatedSignature !== receivedSignature) {
       console.error('Signature mismatch:', { calculatedSignature, receivedSignature });
@@ -61,7 +57,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Acknowledge iPay88 with "RECEIVEOK"
-    return new Response('RECEIVEOK', { status: 200 });
+    return new Response('RECEIVEOK');
   } catch (error) {
     console.error('Error handling the request:', error);
     return new Response('Error processing request', { status: 500 });
