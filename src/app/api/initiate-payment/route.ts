@@ -15,20 +15,26 @@ export async function POST(request: NextRequest) {
     const body: PaymentRequestBody = await request.json();
     const { MerchantCode, RefNo, Amount, Currency } = body;
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-    
-    // console.log(merchantKey);
-    const signature = generateSignature(merchantKey,{MerchantCode,RefNo,Amount,Currency});
+  
+    // Format Amount for consistency
+    const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '');
+    console.log("Formatted Amount:", formattedAmount);
+  
+    // Generate signature
+    const signature = generateSignature(merchantKey, { MerchantCode, RefNo, Amount: formattedAmount, Currency });
     console.log('Initiate Payment Signature:', signature);
-
+  
     const paymentPayload = {
-        ...body,
-        Signature: signature
-        
+      ...body,
+      Amount: formattedAmount, // Ensure formatted amount is sent
+      Signature: signature,
     };
-    console.log('Payload sent to iPay88:', paymentPayload);
-
+  
+    console.log('Payment Payload Sent to iPay88:', paymentPayload);
+  
     return NextResponse.json({ success: true, payload: paymentPayload });
-}
+  }
+  
 
 // import { NextRequest, NextResponse } from 'next/server';
 // import { generateSignature } from '@/lib/ipay88';

@@ -3,56 +3,60 @@ import { generateSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
   try {
-    const contentType = request.headers.get('content-type');
-    if (!contentType?.includes('form')) {
-      console.error('Unsupported content type:', contentType);
-      return new Response('Unsupported content type', { status: 400 });
-    }
+    const formData = await request.formData();
+    const payload = Object.fromEntries(formData.entries());
 
-    const body = await request.formData();
-    const payload = Object.fromEntries(body.entries());
     console.log('Payload received:', payload);
 
-    const { MerchantCode, RefNo, Amount, Currency, Status, Signature: receivedSignature } = payload as Record<string, string>;
-
-    console.log('Received Signature:', receivedSignature);
+    const {
+      MerchantCode,
+      RefNo,
+      Amount,
+      Currency,
+      Status,
+      Signature: receivedSignature,
+    } = payload as Record<string, string>;
 
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+
     if (!merchantKey) {
-      console.error('Merchant Key is missing.');
+      console.error('Missing Merchant Key');
       return new Response('Merchant Key missing', { status: 500 });
     }
 
-    const formattedAmount = Number(Amount).toFixed(2).replace('.', '').replace(',', '');
+    // Recalculate the signature
     const calculatedSignature = generateSignature(merchantKey, {
       MerchantCode,
       RefNo,
-      Amount: formattedAmount,
+      Amount,
       Currency,
     });
 
     console.log('Calculated Signature:', calculatedSignature);
+    console.log('Received Signature:', receivedSignature);
+
+    // Validate the signature
     if (calculatedSignature !== receivedSignature) {
-      console.error('Signature mismatch:', { calculatedSignature, receivedSignature });
+      console.error('Signature mismatch');
       return new Response('Invalid signature', { status: 400 });
     }
 
+    // Process the payment status
     if (Status === '1') {
       console.log(`Payment verified successfully for RefNo: ${RefNo}`);
-      // Update order status to "completed"
+      // Update order status to "completed" in your database if necessary
     } else {
-      console.log(`Payment verification failed for RefNo: ${RefNo}`);
-      // Update order status to "failed"
+      console.log(`Payment failed for RefNo: ${RefNo}`);
+      // Update order status to "failed" in your database if necessary
     }
 
-    // Respond with plain text "RECEIVEOK"
+    // Return plain text acknowledgment
     return new Response('RECEIVEOK', { status: 200, headers: { 'Content-Type': 'text/plain' } });
   } catch (error) {
-    console.error('Error handling the request:', error);
+    console.error('Error processing backend POST:', error);
     return new Response('Error processing request', { status: 500 });
   }
 }
-
 
 // import { NextRequest, NextResponse } from 'next/server';
 // import { generateSignature } from '@/lib/ipay88';
