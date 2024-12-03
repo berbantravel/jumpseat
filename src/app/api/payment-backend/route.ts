@@ -1,53 +1,42 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generateSignature } from '@/lib/ipay88';  // Ensure this function is correct
-import axios from 'axios';
-
-async function inquirePaymentStatus(merchantCode: string, refNo: string, amount: string) {
-  // Construct the inquiry URL with required parameters
-  const queryString = new URLSearchParams({
-    MerchantCode: merchantCode,
-    RefNo: refNo,
-    Amount: amount,
-  }).toString();
-
-  const apiUrl = `https://sandbox.ipay88.com.ph/MerchantService/Payment/Inquiry?${queryString}`;
-
-  try {
-    // Make the inquiry request to iPay88
-    const response = await axios.get(apiUrl);
-    console.log('Inquiry response:', response.data);
-
-    // Process the response (check if payment is successful, etc.)
-    return response.data;
-  } catch (error) {
-    console.error('Error during inquiry API call:', error);
-    return null; // Or handle error as needed
-  }
-}
+import { generateSignature } from '@/lib/ipay88';
 
 export async function POST(request: NextRequest) {
   try {
+    const contentType = request.headers.get('content-type');
+    if (!contentType?.includes('form')) {
+      console.error('Unsupported content type:', contentType);
+      return new Response('Unsupported content type', { status: 400 });
+    }
+
     const body = await request.formData();
     const payload = Object.fromEntries(body.entries());
+    console.log('Payload received:', payload);
 
     const { MerchantCode, RefNo, Amount, Currency, Status, Signature: receivedSignature } = payload as Record<string, string>;
-    console.log("Payload: ",payload);
-    console.log("Signature: ",receivedSignature);
+
+    console.log('Received Signature:', receivedSignature);
+
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
     if (!merchantKey) {
-      console.error('Missing Merchant Key');
+      console.error('Merchant Key is missing.');
       return new Response('Merchant Key missing', { status: 500 });
     }
 
-    // Recalculate the signature to validate the request
-    const calculatedSignature = generateSignature(merchantKey,{MerchantCode,RefNo,Amount,Currency});
+    const formattedAmount = Number(Amount).toFixed(2).replace('.', '').replace(',', '');
+    const calculatedSignature = generateSignature(merchantKey, {
+      MerchantCode,
+      RefNo,
+      Amount: formattedAmount,
+      Currency,
+    });
+
     console.log('Calculated Signature:', calculatedSignature);
     if (calculatedSignature !== receivedSignature) {
       console.error('Signature mismatch:', { calculatedSignature, receivedSignature });
       return new Response('Invalid signature', { status: 400 });
     }
 
-    // Process the payment status and update the order
     if (Status === '1') {
       console.log(`Payment verified successfully for RefNo: ${RefNo}`);
       // Update order status to "completed"
@@ -56,15 +45,13 @@ export async function POST(request: NextRequest) {
       // Update order status to "failed"
     }
 
-    // Acknowledge iPay88 with "RECEIVEOK"
-    return new Response('RECEIVEOK');
+    // Respond with plain text "RECEIVEOK"
+    return new Response('RECEIVEOK', { status: 200, headers: { 'Content-Type': 'text/plain' } });
   } catch (error) {
     console.error('Error handling the request:', error);
     return new Response('Error processing request', { status: 500 });
   }
 }
-
-
 
 
 // import { NextRequest, NextResponse } from 'next/server';
