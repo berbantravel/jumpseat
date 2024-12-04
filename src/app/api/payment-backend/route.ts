@@ -40,6 +40,9 @@ export async function POST(request: NextRequest) {
       RefNo,
       Amount,
       Currency,
+      Status,
+      AuthCode,
+      TransId
     });
     console.log('Calculated Signature:', calculatedSignature);
 
