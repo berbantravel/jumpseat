@@ -124,8 +124,7 @@ function CheckoutContent() {
           BackendURL: `${window.location.origin}/api/payment-backend`,
         }),
       })
-console.log("Backend URL: ",`${window.location.origin}/api/payment-backend`)
-console.log("Response URL: ",`${window.location.origin}/api/payment-response`)
+
       const data: PaymentResponse = await response.json()
       if (data.success) {
         localStorage.setItem('IPAY88_PAYLOAD', JSON.stringify(data.payload))
