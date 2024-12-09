@@ -1,32 +1,24 @@
 import crypto from 'crypto';
-
-interface BackendSignatureParams {
+interface SignatureParams {
   MerchantCode: string;
   RefNo: string;
   Amount: string;
   Currency: string;
-  Status: string; // Add Status
-  AuthCode: string; // Add AuthCode
-  TransId: string; // Add TransId
 }
 
-export function generateSignature(
-  merchantKey: string,
-  params: BackendSignatureParams
-): string {
-  const { MerchantCode, RefNo, Amount, Currency, Status, AuthCode, TransId } = params;
-
-  // Format amount
+export function generateSignature(merchantKey: string, params: SignatureParams): string {
+  const { MerchantCode,RefNo,Amount,Currency } = params;
+  
   const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '');
-
-  // Construct the string for hashing
-  const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}${Status}${AuthCode}${TransId}`;
-  console.log('String to Hash:', stringToHash);
-
+  console.log("parameters",merchantKey,MerchantCode,RefNo,formattedAmount,Currency);
+  const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
+  console.log("stringToHash",stringToHash);
   // Generate SHA256 hash
-  return crypto.createHash('sha256').update(stringToHash).digest('hex');
-}
+  const signature = crypto.createHash('sha256').update(stringToHash).digest('hex');
+  console.log("IPAY88 SIGNATURE:",signature);
+  return signature;
 
+}
 
 // import crypto from 'crypto';
 // interface SignatureParams {

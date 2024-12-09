@@ -13,11 +13,11 @@ interface PaymentRequestBody {
 
 export async function POST(request: NextRequest) {
     const body: PaymentRequestBody = await request.json();
-    const { MerchantCode, RefNo, Amount, Currency, Status, AuthCode, TransId } = body;
+    const { MerchantCode, RefNo, Amount, Currency } = body;
     const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
     
     // console.log(merchantKey);
-    const signature = generateSignature(merchantKey,{MerchantCode,RefNo,Amount,Currency, Status, AuthCode, TransId});
+    const signature = generateSignature(merchantKey,{MerchantCode,RefNo,Amount,Currency});
     console.log('Initiate Payment Signature:', signature);
 
     const paymentPayload = {
@@ -29,7 +29,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true, payload: paymentPayload });
 }
-
 // import { NextRequest, NextResponse } from 'next/server';
 // import { generateSignature } from '@/lib/ipay88';
 
