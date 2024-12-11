@@ -38,18 +38,31 @@ export async function POST(request: NextRequest) {
         const body = await request.json();
         console.log('Requery Request Body:', body);
 
+        // Get merchant key from environment variable
+        const merchantKey = process.env.IPAY88_MERCHANT_KEY;
+        if (!merchantKey) {
+            throw new Error('Merchant key not configured');
+        }
+
+        // Generate secret key (SHA256 + Base64)
+        const secretKey = generateSecretKey(merchantKey, body.merchantCode);
+        console.log('Generated Secret Key (first 10 chars):', secretKey.substring(0, 10) + '...');
+
+        // Prepare request to iPay88
+        const requestBody = {
+            merchantCode: body.merchantCode,
+            refNo: body.refNo,
+            amount: body.amount,
+            secretKey: secretKey  // Use generated secret key
+        };
+
         const response = await fetch('https://sandbox.ipay88.com.ph/MerchantService/Payment/Inquiry', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                merchantCode: body.merchantCode,
-                refNo: body.refNo,
-                amount: body.amount,
-                secretKey: body.secretKey
-            })
+            body: JSON.stringify(requestBody)
         });
 
         const rawResponse = await response.text();
@@ -65,4 +78,23 @@ export async function POST(request: NextRequest) {
             message: error instanceof Error ? error.message : 'Unknown error'
         }, { status: 500 });
     }
+}
+
+function generateSecretKey(merchantKey: string, merchantCode: string): string {
+    // Step 1: Concatenate merchantKey and merchantCode
+    const concatenated = `${merchantKey}${merchantCode}`;
+    
+    // Step 2: Generate SHA256 hash
+    const sha256Hash = crypto
+        .createHash('sha256')
+        .update(concatenated)
+        .digest('base64');  // Direct base64 encoding
+    
+    console.log('Secret Key Generation:', {
+        merchantCode,
+        hashLength: sha256Hash.length,
+        sampleHash: sha256Hash.substring(0, 10) + '...'
+    });
+    
+    return sha256Hash;
 }
