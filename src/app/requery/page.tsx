@@ -39,8 +39,8 @@ const PaymentRequery: React.FC = () => {
 
     // Validate amount format
     const amountNum = parseFloat(amount)
-    if (isNaN(amountNum) || amountNum < 100 || amountNum > 10000) {
-      setError('Amount must be between 100 and 10,000')
+    if (isNaN(amountNum) || amountNum < 100 || amountNum > 30000) {
+      setError('Amount must be between 100 and 30,000')
       return
     }
 
