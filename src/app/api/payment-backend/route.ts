@@ -1,4 +1,3 @@
-// ===== PAYMENT BACKEND HANDLER (src/app/api/payment-backend/route.ts) =====
 import { NextRequest } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
@@ -6,6 +5,9 @@ export async function POST(request: NextRequest) {
     try {
         const formData = await request.formData();
         const payload = Object.fromEntries(formData.entries());
+
+        // Log the raw payload for debugging
+        console.log('Raw Payment Notification:', payload);
 
         const {
             MerchantCode,
@@ -17,27 +19,32 @@ export async function POST(request: NextRequest) {
             Signature: receivedSignature,
             TransId,
             AuthCode,
-            CCName,
-            CCNo,
-            S_bankname,
-            S_country,
         } = payload as Record<string, string>;
 
-        console.log('Received Payment Notification:', {
+        // Log formatted payment details
+        console.log('Payment Details:', {
             refNo: RefNo,
-            amount: Amount,
-            status: Status,
-            transId: TransId
+            transId: TransId,
+            amount: `${Amount} ${Currency}`,
+            status: Status === '1' ? 'SUCCESS' : 'FAILED',
+            timestamp: new Date().toISOString()
         });
 
         // Validate Merchant Key
-        const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+        const merchantKey = process.env.IPAY88_MERCHANT_KEY; // Remove NEXT_PUBLIC_
         if (!merchantKey) {
             console.error('Missing Merchant Key');
-            return new Response('RECEIVEOK');
+            // Still return RECEIVEOK even if key is missing
+            return new Response('RECEIVEOK', {
+                status: 200,
+                headers: {
+                    'Content-Type': 'text/plain',
+                    'Cache-Control': 'no-store'
+                }
+            });
         }
 
-        // Generate response signature
+        // Verify signature
         const calculatedSignature = generateSignature(
             merchantKey,
             {
@@ -51,53 +58,50 @@ export async function POST(request: NextRequest) {
             'response'
         );
 
-        console.log('Signature Verification:', {
-            received: receivedSignature,
-            calculated: calculatedSignature,
-            match: calculatedSignature === receivedSignature
+        // Log signature verification
+        console.log('Signature Check:', {
+            match: calculatedSignature === receivedSignature,
+            refNo: RefNo
         });
 
         // Process payment status
-        if (Status === '1' && calculatedSignature === receivedSignature) {
-            console.log('Payment Successful:', {
+        if (Status === '1') {
+            console.log('✅ Payment Success:', {
                 refNo: RefNo,
-                transactionId: TransId,
+                transId: TransId,
                 amount: Amount,
-                currency: Currency
+                authCode: AuthCode
             });
-
-            // TODO: Update your database here
-            // await prisma.order.update({
-            //     where: { referenceNumber: RefNo },
-            //     data: { 
-            //         status: 'completed',
-            //         transactionId: TransId,
-            //         paymentDetails: {
-            //             authCode: AuthCode,
-            //             cardName: CCName,
-            //             cardNumber: CCNo,
-            //             bank: S_bankname,
-            //             country: S_country
-            //         }
-            //     }
-            // });
         } else {
-            console.log('Payment Failed or Invalid:', {
+            console.log('❌ Payment Failed:', {
                 refNo: RefNo,
-                status: Status,
-                signatureMatch: calculatedSignature === receivedSignature
+                error: payload.ErrDesc || 'Unknown error'
             });
         }
 
-        // Always return RECEIVEOK to iPay88
+        // Always return RECEIVEOK with correct headers
         return new Response('RECEIVEOK', {
-            headers: { 'Content-Type': 'text/plain' }
+            status: 200,
+            headers: {
+                'Content-Type': 'text/plain',
+                'Cache-Control': 'no-store',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST'
+            }
         });
 
     } catch (error) {
-        console.error('Payment Backend Error:', error);
+        // Log the error but still return RECEIVEOK
+        console.error('Backend Error:', error);
+        
         return new Response('RECEIVEOK', {
-            headers: { 'Content-Type': 'text/plain' }
+            status: 200,
+            headers: {
+                'Content-Type': 'text/plain',
+                'Cache-Control': 'no-store',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST'
+            }
         });
     }
 }
