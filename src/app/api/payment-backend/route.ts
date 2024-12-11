@@ -2,42 +2,100 @@
 import { NextRequest } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
 
-// src/app/api/payment-backend/route.ts
 export async function POST(request: NextRequest) {
     try {
         const formData = await request.formData();
         const payload = Object.fromEntries(formData.entries());
 
-        console.log('Backend Notification Received:', payload);
+        const {
+            MerchantCode,
+            PaymentId,
+            RefNo,
+            Amount,
+            Currency,
+            Status,
+            Signature: receivedSignature,
+            TransId,
+            AuthCode,
+            CCName,
+            CCNo,
+            S_bankname,
+            S_country,
+        } = payload as Record<string, string>;
 
-        const merchantKey = process.env.IPAY88_MERCHANT_KEY; // Remove NEXT_PUBLIC_
+        console.log('Received Payment Notification:', {
+            refNo: RefNo,
+            amount: Amount,
+            status: Status,
+            transId: TransId
+        });
+
+        // Validate Merchant Key
+        const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
         if (!merchantKey) {
-            console.error('Merchant key not configured');
-            return new Response('RECEIVEOK', {
-                headers: { 'Content-Type': 'text/plain' }
-            });
+            console.error('Missing Merchant Key');
+            return new Response('RECEIVEOK');
         }
 
-        // Verify signature
-        const calculatedSignature = generateSignature(merchantKey, payload as any, 'response');
-        
-        if (calculatedSignature === payload.Signature) {
-            console.log('Payment Verified:', {
-                refNo: payload.RefNo,
-                status: payload.Status,
-                amount: payload.Amount
+        // Generate response signature
+        const calculatedSignature = generateSignature(
+            merchantKey,
+            {
+                MerchantCode,
+                PaymentId,
+                RefNo,
+                Amount,
+                Currency,
+                Status
+            },
+            'response'
+        );
+
+        console.log('Signature Verification:', {
+            received: receivedSignature,
+            calculated: calculatedSignature,
+            match: calculatedSignature === receivedSignature
+        });
+
+        // Process payment status
+        if (Status === '1' && calculatedSignature === receivedSignature) {
+            console.log('Payment Successful:', {
+                refNo: RefNo,
+                transactionId: TransId,
+                amount: Amount,
+                currency: Currency
             });
-            // Add your database update logic here
+
+            // TODO: Update your database here
+            // await prisma.order.update({
+            //     where: { referenceNumber: RefNo },
+            //     data: { 
+            //         status: 'completed',
+            //         transactionId: TransId,
+            //         paymentDetails: {
+            //             authCode: AuthCode,
+            //             cardName: CCName,
+            //             cardNumber: CCNo,
+            //             bank: S_bankname,
+            //             country: S_country
+            //         }
+            //     }
+            // });
         } else {
-            console.error('Invalid signature');
+            console.log('Payment Failed or Invalid:', {
+                refNo: RefNo,
+                status: Status,
+                signatureMatch: calculatedSignature === receivedSignature
+            });
         }
 
-        // Always return RECEIVEOK
+        // Always return RECEIVEOK to iPay88
         return new Response('RECEIVEOK', {
             headers: { 'Content-Type': 'text/plain' }
         });
+
     } catch (error) {
-        console.error('Backend Error:', error);
+        console.error('Payment Backend Error:', error);
         return new Response('RECEIVEOK', {
             headers: { 'Content-Type': 'text/plain' }
         });
