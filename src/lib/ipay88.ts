@@ -4,36 +4,22 @@ interface SignatureParams {
   RefNo: string;
   Amount: string;
   Currency: string;
-  PaymentId?: string;  // Add this line
-  Status?: string;     // Keep this optional
 }
 
-export function generateSignature(merchantKey: string, params: SignatureParams, type: 'request' | 'response' = 'request'): string {
-  // Format amount
-  const numericAmount = parseFloat(params.Amount).toFixed(2);
-  const cleanAmount = numericAmount.replace(/\./g, '');
-
-  // Build signature string
-  let signatureString = '';
+export function generateSignature(merchantKey: string, params: SignatureParams): string {
+  const { MerchantCode,RefNo,Amount,Currency } = params;
   
-  if (type === 'request') {
-      signatureString = `${merchantKey}${params.MerchantCode}${params.RefNo}${cleanAmount}${params.Currency}`;
-  } else {
-      // Ensure PaymentId exists for response signature
-      if (!params.PaymentId) {
-          throw new Error('PaymentId is required for response signature');
-      }
-      signatureString = `${merchantKey}${params.MerchantCode}${params.PaymentId}${params.RefNo}${cleanAmount}${params.Currency}${params.Status}`;
-  }
-
-  // Generate hash
-  const signature = crypto
-      .createHash('sha256')
-      .update(signatureString)
-      .digest('hex');
-
+  const formattedAmount = Number(Amount).toFixed(2).replace(',', '').replace('.', '');
+  console.log("parameters",merchantKey,MerchantCode,RefNo,formattedAmount,Currency);
+  const stringToHash = `${merchantKey}${MerchantCode}${RefNo}${formattedAmount}${Currency}`;
+  console.log("stringToHash",stringToHash);
+  // Generate SHA256 hash
+  const signature = crypto.createHash('sha256').update(stringToHash).digest('hex');
+  console.log("IPAY88 SIGNATURE:",signature);
   return signature;
+
 }
+
 // import crypto from 'crypto';
 // interface SignatureParams {
 //   MerchantCode: string;
