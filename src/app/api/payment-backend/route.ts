@@ -1,67 +1,86 @@
+// ===== PAYMENT BACKEND HANDLER (payment-backend/route.ts) =====
 import { NextRequest, NextResponse } from 'next/server';
-import { generateSignature } from '@/lib/ipay88';  // Ensure this function is correct
+import { generateSignature } from '@/lib/ipay88';
 import axios from 'axios';
 
-async function inquirePaymentStatus(merchantCode: string, refNo: string, amount: string) {
-  // Construct the inquiry URL with required parameters
-  const queryString = new URLSearchParams({
-    MerchantCode: merchantCode,
-    RefNo: refNo,
-    Amount: amount,
-  }).toString();
-
-  const apiUrl = `https://sandbox.ipay88.com.ph/MerchantService/Payment/Inquiry?${queryString}`;
-
-  try {
-    // Make the inquiry request to iPay88
-    const response = await axios.get(apiUrl);
-    console.log('Inquiry response:', response.data);
-
-    // Process the response (check if payment is successful, etc.)
-    return response.data;
-  } catch (error) {
-    console.error('Error during inquiry API call:', error);
-    return null; // Or handle error as needed
-  }
-}
-
 export async function POST(request: NextRequest) {
-  try {
-    const body = await request.formData();
-    const payload = Object.fromEntries(body.entries());
+    try {
+        const body = await request.formData();
+        const payload = Object.fromEntries(body.entries());
 
-    const { MerchantCode, RefNo, Amount, Currency, Status, Signature: receivedSignature } = payload as Record<string, string>;
-    console.log("Payload: ",payload);
-    console.log("Signature: ",receivedSignature);
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-    if (!merchantKey) {
-      console.error('Missing Merchant Key');
-      return new Response('Merchant Key missing', { status: 500 });
+        const {
+            MerchantCode,
+            PaymentId,
+            RefNo,
+            Amount,
+            Currency,
+            Remark,
+            TransId,
+            AuthCode,
+            Status,
+            ErrDesc,
+            Signature: receivedSignature,
+            CCName,
+            CCNo,
+            S_bankname,
+            S_country,
+        } = payload as Record<string, string>;
+
+        console.log('Received Payload:', payload);
+
+        // Validate Merchant Key
+        const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+        if (!merchantKey) {
+            console.error('Missing Merchant Key');
+            return new Response('Merchant Key missing', { status: 500 });
+        }
+
+        // Recalculate the signature for validation
+        const calculatedSignature = generateSignature(merchantKey, {
+            MerchantCode,
+            RefNo,
+            Amount,
+            Currency
+        });
+
+        console.log('Signature Verification:', {
+            received: receivedSignature,
+            calculated: calculatedSignature,
+            match: calculatedSignature === receivedSignature
+        });
+
+        if (calculatedSignature !== receivedSignature) {
+            console.error('Signature mismatch:', { calculatedSignature, receivedSignature });
+            return new Response('Invalid signature', { status: 400 });
+        }
+
+        // Process the payment status
+        if (Status === '1') {
+            console.log(`Payment successful for RefNo: ${RefNo}`);
+            // Perform actions for successful payment
+            // Example: Update order to "Completed" in the database
+        } else {
+            console.log(`Payment failed for RefNo: ${RefNo}`);
+            // Perform actions for failed payment
+            // Example: Update order to "Failed" in the database
+        }
+
+        // Log additional payment details
+        console.log('Payment Details:', {
+            transactionId: TransId,
+            authCode: AuthCode,
+            cardName: CCName,
+            cardNumber: CCNo,
+            bank: S_bankname,
+            country: S_country
+        });
+
+        // Always return RECEIVEOK to iPay88
+        return new Response('RECEIVEOK');
+    } catch (error) {
+        console.error('Error handling the request:', error);
+        return new Response('RECEIVEOK');  // Still return RECEIVEOK even on error
     }
-
-    // Recalculate the signature to validate the request
-    const calculatedSignature = generateSignature(merchantKey,{MerchantCode,RefNo,Amount,Currency});
-    console.log('Calculated Signature:', calculatedSignature);
-    if (calculatedSignature !== receivedSignature) {
-      console.error('Signature mismatch:', { calculatedSignature, receivedSignature });
-      return new Response('Invalid signature', { status: 400 });
-    }
-
-    // Process the payment status and update the order
-    if (Status === '1') {
-      console.log(`Payment verified successfully for RefNo: ${RefNo}`);
-      // Update order status to "completed"
-    } else {
-      console.log(`Payment verification failed for RefNo: ${RefNo}`);
-      // Update order status to "failed"
-    }
-
-    // Acknowledge iPay88 with "RECEIVEOK"
-    return new Response('RECEIVEOK');
-  } catch (error) {
-    console.error('Error handling the request:', error);
-    return new Response('Error processing request', { status: 500 });
-  }
 }
 
 
