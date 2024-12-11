@@ -80,7 +80,7 @@ const PaymentRequery: React.FC = () => {
   }
 
   return (
-    <div className="mx-auto max-w-2xl p-6">
+    <div className="max-h-2xl mx-auto max-w-2xl p-6 py-28">
       <h1 className="mb-6 text-2xl font-bold">Payment Requery</h1>
 
       <div className="space-y-4">
@@ -118,7 +118,7 @@ const PaymentRequery: React.FC = () => {
           onClick={handleRequery}
           disabled={loading}
           className={`w-full rounded p-3 text-white ${
-            loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
+            loading ? 'bg-gray-400' : 'bg-[#ff9e39]'
           }`}
         >
           {loading ? 'Checking...' : 'Check Payment Status'}
