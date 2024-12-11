@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 
-// Define proper types for the iPay88 requery response
+// Define types for the iPay88 requery response
 interface Transaction {
   paymentId: number
   amount: number
@@ -24,7 +24,7 @@ interface RequeryResponse {
 }
 
 const PaymentRequery: React.FC = () => {
-  const [merchantCode, setMerchantCode] = useState<string>('PH01663') // Default merchant code
+  const [merchantCode, setMerchantCode] = useState<string>('PH00001') // Default merchant code
   const [refNo, setRefNo] = useState<string>('')
   const [amount, setAmount] = useState<string>('')
   const [requeryData, setRequeryData] = useState<RequeryResponse | null>(null)
@@ -39,8 +39,8 @@ const PaymentRequery: React.FC = () => {
 
     // Validate amount format
     const amountNum = parseFloat(amount)
-    if (isNaN(amountNum) || amountNum <= 0) {
-      setError('Please enter a valid amount')
+    if (isNaN(amountNum) || amountNum < 100 || amountNum > 10000) {
+      setError('Amount must be between 100 and 10,000')
       return
     }
 
@@ -58,7 +58,13 @@ const PaymentRequery: React.FC = () => {
         body: formData,
       })
 
-      const data = await response.json()
+      const responseText = await response.text()
+      let data
+      try {
+        data = JSON.parse(responseText)
+      } catch (parseError) {
+        throw new Error('Invalid response from server')
+      }
 
       if (!response.ok) {
         throw new Error(data.error || 'Failed to fetch requery data')
@@ -66,11 +72,12 @@ const PaymentRequery: React.FC = () => {
 
       setRequeryData(data)
 
-      // Show success/failure message based on transaction status
       if (data.transactions?.[0]) {
         const transaction = data.transactions[0]
-        if (transaction.status === 0) {
-          setError(`Payment Status: ${transaction.errDesc}`)
+        if (transaction.status === 1) {
+          console.log('Payment Successful:', transaction)
+        } else {
+          console.log('Payment Failed:', transaction.errDesc)
         }
       }
     } catch (error) {
@@ -80,17 +87,6 @@ const PaymentRequery: React.FC = () => {
       )
     } finally {
       setLoading(false)
-    }
-  }
-
-  const getStatusColor = (status: number) => {
-    switch (status) {
-      case 1:
-        return 'green' // Success
-      case 0:
-        return 'orange' // Pending
-      default:
-        return 'red' // Failed
     }
   }
 
@@ -167,9 +163,7 @@ const PaymentRequery: React.FC = () => {
                   Amount: {transaction.amount} {transaction.currency}
                 </p>
                 <p>Date: {new Date(transaction.createDate).toLocaleString()}</p>
-                <p style={{ color: getStatusColor(transaction.status) }}>
-                  Status: {transaction.errDesc}
-                </p>
+                <p>Status: {transaction.errDesc}</p>
               </div>
             ))}
           </div>
