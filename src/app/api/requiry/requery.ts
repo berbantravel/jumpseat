@@ -34,8 +34,8 @@ import { NextRequest } from 'next/server';
 import crypto from 'crypto';
 
 // Constants
-const INQUIRY_URL = 'https://sandbox.ipay88.com.ph/MerchantService/Payment/Inquiry';
-const BATCH_INQUIRY_URL = 'https://sandbox.ipay88.com.ph/MerchantService/Payment/BatchInquiry';
+const INQUIRY_URL = 'https://payment.ipay88.com.ph/MerchantService/Payment/Inquiry';
+const BATCH_INQUIRY_URL = 'https://payment.ipay88.com.ph/MerchantService/Payment/BatchInquiry';
 
 function generateSecretKey(merchantKey: string, merchantCode: string): string {
   // Step 1: Concatenate merchantKey and merchantCode
