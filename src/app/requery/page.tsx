@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from 'react'
 
-// Define types for the iPay88 requery response
 interface Transaction {
   paymentId: number
   amount: number
@@ -24,7 +23,7 @@ interface RequeryResponse {
 }
 
 const PaymentRequery: React.FC = () => {
-  const [merchantCode, setMerchantCode] = useState<string>('PH00001') // Default merchant code
+  const [merchantCode, setMerchantCode] = useState<string>('PH01663') // Changed default
   const [refNo, setRefNo] = useState<string>('')
   const [amount, setAmount] = useState<string>('')
   const [requeryData, setRequeryData] = useState<RequeryResponse | null>(null)
@@ -32,13 +31,24 @@ const PaymentRequery: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false)
 
   const handleRequery = async () => {
+    // Validate inputs
+    if (!merchantCode || !refNo || !amount) {
+      setError('All fields are required')
+      return
+    }
+
     try {
+      setLoading(true)
+      setError(null)
+
       const requestBody = {
-        merchantCode: 'PH01663',
+        merchantCode: merchantCode, // Use state value
         refNo: refNo,
         amount: `${parseFloat(amount).toFixed(2)}`,
-        secretKey: 'QbdH3gCDBIUURkZZuwB21HGID46uOpL12MWVgw91Bjc=', // This should be generated properly
+        // secretKey will be generated in the backend
       }
+
+      console.log('Sending request:', requestBody)
 
       const response = await fetch('/api/requery', {
         method: 'POST',
@@ -48,15 +58,24 @@ const PaymentRequery: React.FC = () => {
         body: JSON.stringify(requestBody),
       })
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
       const data = await response.json()
+      console.log('Received response:', data)
 
       if (data.errorCode) {
         setError(`${data.errorCode}: ${data.errorMessage}`)
       } else {
         setRequeryData(data)
+        setError(null)
       }
     } catch (error) {
+      console.error('Requery error:', error)
       setError(error instanceof Error ? error.message : 'An error occurred')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -76,6 +95,7 @@ const PaymentRequery: React.FC = () => {
             onChange={(e) => setMerchantCode(e.target.value)}
             placeholder="Enter Merchant Code"
             className="w-full rounded border p-2"
+            disabled={loading}
           />
         </div>
 
@@ -90,6 +110,7 @@ const PaymentRequery: React.FC = () => {
             onChange={(e) => setRefNo(e.target.value)}
             placeholder="Enter Reference Number"
             className="w-full rounded border p-2"
+            disabled={loading}
           />
         </div>
 
@@ -103,6 +124,7 @@ const PaymentRequery: React.FC = () => {
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter Amount"
             className="w-full rounded border p-2"
+            disabled={loading}
           />
         </div>
 
@@ -110,7 +132,9 @@ const PaymentRequery: React.FC = () => {
         <button
           onClick={handleRequery}
           disabled={loading}
-          className={`w-full rounded p-3 text-white ${loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'}`}
+          className={`w-full rounded p-3 text-white ${
+            loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
+          }`}
         >
           {loading ? 'Checking...' : 'Check Payment Status'}
         </button>
@@ -133,7 +157,8 @@ const PaymentRequery: React.FC = () => {
                   Amount: {transaction.amount} {transaction.currency}
                 </p>
                 <p>Date: {new Date(transaction.createDate).toLocaleString()}</p>
-                <p>Status: {transaction.errDesc}</p>
+                <p>Status: {transaction.status === 1 ? 'Success' : 'Failed'}</p>
+                {transaction.errDesc && <p>Error: {transaction.errDesc}</p>}
               </div>
             ))}
           </div>
