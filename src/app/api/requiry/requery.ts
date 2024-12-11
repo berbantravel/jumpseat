@@ -29,32 +29,13 @@
 // }
 
 // pages/api/requery.ts
-// pages/api/requery.ts
 // ===== PAYMENT REQUERY HANDLER (src/app/api/requery/route.ts) =====
 import { NextRequest } from 'next/server';
 import crypto from 'crypto';
 
-function generateSecretKey(merchantKey: string, merchantCode: string): string {
-    // Step 1: Concatenate merchantKey and merchantCode
-    const concatenated = `${merchantKey}${merchantCode}`;
-    
-    // Step 2: Generate SHA256 hash
-    const sha256Hash = crypto
-        .createHash('sha256')
-        .update(concatenated)
-        .digest('hex');
-    
-    // Step 3: Convert the hex hash to Base64
-    const base64Secret = Buffer.from(sha256Hash).toString('base64');
-    
-    console.log('Secret Key Generation:', {
-        input: concatenated,
-        sha256: sha256Hash,
-        base64: base64Secret
-    });
-    
-    return base64Secret;
-}
+// Constants
+const SINGLE_INQUIRY_URL = 'https://payment.ipay88.com.ph/MerchantService/Payment/Inquiry';
+const BATCH_INQUIRY_URL = 'https://payment.ipay88.com.ph/MerchantService/Payment/BatchInquiry';
 
 export async function POST(request: NextRequest) {
     try {
@@ -62,7 +43,7 @@ export async function POST(request: NextRequest) {
         
         const merchantCode = formData.get('MerchantCode') as string;
         const refNo = formData.get('RefNo') as string;
-        const amount = formData.get('Amount') as string;
+        let amount = formData.get('Amount') as string;
 
         console.log('Requery Request:', {
             merchantCode,
@@ -70,41 +51,70 @@ export async function POST(request: NextRequest) {
             amount
         });
 
+        // Validate inputs
         if (!merchantCode || !refNo || !amount) {
             return Response.json({ 
                 error: 'Missing required parameters' 
             }, { status: 400 });
         }
 
+        // Format amount properly
+        amount = parseFloat(amount).toFixed(2);
+
+        // Generate secret key
         const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-        const secretKey = generateSecretKey(merchantKey, merchantCode);
+        const concatenated = `${merchantKey}${merchantCode}`;
+        const sha256Hash = crypto
+            .createHash('sha256')
+            .update(concatenated)
+            .digest('hex');
+        const secretKey = Buffer.from(sha256Hash).toString('base64');
 
-        // Format amount to 2 decimal places
-        const formattedAmount = parseFloat(amount).toFixed(2);
-
+        // Prepare request body
         const requestBody = {
             merchantCode,
             refNo,
-            amount: formattedAmount,
-            secretkey: secretKey  // Note: iPay88 expects 'secretkey' (lowercase 'k')
+            amount,
+            secretkey: secretKey // lowercase 'k' as per iPay88 spec
         };
 
         console.log('Sending Request:', {
-            ...requestBody,
-            secretkey: `${secretKey.substring(0, 10)}...` // Log partial secret key for security
+            url: SINGLE_INQUIRY_URL,
+            body: {
+                ...requestBody,
+                secretkey: `${secretKey.substring(0, 10)}...` // Log partial key
+            }
         });
 
-        const response = await fetch('https://payment.ipay88.com.ph/MerchantService/Payment/Inquiry', {
+        // Make request to iPay88
+        const response = await fetch(SINGLE_INQUIRY_URL, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(requestBody)
         });
 
-        const result = await response.json();
+        // Log raw response
+        const rawResponse = await response.text();
+        console.log('iPay88 Response:', {
+            status: response.status,
+            headers: Object.fromEntries(response.headers.entries()),
+            body: rawResponse
+        });
 
-        console.log('Requery Response:', result);
+        // Parse response
+        let result;
+        try {
+            result = JSON.parse(rawResponse);
+        } catch (parseError) {
+            console.error('Response Parse Error:', parseError);
+            return Response.json({
+                error: 'Invalid response from payment gateway',
+                details: rawResponse
+            }, { status: 502 });
+        }
 
         return Response.json(result);
 
@@ -115,4 +125,24 @@ export async function POST(request: NextRequest) {
             message: error instanceof Error ? error.message : 'Unknown error'
         }, { status: 500 });
     }
+}
+
+// Batch inquiry function (if needed)
+async function batchInquiry(transactions: Array<{
+    merchantCode: string;
+    refNo: string;
+    amount: string;
+}>) {
+    // Implementation for batch inquiry
+    const response = await fetch(BATCH_INQUIRY_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            transactions
+        })
+    });
+
+    return response.json();
 }
