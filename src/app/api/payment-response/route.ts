@@ -96,25 +96,19 @@
 // 
 
 import { NextRequest, NextResponse } from 'next/server';
-// src/app/api/payment-response/route.ts
 export async function POST(request: NextRequest) {
   try {
-      const formData = await request.formData();
-      const payload = Object.fromEntries(formData.entries());
+    const body = await request.formData();
+    const payload = Object.fromEntries(body.entries());
 
-      console.log('Payment Response Received:', payload);
+    // Process the payment data here if needed
+    // Update your database or perform other actions
 
-      // Determine redirect URL based on status
-      const status = payload.Status;
-      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
-      
-      const redirectUrl = status === '1'
-          ? `${baseUrl}/payment/success?refNo=${payload.RefNo}`
-          : `${baseUrl}/payment/failed?refNo=${payload.RefNo}&error=${payload.ErrDesc || 'Payment failed'}`;
-
-      return NextResponse.redirect(redirectUrl);
+    const searchParams = new URLSearchParams(payload as Record<string, string>);
+    console.log("Body:",body)
+    return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
   } catch (error) {
-      console.error('Response Error:', error);
-      return NextResponse.redirect(`${process.env.NEXT_PUBLIC_SITE_URL}/payment/error`);
+    console.error('Error processing payment response:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
