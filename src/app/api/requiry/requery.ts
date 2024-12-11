@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
       const amountNum = parseFloat(amount);
       if (isNaN(amountNum) || amountNum < 100 || amountNum > 30000) {
           return Response.json({ 
-              error: 'Amount must be between 100 and 10,000' 
+              error: 'Amount must be between 100 and 30,000' 
           }, { status: 400 });
       }
 
