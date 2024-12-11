@@ -32,61 +32,31 @@ const PaymentRequery: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false)
 
   const handleRequery = async () => {
-    if (!merchantCode || !refNo || !amount) {
-      setError('All fields are required')
-      return
-    }
-
-    // Validate amount format
-    const amountNum = parseFloat(amount)
-    if (isNaN(amountNum) || amountNum < 100 || amountNum > 30000) {
-      setError('Amount must be between 100 and 30,000')
-      return
-    }
-
-    setLoading(true)
-    setError(null)
-
     try {
-      const formData = new FormData()
-      formData.append('MerchantCode', merchantCode)
-      formData.append('RefNo', refNo)
-      formData.append('Amount', amountNum.toFixed(2))
+      const requestBody = {
+        merchantCode: 'PH01663',
+        refNo: refNo,
+        amount: `${parseFloat(amount).toFixed(2)}`,
+        secretKey: 'QbdH3gCDBIUURkZZuwB21HGID46uOpL12MWVgw91Bjc=', // This should be generated properly
+      }
 
       const response = await fetch('/api/requery', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
       })
 
-      const responseText = await response.text()
-      let data
-      try {
-        data = JSON.parse(responseText)
-      } catch (parseError) {
-        throw new Error('Invalid response from server')
-      }
+      const data = await response.json()
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to fetch requery data')
-      }
-
-      setRequeryData(data)
-
-      if (data.transactions?.[0]) {
-        const transaction = data.transactions[0]
-        if (transaction.status === 1) {
-          console.log('Payment Successful:', transaction)
-        } else {
-          console.log('Payment Failed:', transaction.errDesc)
-        }
+      if (data.errorCode) {
+        setError(`${data.errorCode}: ${data.errorMessage}`)
+      } else {
+        setRequeryData(data)
       }
     } catch (error) {
-      console.error('Requery Error:', error)
-      setError(
-        error instanceof Error ? error.message : 'An unknown error occurred',
-      )
-    } finally {
-      setLoading(false)
+      setError(error instanceof Error ? error.message : 'An error occurred')
     }
   }
 

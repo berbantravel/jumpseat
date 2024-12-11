@@ -29,138 +29,46 @@
 // }
 
 // pages/api/requery.ts
-// ===== PAYMENT REQUERY HANDLER (src/app/api/requery/route.ts) =====
+// pages/api/requery.ts
 import { NextRequest } from 'next/server';
 import crypto from 'crypto';
 
-// Constants
-const INQUIRY_URL = 'https://payment.ipay88.com.ph/MerchantService/Payment/Inquiry';
-const BATCH_INQUIRY_URL = 'https://payment.ipay88.com.ph/MerchantService/Payment/BatchInquiry';
-
-function generateSecretKey(merchantKey: string, merchantCode: string): string {
-  // Step 1: Concatenate merchantKey and merchantCode
-  const concatenated = `${merchantKey}${merchantCode}`;
-  
-  // Step 2: Generate SHA256 hash
-  const sha256Hash = crypto
-      .createHash('sha256')
-      .update(concatenated)
-      .digest('hex');
-  
-  // Step 3: Convert to Base64
-  const secretKey = Buffer.from(sha256Hash).toString('base64');
-  
-  console.log('Secret Key Generation:', {
-      input: concatenated,
-      sha256: sha256Hash,
-      base64: `${secretKey.substring(0, 10)}...` // Log partial key for security
-  });
-  
-  return secretKey;
-}
-
 export async function POST(request: NextRequest) {
-  try {
-      // 1. Get form data
-      const formData = await request.formData();
-      
-      const merchantCode = formData.get('MerchantCode') as string;
-      const refNo = formData.get('RefNo') as string;
-      let amount = formData.get('Amount') as string;
+    try {
+        // Parse JSON request body
+        const body = await request.json();
+        
+        // Log incoming request
+        console.log('Requery Request Body:', body);
 
-      console.log('Requery Request:', { merchantCode, refNo, amount });
+        // Make request to iPay88
+        const response = await fetch('https://sandbox.ipay88.com.ph/MerchantService/Payment/Inquiry', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                merchantCode: body.merchantCode,
+                refNo: body.refNo,
+                amount: body.amount,
+                secretKey: body.secretKey
+            })
+        });
 
-      // 2. Validate required parameters
-      if (!merchantCode || !refNo || !amount) {
-          return Response.json({ 
-              error: 'Missing required parameters' 
-          }, { status: 400 });
-      }
+        // Get raw response
+        const rawResponse = await response.text();
+        console.log('iPay88 Response:', rawResponse);
 
-      // 3. Validate amount range (100-10,000)
-      const amountNum = parseFloat(amount);
-      if (isNaN(amountNum) || amountNum < 100 || amountNum > 30000) {
-          return Response.json({ 
-              error: 'Amount must be between 100 and 30,000' 
-          }, { status: 400 });
-      }
+        // Parse and return response
+        const result = JSON.parse(rawResponse);
+        return Response.json(result);
 
-      // 4. Format amount to 2 decimal places
-      amount = amountNum.toFixed(2);
-
-      // 5. Generate secret key
-      const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY;
-      if (!merchantKey) {
-          throw new Error('Merchant key not configured');
-      }
-      
-      const secretKey = generateSecretKey(merchantKey, merchantCode);
-
-      // 6. Prepare request body (exactly as per iPay88 docs)
-      const requestBody = {
-          merchantCode,
-          refNo,
-          amount,
-          secretkey: secretKey // lowercase 'k' as specified
-      };
-
-      console.log('Sending Request:', {
-          url: INQUIRY_URL,
-          body: {
-              ...requestBody,
-              secretkey: `${secretKey.substring(0, 10)}...` // Partial key for logging
-          }
-      });
-
-      // 7. Make request to iPay88
-      const response = await fetch(INQUIRY_URL, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-          },
-          body: JSON.stringify(requestBody)
-      });
-
-      // 8. Get raw response for logging
-      const rawResponse = await response.text();
-      console.log('iPay88 Response:', {
-          status: response.status,
-          headers: Object.fromEntries(response.headers.entries()),
-          body: rawResponse
-      });
-
-      // 9. Parse response
-      let result;
-      try {
-          result = JSON.parse(rawResponse);
-          
-          // Log transaction status
-          if (result.transactions?.[0]) {
-              const transaction = result.transactions[0];
-              console.log('Transaction Status:', {
-                  refNo,
-                  status: transaction.status,
-                  description: transaction.errDesc,
-                  transId: transaction.transId
-              });
-          }
-
-      } catch (parseError) {
-          console.error('Response Parse Error:', parseError);
-          return Response.json({
-              error: 'Invalid response from payment gateway',
-              details: rawResponse
-          }, { status: 502 });
-      }
-
-      return Response.json(result);
-
-  } catch (error) {
-      console.error('Requery Error:', error);
-      return Response.json({
-          error: 'Payment verification failed',
-          message: error instanceof Error ? error.message : 'Unknown error'
-      }, { status: 500 });
-  }
+    } catch (error) {
+        console.error('Requery Error:', error);
+        return Response.json({
+            error: 'Payment verification failed',
+            message: error instanceof Error ? error.message : 'Unknown error'
+        }, { status: 500 });
+    }
 }
