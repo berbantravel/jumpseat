@@ -94,21 +94,55 @@
 
 // app/api/payment-response/route.ts
 // 
+import { NextRequest } from 'next/server';
+import { generateSignature } from '@/lib/ipay88';
 
-import { NextRequest, NextResponse } from 'next/server';
+interface PaymentResponse {
+    Status: string;
+    RefNo: string;
+    TransId: string;
+    Amount: string;
+    Currency: string;
+    PaymentId: string;
+    ErrDesc: string;
+    MerchantCode: string;
+    Signature: string;
+    CCNo?: string;
+    CCName?: string;
+    S_bankname?: string;
+    S_country?: string;
+    [key: string]: string | undefined;  // Index signature for other fields
+}
+
 export async function POST(request: NextRequest) {
-  try {
-    const body = await request.formData();
-    const payload = Object.fromEntries(body.entries());
+    try {
+        const formData = await request.formData();
+        const payload = Object.fromEntries(formData.entries()) as PaymentResponse;
 
-    // Process the payment data here if needed
-    // Update your database or perform other actions
+        console.log('Payment Response:', {
+            refNo: payload.RefNo,
+            status: payload.Status,
+            amount: payload.Amount
+        });
 
-    const searchParams = new URLSearchParams(payload as Record<string, string>);
-    console.log("Body:",body)
-    return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
-  } catch (error) {
-    console.error('Error processing payment response:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
-  }
+        const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.jumpseattours.com';
+        let redirectUrl: string;
+
+        if (payload.Status === '1') {
+            // Payment successful
+            redirectUrl = `${baseUrl}/payment/success?ref=${encodeURIComponent(payload.RefNo)}&transId=${encodeURIComponent(payload.TransId)}`;
+        } else {
+            // Payment failed
+            const errorMessage = encodeURIComponent(payload.ErrDesc || 'Payment failed');
+            redirectUrl = `${baseUrl}/payment/error?ref=${encodeURIComponent(payload.RefNo)}&error=${errorMessage}`;
+        }
+
+        console.log('Redirecting to:', redirectUrl);
+        return Response.redirect(redirectUrl);
+
+    } catch (error) {
+        console.error('Payment Response Error:', error);
+        const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.jumpseattours.com';
+        return Response.redirect(`${baseUrl}/payment/error?error=internal_error`);
+    }
 }
