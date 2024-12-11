@@ -143,7 +143,6 @@ const PaymentRequery: React.FC = () => {
                 </p>
                 <p>Date: {new Date(transaction.createDate).toLocaleString()}</p>
                 <p>Status: {transaction.status === 1 ? 'Success' : 'Failed'}</p>
-                {transaction.errDesc && <p>Error: {transaction.errDesc}</p>}
               </div>
             ))}
           </div>
