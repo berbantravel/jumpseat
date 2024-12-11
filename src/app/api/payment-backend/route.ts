@@ -1,12 +1,11 @@
-// ===== PAYMENT BACKEND HANDLER (payment-backend/route.ts) =====
-import { NextRequest, NextResponse } from 'next/server';
+// ===== PAYMENT BACKEND HANDLER (src/app/api/payment-backend/route.ts) =====
+import { NextRequest } from 'next/server';
 import { generateSignature } from '@/lib/ipay88';
-import axios from 'axios';
 
 export async function POST(request: NextRequest) {
     try {
-        const body = await request.formData();
-        const payload = Object.fromEntries(body.entries());
+        const formData = await request.formData();
+        const payload = Object.fromEntries(formData.entries());
 
         const {
             MerchantCode,
@@ -14,34 +13,43 @@ export async function POST(request: NextRequest) {
             RefNo,
             Amount,
             Currency,
-            Remark,
+            Status,
+            Signature: receivedSignature,
             TransId,
             AuthCode,
-            Status,
-            ErrDesc,
-            Signature: receivedSignature,
             CCName,
             CCNo,
             S_bankname,
             S_country,
         } = payload as Record<string, string>;
 
-        console.log('Received Payload:', payload);
+        console.log('Received Payment Notification:', {
+            refNo: RefNo,
+            amount: Amount,
+            status: Status,
+            transId: TransId
+        });
 
         // Validate Merchant Key
         const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
         if (!merchantKey) {
             console.error('Missing Merchant Key');
-            return new Response('Merchant Key missing', { status: 500 });
+            return new Response('RECEIVEOK');
         }
 
-        // Recalculate the signature for validation
-        const calculatedSignature = generateSignature(merchantKey, {
-            MerchantCode,
-            RefNo,
-            Amount,
-            Currency
-        });
+        // Generate response signature
+        const calculatedSignature = generateSignature(
+            merchantKey,
+            {
+                MerchantCode,
+                PaymentId,
+                RefNo,
+                Amount,
+                Currency,
+                Status
+            },
+            'response'
+        );
 
         console.log('Signature Verification:', {
             received: receivedSignature,
@@ -49,40 +57,50 @@ export async function POST(request: NextRequest) {
             match: calculatedSignature === receivedSignature
         });
 
-        if (calculatedSignature !== receivedSignature) {
-            console.error('Signature mismatch:', { calculatedSignature, receivedSignature });
-            return new Response('Invalid signature', { status: 400 });
-        }
+        // Process payment status
+        if (Status === '1' && calculatedSignature === receivedSignature) {
+            console.log('Payment Successful:', {
+                refNo: RefNo,
+                transactionId: TransId,
+                amount: Amount,
+                currency: Currency
+            });
 
-        // Process the payment status
-        if (Status === '1') {
-            console.log(`Payment successful for RefNo: ${RefNo}`);
-            // Perform actions for successful payment
-            // Example: Update order to "Completed" in the database
+            // TODO: Update your database here
+            // await prisma.order.update({
+            //     where: { referenceNumber: RefNo },
+            //     data: { 
+            //         status: 'completed',
+            //         transactionId: TransId,
+            //         paymentDetails: {
+            //             authCode: AuthCode,
+            //             cardName: CCName,
+            //             cardNumber: CCNo,
+            //             bank: S_bankname,
+            //             country: S_country
+            //         }
+            //     }
+            // });
         } else {
-            console.log(`Payment failed for RefNo: ${RefNo}`);
-            // Perform actions for failed payment
-            // Example: Update order to "Failed" in the database
+            console.log('Payment Failed or Invalid:', {
+                refNo: RefNo,
+                status: Status,
+                signatureMatch: calculatedSignature === receivedSignature
+            });
         }
-
-        // Log additional payment details
-        console.log('Payment Details:', {
-            transactionId: TransId,
-            authCode: AuthCode,
-            cardName: CCName,
-            cardNumber: CCNo,
-            bank: S_bankname,
-            country: S_country
-        });
 
         // Always return RECEIVEOK to iPay88
-        return new Response('RECEIVEOK');
+        return new Response('RECEIVEOK', {
+            headers: { 'Content-Type': 'text/plain' }
+        });
+
     } catch (error) {
-        console.error('Error handling the request:', error);
-        return new Response('RECEIVEOK');  // Still return RECEIVEOK even on error
+        console.error('Payment Backend Error:', error);
+        return new Response('RECEIVEOK', {
+            headers: { 'Content-Type': 'text/plain' }
+        });
     }
 }
-
 
 
 // import { NextRequest, NextResponse } from 'next/server';
