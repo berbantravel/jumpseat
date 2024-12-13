@@ -91,8 +91,8 @@ export default function FirstSection() {
               Online Inquiry
             </h3>
             <p className="mb-4 text-gray-600">
-              Tell us a few details about your travel plans and we'll create the
-              perfect experience for you.
+              Tell us a few details about your travel plans and we&apos;ll
+              create the perfect experience for you.
             </p>
             <button className="rounded-md bg-[#ff9e39] px-6 py-2 text-sm font-semibold text-white hover:bg-[#ff9e39]/90">
               Talk to us
