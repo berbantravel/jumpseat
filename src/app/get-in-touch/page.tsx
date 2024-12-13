@@ -42,8 +42,8 @@ export default function GetInTouch() {
             </h1>
             <p className="bodyRegular mt-0 max-w-3xl items-center text-center text-lg text-white">
               Our lines are always open for inquiries or questions. Learn more
-              about our exclusive tour packages. We are excited to set you off
-              on one of the best trips of your life.
+              about our exclusive tour packages. We&apos;re excited to set you
+              off on one of the best trips of your life.
             </p>
           </div>
         </div>
