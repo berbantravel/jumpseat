@@ -11,13 +11,10 @@ import viber from '@/images/logos/viber.png'
 import kakaotalk from '@/images/logos/kakaotalk.png'
 import { useRouter } from 'next/navigation'
 import { destinations } from '@/constants/destinations'
-import TeamMembers from './components/member'
-import Map from './components/map'
 import FirstSection from './sections/firstSection'
-import SecondSection from './sections/secondSection'
 import ThirdSection from './sections/thirdSection'
 
-export default function WhoWeAre() {
+export default function GetInTouch() {
   const router = useRouter()
 
   const handleCardClick = (destination: string) => {
@@ -29,7 +26,7 @@ export default function WhoWeAre() {
   return (
     <>
       {/* MAIN BANNER */}
-      <div className="relative isolate -mt-16 overflow-hidden py-28">
+      <div className="relative isolate -mt-16 overflow-hidden">
         <Image
           src={whoweare}
           alt=""
@@ -38,25 +35,23 @@ export default function WhoWeAre() {
           width={800}
           height={600}
         />
-        <div
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-          aria-hidden="true"
-        ></div>
-        <div className="mx-auto max-w-5xl py-32 sm:py-48 lg:py-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center"></div>
+        <div className="mx-auto max-w-5xl py-32 sm:py-48">
           <div className="mx-10 flex flex-col items-center justify-center self-center text-center">
             <h1 className="mb-2 font-poppinsSemiBold text-5xl tracking-tight text-white sm:text-7xl">
-              EXPERIENCE ASIA!
+              GET IN TOUCH WITH US
             </h1>
-            <p className="bodyRegular mt-0 text-lg text-white">OUR MISSION</p>
             <p className="bodyRegular mt-0 max-w-3xl items-center text-center text-lg text-white">
-              To provide an excellent custom-made and hassle-free travel
-              experience fulfilling every client&apos;s travel goal.
+              Our lines are always open for inquiries or questions. Learn more
+              about our exclusive tour packages. We are excited to set you off
+              on one of the best trips of your life.
             </p>
           </div>
         </div>
       </div>
       {/* END OF MAIN BANNER */}
+      <div className="relative z-10">
+        <FirstSection />
+      </div>
 
       <div className="-mt-14 bg-white">
         {/* DIVIDER */}
@@ -73,8 +68,6 @@ export default function WhoWeAre() {
           }}
         >
           <div className="!bg-[#FAFAFA]">
-            <FirstSection />
-            <SecondSection />
             <ThirdSection />
             <div className="mx-auto flex max-w-7xl px-12 py-8 sm:py-16"></div>
           </div>

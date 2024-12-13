@@ -5,14 +5,14 @@ import taepei from '@/images/taepei.jpg'
 
 export default function FirstSection() {
   return (
-    <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 bg-[#fcfcfcfc] px-12 pb-16 pt-56 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] sm:px-24 sm:pb-20 sm:pt-40 lg:flex-row lg:gap-16 lg:px-28 lg:py-32">
+    <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 bg-[#fcfcfcfc] px-12 py-16 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] sm:px-24 sm:py-20 lg:flex-row lg:gap-16 lg:px-28 lg:py-28">
       {/* Left Column - Text and Button */}
       <div className="text-left lg:w-1/2">
         <h2 className="mb-6 text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
           We&apos;ll take you to Asia&apos;s Finest Destinations
         </h2>
         <div className="mb-6 h-[2px] w-56 bg-gray-300"></div>
-        <h3 className="mb-4 text-xl font-semibold text-gray-900">What we do</h3>
+        <h3 className="mb-6 text-xl font-semibold text-gray-900">What we do</h3>
         <p className="mb-6 text-lg leading-relaxed text-black">
           We aim to develop sustainable tourism in the South East and East Asian
           Region, both for travelers and partners. We want to bring worthwhile

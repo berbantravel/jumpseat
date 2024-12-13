@@ -4,225 +4,254 @@
 @tailwind components;
 @tailwind utilities;
 
-.pageTitleBold{
-    @apply font-poppinsBold;
-    font-size: 32px;
-    line-height: 48px;
+.pageTitleBold {
+  @apply font-poppinsBold;
+  font-size: 32px;
+  line-height: 48px;
 }
 
-.pageTitleLight{
-    @apply font-poppinsLight;
-    font-size: 32px;
-    line-height: 48px;
+.pageTitleLight {
+  @apply font-poppinsLight;
+  font-size: 32px;
+  line-height: 48px;
 }
 
-.pageTitleRegular{
-    @apply font-poppinsRegular;
-    font-size: 32px;
-    line-height: 48px;
+.pageTitleRegular {
+  @apply font-poppinsRegular;
+  font-size: 32px;
+  line-height: 48px;
 }
 
-.pageTitleMedium{
-    @apply font-poppinsMedium;
-    font-size: 32px;
-    line-height: 48px;
+.pageTitleMedium {
+  @apply font-poppinsMedium;
+  font-size: 32px;
+  line-height: 48px;
 }
 
-.pageTitleSemiBold{
-    @apply font-poppinsSemiBold;
-    font-size: 32px;
-    line-height: 48px;
+.pageTitleSemiBold {
+  @apply font-poppinsSemiBold;
+  font-size: 32px;
+  line-height: 48px;
 }
 
-.headingSemiBold{
-    @apply font-poppinsSemiBold;
-    font-size: 30px;
-    line-height: 45px;
+.headingSemiBold {
+  @apply font-poppinsSemiBold;
+  font-size: 30px;
+  line-height: 45px;
 }
 
-.headingBold{
-    @apply font-poppinsBold;
-    font-size: 30px;
-    line-height: 45px;
+.headingBold {
+  @apply font-poppinsBold;
+  font-size: 30px;
+  line-height: 45px;
 }
 
-.headingMedium{
-    @apply font-poppinsMedium;
-    font-size: 30px;
-    line-height: 45px;
+.headingMedium {
+  @apply font-poppinsMedium;
+  font-size: 30px;
+  line-height: 45px;
 }
 
-.headingLight{
-    @apply font-poppinsLight;
-    font-size: 30px;
-    line-height: 45px;
+.headingLight {
+  @apply font-poppinsLight;
+  font-size: 30px;
+  line-height: 45px;
 }
 
-.heading2SemiBold{
-    @apply font-poppinsSemiBold;
-    font-size: 24px;
-    line-height: 36px;
+.heading2SemiBold {
+  @apply font-poppinsSemiBold;
+  font-size: 24px;
+  line-height: 36px;
 }
 
-.heading2Bold{
-    @apply font-poppinsBold;
-    font-size: 24px;
-    line-height: 36px;
+.heading2Bold {
+  @apply font-poppinsBold;
+  font-size: 24px;
+  line-height: 36px;
 }
 
-.heading2Medium{
-    @apply font-poppinsMedium;
-    font-size: 24px;
-    line-height: 36px;
+.heading2Medium {
+  @apply font-poppinsMedium;
+  font-size: 24px;
+  line-height: 36px;
 }
 
-.subheadingSemiBold{
-    @apply font-poppinsSemiBold;
-    font-size: 20px;
-    line-height: 30px;
+.subheadingSemiBold {
+  @apply font-poppinsSemiBold;
+  font-size: 20px;
+  line-height: 30px;
 }
 
-.subheadingBold{
-    @apply font-poppinsBold;
-    font-size: 20px;
-    line-height: 30px;
+.subheadingBold {
+  @apply font-poppinsBold;
+  font-size: 20px;
+  line-height: 30px;
 }
 
-.subheadingMedium{
-    @apply font-poppinsMedium;
-    font-size: 20px;
-    line-height: 30px;
+.subheadingMedium {
+  @apply font-poppinsMedium;
+  font-size: 20px;
+  line-height: 30px;
 }
 
-.subheadingLight{
-    @apply font-poppinsLight;
-    font-size: 20px;
-    line-height: 30px;
+.subheadingLight {
+  @apply font-poppinsLight;
+  font-size: 20px;
+  line-height: 30px;
 }
 
-.bodyRegular{
-    @apply font-poppinsRegular;
-    font-size: 18px;
-    line-height: 28px;
+.bodyRegular {
+  @apply font-poppinsRegular;
+  font-size: 18px;
+  line-height: 28px;
 }
 
-.bodyMedium{
-    @apply font-poppinsMedium;
-    font-size: 18px;
-    line-height: 28px;
+.bodyMedium {
+  @apply font-poppinsMedium;
+  font-size: 18px;
+  line-height: 28px;
 }
 
-.bodySemiBold{
-    @apply font-poppinsSemiBold;
-    font-size: 18px;
-    line-height: 28px;
+.bodySemiBold {
+  @apply font-poppinsSemiBold;
+  font-size: 18px;
+  line-height: 28px;
 }
 
-.bodyBold{
-    @apply font-poppinsBold;
-    font-size: 18px;
-    line-height: 28px;
+.bodyBold {
+  @apply font-poppinsBold;
+  font-size: 18px;
+  line-height: 28px;
 }
 
-.body2Regular{
-    @apply font-poppinsRegular;
-    font-size: 16px;
-    line-height: 24px;
+.body2Regular {
+  @apply font-poppinsRegular;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.body2Medium{
-    @apply font-poppinsMedium;
-    font-size: 16px;
-    line-height: 24px;
+.body2Medium {
+  @apply font-poppinsMedium;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.body2SemiBold{
-    @apply font-poppinsSemiBold;
-    font-size: 16px;
-    line-height: 24px;
+.body2SemiBold {
+  @apply font-poppinsSemiBold;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.body2Bold{
-    @apply font-poppinsBold;
-    font-size: 16px;
-    line-height: 24px;
+.body2Bold {
+  @apply font-poppinsBold;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.body2Light{
-    @apply font-poppinsLight;
-    font-size: 16px;
-    line-height: 24px;
+.body2Light {
+  @apply font-poppinsLight;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.captionRegular{
-    @apply font-poppinsRegular;
-    font-size: 12px;
-    line-height: 16px;
+.captionRegular {
+  @apply font-poppinsRegular;
+  font-size: 12px;
+  line-height: 16px;
 }
 
-.captionLight{
-    @apply font-poppinsLight;
-    font-size: 12px;
-    line-height: 16px;
+.captionLight {
+  @apply font-poppinsLight;
+  font-size: 12px;
+  line-height: 16px;
 }
 
-.captionMedium{
-    @apply font-poppinsMedium;
-    font-size: 12px;
-    line-height: 16px;
+.captionMedium {
+  @apply font-poppinsMedium;
+  font-size: 12px;
+  line-height: 16px;
 }
 
-.captionBold{
-    @apply font-poppinsBold;
-    font-size: 12px;
-    line-height: 16px;
+.captionBold {
+  @apply font-poppinsBold;
+  font-size: 12px;
+  line-height: 16px;
 }
 
-.captionSemiBold{
-    @apply font-poppinsSemiBold;
-    font-size: 12px;
-    line-height: 16px;
+.captionSemiBold {
+  @apply font-poppinsSemiBold;
+  font-size: 12px;
+  line-height: 16px;
 }
 
-.overlineBold{
-    @apply font-poppinsBold;
-    font-size: 12px;
-    line-height: 16px;
+.overlineBold {
+  @apply font-poppinsBold;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .multiline-ellipsis {
-    position: relative;
-    max-height: 4.5rem; /* Adjust this value based on your line-height and font-size */
-    overflow: hidden;
-    padding-right: 1rem; /* Ensures padding on the right for ellipsis */
-    mask-image: linear-gradient(to bottom, black 60%, transparent);
-  }
-  
-  @keyframes pop {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-  
-  .image-pop:hover {
-    animation: pop 0.3s ease-in-out;
-  }
-
-  .hover-zoom img {
-    transition: transform 0.3s ease;
-  }
-
-  .hover-zoom:hover img {
-    transform: scale(1.05);
-  }
-
-  .focus\:ring:focus {
-    --tw-ring-shadow: transparent !important;
+  position: relative;
+  max-height: 4.5rem; /* Adjust this value based on your line-height and font-size */
+  overflow: hidden;
+  padding-right: 1rem; /* Ensures padding on the right for ellipsis */
+  mask-image: linear-gradient(to bottom, black 60%, transparent);
 }
 
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.image-pop:hover {
+  animation: pop 0.3s ease-in-out;
+}
+
+.hover-zoom img {
+  transition: transform 0.3s ease;
+}
+
+.hover-zoom:hover img {
+  transform: scale(1.05);
+}
+
+.focus\:ring:focus {
+  --tw-ring-shadow: transparent !important;
+}
+
+/* Right Column Modal */
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .dialog-right {
+    display: none;
+  }
+}
+
+@media (min-width: 768px){
+  .dialog-right {
+    display: block;
+  }
+}
+
+
+
+/* End of Right Column Modal */
+
+@media (min-width: 300px) and (max-width: 640px) {
+  .clip-container {
+    clip-path: polygon(50% 0%, 100% 1%, 100% 100%, 0 100%, 0 1%) !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .clip-container {
+    clip-path: polygon(50% 0%, 100% 3%, 100% 100%, 0 100%, 0 3%) !important;
+  }
+}
