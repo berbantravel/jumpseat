@@ -25,10 +25,11 @@ export default function Experiences() {
         <Image
           src={background}
           alt=""
-          objectFit="cover"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-          width={800}
-          height={600}
+          quality={100}
+          priority
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
+          sizes="100vw"
+          fill
         />
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -36,7 +37,7 @@ export default function Experiences() {
         ></div>
         <div className="mx-auto max-w-5xl py-32 sm:py-48 lg:py-56">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center"></div>
-          <div className="text-center mx-10">
+          <div className="mx-10 text-center">
             <h1 className="font-poppinsSemiBold text-5xl tracking-tight text-white sm:text-7xl">
               OUR TRAVEL EXPERIENCES
             </h1>
@@ -46,10 +47,10 @@ export default function Experiences() {
               set you off on one of the best trips of your life. Start your next
               adventure with Jumpseat.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6 mx-2 sm:mx-10">
+            <div className="mx-2 mt-10 flex items-center justify-center gap-x-6 sm:mx-10">
               <a
                 href="#"
-                className="rounded-md bg-[#ff9e39] px-14 sm:px-32 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
+                className="rounded-md bg-[#ff9e39] px-14 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 sm:px-32"
               >
                 Experience Asia
               </a>
@@ -69,7 +70,7 @@ export default function Experiences() {
             backgroundColor: '#ffffff',
           }}
         >
-          <div className="mx-auto max-w-5xl py-5 text-center sm:py-16 lg:py-10 px-10">
+          <div className="mx-auto max-w-5xl px-10 py-5 text-center sm:py-16 lg:py-10">
             <h1 className="mb-3 text-3xl font-medium tracking-tight text-black sm:text-5xl">
               Start your next adventure with Jumpseat
             </h1>
@@ -87,7 +88,7 @@ export default function Experiences() {
                 Search
               </button>
             </div>
-            <div className="mt-5 flex-wrap gap-y-3 flex items-center justify-center gap-x-6 text-xs">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs">
               <div className="flex items-center">
                 <Image
                   className="mr-2 h-7 w-auto cursor-pointer"
@@ -96,8 +97,12 @@ export default function Experiences() {
                   width={800}
                   height={600}
                 />
-                <span className="font-medium text-black hidden sm:flex">WhatsApp</span>
-                <span className="ml-0 sm:ml-2 text-black">+63-995-015-8869</span>
+                <span className="hidden font-medium text-black sm:flex">
+                  WhatsApp
+                </span>
+                <span className="ml-0 text-black sm:ml-2">
+                  +63-995-015-8869
+                </span>
               </div>
               <div className="flex items-center">
                 <Image
@@ -107,8 +112,12 @@ export default function Experiences() {
                   width={800}
                   height={600}
                 />
-                <span className="font-medium text-black hidden sm:flex">Viber</span>
-                <span className="ml-0 sm:ml-2 text-black">+63-918-746-6894</span>
+                <span className="hidden font-medium text-black sm:flex">
+                  Viber
+                </span>
+                <span className="ml-0 text-black sm:ml-2">
+                  +63-918-746-6894
+                </span>
               </div>
               <div className="flex items-center">
                 <Image
@@ -118,8 +127,12 @@ export default function Experiences() {
                   width={800}
                   height={600}
                 />
-                <span className="font-medium text-black hidden sm:flex">KakaoTalk</span>
-                <span className="ml-0 sm:ml-2 text-black">+63-912-746-6894</span>
+                <span className="hidden font-medium text-black sm:flex">
+                  KakaoTalk
+                </span>
+                <span className="ml-0 text-black sm:ml-2">
+                  +63-912-746-6894
+                </span>
               </div>
             </div>
           </div>
@@ -184,7 +197,7 @@ export default function Experiences() {
               <div
                 key={destination.name}
                 onClick={() => handleCardClick(destination.name)}
-                className="hover-zoom relative flex h-[550px] w-auto mx-0 sm:mx-0 cursor-pointer flex-col overflow-hidden p-6 px-8 pt-40 hover:opacity-95 md:w-auto md:h-[550px] lg:w-auto lg:h-[550px] xl:w-auto xl:h-full"
+                className="hover-zoom relative mx-0 flex h-[550px] w-auto cursor-pointer flex-col overflow-hidden p-6 px-8 pt-40 hover:opacity-95 sm:mx-0 md:h-[550px] md:w-auto lg:h-[550px] lg:w-auto xl:h-full xl:w-auto"
               >
                 <span aria-hidden="true" className="absolute inset-0">
                   <Image

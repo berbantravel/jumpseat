@@ -1,21 +1,17 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import background from '@/images/our-travel-experiences.jpg'
-import destinationsphoto from '@/images/destinations.png'
-import whoweare from '@/images/who-we-are.jpg'
-import taepei from '@/images/taepei.jpg'
-import berbanlogo from '@/images/berbanlogo.png'
-import kakaotalk from '@/images/logos/kakaotalk.png'
 import { useRouter } from 'next/navigation'
 import getInTouch from '@/images/get-in-touch.jpg'
-import { destinations } from '@/constants/destinations'
 import FirstSection from './sections/firstSection'
 import SecondSection from './sections/secondSection'
 import ctaBackground from '@/images/cta-get-in-touch.jpg'
+import { useState } from 'react'
+import InquiryModal from './components/modal'
 
 export default function GetInTouch() {
   const router = useRouter()
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleCardClick = (destination: string) => {
     router.push(
@@ -96,7 +92,7 @@ export default function GetInTouch() {
             </p>
             <button
               className="w-2/3 rounded-full bg-[#ff9e39] px-4 py-4 text-base font-light text-white hover:bg-[#ff9e39] sm:px-24"
-              onClick={() => router.push('/inquiry')} // Add this if you want the button to navigate
+              onClick={() => setIsModalOpen(true)}
             >
               Fill out our inquiry form
             </button>
@@ -104,6 +100,10 @@ export default function GetInTouch() {
         </div>
       </div>
       {/* END OF CTA */}
+      <InquiryModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   )
 }
