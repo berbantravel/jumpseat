@@ -234,13 +234,11 @@
   }
 }
 
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .dialog-right {
     display: block;
   }
 }
-
-
 
 /* End of Right Column Modal */
 
@@ -254,4 +252,8 @@
   .clip-container {
     clip-path: polygon(50% 0%, 100% 3%, 100% 100%, 0 100%, 0 3%) !important;
   }
+}
+
+.h2-shadow {
+  text-shadow: 2px 3px 2px #00000047;
 }
