@@ -89,9 +89,10 @@ export default function GetInTouch() {
         <div className="max-w-5xl py-24 sm:py-36">
           <div className="flex flex-col items-center justify-center self-center text-center">
             <p className="max-w-2xl text-xl text-white">
-              Still undecided and can't find what's your next destination?
-              Answer our simple questionnaire. We can help you choose a
-              remarkable travel experience that you'll surely enjoy.
+              Still undecided and can&apos;t find what&apos;s your next
+              destination? Answer our simple questionnaire. We can help you
+              choose a remarkable travel experience that you&apos;ll surely
+              enjoy.
             </p>
             <button
               className="mt-8 rounded-md bg-[#ff9e39] px-8 py-3 text-base font-semibold text-white hover:bg-[#ff9e39]/90"
