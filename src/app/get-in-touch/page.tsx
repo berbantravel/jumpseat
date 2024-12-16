@@ -73,9 +73,9 @@ export default function GetInTouch() {
 
       <div className="!bg-[#FAFAFA]">
         <SecondSection />
-        <div className="mx-auto flex max-w-7xl px-12 py-8 sm:py-16"></div>
       </div>
-      {/* MAIN BANNER */}
+      <div className="mx-auto flex max-w-7xl px-12 py-16 md:py-20"></div>
+      {/* CTA BANNER */}
       <div className="relative isolate -mt-16 justify-items-center overflow-hidden">
         <Image
           src={ctaBackground}
@@ -86,16 +86,16 @@ export default function GetInTouch() {
           sizes="100vw"
           fill
         />
-        <div className="max-w-5xl py-24 sm:py-36">
-          <div className="flex flex-col items-center justify-center self-center text-center">
-            <p className="max-w-2xl text-xl text-white">
+        <div className="max-w-full px-6 py-24 sm:py-36">
+          <div className="flex flex-wrap items-center justify-center gap-12 self-center text-left lg:flex-row lg:flex-nowrap">
+            <p className="max-w-4xl text-xl text-white">
               Still undecided and can&apos;t find what&apos;s your next
               destination? Answer our simple questionnaire. We can help you
               choose a remarkable travel experience that you&apos;ll surely
               enjoy.
             </p>
             <button
-              className="mt-8 rounded-md bg-[#ff9e39] px-8 py-3 text-base font-semibold text-white hover:bg-[#ff9e39]/90"
+              className="w-2/3 rounded-full bg-[#ff9e39] px-4 py-4 text-base font-light text-white hover:bg-[#ff9e39] sm:px-24"
               onClick={() => router.push('/inquiry')} // Add this if you want the button to navigate
             >
               Fill out our inquiry form
@@ -103,7 +103,7 @@ export default function GetInTouch() {
           </div>
         </div>
       </div>
-      {/* END OF MAIN BANNER */}
+      {/* END OF CTA */}
     </>
   )
 }
