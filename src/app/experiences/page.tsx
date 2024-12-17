@@ -18,6 +18,9 @@ export default function Experiences() {
       `/destination/${destination.toLowerCase().replace(/\s+/g, '-')}`,
     )
   }
+  const scrollToPackages = () => {
+    document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <>
@@ -25,7 +28,7 @@ export default function Experiences() {
         <Image
           src={background}
           alt=""
-          quality={100}
+          quality={80}
           priority
           className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
           sizes="100vw"
@@ -48,12 +51,12 @@ export default function Experiences() {
               adventure with Jumpseat.
             </p>
             <div className="mx-2 mt-10 flex items-center justify-center gap-x-6 sm:mx-10">
-              <a
-                href="#"
-                className="rounded-md bg-[#ff9e39] px-14 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 sm:px-32"
+              <button
+                onClick={scrollToPackages}
+                className="rounded-md bg-[#ff9e39] px-14 py-4 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 sm:px-32"
               >
                 Experience Asia
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -190,7 +193,7 @@ export default function Experiences() {
           </div>
         </div>
       </div>
-      <div className="bg-white">
+      <div className="bg-white " id="packages">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4 xl:gap-x-8">
             {destinations.map((destination) => (

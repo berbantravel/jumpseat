@@ -7,7 +7,7 @@ import Image from 'next/image'
 export default function Map() {
   return (
     <div className="mx-auto max-w-7xl">
-      <div className="relative min-h-[500px]">
+      <div className="relative">
         {/* World Map Background - Hidden on mobile, visible on desktop */}
         <div className="absolute inset-0 hidden opacity-40 lg:block">
           <Image

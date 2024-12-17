@@ -12,7 +12,7 @@ import Image from 'next/image'
 
 export default function FirstSection() {
   return (
-    <div className="relative isolate mx-auto -mt-40 max-w-7xl px-6">
+    <div className="relative isolate mx-auto -mt-40 max-w-6xl px-6">
       <div className="rounded-lg bg-white p-8 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] sm:px-12 sm:py-16">
         {/* Header */}
         <div className="justify-items-center rounded-lg bg-[#F9F9F9] p-12 text-center">
