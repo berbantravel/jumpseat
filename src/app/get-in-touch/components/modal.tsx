@@ -111,18 +111,18 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900">
-                        Hello I'm Jim!
+                        Hello I&apos;m Jim!
                       </h3>
                       <p className="mt-2 text-sm text-gray-600">
                         With our well-travel partners, enjoy the benefits of our
                         exquisite travel places such as Bohol, Boracay, Coron
-                        and a lot more. We're always ready to offer you the best
-                        reasonable yet unbeatable rates. We handle every single
-                        detail of your travel itinerary so you can enjoy your
-                        vacation to the fullest.
+                        and a lot more. We&apos;re always ready to offer you the
+                        best reasonable yet unbeatable rates. We handle every
+                        single detail of your travel itinerary so you can enjoy
+                        your vacation to the fullest.
                       </p>
                       <p className="mt-2 text-sm italic text-gray-600">
-                        Don't take chances, set your next adventure with us
+                        Don&apos;t take chances, set your next adventure with us
                         now...
                       </p>
                     </div>
@@ -419,7 +419,7 @@ export default function InquiryModal({ isOpen, onClose }: InquiryModalProps) {
                       type="submit"
                       className="mt-6 w-full rounded-md bg-[#ff9e39] px-6 py-3 text-base font-semibold text-white hover:bg-[#ff9e39]/90 focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2"
                     >
-                      Let's Go!
+                      Let&apos;s Go!
                     </button>
                   </form>
                 </DialogPanel>
