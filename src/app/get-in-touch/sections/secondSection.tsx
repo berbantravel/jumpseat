@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import TeamMembers from '../components/member'
 import Map from '../components/map'
 
 export default function ThirdSection() {
