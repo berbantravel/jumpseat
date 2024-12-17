@@ -41,11 +41,12 @@ export default function DestinationPage({
       <div className="relative isolate -mt-16 overflow-hidden py-28">
         <Image
           src={destinationData.heroImage}
-          alt={`Hero image of ${destinationData.name}`}
-          objectFit="cover"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-          width={800}
-          height={600}
+          alt=""
+          quality={100}
+          priority
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
+          sizes="100vw"
+          fill
         />
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
