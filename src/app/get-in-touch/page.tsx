@@ -22,7 +22,7 @@ export default function GetInTouch() {
   return (
     <>
       {/* MAIN BANNER */}
-      <div className="relative isolate -mt-16 overflow-hidden">
+      <div className="relative isolate -mt-16 overflow-hidden py-28">
         <Image
           src={getInTouch}
           alt="Get in touch banner"
@@ -57,7 +57,7 @@ export default function GetInTouch() {
           <div
             className="clip-container relative isolate -mt-40 overflow-hidden pb-0 pt-16 sm:pt-24 lg:pt-16"
             style={{
-              clipPath: 'polygon(50% 0%, 100% 100%, 100% 100%, 0 100%, 0 0%)',
+              clipPath: 'polygon(50% 5%, 100% 100%, 100% 100%, 0 100%, 0 5%)',
               backgroundColor: 'transparent',
             }}
           ></div>
