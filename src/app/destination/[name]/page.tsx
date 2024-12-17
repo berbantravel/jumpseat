@@ -71,7 +71,7 @@ export default function DestinationPage({
         <div
           className="relative isolate -mt-40 overflow-hidden bg-white pb-14 pt-28"
           style={{
-            clipPath: 'polygon(50% 0%, 100% 4%, 100% 100%, 0 100%, 0 4%)',
+            clipPath: 'polygon(50% 0%, 100% 5%, 100% 100%, 0 100%, 0 5%)',
             backgroundColor: '#ffffff',
           }}
         >

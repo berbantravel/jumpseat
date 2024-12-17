@@ -33,10 +33,11 @@ export default function WhoWeAre() {
         <Image
           src={whoweare}
           alt=""
-          objectFit="cover"
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
-          width={800}
-          height={600}
+          quality={80}
+          priority
+          className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
+          sizes="100vw"
+          fill
         />
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"

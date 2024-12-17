@@ -13,7 +13,7 @@ export default function FirstSection() {
 
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8">
-      <div className="mx-auto max-w-2xl text-center">
+      <div className=" max-w-full text-left">
         <p className="text-xl text-gray-600">Articles about life and travels</p>
         <h2 className="mt-2 font-poppinsSemiBold text-3xl tracking-tight text-gray-900 sm:text-4xl">
           Read our collection of articles travelling
@@ -41,24 +41,24 @@ export default function FirstSection() {
             {/* Content */}
             <div className="p-6">
               {/* Date and Categories */}
-              <div className="mb-3 flex items-center gap-2 text-sm text-gray-500">
-                <span>{blog.date}</span>
+              <div className=" flex items-center gap-1.5 text-base text-gray-500">
+                <span className="text-black">{blog.date}</span>
                 <span>|</span>
                 {blog.categories.map((category, index) => (
                   <React.Fragment key={index}>
-                    <span>{category}</span>
+                    <span className="text-black">{category}</span>
                     {index < blog.categories.length - 1 && <span>,</span>}
                   </React.Fragment>
                 ))}
               </div>
 
               {/* Title */}
-              <h3 className="mb-3 text-xl font-semibold text-gray-900">
+              <h3 className="mb-1 mt-3 text-2xl font-semibold text-gray-900">
                 {blog.title}
               </h3>
 
               {/* Description */}
-              <p className="mb-4 line-clamp-3 text-sm text-gray-600">
+              <p className="line-clamp-3 text-sm text-gray-600">
                 {blog.content.intro.text}
               </p>
 
@@ -66,7 +66,7 @@ export default function FirstSection() {
               <div className="flex flex-col gap-3">
                 <button
                   onClick={() => handleBlogClick(blog.slug)}
-                  className="text-[#ff9e39] hover:underline"
+                  className="mb-3 text-left text-[#ff9e39] hover:underline"
                 >
                   Read More
                 </button>

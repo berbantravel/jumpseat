@@ -67,8 +67,6 @@ export default function Inspirations() {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-7xl px-12 py-16 md:py-20"></div>
-
       {/* CTA BANNER */}
       <div className="relative isolate -mt-16 justify-items-center overflow-hidden">
         <Image
