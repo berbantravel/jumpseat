@@ -32,6 +32,7 @@ export default function GetInTouch() {
           sizes="100vw"
           fill
         />
+        <div className="absolute inset-0 -z-10 bg-black opacity-25"></div>
         <div className="mx-auto max-w-5xl py-32 sm:py-48">
           <div className="mx-10 flex flex-col items-center justify-center self-center text-center">
             <h1 className="mb-2 font-poppinsSemiBold text-5xl tracking-tight text-white sm:text-7xl">
@@ -55,22 +56,21 @@ export default function GetInTouch() {
           </div>
           {/* END OF DIVIDER */}
           <div
-            className="clip-container relative isolate -mt-40 overflow-hidden pb-0 pt-16 sm:pt-24 lg:pt-16"
+            className="relative isolate -mt-40 h-40 overflow-hidden py-28"
             style={{
-              clipPath: 'polygon(50% 5%, 100% 100%, 100% 100%, 0 100%, 0 5%)',
-              backgroundColor: 'transparent',
+              clipPath: 'polygon(50% 0%, 100% 5%, 100% 100%, 0 100%, 0 5%)',
+              backgroundColor: '#FAFAFA',
             }}
           ></div>
         </div>
       </div>
-      <div className="" style={{ zIndex: 1 }}>
+      <div
+        className="relative -top-32 sm:-top-36 md:-top-40 lg:-top-48"
+        style={{ zIndex: 1 }}
+      >
         <FirstSection />
-      </div>
-
-      <div className="!bg-[#FAFAFA]">
         <SecondSection />
       </div>
-      <div className="mx-auto flex max-w-7xl px-12 py-16 md:py-20"></div>
       {/* CTA BANNER */}
       <div className="relative isolate -mt-16 justify-items-center overflow-hidden">
         <Image

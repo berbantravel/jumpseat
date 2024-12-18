@@ -34,6 +34,7 @@ export default function Experiences() {
           sizes="100vw"
           fill
         />
+        <div className="absolute inset-0 -z-10 bg-black opacity-25"></div>
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"

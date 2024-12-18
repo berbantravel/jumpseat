@@ -2,16 +2,11 @@
 import Image from 'next/image'
 import React from 'react'
 import { useRouter } from 'next/navigation'
-import getInTouch from '@/images/get-in-touch.jpg'
 import FirstSection from './sections/firstSection'
 import ctaBackground from '@/images/cta-get-in-touch.jpg'
 import Insights from '@/images/Insights.jpg'
 import { useState } from 'react'
 import InquiryModal from './components/modal'
-import whatsapp from '@/images/logos/whatsapp.png'
-import viber from '@/images/logos/viber.png'
-import kakaotalk from '@/images/logos/kakaotalk.png'
-import { blogContents } from '@/constants/blogs'
 
 export default function Inspirations() {
   const router = useRouter()
@@ -34,6 +29,7 @@ export default function Inspirations() {
           sizes="100vw"
           fill
         />
+        <div className="absolute inset-0 -z-10 bg-black opacity-25"></div>
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -65,40 +61,6 @@ export default function Inspirations() {
           <FirstSection />
         </div>
       </div>
-
-      {/* CTA BANNER */}
-      <div className="relative isolate -mt-16 justify-items-center overflow-hidden">
-        <Image
-          src={ctaBackground}
-          alt="Get in touch CTA"
-          quality={100}
-          priority
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
-          sizes="100vw"
-          fill
-        />
-        <div className="max-w-full px-6 py-24 sm:py-36">
-          <div className="flex flex-wrap items-center justify-center gap-12 self-center text-left lg:flex-row lg:flex-nowrap">
-            <p className="max-w-4xl text-xl text-white">
-              Still undecided and can&apos;t find what&apos;s your next
-              destination? Answer our simple questionnaire. We can help you
-              choose a remarkable travel experience that you&apos;ll surely
-              enjoy.
-            </p>
-            <button
-              className="w-2/3 rounded-full bg-[#ff9e39] px-4 py-4 text-base font-light text-white hover:bg-[#ff9e39] sm:px-24"
-              onClick={() => setIsModalOpen(true)}
-            >
-              Fill out our inquiry form
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <InquiryModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </>
   )
 }
