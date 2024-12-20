@@ -2,7 +2,7 @@ export const destinations = [
   {
     name: 'PROSPEROUS HONGKONG',
     description: 'A FUSION OF DAZZLING INNOVATION AND RICH TRADITION',
-    price: '20,000',
+    price: '20,200',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/2246789/pexels-photo-2246789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -10,7 +10,7 @@ export const destinations = [
   {
     name: 'TAIWAN',
     description: "EXPERIENCE TAIWAN'S RICH CULTURE",
-    price: '22,000',
+    price: '23,688',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/1474157/pexels-photo-1474157.jpeg',
@@ -44,7 +44,7 @@ export const destinations = [
     name: 'JAPAN',
     description:
       'DISCOVER UNRIVALED SCENERIES AND A PLACE RICH IN HISTORY IN THE EAST',
-    price: '24,000',
+    price: '58,550',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -60,7 +60,7 @@ export const destinations = [
   {
     name: 'SOUTH KOREA',
     description: 'LOOSEN UP AND EXPERIENCE A MARVELOUS HOLIDAY!',
-    price: '24,000',
+    price: '28,888',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/3957774/pexels-photo-3957774.jpeg?auto=compress&cs=tinysrgb&w=600',
