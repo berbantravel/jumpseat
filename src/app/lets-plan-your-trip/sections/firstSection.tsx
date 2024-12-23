@@ -40,7 +40,7 @@ export default function FirstSection() {
     <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 bg-[#fcfcfcfc] px-12 py-16 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] sm:px-24 sm:py-20 lg:flex-row lg:gap-16 lg:px-28 lg:py-28">
       {/* Left Column - Text and Button */}
       <div className="text-center lg:w-full">
-        <h2 className="mb-6 text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
+        <h2 className="mb-10 text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
           How it works in 5 simple steps
         </h2>
         {/* Steps List */}
@@ -48,7 +48,7 @@ export default function FirstSection() {
           {steps.map((step) => (
             <div
               key={step.number}
-              className="flex w-fit items-center gap-10 text-left"
+              className="flex w-fit items-center gap-8 text-left"
             >
               <div className="flex h-8 w-8 min-w-[2rem] items-center justify-center rounded-full bg-[#565555] text-white">
                 {step.number}
@@ -61,13 +61,6 @@ export default function FirstSection() {
               </div>
             </div>
           ))}
-        </div>
-        <div className="mt-8">
-          <p className="mb-0 text-lg text-black">Come and Travel with us!</p>
-          <p className="mb-6 text-lg text-black">Meet Asia!</p>
-          <button className="rounded-md bg-[#ff9e39] px-12 py-2.5 text-base font-medium text-white transition-colors duration-300 hover:bg-[#ff9e39]/90 sm:px-16">
-            Let&apos;s Go!
-          </button>
         </div>
       </div>
     </div>

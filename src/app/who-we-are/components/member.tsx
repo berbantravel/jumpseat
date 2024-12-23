@@ -1,8 +1,6 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import { useRouter } from 'next/navigation'
-import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
 import { teamMembers } from '../team'
 
 export default function TeamMembers() {

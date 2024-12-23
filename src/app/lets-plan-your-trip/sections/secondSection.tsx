@@ -1,39 +1,113 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import berbanlogo from '@/images/berbanlogo.png'
+import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
 
-export default function secondSection() {
+interface Step {
+  number: number
+  label: string
+  isActive?: boolean
+  isCompleted?: boolean
+}
+
+const steps: Step[] = [
+  { number: 1, label: 'Getting Ready', isActive: true, isCompleted: true },
+  { number: 2, label: 'My Trip' },
+  { number: 3, label: 'Season' },
+  { number: 4, label: 'Interest' },
+  { number: 5, label: 'Accomodation' },
+  { number: 6, label: 'Transport' },
+  { number: 7, label: 'My Details' },
+  { number: 8, label: "Let's Go" },
+]
+
+export default function ProgressTracker() {
   return (
-    <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 bg-[#FCFCFC] px-12 py-16 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px] sm:px-24 sm:py-20 lg:flex-row lg:gap-16 lg:px-28 lg:py-28">
-      <div className="flex flex-col items-center justify-center self-center text-center">
-        <h2 className="mb-6 text-3xl font-medium tracking-tight text-gray-900 sm:text-4xl md:text-5xl">
-          Curious about us?
-        </h2>
-        <div className="h-[2px] w-56 bg-gray-300"></div>
-        <div className="mb-4 flex flex-row flex-wrap justify-center sm:mb-0 sm:h-16 lg:h-20">
-          <h5 className="bodyRegular mt-4 content-center text-lg font-bold text-black sm:mb-0 sm:mt-0">
-            We are the travel enthusiast behind.
-          </h5>
-          <div>
+    <div className="mx-auto max-w-5xl px-4 py-8">
+      {/* Progress Bar */}
+      <div className="mb-12">
+        <div className="flex items-center justify-between">
+          {steps.map((step, index) => (
+            <div key={step.number} className="flex flex-col items-center">
+              {/* Connector Line */}
+              {index !== 0 && (
+                <div className="absolute h-[2px] w-[calc(100%/8)] -translate-x-1/2 bg-gray-300" />
+              )}
+              {/* Circle */}
+              <div
+                className={`relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 ${
+                  step.isCompleted
+                    ? 'border-none bg-[#ff9e39] text-white'
+                    : step.isActive
+                      ? 'border-[#ff9e39] bg-white text-[#ff9e39]'
+                      : 'border-gray-300 bg-white text-gray-300'
+                }`}
+              >
+                {step.number}
+              </div>
+              {/* Label */}
+              <span className="mt-2 text-sm text-gray-600">{step.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Form Section */}
+      <div className="mx-auto max-w-2xl">
+        <h1 className="mb-6 text-3xl font-bold text-gray-900">Getting Ready</h1>
+
+        <div className="mb-8">
+          <div className="flex items-center gap-4">
             <Image
-              src={berbanlogo}
-              alt="Berban Logo"
-              className="h-12 w-full sm:h-12 md:h-14 lg:h-16"
-              width={100}
-              height={100}
+              src={jumpseatIcon}
+              alt="Avatar"
+              className="h-12 w-12 rounded-full border border-gray-500 p-1"
+            />
+            <div>
+              <p className="text-black">
+                Hi There! I'm Chrisse.{' '}
+                <span className="font-semibold text-[#ff9e39]">
+                  LET'S PLAN YOUR TRIP!
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-4 text-black">
+            Jumpseat is your avenue to the get through the most beautiful spots
+            in Asia. There are plenty of places to see among the best spots in
+            the region. Our travel associates' and specialists' expertise are
+            blended towards discerning and adventurous travelers. If you are one
+            of them, let's create a travel plan according to your taste.
+          </p>
+
+          <p className="mt-4 text-black">
+            First of all, may I have your name and e-mail?
+          </p>
+        </div>
+
+        {/* Form */}
+        <form className="space-y-4">
+          <div>
+            <input
+              type="text"
+              placeholder="Name"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#ff9e39] focus:outline-none"
             />
           </div>
-        </div>
-        <p className="bodyRegular mt-0 w-full text-lg text-black sm:w-4/6">
-          Let&apos;s find ourselves on the same page, if you&apos;re not sure
-          where will be your next adventure, throw the dice and take a break!
-          Our website is full of insight and inspiration, carefully curated to
-          suit you. So is your bespoke itinerary.
-        </p>
-        <p className="bodyRegular mb-4 mt-4 text-lg text-black">
-          We&apos;ll arrange everything for you.
-        </p>
+          <div>
+            <input
+              type="email"
+              placeholder="Email"
+              className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#ff9e39] focus:outline-none"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full rounded-md bg-[#ff9e39] py-2 text-white hover:bg-[#ff9e39]/90"
+          >
+            Let's Start!
+          </button>
+        </form>
       </div>
     </div>
   )

@@ -1,21 +1,13 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import background from '@/images/our-travel-experiences.jpg'
-import destinationsphoto from '@/images/destinations.png'
-import whoweare from '@/images/who-we-are.jpg'
-import taepei from '@/images/taepei.jpg'
-import berbanlogo from '@/images/berbanlogo.png'
+import letsplanyourtrip from '@/images/lets-plan-your-trip.jpg'
 import whatsapp from '@/images/logos/whatsapp.png'
 import viber from '@/images/logos/viber.png'
 import kakaotalk from '@/images/logos/kakaotalk.png'
 import { useRouter } from 'next/navigation'
-import { destinations } from '@/constants/destinations'
-import TeamMembers from './components/member'
-import Map from './components/map'
 import FirstSection from './sections/firstSection'
 import SecondSection from './sections/secondSection'
-import ThirdSection from './sections/thirdSection'
 
 export default function LetsPlanYourTrip() {
   const router = useRouter()
@@ -31,7 +23,7 @@ export default function LetsPlanYourTrip() {
       {/* MAIN BANNER */}
       <div className="relative isolate -mt-16 overflow-hidden py-28">
         <Image
-          src={whoweare}
+          src={letsplanyourtrip}
           alt=""
           quality={80}
           priority
@@ -39,6 +31,7 @@ export default function LetsPlanYourTrip() {
           sizes="100vw"
           fill
         />
+        <div className="absolute inset-0 -z-10 bg-black opacity-25"></div>
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -118,7 +111,6 @@ export default function LetsPlanYourTrip() {
           <div className="!bg-[#FAFAFA]">
             <FirstSection />
             <SecondSection />
-            <ThirdSection />
             <div className="mx-auto flex max-w-7xl px-12 py-8 sm:py-16"></div>
           </div>
         </div>
