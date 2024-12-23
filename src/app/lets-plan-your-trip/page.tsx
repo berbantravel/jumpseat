@@ -17,7 +17,7 @@ import FirstSection from './sections/firstSection'
 import SecondSection from './sections/secondSection'
 import ThirdSection from './sections/thirdSection'
 
-export default function WhoWeAre() {
+export default function LetsPlanYourTrip() {
   const router = useRouter()
 
   const handleCardClick = (destination: string) => {
@@ -47,13 +47,55 @@ export default function WhoWeAre() {
           <div className="hidden sm:mb-8 sm:flex sm:justify-center"></div>
           <div className="mx-10 flex flex-col items-center justify-center self-center text-center">
             <h1 className="mb-2 font-poppinsSemiBold text-5xl tracking-tight text-white sm:text-7xl">
-              EXPERIENCE ASIA!
+              LET&apos;S PLAN YOUR TRIP
             </h1>
-            <p className="bodyRegular mt-0 text-lg text-white">OUR MISSION</p>
-            <p className="bodyRegular mt-0 max-w-3xl items-center text-center text-lg text-white">
-              To provide an excellent custom-made and hassle-free travel
-              experience fulfilling every client&apos;s travel goal.
-            </p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs">
+              <div className="flex items-center">
+                <Image
+                  className="mr-2 h-7 w-auto cursor-pointer"
+                  src={whatsapp}
+                  alt="Your Company Icon"
+                  width={800}
+                  height={600}
+                />
+                <span className="hidden font-medium text-white sm:flex">
+                  WhatsApp
+                </span>
+                <span className="ml-0 text-white sm:ml-2">
+                  +63-995-015-8869
+                </span>
+              </div>
+              <div className="flex items-center">
+                <Image
+                  className="mr-2 h-7 w-auto cursor-pointer"
+                  src={viber}
+                  alt="Your Company Icon"
+                  width={800}
+                  height={600}
+                />
+                <span className="hidden font-medium text-white sm:flex">
+                  Viber
+                </span>
+                <span className="ml-0 text-white sm:ml-2">
+                  +63-918-746-6894
+                </span>
+              </div>
+              <div className="flex items-center">
+                <Image
+                  className="mr-2 h-6 w-auto cursor-pointer"
+                  src={kakaotalk}
+                  alt="Your Company Icon"
+                  width={800}
+                  height={600}
+                />
+                <span className="hidden font-medium text-white sm:flex">
+                  KakaoTalk
+                </span>
+                <span className="ml-0 text-white sm:ml-2">
+                  +63-912-746-6894
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
