@@ -75,9 +75,10 @@ export default function ProgressTracker() {
           <p className="mt-4 text-black">
             Jumpseat is your avenue to the get through the most beautiful spots
             in Asia. There are plenty of places to see among the best spots in
-            the region. Our travel associates' and specialists' expertise are
-            blended towards discerning and adventurous travelers. If you are one
-            of them, let's create a travel plan according to your taste.
+            the region. Our travel associates&apos; and specialists&apos;
+            expertise are blended towards discerning and adventurous travelers.
+            If you are one of them, let&apos;s create a travel plan according to
+            your taste.
           </p>
 
           <p className="mt-4 text-black">
@@ -105,7 +106,7 @@ export default function ProgressTracker() {
             type="submit"
             className="w-full rounded-md bg-[#ff9e39] py-2 text-white hover:bg-[#ff9e39]/90"
           >
-            Let's Start!
+            Let&apos;s Start!
           </button>
         </form>
       </div>
