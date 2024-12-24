@@ -579,5 +579,155 @@ export const travelPackages = {
         },
       ],
     },
+    'test-package': {
+      id: '3',
+      name: 'Test Package',
+      price: 1,
+      rating: 5,
+      description:
+        "A journey through Japan's timeless heritage and vibrant culture",
+      longDescription:
+        '<div class="font-bold mb-3 text-2xl">Japan - Osaka-Kyoto-Nara 5D4N Tour (Sept)</div> <div class="font-semibold mb-4 text-lg">  Traveler: Families with Children, Friends, Young Couples and Honeymooners, Solo Travelers, Adventure Seekers and Outdoor Enthusiasts</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Osaka</span> - is a vibrant city in Japan, known for its modern architecture, nightlife, and hearty street food. its the third-largest city in Japan and is often referred to as the "Nations Kitchen" due to its rich culinary history</span> </div> <div class="text-normal"> <span class="text-lg"><span class="font-medium">Kyoto</span> - Japans former imperial capital, is renowned for its well-preserved historical sites, traditional culture, and beautiful landscapes. Its a city where ancient temples, shrines, and gardens blend harmoniously with the surrounding modern cityscape.</span></div>',
+      bestTimeToVisit: 'March - May and September - November',
+      listingDescription:
+        ' <div class="text-xl font-bold">Tour Dates Available:</div> <div class="text-normal font-semibold"> Sept. 12-16</div> <div class="text-normal font-semibold"> Sept. 19-23</div> <div class="text-normal font-bold">Child with bed:same rate as adults</div> <div class="text-normal font-bold">Child without bed:(2-8 yrs.old) From PHP 28,888/pax</div>',
+      daysOfStay: '5 Days & 4 Nights',
+      minimumGuests: 'No Minimum Guests',
+      heroImage:
+        'https://images.pexels.com/photos/2676642/pexels-photo-2676642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      images: [
+        {
+          id: 1,
+          name: 'Mount Fuji',
+          src: 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          alt: 'Mount Fuji with cherry blossoms',
+        },
+        {
+          id: 2,
+          name: 'Tokyo Tower',
+          src: 'https://images.pexels.com/photos/2614818/pexels-photo-2614818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          alt: 'Tokyo Tower at night',
+        },
+        {
+          id: 3,
+          name: 'Fushimi Inari Shrine',
+          src: 'https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          alt: 'Fushimi Inari Shrine in Kyoto',
+        },
+        {
+          id: 4,
+          name: 'Japanese Garden',
+          src: 'https://images.pexels.com/photos/1198817/pexels-photo-1198817.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+          alt: 'Traditional Japanese garden',
+        },
+      ],
+      details: [
+        {
+          name: 'Inclusions',
+          items: [
+            '4 nights room accommodation',
+            'Daily breakfast on twin sharing.',
+            'Sightseeing tours as specified above include all entrance fees needed.',
+            'Private coach with English speaking tour guide.',
+            'Meals as listed.',
+            'Roundtrip airfare via AirAsia with 20 kls. Checked baggage.',
+          ],
+        },
+        {
+          name: 'Exclusions',
+          items: [
+            'Expenses of a personal nature like telephone call. Mini bar, etc.',
+            'Tips for driver & guide: PHP 1,200/pax',
+            'Philippines travel tax: PHP 1,620/pax',
+            'Single Supplement.',
+            'Covid related procedures.',
+            'Extra baggage allowance.',
+            'Korea Visa',
+          ],
+        },
+        {
+          name: 'Itinerary Highlights',
+          items: [
+            'Day 1-3: Tokyo (Sensoji Temple, Meiji Shrine, Shibuya Crossing)',
+            'Day 4-5: Kyoto (Golden Pavilion, Arashiyama Bamboo Grove)',
+            'Day 6: Day trip to Nara',
+            'Day 7: Departure from Osaka',
+          ],
+        },
+      ],
+      itinerary: [
+        {
+          day: '1',
+          title: '',
+          activities: [
+            'Arrive at the airport',
+            'Meet the tour guide.',
+            'Transfer to Seoul.',
+            'Visit COEX Starfield Library.',
+            'Visit Kpop Road.',
+            'N’seoul Tower by Public EV shuttle bus (exclude lift).',
+            'Transfer to Incheon and check in at the hotel.',
+          ],
+          image:
+            'https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg',
+        },
+        {
+          day: '2',
+          title: '',
+          activities: [
+            'Hotel breakfast.',
+            'Transfer to Chuncheon.',
+            'Visit Nami Island with a ferry ride.',
+            'Petite France, Italian Village.',
+            'Transfer to Seoul.',
+            'Ginseng Gallery.',
+            'Painters Show.',
+            'Back to the hotel.',
+          ],
+          image:
+            'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg',
+        },
+        {
+          day: '3',
+          title: '',
+          activities: [
+            'Hotel breakfast.',
+            'Gyeongbokgung Palace.',
+            'National Folk Museum.',
+            'Cosmetic Outlet.',
+            'Red pine Gallery',
+            'Amethyst Showcase.',
+            'Seaweed Museum with hanbok wearing experience.',
+            'Lotte Duty Free shop.',
+            'Free shopping at Myeongdong Street.',
+            'Transfer to hotel and check in.',
+          ],
+          image:
+            'https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg',
+        },
+        {
+          day: '4',
+          title: '',
+          activities: [
+            'Hotel breakfast',
+            'Free and Easy on your own enjoy shopping & Free time (without tour guide).',
+            'Optional tour: Everland Theme Park (including one day pass ticket, Transfer) - Surcharge USD 100/pax (minimum of 10 pax push through)',
+          ],
+          image:
+            'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg',
+        },
+        {
+          day: '5',
+          title: '',
+          activities: [
+            'Hotel breakfast.',
+            'Local Supermarket.',
+            'Transfer to the airport for flight back.',
+          ],
+          image:
+            'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg',
+        },
+      ],
+    },
     // Add more destinations here
   }
