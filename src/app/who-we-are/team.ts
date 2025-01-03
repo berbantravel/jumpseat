@@ -1,5 +1,19 @@
 import { StaticImageData } from 'next/image'
 import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
+import jimBernardo from '@/images/team/Jim Bernardo - Operations Officer.jpg'
+import chrisseTalaban from '@/images/team/Chrisse Talaban - CEO.jpg'
+import chuckieTandoc from '@/images/team/Chuckie Tandoc - Linkages.jpg'
+import vinceRamirez from '@/images/team/Vince Ramirez - Finance Officer.jpg'
+import leilaniParagas from '@/images/team/Leilani Paragas - Linkages.jpg'
+import sylvesterRubioIII from '@/images/team/Sylvester Rubio III - ICT Partner.jpg'
+import hazelFlores from '@/images/team/Hazel Flores - Legal Officer.jpg'
+import jemCadiz from '@/images/team/Jem Cadiz - Lingkages.jpg'
+import aprilFerazol from '@/images/team/April Ferazol - Travel Planner.jpg'
+import janaHinagpisan from '@/images/team/Jana Hinagpisan - Sales Team Leader.jpg'
+import rodParedes from '@/images/team/Rod Paredes - Business Development Officer.jpg'
+import kimberlyMojica from '@/images/team/Kimberly Mojica - Brand and Content Officer.jpg'
+
+
 
 export type TeamMember = {
   name: string;
@@ -10,52 +24,62 @@ export type TeamMember = {
 export const teamMembers: TeamMember[] = [
   {
     name: 'Chrisse Talaban',
-    role: 'TRAVEL PARTNER',
-    image: jumpseatIcon,
+    role: 'CEO',
+    image: chrisseTalaban,
   },
   {
     name: 'Jim Bernardo',
-    role: 'TRAVEL PARTNER',
-    image: jumpseatIcon,
+    role: 'OPERATIONS OFFICER',
+    image: jimBernardo,
   },
   {
     name: 'Chuckie Tandoc',
-    role: 'PARTNERSHIPS',
-    image: jumpseatIcon,
+    role: 'LINKAGES',
+    image: chuckieTandoc,
   },
   {
     name: 'Vince Ramirez',
-    role: 'FINANCE',
-    image: jumpseatIcon,
+    role: 'FINANCE OFFICER',
+    image: vinceRamirez,
   },
   {
     name: 'Leilani Paragas',
-    role: 'OPERATIONS',
-    image: jumpseatIcon,
+    role: 'LINKAGES',
+    image: leilaniParagas,
   },
   {
-    name: 'Darrel Mendoza',
-    role: 'INFORMATION TECHNOLOGY',
-    image: jumpseatIcon,
+    name: 'Sylvester Rubio III',
+    role: 'ICT PARTNER',
+    image: sylvesterRubioIII,
   },
   {
-    name: 'Jacob Delos Reyes',
-    role: 'BRANDING',
-    image: jumpseatIcon,
+    name: 'Jana Hinagpisan',
+    role: 'SALES TEAM LEADER',
+    image: janaHinagpisan,
   },
   {
     name: 'Hazel Flores',
-    role: 'LEGAL',
-    image: jumpseatIcon,
+    role: 'LEGAL OFFICER',
+    image: hazelFlores,
   },
   {
     name: 'Jem Cadiz',
     role: 'LINKAGES',
-    image: jumpseatIcon,
+    image: jemCadiz,
   },
   {
-    name: 'Mark De Vera',
-    role: 'CREATIVES',
-    image: jumpseatIcon,
-  }
+    name: 'April Ferazol',
+    role: 'TRAVEL PLANNER',
+    image: aprilFerazol,
+  },
+  {
+    name: 'Rod Paredes',
+    role: 'BUSINESS DEVELOPMENT OFFICER',
+    image: rodParedes,
+},
+{
+  name: 'Kimberly Mojica',
+  role: 'BRAND AND CONTENT OFFICER',
+  image: kimberlyMojica,
+}
 ]
