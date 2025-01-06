@@ -21,6 +21,8 @@ export const paymentGroups: PaymentGroup[] = [
         methods: [
             { id: 37, name: 'BDO Installment' },
             { id: 134, name: 'BillEase' },
+            // INSTALLMENTS in production//
+            { id: 107, name: 'BPI Installment 0%' },
             { id: 80, name: 'BPI Real 0% Installment (3 Months)' },
             { id: 81, name: 'BPI Real 0% Installment (6 Months)' },
             { id: 82, name: 'BPI Real 0% Installment (9 Months)' },

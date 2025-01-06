@@ -32,7 +32,20 @@ function CheckoutContent() {
 
   const handlePaymentMethodSelect = (methodId: number) => {
     setSelectedPaymentMethod(methodId);
-  };
+    
+    // If BPI Installment direct integration is selected
+    if (methodId === 107) {
+        // The tenor selection will be handled on iPay88's page
+        // No additional action needed here
+    }
+    
+    // For specific tenor selections (Option 2)
+    const bpiInstallmentIds = [80, 81, 82, 83]; // Add all BPI installment IDs
+    if (bpiInstallmentIds.includes(methodId)) {
+        // These already have specific tenors associated with their IDs
+        // The PaymentId will be sent directly to iPay88
+    }
+};
 
   const isFormValid = () => {
     return (
