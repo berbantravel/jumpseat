@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
             secretKeyPreview: secretKey.substring(0, 10) + '...'
         });
 
-        const response = await fetch('https://sandbox.ipay88.com.ph/MerchantService/Payment/Inquiry', {
+        const response = await fetch('https://payment.ipay88.com.ph/MerchantService/Payment/Inquiry', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
