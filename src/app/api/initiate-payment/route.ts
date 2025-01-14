@@ -19,7 +19,10 @@ export async function POST(request: NextRequest) {
     // console.log(merchantKey);
     const signature = generateSignature(merchantKey,{MerchantCode,RefNo,Amount,Currency});
     console.log('Initiate Payment Signature:', signature);
-
+    console.log('Environment variables:', {
+        merchantCode: process.env.IPAY88_MERCHANT_CODE,
+        nodeEnv: process.env.NODE_ENV
+    });
     const paymentPayload = {
         ...body,
         Signature: signature
