@@ -582,7 +582,7 @@ export const travelPackages = {
     'test-package': {
       id: '3',
       name: 'Test Package',
-      price: 5000,
+      price: 3000,
       rating: 5,
       description:
         "A journey through Japan's timeless heritage and vibrant culture",
