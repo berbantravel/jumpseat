@@ -28,24 +28,26 @@ function CheckoutContent() {
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [checkoutConfirmed, setcheckoutConfirmed] = useState(false)
   const [emailTouched, setEmailTouched] = useState(false)
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<number | null>(null);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    number | null
+  >(null)
 
   const handlePaymentMethodSelect = (methodId: number) => {
-    setSelectedPaymentMethod(methodId);
-    
+    setSelectedPaymentMethod(methodId)
+
     // If BPI Installment direct integration is selected
     if (methodId === 107) {
-        // The tenor selection will be handled on iPay88's page
-        // No additional action needed here
+      // The tenor selection will be handled on iPay88's page
+      // No additional action needed here
     }
-    
+
     // For specific tenor selections (Option 2)
-    const bpiInstallmentIds = [80, 81, 82, 83]; // Add all BPI installment IDs
+    const bpiInstallmentIds = [80, 81, 82, 83] // Add all BPI installment IDs
     if (bpiInstallmentIds.includes(methodId)) {
-        // These already have specific tenors associated with their IDs
-        // The PaymentId will be sent directly to iPay88
+      // These already have specific tenors associated with their IDs
+      // The PaymentId will be sent directly to iPay88
     }
-};
+  }
 
   const isFormValid = () => {
     return (
@@ -118,7 +120,7 @@ function CheckoutContent() {
         },
         body: JSON.stringify({
           MerchantCode: process.env.NEXT_PUBLIC_IPAY88_MERCHANT_CODE,
-          PaymentId: selectedPaymentMethod, 
+          PaymentId: selectedPaymentMethod,
           RefNo: generateRefNo(),
           Quantity: quantity,
           SubTotal: subtotal,
@@ -153,7 +155,7 @@ function CheckoutContent() {
   const submitToIPay88 = (payload: PaymentResponse['payload']) => {
     const form = document.createElement('form')
     form.method = 'POST'
-    // form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'  
+    // form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
     form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
 
     Object.entries(payload).forEach(([key, value]) => {
@@ -181,13 +183,16 @@ function CheckoutContent() {
     }).format(price)
   }
 
-  const getProcessingFee = (paymentMethodId: number | null, subtotal: number): number => {
-    if (paymentMethodId === null) return 0;
+  const getProcessingFee = (
+    paymentMethodId: number | null,
+    subtotal: number,
+  ): number => {
+    if (paymentMethodId === null) return 0
 
     const calculateWithVAT = (percentage: number) => {
-      const fee = subtotal * (percentage / 100);
-      return fee + (fee * 0.12); // 12% VAT
-    };
+      const fee = subtotal * (percentage / 100)
+      return fee + fee * 0.12 // 12% VAT
+    }
 
     switch (paymentMethodId) {
       case 1:
@@ -199,49 +204,51 @@ function CheckoutContent() {
       case 97:
       case 134:
       case 139:
-        return calculateWithVAT(0.50); // 0.50% + 12% VAT
+        return calculateWithVAT(0.5) // 0.50% + 12% VAT
 
       case 3: // GCash
-        return calculateWithVAT(2.10); // 2.10% + 12% VAT
+        return calculateWithVAT(2.1) // 2.10% + 12% VAT
 
       case 6: // PayPal
-        return 5.00;
+        return 5.0
 
       case 38: // GrabPay
-        return calculateWithVAT(2.30); // 2.30% + 12% VAT
+        return calculateWithVAT(2.3) // 2.30% + 12% VAT
 
       case 57: // Maya
-        return calculateWithVAT(2.00); // 2.00% + 12% VAT
+        return calculateWithVAT(2.0) // 2.00% + 12% VAT
 
       case 103: // ShopeePay
-        return calculateWithVAT(2.00); // Assuming 2.00% + 12% VAT, please adjust if different
+        return calculateWithVAT(2.0) // Assuming 2.00% + 12% VAT, please adjust if different
 
       case 129: // WeChatPay QR via AUB
-        return subtotal * 0.02; // 2.00%
+        return subtotal * 0.02 // 2.00%
 
       case 130: // AliPay QR via AUB
-        return subtotal * 0.025; // 2.50%
+        return subtotal * 0.025 // 2.50%
 
       case 58: // BPI Online
       case 69: // Brankas Online
-        return 25.00 + (25.00 * 0.12); // Php 25.00 + 12% VAT
+        return 25.0 + 25.0 * 0.12 // Php 25.00 + 12% VAT
 
       case 18: // DragonPay Online
-        return 25.00; // Php 25.00 per transaction
+        return 25.0 // Php 25.00 per transaction
 
       case 19: // DragonPay OTC Non-Bank
-        return 25.00; // Php 25.00 per transaction
+        return 25.0 // Php 25.00 per transaction
 
       case 20: // DragonPay OTC Bank
-        return 20.00; // Php 20.00 per transaction
+        return 20.0 // Php 20.00 per transaction
 
       default:
-        return 0;
+        return 0
     }
-  };
+  }
 
-  const getProcessingFeeDescription = (paymentMethodId: number | null): string => {
-    if (paymentMethodId === null) return '';
+  const getProcessingFeeDescription = (
+    paymentMethodId: number | null,
+  ): string => {
+    if (paymentMethodId === null) return ''
 
     switch (paymentMethodId) {
       case 1:
@@ -253,36 +260,36 @@ function CheckoutContent() {
       case 97:
       case 134:
       case 139:
-        return '0.50% + 12% VAT';
+        return '0.50% + 12% VAT'
       case 3:
-        return '2.10% + 12% VAT';
+        return '2.10% + 12% VAT'
       case 6:
-        return 'Php 5.00';
+        return 'Php 5.00'
       case 38:
-        return '2.30% + 12% VAT';
+        return '2.30% + 12% VAT'
       case 57:
       case 103:
-        return '2.00% + 12% VAT';
+        return '2.00% + 12% VAT'
       case 129:
-        return '2.00%';
+        return '2.00%'
       case 130:
-        return '2.50%';
+        return '2.50%'
       case 58:
       case 69:
-        return 'Php 25.00 + 12% VAT';
+        return 'Php 25.00 + 12% VAT'
       case 18:
       case 19:
-        return 'Php 25.00';
+        return 'Php 25.00'
       case 20:
-        return 'Php 20.00';
+        return 'Php 20.00'
       default:
-        return '';
+        return ''
     }
-  };
+  }
 
-  const subtotal = productDetails.price * quantity;
-  const processingFee = getProcessingFee(selectedPaymentMethod, subtotal);
-  const total = subtotal + processingFee;
+  const subtotal = productDetails.price * quantity
+  const processingFee = getProcessingFee(selectedPaymentMethod, subtotal)
+  const total = subtotal + processingFee
 
   return (
     <>
@@ -313,10 +320,11 @@ function CheckoutContent() {
                         value={formData.email}
                         onChange={handleInputChange}
                         onBlur={() => setEmailTouched(true)}
-                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm ${emailTouched && !isValidEmail(formData.email)
-                          ? 'border-red-500'
-                          : ''
-                          }`}
+                        className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-[#ff9e39] focus:ring-[#ff9e39] sm:text-sm ${
+                          emailTouched && !isValidEmail(formData.email)
+                            ? 'border-red-500'
+                            : ''
+                        }`}
                       />
                       {emailTouched && !isValidEmail(formData.email) && (
                         <p className="mt-2 text-sm text-red-600">
@@ -555,8 +563,10 @@ function CheckoutContent() {
                           </div>
                         </div>
                       </div>
-                      <PaymentMethodSection onPaymentMethodSelect={handlePaymentMethodSelect} />
-                      <div className="mt-10 lg:mt-0 border-t border-gray-200 pt-10">
+                      <PaymentMethodSection
+                        onPaymentMethodSelect={handlePaymentMethodSelect}
+                      />
+                      <div className="mt-10 border-t border-gray-200 pt-10 lg:mt-0">
                         <h2 className="text-lg font-medium text-gray-900">
                           Order summary
                         </h2>
@@ -601,7 +611,10 @@ function CheckoutContent() {
                                   </p>
 
                                   <div className="ml-4">
-                                    <label htmlFor="quantity" className="sr-only">
+                                    <label
+                                      htmlFor="quantity"
+                                      className="sr-only"
+                                    >
                                       Quantity
                                     </label>
                                     <select
@@ -632,7 +645,11 @@ function CheckoutContent() {
                             {processingFee > 0 && (
                               <div className="flex items-center justify-between">
                                 <dt className="text-sm">
-                                  Processing Fee ({getProcessingFeeDescription(selectedPaymentMethod)})
+                                  Processing Fee (
+                                  {getProcessingFeeDescription(
+                                    selectedPaymentMethod,
+                                  )}
+                                  )
                                 </dt>
                                 <dd className="text-sm font-medium text-gray-900">
                                   Php {formatPrice(processingFee)}
@@ -722,10 +739,11 @@ function CheckoutContent() {
                       type="button"
                       onClick={initiatePayment}
                       disabled={isProcessing || !isFormValid()}
-                      className={`w-full rounded-md border border-transparent px-4 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 ${isProcessing || !isFormValid()
-                        ? 'cursor-not-allowed bg-gray-400'
-                        : 'bg-[#ff9e39] hover:bg-[#ff9e39]'
-                        }`}
+                      className={`w-full rounded-md border border-transparent px-4 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 ${
+                        isProcessing || !isFormValid()
+                          ? 'cursor-not-allowed bg-gray-400'
+                          : 'bg-[#ff9e39] hover:bg-[#ff9e39]'
+                      }`}
                     >
                       {isProcessing ? 'Processing...' : 'Confirm order'}
                     </button>
