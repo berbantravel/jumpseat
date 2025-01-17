@@ -73,12 +73,12 @@ export const destinations = [
     imageSrc:
       'https://images.pexels.com/photos/2407265/pexels-photo-2407265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   },
-  {
-    name: 'TEST PACKAGE',
-    description: "HEART-WARMING DESTINATION THAT UNCOVERS NATURE'S GLAMOR",
-    price: '1',
-    href: '#',
-    imageSrc:
-      'https://images.pexels.com/photos/2407265/pexels-photo-2407265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  },
+  // {
+  //   name: 'TEST PACKAGE',
+  //   description: "HEART-WARMING DESTINATION THAT UNCOVERS NATURE'S GLAMOR",
+  //   price: '1',
+  //   href: '#',
+  //   imageSrc:
+  //     'https://images.pexels.com/photos/2407265/pexels-photo-2407265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  // },
 ]
