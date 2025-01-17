@@ -229,7 +229,7 @@ function CheckoutContent() {
 
       case 58: // BPI Online
       case 69: // Brankas Online
-        return 1 // Php 0.00 + 0% VAT
+        return 25.0 + 25.0 * 0.12 // Php 25.00 + 12% VAT
 
       case 18: // DragonPay Online
         return 25.0 // Php 25.00 per transaction
@@ -276,7 +276,7 @@ function CheckoutContent() {
         return '2.50%'
       case 58:
       case 69:
-        return 'Php 0.00 + 0% VAT'
+        return 'Php 25.00 + 12% VAT'
       case 18:
       case 19:
         return 'Php 25.00'
