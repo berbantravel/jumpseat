@@ -430,7 +430,7 @@ export const travelPackages = {
       ],
     },
     'south-korea': {
-      id: '3',
+      id: '4',
       name: 'South-Korea',
       price: 28888,
       rating: 5,
