@@ -226,8 +226,8 @@ export function Footer() {
                             href="#"
                             className="captionRegular text-white hover:text-text-white-primary"
                           >
-                            Address: No. 15, Arellano St. Malasiqui, Pangasinan
-                            2421 Philippines
+                            Address: Don Sergio, Barangay San Juan, San Carlos
+                            City, Pangasinan 2420
                           </a>
                         </li>
                         <li className="flex items-center justify-start">
