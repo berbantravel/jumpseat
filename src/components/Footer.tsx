@@ -294,7 +294,7 @@ export function Footer() {
             </div>
             <div className="mt-14 border-t border-gray-900/10 pt-8">
               <p className="captionLight cursor-pointer text-white hover:text-text-white-primary">
-                &copy; Darrel Mendoza
+                &copy; Sylvester Rubio III
               </p>
             </div>
           </div>
