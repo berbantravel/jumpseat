@@ -9,88 +9,73 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
-  debug: true, // Enable debug logs
 });
 
 export async function POST(request: Request) {
-  // Verify credentials are available
-  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('Missing email credentials in environment variables');
-    return NextResponse.json({ 
-      success: false, 
-      error: 'Email configuration error' 
-    }, { 
-      status: 500 
-    });
-  }
-
   try {
-    const { type, email } = await request.json()
+    const { email } = await request.json()
 
-    // Log the attempt
-    console.log('Attempting to send email to:', email);
-    console.log('Using email user:', process.env.EMAIL_USER);
+    // Email to subscriber
+    const subscriberMailOptions = {
+      from: process.env.EMAIL_USER,
+      to: email,
+      subject: 'Thank You for Your Interest in Jumpseat Tours',
+      html: `
+        <div style="font-family: Arial, sans-serif; background-color: #ffffff; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+          <div style="max-width: 480px; margin: 0 auto;">
+            <h1 style="color: #ff9e39; font-size: 24px; font-weight: 600; margin-bottom: 20px;">
+              Thank You for Your Interest!
+            </h1>
+            
+            <p style="color: #4b5563; font-size: 16px; line-height: 24px; margin-bottom: 20px;">
+              We've received your inquiry and we're excited to share our latest travel deals and promotions with you.
+            </p>
 
-    if (type === 'newsletter') {
-      const subscriberMailOptions = {
-        from: `"Jumpseat Tours" <${process.env.EMAIL_USER}>`, // Properly formatted from field
-        to: email,
-        subject: 'Welcome to Jumpseat Tours! 🌏✈️',
-        html: `
-          // ... your existing email template ...
-        `
-      }
+            <p style="color: #4b5563; font-size: 16px; line-height: 24px; margin-bottom: 20px;">
+              Stay tuned for updates about our exciting destinations and special offers!
+            </p>
 
-      const adminNotificationOptions = {
-        from: `"Jumpseat Tours" <${process.env.EMAIL_USER}>`, // Properly formatted from field
-        to: 'admin@berbantravel.com',
-        subject: 'New Newsletter Subscription',
-        html: `
-          // ... your existing admin template ...
-        `
-      }
+            <div style="margin-top: 30px;">
+              <p style="color: #4b5563; font-size: 16px; line-height: 24px;">
+                Best regards,<br>
+                The Jumpseat Tours Team
+              </p>
+            </div>
 
-      // Verify connection
-      await new Promise((resolve, reject) => {
-        transporter.verify(function (error, success) {
-          if (error) {
-            console.error('Transporter verification failed:', error);
-            reject(error);
-          } else {
-            console.log('Server is ready to take our messages');
-            resolve(success);
-          }
-        });
-      });
-
-      // Send emails
-      await transporter.sendMail(subscriberMailOptions)
-      await transporter.sendMail(adminNotificationOptions)
-      
-      console.log('Emails sent successfully');
-      
-      return NextResponse.json({ 
-        success: true,
-        message: 'Subscription successful' 
-      })
+            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+              <p style="color: #6b7280; font-size: 12px; text-align: center;">
+                Operated and Powered by BerBan Travel Corporation
+              </p>
+            </div>
+          </div>
+        </div>
+      `
     }
 
-    return NextResponse.json({ 
-      success: false,
-      error: 'Invalid request type' 
-    }, { 
-      status: 400 
-    })
+    // Email to admin
+    const adminMailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'admin@berbantravel.com',
+      subject: 'New Website Inquiry',
+      html: `
+        <div style="font-family: Arial, sans-serif; padding: 20px;">
+          <h2 style="color: #111827; font-size: 20px; margin-bottom: 16px;">New Website Inquiry</h2>
+          <p style="font-size: 16px; color: #4b5563;">
+            <strong>Email:</strong> ${email}<br>
+            <strong>Date:</strong> ${new Date().toLocaleString()}<br>
+            <strong>Source:</strong> Website Modal Form
+          </p>
+        </div>
+      `
+    }
 
+    // Send both emails
+    await transporter.sendMail(subscriberMailOptions)
+    await transporter.sendMail(adminMailOptions)
+
+    return NextResponse.json({ success: true })
   } catch (error) {
-    console.error('Error sending email:', error);
-    // More detailed error response
-    return NextResponse.json({ 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Failed to process subscription',
-      details: error instanceof Error ? error.stack : undefined
-    }, { 
-      status: 500 
-    })
+    console.error('Error sending email:', error)
+    return NextResponse.json({ success: false, error: error }, { status: 500 })
   }
 }

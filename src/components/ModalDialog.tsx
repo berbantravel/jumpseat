@@ -29,46 +29,36 @@ const ModalDialog: React.FC<ModalDialogProps> = ({
   const [error, setError] = useState('')
 
   const handleSignUp = async () => {
-    // Validate email and checkbox
-    if (!email) {
-      setError('Please enter your email address')
-      return
+    if (!email || !enabled) {
+      setError('Please enter your email and accept the terms');
+      return;
     }
-    if (!enabled) {
-      setError('Please accept the terms to continue')
-      return
-    }
-
-    setIsLoading(true)
-    setError('')
-
+  
+    setIsLoading(true);
+    setError('');
+  
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          type: 'newsletter',
-          email,
-        }),
-      })
-
-      const data = await response.json()
-
+        body: JSON.stringify({ email }),
+      });
+  
+      const data = await response.json();
+  
       if (data.success) {
-        setShowThankYou(true)
-        setEmail('')
-        setError('')
+        setShowThankYou(true);
       } else {
-        setError('Failed to subscribe. Please try again.')
+        setError('Failed to send inquiry. Please try again.');
       }
     } catch (error) {
-      setError('An error occurred. Please try again later.')
+      setError('An error occurred. Please try again later.');
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleContinue = () => {
     setShowThankYou(false)
