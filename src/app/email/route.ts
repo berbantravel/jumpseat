@@ -9,78 +9,65 @@ const transporter = nodemailer.createTransport({
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  debug: true, // Enable debug logs
 });
 
 export async function POST(request: Request) {
+  // Verify credentials are available
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error('Missing email credentials in environment variables');
+    return NextResponse.json({ 
+      success: false, 
+      error: 'Email configuration error' 
+    }, { 
+      status: 500 
+    });
+  }
+
   try {
     const { type, email } = await request.json()
 
+    // Log the attempt
+    console.log('Attempting to send email to:', email);
+    console.log('Using email user:', process.env.EMAIL_USER);
+
     if (type === 'newsletter') {
       const subscriberMailOptions = {
-        from: process.env.EMAIL_USER,
+        from: `"Jumpseat Tours" <${process.env.EMAIL_USER}>`, // Properly formatted from field
         to: email,
         subject: 'Welcome to Jumpseat Tours! 🌏✈️',
         html: `
-          <div style="font-family: Arial, sans-serif; background-color: #ffffff; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-            <div style="max-width: 480px; margin: 0 auto;">
-              <h1 style="color: #ff9e39; font-size: 16px; font-weight: 500;">Welcome aboard!</h1>
-              <p style="font-size: 32px; font-weight: 700; margin-top: 8px; line-height: 1.2;">
-                Thank you for subscribing
-              </p>
-              <p style="margin-top: 8px; color: #6b7280; font-size: 16px;">
-                Get ready to receive exclusive travel deals and updates directly to your inbox.
-              </p>
-
-              <div style="margin-top: 40px; text-align: center;">
-                <p style="font-size: 14px; color: #4b5563;">
-                  Stay tuned for exciting travel opportunities and promotions!<br>
-                  We can't wait to help you explore Asia.
-                </p>
-                <p style="margin-top: 24px; font-size: 14px; color: #4b5563;">
-                  Best regards,<br>BerBan Travel Corporation Team
-                </p>
-              </div>
-
-              <div style="margin-top: 40px; border-top: 1px solid #e5e7eb; padding-top: 20px;">
-                <p style="font-size: 12px; color: #6b7280; text-align: center;">
-                  Operated and Powered by BerBan Travel Corporation<br>
-                  This is an automated message. Please do not reply to this email.
-                </p>
-              </div>
-            </div>
-          </div>
+          // ... your existing email template ...
         `
       }
 
       const adminNotificationOptions = {
-        from: process.env.EMAIL_USER,
+        from: `"Jumpseat Tours" <${process.env.EMAIL_USER}>`, // Properly formatted from field
         to: 'admin@berbantravel.com',
         subject: 'New Newsletter Subscription',
         html: `
-          <div style="font-family: Arial, sans-serif; background-color: #ffffff; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-            <div style="max-width: 480px; margin: 0 auto;">
-              <h1 style="font-size: 24px; font-weight: 600; color: #111827;">New Newsletter Subscriber</h1>
-              
-              <div style="margin-top: 24px; padding: 20px; background-color: #f9fafb; border-radius: 8px;">
-                <p style="font-size: 16px; color: #4b5563;">
-                  <strong>Email:</strong> ${email}<br>
-                  <strong>Date:</strong> ${new Date().toLocaleString()}<br>
-                  <strong>Source:</strong> Newsletter Modal Subscription
-                </p>
-              </div>
-
-              <div style="margin-top: 40px; border-top: 1px solid #e5e7eb; padding-top: 20px;">
-                <p style="font-size: 12px; color: #6b7280; text-align: center;">
-                  This is an automated notification from the Jumpseat Tours website.
-                </p>
-              </div>
-            </div>
-          </div>
+          // ... your existing admin template ...
         `
       }
 
+      // Verify connection
+      await new Promise((resolve, reject) => {
+        transporter.verify(function (error, success) {
+          if (error) {
+            console.error('Transporter verification failed:', error);
+            reject(error);
+          } else {
+            console.log('Server is ready to take our messages');
+            resolve(success);
+          }
+        });
+      });
+
+      // Send emails
       await transporter.sendMail(subscriberMailOptions)
       await transporter.sendMail(adminNotificationOptions)
+      
+      console.log('Emails sent successfully');
       
       return NextResponse.json({ 
         success: true,
@@ -96,10 +83,12 @@ export async function POST(request: Request) {
     })
 
   } catch (error) {
-    console.error('Error sending email:', error)
+    console.error('Error sending email:', error);
+    // More detailed error response
     return NextResponse.json({ 
       success: false, 
-      error: 'Failed to process subscription' 
+      error: error instanceof Error ? error.message : 'Failed to process subscription',
+      details: error instanceof Error ? error.stack : undefined
     }, { 
       status: 500 
     })
