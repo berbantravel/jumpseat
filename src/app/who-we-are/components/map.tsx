@@ -18,7 +18,7 @@ export default function Map() {
                   {/* Map container */}
                   <div className="relative z-10 h-[400px] overflow-hidden rounded-lg shadow-xl">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3840.5675912162944!2d120.41235731479453!3d15.889825988997492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3391470c85c1721f%3A0x6c571ef1f29b5b4c!2sArellano%20St%2C%20Malasiqui%2C%20Pangasinan!5e0!3m2!1sen!2sph!4v1679890234567!5m2!1sen!2sph"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9125.511421364448!2d120.32557199374683!3d15.919287765649198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33915b2783ad2877%3A0x98fffb16d9bcb356!2sSan%20Juan%2C%20San%20Carlos%20City%2C%20Pangasinan!5e0!3m2!1sen!2sph!4v1737731031989!5m2!1sen!2sph"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}
@@ -53,7 +53,7 @@ export default function Map() {
                   <div>
                     <h4 className=" text-black">Drop by and visit us at:</h4>
                     <p className="mt-2 font-semibold text-black">
-                      No. 15, Arellano St. Malasiqui 2421 Philippines
+                      Don Sergio, Barangay San Juan, San Carlos City, Pangasinan 2420
                     </p>
                   </div>
 

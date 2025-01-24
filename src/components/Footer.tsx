@@ -269,8 +269,8 @@ export function Footer() {
                             +63-912-746-6894
                           </a>
                         </li>
-                        <li className="flex items-center justify-start">
-                          <Mail className="mr-2 h-5 w-auto cursor-pointer text-white hover:text-text-white-primary" />
+                        <li className="flex flex-row items-center justify-start">
+                          <Mail width={50} height={50} className="h-5 w-auto cursor-pointer text-white hover:text-text-white-primary" />
                           <a
                             href="#"
                             className="captionRegular text-white hover:text-text-white-primary"
@@ -294,7 +294,7 @@ export function Footer() {
             </div>
             <div className="mt-14 border-t border-gray-900/10 pt-8">
               <p className="captionLight cursor-pointer text-white hover:text-text-white-primary">
-                &copy; Sylvester Rubio III
+                &copy; Operated and Powered by BerBan Travel Corporation
               </p>
             </div>
           </div>

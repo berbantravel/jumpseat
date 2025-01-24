@@ -24,15 +24,57 @@ const ModalDialog: React.FC<ModalDialogProps> = ({
   setEnabled,
 }) => {
   const [showThankYou, setShowThankYou] = useState(false)
+  const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSignUp = () => {
-    setShowThankYou(true)
+  const handleSignUp = async () => {
+    // Validate email and checkbox
+    if (!email) {
+      setError('Please enter your email address')
+      return
+    }
+    if (!enabled) {
+      setError('Please accept the terms to continue')
+      return
+    }
+
+    setIsLoading(true)
+    setError('')
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'newsletter',
+          email,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setShowThankYou(true)
+        setEmail('')
+        setError('')
+      } else {
+        setError('Failed to subscribe. Please try again.')
+      }
+    } catch (error) {
+      setError('An error occurred. Please try again later.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleContinue = () => {
     setShowThankYou(false)
     closeModal()
   }
+
 
   return (
     <>
@@ -72,13 +114,19 @@ const ModalDialog: React.FC<ModalDialogProps> = ({
                 <input
                   type="email"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="w-full rounded border border-gray-300 p-2"
                 />
+                {error && (
+                  <p className="text-sm text-red-500">{error}</p>
+                )}
                 <button
                   onClick={handleSignUp}
-                  className="w-full rounded-md bg-[#ff9e39] px-4 py-2 text-sm font-semibold text-white"
+                  disabled={isLoading}
+                  className="w-full rounded-md bg-[#ff9e39] px-4 py-2 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  SIGN UP
+                  {isLoading ? 'SIGNING UP...' : 'SIGN UP'}
                 </button>
                 <div className="flex items-center">
                   <Checkbox
