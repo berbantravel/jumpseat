@@ -2,12 +2,12 @@ import { StaticImageData } from 'next/image'
 import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
 import jimBernardo from '@/images/team/Jim Bernardo - Operations Officer.jpg'
 import chrisseTalaban from '@/images/team/Chrisse Talaban - CEO.jpg'
-import chuckieTandoc from '@/images/team/Chuckie Tandoc - Linkages.jpg'
+// import chuckieTandoc from '@/images/team/Chuckie Tandoc - Linkages.jpg'
 import vinceRamirez from '@/images/team/Vince Ramirez - Finance Officer.jpg'
-import leilaniParagas from '@/images/team/Leilani Paragas - Linkages.jpg'
+// import leilaniParagas from '@/images/team/Leilani Paragas - Linkages.jpg'
 import sylvesterRubioIII from '@/images/team/Sylvester G Rubio III - ICT Partner.jpg'
 import hazelFlores from '@/images/team/Hazel Flores - Legal Officer.jpg'
-import jemCadiz from '@/images/team/Jem Cadiz - Lingkages.jpg'
+// import jemCadiz from '@/images/team/Jem Cadiz - Linkages.jpg'
 import aprilFerazol from '@/images/team/April Ferazol - Travel Planner.jpg'
 import janaHinagpisan from '@/images/team/Jana Hinagpisan - Sales Team Leader.jpg'
 import rodParedes from '@/images/team/Rod Paredes - Business Development Officer.jpg'
@@ -32,21 +32,21 @@ export const teamMembers: TeamMember[] = [
     role: 'OPERATIONS OFFICER',
     image: jimBernardo,
   },
-  {
-    name: 'Chuckie Tandoc',
-    role: 'LINKAGES',
-    image: chuckieTandoc,
-  },
+  // {
+  //   name: 'Chuckie Tandoc',
+  //   role: 'LINKAGES',
+  //   image: chuckieTandoc,
+  // },
   {
     name: 'Vince Ramirez',
     role: 'FINANCE OFFICER',
     image: vinceRamirez,
   },
-  {
-    name: 'Leilani Paragas',
-    role: 'LINKAGES',
-    image: leilaniParagas,
-  },
+  // {
+  //   name: 'Leilani Paragas',
+  //   role: 'LINKAGES',
+  //   image: leilaniParagas,
+  // },
   {
     name: 'Sylvester Rubio III',
     role: 'ICT PARTNER',
@@ -62,11 +62,11 @@ export const teamMembers: TeamMember[] = [
     role: 'LEGAL OFFICER',
     image: hazelFlores,
   },
-  {
-    name: 'Jem Cadiz',
-    role: 'LINKAGES',
-    image: jemCadiz,
-  },
+  // {
+  //   name: 'Jem Cadiz',
+  //   role: 'LINKAGES',
+  //   image: jemCadiz,
+  // },
   {
     name: 'April Ferazol',
     role: 'TRAVEL PLANNER',
