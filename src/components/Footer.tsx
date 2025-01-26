@@ -4,6 +4,7 @@ import Image, { type ImageProps } from 'next/image'
 import postfolioLogo from '@/images/logos/postfolio-logo-blue.png'
 import jumpseatLogo from '@/images/logos/jumpseat-logo.png'
 import jumpseatLogoWhite from '@/images/logos/jumpseat-logo-white.png'
+import berbanLogo from '@/images/berbanlogo.png'
 
 import {
   BellIcon,
@@ -135,6 +136,16 @@ export function Footer() {
                   />
                   <p className="caption2Light p-2 text-white hover:text-text-white-primary">
                     © 2024
+                  </p>
+                </div>
+                <div className="flex items-start flex-col">
+                  <Image
+                    className="h-12 w-auto cursor-pointer"
+                    src={berbanLogo}
+                    alt="Your Company Icon"
+                  />
+                  <p className="caption2Light p-2 text-white hover:text-text-white-primary">
+                  © Operated and Powered by BerBan Travel Corporation
                   </p>
                 </div>
               </div>
