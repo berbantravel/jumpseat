@@ -18,7 +18,7 @@ const PaymentMethodSection: React.FC<PaymentMethodSectionProps> = ({ onPaymentMe
     <div className="my-10 border-t border-gray-200 pt-10">
       <h2 className="text-lg font-medium text-gray-900 mb-4">Payment Method <span className="text-red-600">*</span></h2>
       <div className="border-b border-gray-200">
-        <nav className="-mb-px flex space-x-8" aria-label="Tabs">
+        <nav className="-mb-px flex space-x-8 overflow-auto" aria-label="Tabs">
           {paymentGroups.map((group, index) => (
             <button
               key={group.name}
