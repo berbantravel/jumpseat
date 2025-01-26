@@ -9,7 +9,7 @@ export type TeamMember = {
 
 export const teamMembers: TeamMember[] = [
   {
-    name: 'Chrisse Talaban',
+    name: 'Chrisse Evert Talaban',
     role: 'TRAVEL PARTNER',
     image: jumpseatIcon,
   },
@@ -43,11 +43,11 @@ export const teamMembers: TeamMember[] = [
     role: 'BRANDING',
     image: jumpseatIcon,
   },
-  {
-    name: 'Hazel Flores',
-    role: 'LEGAL',
-    image: jumpseatIcon,
-  },
+  // {
+  //   name: 'Hazel Flores',
+  //   role: 'LEGAL',
+  //   image: jumpseatIcon,
+  // },
   {
     name: 'Jem Cadiz',
     role: 'LINKAGES',

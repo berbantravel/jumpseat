@@ -23,7 +23,7 @@ export type TeamMember = {
 
 export const teamMembers: TeamMember[] = [
   {
-    name: 'Chrisse Talaban',
+    name: 'Chrisse Evert Talaban',
     role: 'CEO',
     image: chrisseTalaban,
   },
@@ -54,14 +54,14 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: 'Jana Hinagpisan',
-    role: 'SALES TEAM LEADER',
+    role: 'SALES MANAGER',
     image: janaHinagpisan,
   },
-  {
-    name: 'Hazel Flores',
-    role: 'LEGAL OFFICER',
-    image: hazelFlores,
-  },
+  // {
+  //   name: 'Hazel Flores',
+  //   role: 'LEGAL OFFICER',
+  //   image: hazelFlores,
+  // },
   // {
   //   name: 'Jem Cadiz',
   //   role: 'LINKAGES',
@@ -79,7 +79,7 @@ export const teamMembers: TeamMember[] = [
 },
 {
   name: 'Kimberly Mojica',
-  role: 'BRAND AND CONTENT OFFICER',
+  role: 'BRAND MANAGER',
   image: kimberlyMojica,
 }
 ]
