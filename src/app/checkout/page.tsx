@@ -11,6 +11,7 @@ import { countries } from '@/constants/countries'
 import NoProductSeletcted from '@/components/NoProductSelected'
 import CircleLoader from '@/components/CircleLoader'
 import PaymentMethodSection from '@/components/PaymentMethodSection'
+import berbanLogo from '@/images/berbanlogo.png'
 
 type PaymentResponse = {
   success: boolean
@@ -732,7 +733,18 @@ function CheckoutContent() {
                         delays or issues with your order. If you need to make
                         any changes, please do so before confirming your order.
                       </p>
+                      <div className="flex items-start flex-col">
+                  <Image
+                    className="h-12 w-auto cursor-pointer"
+                    src={berbanLogo}
+                    alt="Your Company Icon"
+                  />
+                  <p className="caption2Light p-2 text-sm text-gray-600">
+                  © Operated and Powered by BerBan Travel Corporation
+                  </p>
+                </div>
                     </div>
+                    
                   </div>
                   <div className="mt-10 border-t border-gray-200 py-6">
                     <button
