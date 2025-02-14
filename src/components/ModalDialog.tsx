@@ -71,10 +71,10 @@ const ModalDialog: React.FC<ModalDialogProps> = ({
       {/* Main Sign Up Dialog */}
       <Dialog open={isOpen && !showThankYou} onClose={closeModal}>
         <div
-          className="fixed inset-0 bg-black bg-opacity-30"
+          className="fixed inset-0 bg-black bg-opacity-30 z-50"
           aria-hidden="true"
         />
-        <div className="fixed inset-0 flex items-center justify-center p-4">
+        <div className="fixed inset-0 flex items-center justify-center p-4 z-50">
           <DialogPanel className="relative mx-auto grid max-w-5xl grid-cols-1 gap-4 rounded bg-white md:grid-cols-2">
             <button
               onClick={closeModal}
