@@ -171,7 +171,7 @@ function CheckoutContent() {
     })
 
     document.body.appendChild(form)
-    console.log(form)
+    form.submit()
   }
 
   const isValidEmail = (email: string) => {

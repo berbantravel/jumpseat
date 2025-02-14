@@ -103,7 +103,7 @@ export async function POST(request: NextRequest) {
 
 
     const searchParams = new URLSearchParams(payload as Record<string, string>);
-    console.log("Body:",body)
+    console.log("Payload:",payload)
     return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
   } catch (error) {
     console.error('Error processing payment response:', error);
