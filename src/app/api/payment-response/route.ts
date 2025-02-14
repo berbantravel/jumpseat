@@ -101,12 +101,10 @@ export async function POST(request: NextRequest) {
     const body = await request.formData();
     const payload = Object.fromEntries(body.entries());
 
-    // Process the payment data here if needed
-    // Update your database or perform other actions
 
     const searchParams = new URLSearchParams(payload as Record<string, string>);
     console.log("Body:",body)
-    return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
+    // return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
   } catch (error) {
     console.error('Error processing payment response:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
