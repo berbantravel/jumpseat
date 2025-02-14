@@ -121,7 +121,7 @@ function CheckoutContent() {
         },
         body: JSON.stringify({
           MerchantCode: process.env.NEXT_PUBLIC_IPAY88_MERCHANT_CODE,
-          PaymentId: selectedPaymentMethod,
+          PaymentId: 1,
           RefNo: generateRefNo(),
           Quantity: quantity,
           SubTotal: subtotal,
@@ -156,8 +156,8 @@ function CheckoutContent() {
   const submitToIPay88 = (payload: PaymentResponse['payload']) => {
     const form = document.createElement('form')
     form.method = 'POST'
-    // form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
-    form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
+    form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
+    // form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
 
     Object.entries(payload).forEach(([key, value]) => {
       const input = document.createElement('input')
