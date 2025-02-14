@@ -128,7 +128,7 @@ function CheckoutContent() {
           Total: total,
           ProcessingFee: processingFee,
           Amount: total.toFixed(2),
-          Currency: `USD`,
+          Currency: process.env.NEXT_PUBLIC_IPAY88_CURRENCY,
           ProdDesc: `${productDetails.name} - ${productDetails.description}`,
           UserName: `${formData.firstName} ${formData.lastName}`,
           UserEmail: formData.email,
@@ -156,8 +156,8 @@ function CheckoutContent() {
   const submitToIPay88 = (payload: PaymentResponse['payload']) => {
     const form = document.createElement('form')
     form.method = 'POST'
-    form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
-    // form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
+    // form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
+    form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
 
     Object.entries(payload).forEach(([key, value]) => {
       const input = document.createElement('input')
