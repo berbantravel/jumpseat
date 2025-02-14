@@ -128,7 +128,7 @@ function CheckoutContent() {
           Total: total,
           ProcessingFee: processingFee,
           Amount: total.toFixed(2),
-          Currency: `PHP`,
+          Currency: `MYR`,
           ProdDesc: `${productDetails.name} - ${productDetails.description}`,
           UserName: `${formData.firstName} ${formData.lastName}`,
           UserEmail: formData.email,
