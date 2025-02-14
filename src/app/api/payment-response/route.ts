@@ -96,15 +96,20 @@
 // 
 
 import { NextRequest, NextResponse } from 'next/server';
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.formData();
     const payload = Object.fromEntries(body.entries());
 
-
     const searchParams = new URLSearchParams(payload as Record<string, string>);
-    console.log("Payload:",payload)
-    return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
+    console.log("Payload:", payload);
+
+    const response = NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
+
+    console.log("NextResponse:", response); // Log NextResponse before returning
+
+    return response;
   } catch (error) {
     console.error('Error processing payment response:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
