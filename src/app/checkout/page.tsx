@@ -147,7 +147,7 @@ function CheckoutContent() {
 
       if (data.success) {
         localStorage.setItem('IPAY88_PAYLOAD', JSON.stringify(data.payload))
-        console.log(data)
+        submitToIPay88(data.payload)
       } else {
         console.error('Failed to initiate payment')
       }
@@ -171,7 +171,7 @@ function CheckoutContent() {
     })
 
     document.body.appendChild(form)
-    form.submit()
+    console.log(form)
   }
 
   const isValidEmail = (email: string) => {
