@@ -15,7 +15,9 @@ import MainBerbanLogo from '@/images/logos/berbanSuitcase.png'
 
 type PaymentResponse = {
   success: boolean
-  payload: Record<string, string> | { message: string; details?: string }
+  payload: {
+    [key: string]: string
+  }
 }
 
 function CheckoutContent() {
@@ -30,7 +32,6 @@ function CheckoutContent() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
     number | null
   >(null)
-  const [errorMessage, setErrorMessage] = useState<PaymentResponse | null>(null)
 
   const handlePaymentMethodSelect = (methodId: number) => {
     setSelectedPaymentMethod(methodId)
@@ -107,18 +108,16 @@ function CheckoutContent() {
     return `REF-${timestamp}-${productDetails.id}`
   }
 
-  
   const initiatePayment = async () => {
     try {
-      localStorage.setItem("USER_INFORMATION", JSON.stringify(formData))
-  
+      localStorage.setItem('USER_INFORMATION', JSON.stringify(formData))
+
       setIsProcessing(true)
-      setErrorMessage(null) // Reset previous errors
-  
-      const response = await fetch("/api/initiate-payment", {
-        method: "POST",
+
+      const response = await fetch('/api/initiate-payment', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           MerchantCode: process.env.NEXT_PUBLIC_IPAY88_MERCHANT_CODE,
@@ -134,44 +133,31 @@ function CheckoutContent() {
           UserName: `${formData.firstName} ${formData.lastName}`,
           UserEmail: formData.email,
           UserContact: formData.phone,
-          Remark: formData.message, // Additional field
+          Remark: formData.message, // Add new field
           Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
           SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
           ResponseURL: `${window.location.origin}/api/payment-response`,
           BackendURL: `${window.location.origin}/api/payment-backend`,
         }),
       })
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`)
-      }
-  
+
       const data: PaymentResponse = await response.json()
-  
       if (data.success) {
-        localStorage.setItem("IPAY88_PAYLOAD", JSON.stringify(data.payload))
-        submitToIPay88(data.payload as Record<string, string>)
+        localStorage.setItem('IPAY88_PAYLOAD', JSON.stringify(data.payload))
+        submitToIPay88(data.payload)
       } else {
-        setErrorMessage(data) // Store the error message
+        console.error('Failed to initiate payment')
       }
     } catch (error) {
-      setErrorMessage({
-        success: false,
-        payload: {
-          message: "Error initiating payment",
-          details: (error as Error).message,
-        },
-      })
-    } finally {
-      setIsProcessing(false)
+      console.error('Error initiating payment:', error)
     }
   }
 
   const submitToIPay88 = (payload: PaymentResponse['payload']) => {
     const form = document.createElement('form')
     form.method = 'POST'
-    form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
-    // form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
+    // form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
+    form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
 
     Object.entries(payload).forEach(([key, value]) => {
       const input = document.createElement('input')
@@ -308,12 +294,6 @@ function CheckoutContent() {
 
   return (
     <>
-
-    {errorMessage && (
-      <pre className="bg-red-100 border border-red-400 text-red-700 p-3 rounded text-sm">
-        {JSON.stringify(errorMessage, null, 2)}
-      </pre>
-    )}
       <div className="bg-[#f8f8f8]">
         <main className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-none">
