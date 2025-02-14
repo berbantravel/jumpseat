@@ -136,18 +136,18 @@ function CheckoutContent() {
           Remark: formData.message, // Add new field
           Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
           SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
-          // ResponseURL: `${window.location.origin}/api/payment-response`,
-          // BackendURL: `${window.location.origin}/api/payment-backend`,
+          ResponseURL: `${window.location.origin}/api/payment-response`,
+          BackendURL: `${window.location.origin}/api/payment-backend`,
         }),
       })
 
       const data: PaymentResponse = await response.json()
 
-      console.log(data)
+      
 
       if (data.success) {
         localStorage.setItem('IPAY88_PAYLOAD', JSON.stringify(data.payload))
-        submitToIPay88(data.payload)
+        console.log(data)
       } else {
         console.error('Failed to initiate payment')
       }
@@ -159,8 +159,8 @@ function CheckoutContent() {
   const submitToIPay88 = (payload: PaymentResponse['payload']) => {
     const form = document.createElement('form')
     form.method = 'POST'
-    // form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
-    form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
+    form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
+    // form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string
 
     Object.entries(payload).forEach(([key, value]) => {
       const input = document.createElement('input')
