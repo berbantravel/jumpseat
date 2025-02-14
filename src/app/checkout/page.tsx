@@ -15,9 +15,7 @@ import MainBerbanLogo from '@/images/logos/berbanSuitcase.png'
 
 type PaymentResponse = {
   success: boolean
-  payload: {
-    [key: string]: string
-  }
+  payload: Record<string, string> | { message: string; details?: string }
 }
 
 function CheckoutContent() {
@@ -32,6 +30,7 @@ function CheckoutContent() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
     number | null
   >(null)
+  const [errorMessage, setErrorMessage] = useState<PaymentResponse | null>(null)
 
   const handlePaymentMethodSelect = (methodId: number) => {
     setSelectedPaymentMethod(methodId)
@@ -108,8 +107,7 @@ function CheckoutContent() {
     return `REF-${timestamp}-${productDetails.id}`
   }
 
-  const [errorMessage, setErrorMessage] = useState<PaymentResponse | null>(null)
-
+  
   const initiatePayment = async () => {
     try {
       localStorage.setItem("USER_INFORMATION", JSON.stringify(formData))
