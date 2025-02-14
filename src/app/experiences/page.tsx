@@ -201,7 +201,7 @@ export default function Experiences() {
               <div
                 key={destination.name}
                 onClick={() => handleCardClick(destination.name)}
-                className="hover-zoom relative mx-0 flex h-[550px] w-auto cursor-pointer flex-col overflow-hidden p-6 px-8 pt-40 hover:opacity-95 sm:mx-0 md:h-[550px] md:w-auto lg:h-[550px] lg:w-auto xl:h-full xl:w-auto"
+                className="hover-zoom relative mx-0 flex h-[550px] w-auto cursor-pointer flex-col overflow-hidden  px-4 pt-40 hover:opacity-95 sm:mx-0 md:h-[550px] md:w-auto lg:h-[550px] lg:w-auto xl:h-full xl:w-auto group"
               >
                 <span aria-hidden="true" className="absolute inset-0">
                   <Image
@@ -211,31 +211,34 @@ export default function Experiences() {
                     width={800}
                     height={600}
                   />
-                  <span className="absolute inset-0 bg-black opacity-10"></span>
-                </span>
+                  <span className="absolute inset-0 bg-gradient-to-t from-black via-transparent"></span>
+                </span> 
                 <span
                   aria-hidden="true"
                   className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-gray-950 opacity-25"
                 />
-                <div className="relative mt-auto flex flex-col text-white">
+
+                <div className="relative mt-auto flex flex-col text-white ">
                   <span className="text-md mb-4 text-left font-bold">
                     {destination.name}
                   </span>
-                  <span className="text-md text-left font-semibold">
+                  <span className="text-sm text-left font-medium">
                     {destination.description}
                   </span>
-                  <span className="text-md mt-4 text-center font-semibold">
-                    STARTS FROM{' '}
-                    <span className="bg-neutral-800 px-1 font-bold text-[#ff9e39]">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-[#ff9e39]">STARTS FROM:</span>
+                    <span className="text-xs px-1 font-bold text-[#ff9e39]">
                       Php{destination.price}/pax
                     </span>
-                  </span>
-                  <span className="mt-10 flex items-center justify-center gap-x-6 hover:bg-[#ff9e39]">
-                    <span className="w-full max-w-80 rounded-md py-2.5 text-center text-sm font-semibold text-white shadow-sm ring-2 ring-white hover:ring-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">
+                  </div>
+                  <span className="my-4 flex items-center justify-center gap-x-6">
+                    <span className="w-full max-w-80 rounded-md py-2.5 text-center text-sm font-semibold text-white shadow-sm  hover:ring-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 hidden group-hover:flex justify-center bg-[#ff9e39]">
                       VIEW DETAILS
                     </span>
                   </span>
                 </div>
+
+
               </div>
             ))}
           </div>
