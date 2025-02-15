@@ -6,8 +6,11 @@ import typographyStyles from './typography'
 export default {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'selector',
-  plugins: [typographyPlugin, require('@tailwindcss/forms'),
-      require('@tailwindcss/aspect-ratio'),],
+  plugins: [
+    typographyPlugin,
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
   theme: {
     extend: {
       maxHeight: {
@@ -19,7 +22,16 @@ export default {
         poppinsBold: 'PoppinsBold',
         poppinsMedium: 'PoppinsMedium',
         poppinsSemiBold: 'PoppinsSemiBold',
-        poppinsLight: 'PoppinsLight'
+        poppinsLight: 'PoppinsLight',
+      },
+      animation: {
+        slowBounce: "slowBounce 3s infinite ease-in-out",
+      },
+      keyframes: {
+        slowBounce: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
+        },
       },
       colors: {
         primary: {
@@ -28,25 +40,25 @@ export default {
           50: '#80B7DC',
           base: '#016FB9',
           hover: '#015C9A',
-          pressed: '#01436F'
+          pressed: '#01436F',
         },
         secondary: {
           background: '#D9D9D9',
           base: '#404040',
           hover: '#262626',
-          pressed: '#1A1A1A'
+          pressed: '#1A1A1A',
         },
         text: {
           black: {
             primary: '#1D2433',
             secondary: '#4A505C',
-            disabled: '#6C707A'
+            disabled: '#6C707A',
           },
           white: {
             primary: '#FFFFFF',
             secondary: '#DBDBDC',
-            disabled: '#B6B7B9'
-          }
+            disabled: '#B6B7B9',
+          },
         },
         danger: {
           50: '#FEF2F2',
@@ -59,7 +71,7 @@ export default {
           700: '#B91C1C',
           800: '#991B1B',
           900: '#7F1D1D',
-          950: '#450A0A'
+          950: '#450A0A',
         },
         warning: {
           50: '#FFF7ED',
@@ -72,7 +84,7 @@ export default {
           700: '#C2410C',
           800: '#9A3412',
           900: '#7C2D12',
-          950: '#431407'
+          950: '#431407',
         },
         success: {
           50: '#ECFDF5',
@@ -85,7 +97,7 @@ export default {
           700: '#047857',
           800: '#065F46',
           900: '#064E3B',
-          950: '#022C22'
+          950: '#022C22',
         },
         neutral: {
           inputFieldBackground: '#FDFDFD',
@@ -99,20 +111,20 @@ export default {
           700: '#334155',
           800: '#1E293B',
           900: '#0F172A',
-          950: '#020617'
+          950: '#020617',
         },
         page: {
           main: '#FAFAFA',
           container: '#FCFCFC',
           content: '#FCFCFC',
-          selected: '#EFEFEF'
+          selected: '#EFEFEF',
         },
         neutralBlack: {
           DEFAULT: '#404040',
           75: '#4A505C',
           50: '#6C707A',
           25: '#E2E8F0',
-          10: '#8F8F8F'
+          10: '#8F8F8F',
         },
         neutralGray: {
           DEFAULT: '#414758',
@@ -129,25 +141,25 @@ export default {
           hovered: '#F8FAFC',
           primaryBorder: '#DBDBDC',
           clicked: '#F8FAFC',
-          border: '#64748B'
+          border: '#64748B',
         },
       },
+      fontSize: {
+        xs: ['0.8125rem', { lineHeight: '1.5rem' }],
+        sm: ['0.875rem', { lineHeight: '1.5rem' }],
+        base: ['1rem', { lineHeight: '1.75rem' }],
+        lg: ['1.125rem', { lineHeight: '1.75rem' }],
+        xl: ['1.25rem', { lineHeight: '2rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '3.5rem' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
+        '8xl': ['6rem', { lineHeight: '1' }],
+        '9xl': ['8rem', { lineHeight: '1' }],
+      },
+      typography: typographyStyles,
     },
-    fontSize: {
-      xs: ['0.8125rem', { lineHeight: '1.5rem' }],
-      sm: ['0.875rem', { lineHeight: '1.5rem' }],
-      base: ['1rem', { lineHeight: '1.75rem' }],
-      lg: ['1.125rem', { lineHeight: '1.75rem' }],
-      xl: ['1.25rem', { lineHeight: '2rem' }],
-      '2xl': ['1.5rem', { lineHeight: '2rem' }],
-      '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
-      '4xl': ['2rem', { lineHeight: '2.5rem' }],
-      '5xl': ['3rem', { lineHeight: '3.5rem' }],
-      '6xl': ['3.75rem', { lineHeight: '1' }],
-      '7xl': ['4.5rem', { lineHeight: '1' }],
-      '8xl': ['6rem', { lineHeight: '1' }],
-      '9xl': ['8rem', { lineHeight: '1' }],
-    },
-    typography: typographyStyles,
   },
 } satisfies Config
