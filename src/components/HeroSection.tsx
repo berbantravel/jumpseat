@@ -14,6 +14,7 @@ import destinationsphoto from '@/images/img-aboutus.webp'
 import { blogContents } from '@/constants/blogs'
 import { useRouter } from 'next/navigation'
 import { destinations } from '@/constants/destinations'
+import MessengerIcon from './messenger-icon'
 
 const HeroSection = () => {
   const router = useRouter()
@@ -43,6 +44,7 @@ const HeroSection = () => {
 
    
     <>
+       <MessengerIcon />
       <ModalDialog
         isOpen={isOpen}
         closeModal={closeModal}
