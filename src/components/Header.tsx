@@ -21,6 +21,7 @@ const navigation = [
   { name: "Let's Plan Your Trip!", href: '/lets-plan-your-trip' },
   { name: 'Experiences', href: '/experiences' },
   { name: 'Who We Are', href: '/who-we-are' },
+  { name: 'E-Sim', href: '/e-sim' },
   { name: 'Inspirations', href: '/inspirations' },
   { name: 'Get In Touch', href: '/get-in-touch' },
 ]
