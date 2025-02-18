@@ -121,7 +121,7 @@ function CheckoutContent() {
         },
         body: JSON.stringify({
           MerchantCode: process.env.NEXT_PUBLIC_IPAY88_MERCHANT_CODE,
-          PaymentId: 3,
+          PaymentId: selectedPaymentMethod,
           RefNo: generateRefNo(),
           Quantity: quantity,
           SubTotal: subtotal,
