@@ -217,7 +217,7 @@ const CheckoutContent = () => {
         description: `1 sim ${selectedPackage.title}`,
       };
   
-      await initiatePayment(productDetails);
+      // await initiatePayment(productDetails);
   
       router.push(`/success?iccid=${encodeURIComponent(iccid)}`);
     } catch (err) {
