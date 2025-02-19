@@ -20,7 +20,7 @@ export async function GET(req) {
     formData.append("grant_type", "client_credentials");
   
     try {
-      // Fetch Access Token
+     // Fetch Access Token 
       const tokenResponse = await fetch(API_URL_TOKEN, {
         method: "POST",
         headers: { Accept: "application/json" },
