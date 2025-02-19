@@ -82,11 +82,7 @@ export default function SuccessPage() {
                   <li key={step}>{text}</li>
                 ))}
               </ol>
-              <img
-                src={instructions.ios[0].installation_via_qr_code.qr_code_url}
-                className="size-20"
-                alt="iOS QR Code"
-              />
+              
 
               <h5 className="font-semibold text-gray-700 mt-4">Installation Manual</h5>
               <ol className="list-decimal list-inside text-gray-700 text-sm space-y-1">
@@ -113,11 +109,7 @@ export default function SuccessPage() {
                   <li key={step}>{text}</li>
                 ))}
               </ol>
-              <img
-                src={instructions.android[0].installation_via_qr_code.qr_code_url}
-                className="size-20"
-                alt="Android QR Code"
-              />
+              
 
               <h5 className="font-semibold text-gray-700 mt-4">Installation Manual</h5>
               <ol className="list-decimal list-inside text-gray-700 text-sm space-y-1">
