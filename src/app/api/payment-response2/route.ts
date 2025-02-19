@@ -1,21 +1,18 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method Not Allowed" });
-  }
-
+export async function POST(req: NextRequest) {
   try {
-    const { RefNo, Status } = req.body; // Example response fields from iPay88
+    const body = await req.json(); // Parse JSON request body
+    const { RefNo, Status } = body; // Extract response data
 
     if (Status === "1") { // Assuming "1" means success
-      const iccid = req.cookies.ICCID || "No ICCID available";
-      res.redirect(`/success?iccid=${encodeURIComponent(iccid)}`);
+      const iccid = req.cookies.get("ICCID")?.value || "No ICCID available";
+      return NextResponse.redirect(new URL(`/success?iccid=${encodeURIComponent(iccid)}`, req.nextUrl));
     } else {
-      res.redirect("/payment-failed");
+      return NextResponse.redirect(new URL("/payment-failed", req.nextUrl));
     }
   } catch (error) {
     console.error("Payment Response Handling Error:", error);
-    res.redirect("/payment-failed");
+    return NextResponse.redirect(new URL("/payment-failed", req.nextUrl));
   }
 }
