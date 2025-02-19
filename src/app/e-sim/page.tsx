@@ -88,7 +88,7 @@ export default function Experiences() {
         sim_title: packageDetails.title,
       }));
       
-      // router.push("/checkout_2");
+      router.push("/checkout_2");
     } catch (err) {
       console.error("🔴 Error storing package in session:", err);
       alert("Something went wrong! Please try again.");
