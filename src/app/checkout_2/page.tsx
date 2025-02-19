@@ -131,7 +131,7 @@ const CheckoutContent = () => {
       const total = subtotal + processingFee;
 
       const payload = {
-        MerchantCode: process.env.NEXT_PUBLIC_IPAY88_MERCHANT_CODE,
+        MerchantCode: "PH01663",
         PaymentId: selectedPaymentMethod,
         RefNo: generateRefNo(),
         Quantity: quantity,
@@ -147,7 +147,7 @@ const CheckoutContent = () => {
         Remark: formData.message || "",
         Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
         SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
-        ResponseURL: `${window.location.origin}/api/payment-response`,
+        ResponseURL: `${window.location.origin}/api/payment-response2`,
         BackendURL: `${window.location.origin}/api/payment-backend`,
       };
 
@@ -219,7 +219,7 @@ const CheckoutContent = () => {
   
       await initiatePayment(productDetails);
   
-      router.push(`/success?iccid=${encodeURIComponent(iccid)}`);
+      sessionStorage.setItem("ICCID", iccid);
     } catch (err) {
       alert("Something went wrong! Please try again.");
       console.error("Error in handleBuyNow:", err);
@@ -233,7 +233,8 @@ const CheckoutContent = () => {
   const submitToIPay88 = (payload: PaymentResponse['payload']) => {
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string;
+    // form.action = process.env.NEXT_PUBLIC_IPAY88_URL as string;
+    form.action = 'https://sandbox.ipay88.com.ph/ePayment/entry.asp'
 
     Object.entries(payload).forEach(([key, value]) => {
       const input = document.createElement('input');

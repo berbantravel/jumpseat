@@ -31,7 +31,8 @@ export async function POST(request: NextRequest) {
         });
 
         // Validate Merchant Key
-        const merchantKey = process.env.IPAY88_MERCHANT_KEY; // Remove NEXT_PUBLIC_
+        // const merchantKey = process.env.IPAY88_MERCHANT_KEY; // Remove NEXT_PUBLIC_
+        const merchantKey = "NVRs7KIAsV";
         if (!merchantKey) {
             console.error('Missing Merchant Key');
             // Still return RECEIVEOK even if key is missing

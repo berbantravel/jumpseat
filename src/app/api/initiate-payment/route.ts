@@ -14,8 +14,10 @@ interface PaymentRequestBody {
 export async function POST(request: NextRequest) {
     const body: PaymentRequestBody = await request.json();
     const { MerchantCode, RefNo, Amount, Currency } = body;
-    const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
-    
+    // const merchantKey = process.env.NEXT_PUBLIC_IPAY88_MERCHANT_KEY as string;
+    const merchantKey = "NVRs7KIAsV";
+
+
     // console.log(merchantKey);
     const signature = generateSignature(merchantKey,{MerchantCode,RefNo,Amount,Currency});
     console.log('Initiate Payment Signature:', signature);
