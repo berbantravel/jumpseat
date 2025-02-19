@@ -95,20 +95,28 @@
 // app/api/payment-response/route.ts
 // 
 
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.formData();
     const payload = Object.fromEntries(body.entries());
 
-    // Process the payment data here if needed
-    // Update your database or perform other actions
+    // Retrieve ICCID from localStorage if available (only works in frontend, so this should be stored in a DB or session in a real app)
+    let iccid = "";
+    if (typeof window !== "undefined") {
+      iccid = localStorage.getItem("ICCID") || "No ICCID available";
+    }
 
-    const searchParams = new URLSearchParams(payload as Record<string, string>);
-    console.log("Body:",body)
-    return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
+    // Construct the success URL with ICCID
+    const successUrl = `${request.nextUrl.origin}/success?iccid=${encodeURIComponent(iccid)}`;
+
+    console.log("Payment Response Body:", payload);
+    console.log("ICCID Retrieved:", iccid);
+
+    return NextResponse.redirect(successUrl, 303);
   } catch (error) {
-    console.error('Error processing payment response:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error("Error processing payment response:", error);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

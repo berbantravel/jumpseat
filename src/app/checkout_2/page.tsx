@@ -228,7 +228,8 @@ const CheckoutContent = () => {
       const data: ApiResponse = await response.json();
       const iccid = data?.order?.data?.sims?.[0]?.iccid || "No ICCID available";
   
-      sessionStorage.setItem("ICCID", iccid);
+      localStorage.setItem("ICCID", iccid);
+
     } catch (err) {
       alert("Something went wrong! Please try again.");
       console.error("Error in handleBuyNow:", err);
