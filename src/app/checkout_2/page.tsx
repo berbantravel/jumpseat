@@ -127,11 +127,11 @@ const CheckoutContent = () => {
     try {
       localStorage.setItem("USER_INFORMATION", JSON.stringify(formData));
       setIsProcessing(true);
-  
-      const subtotal = selectedPackage ? selectedPackage.price * quantity : 0;
+
+      const subtotal = selectedPackage ? selectedPackage.price *  quantity : 0;
       const processingFee = getProcessingFee(selectedPaymentMethod, subtotal);
       const total = subtotal + processingFee;
-  
+
       const payload = {
         MerchantCode: "PH01663",
         PaymentId: selectedPaymentMethod,
@@ -152,25 +152,24 @@ const CheckoutContent = () => {
         ResponseURL: `${window.location.origin}/api/payment-response`,
         BackendURL: `${window.location.origin}/api/payment-backend`,
       };
-  
+
       const response = await fetch("/api/initiate-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-  
+
       const data = await response.json();
       if (data.success) {
         localStorage.setItem("IPAY88_PAYLOAD", JSON.stringify(data.payload));
         submitToIPay88(data.payload);
-        return true; // Indicate success
       } else {
+        alert("Payment initiation failed. Please try again.");
         console.error("Failed to initiate payment:", data);
-        return false; // Indicate failure
       }
     } catch (error) {
+      alert("Error initiating payment. Please try again.");
       console.error("Error in initiatePayment:", error);
-      return false;
     } finally {
       setIsProcessing(false);
     }
@@ -195,19 +194,6 @@ const CheckoutContent = () => {
     try {
       setIsProcessing(true);
   
-      const productDetails = {
-        name: selectedPackage.title,
-        description: `1 sim ${selectedPackage.title}`,
-      };
-  
-      // Step 1: Initiate Payment
-      const paymentSuccess = await initiatePayment(productDetails);
-      if (!paymentSuccess) {
-        alert("Payment failed or canceled.");
-        return;
-      }
-  
-      // Step 2: Proceed with Order after Successful Payment
       const response = await fetch("/api/packages", {
         method: "POST",
         headers: {
@@ -228,8 +214,14 @@ const CheckoutContent = () => {
       const data: ApiResponse = await response.json();
       const iccid = data?.order?.data?.sims?.[0]?.iccid || "No ICCID available";
   
+      const productDetails = {
+        name: selectedPackage.title,
+        description: `1 sim ${selectedPackage.title}`,
+      };
+  
+      await initiatePayment(productDetails);
+  
       localStorage.setItem("ICCID", iccid);
-
     } catch (err) {
       alert("Something went wrong! Please try again.");
       console.error("Error in handleBuyNow:", err);
