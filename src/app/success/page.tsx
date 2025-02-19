@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
-
 
 interface Instructions {
   ios?: Array<{
@@ -31,7 +30,7 @@ interface Instructions {
   }>;
 }
 
-export default function SuccessPage() {
+function SuccessContent() {
   const searchParams = useSearchParams();
   const iccid = searchParams.get("iccid") || "No ICCID available.";
   const [instructions, setInstructions] = useState<Instructions | null>(null);
@@ -61,13 +60,13 @@ export default function SuccessPage() {
   }, [iccid]);
 
   return (
-    <div className="container mx-auto max-w-screen-xl p-6 ">
+    <div className="container mx-auto max-w-screen-xl p-6">
       <h1 className="text-3xl font-bold text-center text-gray-900 mb-6">✅ eSIM Purchase Successful</h1>
 
       {error && <p className="text-red-600 text-center mt-4 font-semibold">⚠️ {error}</p>}
 
       {instructions ? (
-        <div className="mt-6 p-6 ">
+        <div className="mt-6 p-6">
           <h3 className="font-bold text-2xl text-gray-900 mb-4">📲 Installation Instructions</h3>
 
           {instructions.ios && instructions.ios.length > 0 && (
@@ -136,5 +135,13 @@ export default function SuccessPage() {
         !error && <p className="text-center text-gray-700 mt-6">Loading installation instructions...</p>
       )}
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<p className="text-center text-gray-700 mt-6">Loading...</p>}>
+      <SuccessContent />
+    </Suspense>
   );
 }
