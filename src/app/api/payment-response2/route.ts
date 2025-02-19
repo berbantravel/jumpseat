@@ -1,21 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(request: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
-    const body = await request.formData();
-    const payload = Object.fromEntries(body.entries());
-
-    const { RefNo, Status } = payload; // Extract response data
+    const body = await req.json(); // Parse JSON request body
+    const { RefNo, Status } = body; // Extract response data
 
     if (Status === "1") { // Assuming "1" means success
-      const iccid = request.cookies.get("ICCID")?.value || "No ICCID available";
-      return NextResponse.redirect(new URL(`/success?iccid=${encodeURIComponent(iccid)}`, request.nextUrl));
+      const iccid = req.cookies.get("ICCID")?.value || "No ICCID available";
+      return NextResponse.redirect(new URL(`/success?iccid=${encodeURIComponent(iccid)}`, req.nextUrl));
     } else {
-      return NextResponse.redirect(new URL("/payment-failed", request.nextUrl));
+      return NextResponse.redirect(new URL("/payment-failed", req.nextUrl));
     }
-
   } catch (error) {
-    console.error('Error processing payment response:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error("Payment Response Handling Error:", error);
+    return NextResponse.redirect(new URL("/payment-failed", req.nextUrl));
   }
 }
