@@ -50,7 +50,7 @@ export default function SuccessPage() {
         console.log("🟢 Frontend: Installation Instructions Response:", data);
 
         if (response.ok) {
-          setInstructions(data.data);
+          setInstructions(data.data.instructions);
         } else {
           setError(data.error || "Failed to fetch installation instructions.");
         }
