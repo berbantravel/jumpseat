@@ -106,6 +106,9 @@ export async function POST(request: NextRequest) {
 
     const searchParams = new URLSearchParams(payload as Record<string, string>);
     console.log("Body:",body)
+
+    const iccid = request.cookies.get("ICCID")?.value || "No ICCID available";
+    return NextResponse.redirect(new URL(`/success?iccid=${encodeURIComponent(iccid)}`, request.nextUrl));
     // return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
   } catch (error) {
     console.error('Error processing payment response:', error);
