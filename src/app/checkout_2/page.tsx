@@ -147,7 +147,7 @@ const CheckoutContent = () => {
         Remark: formData.message || "",
         Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
         SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
-        ResponseURL: `${window.location.origin}/api/payment-response`,
+        ResponseURL: `${window.location.origin}/api/payment-response2`,
         BackendURL: `${window.location.origin}/api/payment-backend`,
       };
 
