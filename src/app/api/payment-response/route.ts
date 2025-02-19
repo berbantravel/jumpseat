@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Construct the success URL with ICCID
-    const successUrl = `${request.nextUrl.origin}/success?iccid=${encodeURIComponent(iccid)}`;
+    const successUrl = `${request.nextUrl.origin}/success?iccid=${(iccid)}`;
 
     console.log("Payment Response Body:", payload);
     console.log("ICCID Retrieved:", iccid);
