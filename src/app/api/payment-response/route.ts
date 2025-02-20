@@ -100,11 +100,20 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.formData();
-    const payload = Object.fromEntries(body.entries());
-    const iccid = localStorage.getItem("ICCID") || "";
+    const payload: Record<string, number> = {};
+    
 
-    // Construct the success URL with ICCID
-    const successUrl = `${request.nextUrl.origin}/success?iccid=${encodeURIComponent(iccid)}`;
+    // Retrieve ICCID from request body or query parameters (alternative to localStorage)
+    const iccid = payload.iccid || "";
+
+    if (!iccid) {
+      return NextResponse.json({ error: "ICCID is required" }, { status: 400 });
+    }
+
+    // Construct the success URL
+    const host = request.headers.get("host");
+    const protocol = request.headers.get("x-forwarded-proto") || "https";
+    const successUrl = `${protocol}://${host}/success?iccid=${encodeURIComponent(iccid)}`;
 
     console.log("Payment Response Body:", payload);
     console.log("ICCID Retrieved:", iccid);
@@ -115,3 +124,4 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
+

@@ -123,7 +123,8 @@ const CheckoutContent = () => {
     setQuantity(isNaN(value) ? 1 : Math.min(Math.max(value, 1), 50)); // Ensures value is within min/max range
   };
 
-  const initiatePayment = async (productDetails: { name: string; description: string }) => {
+  
+  const initiatePayment = async (productDetails: { name: string; description: string }, iccid: string) => {
     try {
       localStorage.setItem("USER_INFORMATION", JSON.stringify(formData));
       setIsProcessing(true);
@@ -151,6 +152,7 @@ const CheckoutContent = () => {
         SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
         ResponseURL: `${window.location.origin}/api/payment-response`,
         BackendURL: `${window.location.origin}/api/payment-backend`,
+        ICCID: iccid, // Include ICCID in request body
       };
 
       const response = await fetch("/api/initiate-payment", {
@@ -174,7 +176,6 @@ const CheckoutContent = () => {
       setIsProcessing(false);
     }
   };
-
   const isValidEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -219,9 +220,8 @@ const CheckoutContent = () => {
         description: `1 sim ${selectedPackage.title}`,
       };
   
-      await initiatePayment(productDetails);
-  
-      localStorage.setItem("ICCID", iccid);
+      await initiatePayment(productDetails, iccid);
+
     } catch (err) {
       alert("Something went wrong! Please try again.");
       console.error("Error in handleBuyNow:", err);
