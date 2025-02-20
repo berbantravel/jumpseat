@@ -101,12 +101,7 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.formData();
     const payload = Object.fromEntries(body.entries());
-
-    // Retrieve ICCID from localStorage if available (only works in frontend, so this should be stored in a DB or session in a real app)
-    let iccid = "";
-    if (typeof window !== "undefined") {
-      iccid = localStorage.getItem("ICCID") || "No ICCID available";
-    }
+    const iccid = localStorage.getItem("ICCID") || "";
 
     // Construct the success URL with ICCID
     const successUrl = `${request.nextUrl.origin}/success?iccid=${encodeURIComponent(iccid)}`;

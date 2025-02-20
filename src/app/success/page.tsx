@@ -32,16 +32,14 @@ interface Instructions {
 
 function SuccessContent() {
   const searchParams = useSearchParams();
-  const storedIccid = typeof window !== "undefined" ? localStorage.getItem("iccid") : null;
-  const iccid = searchParams.get("iccid") || storedIccid || "No ICCID available.";
-
+  const iccid = searchParams.get("iccid") || "No ICCID available.";
   const [instructions, setInstructions] = useState<Instructions | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (iccid === "No ICCID available.") return;
-
     const fetchInstallationInstructions = async () => {
+      if (!iccid || iccid === "No ICCID available.") return;
+
       try {
         const response = await fetch(`/api/instructions?iccid=${iccid}`);
         const data = await response.json();
@@ -60,16 +58,6 @@ function SuccessContent() {
 
     fetchInstallationInstructions();
   }, [iccid]);
-
-  return (
-    <div>
-      <h1>Installation Instructions</h1>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {instructions ? <pre>{JSON.stringify(instructions, null, 2)}</pre> : <p>Loading...</p>}
-    </div>
-  );
-}
-
 
   return (
     <div className="container mx-auto max-w-screen-xl p-6">
