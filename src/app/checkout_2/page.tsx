@@ -772,8 +772,12 @@ const CheckoutContent = () => {
               <button
                   type="button"
                   onClick={handleBuyNow}
-                  
-                  className={`w-full rounded-md border border-transparent px-4 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50`}
+                  disabled={isProcessing || !isFormValid()}
+                  className={`w-full rounded-md border border-transparent px-4 py-3 text-base font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2 focus:ring-offset-gray-50 ${
+                    isProcessing || !isFormValid()
+                      ? 'cursor-not-allowed bg-gray-400'
+                      : 'bg-[#ff9e39] hover:bg-[#ff9e39]'
+                  }`}
                 >
                   {isProcessing ? "Processing..." : "Confirm order"}
                 </button>
