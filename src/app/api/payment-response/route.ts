@@ -100,14 +100,11 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.formData();
-    const payload: Record<string, string> = {};
-
-    for (const [key, value] of body.entries()) {
-      payload[key] = typeof value === "string" ? value : value instanceof File ? value.name : String(value);
-    }
+    const payload: Record<string, number> = {};
+    
 
     // Retrieve ICCID from request body or query parameters (alternative to localStorage)
-    const iccid = payload.iccid || "";
+    const iccid = payload.ICCID || "";
 
     if (!iccid) {
       return NextResponse.json({ error: "ICCID is required" }, { status: 400 });
@@ -127,3 +124,4 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
+
