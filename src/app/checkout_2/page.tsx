@@ -128,11 +128,11 @@ const CheckoutContent = () => {
     try {
       localStorage.setItem("USER_INFORMATION", JSON.stringify(formData));
       setIsProcessing(true);
-
-      const subtotal = selectedPackage ? selectedPackage.price *  quantity : 0;
+  
+      const subtotal = selectedPackage ? selectedPackage.price * quantity : 0;
       const processingFee = getProcessingFee(selectedPaymentMethod, subtotal);
       const total = subtotal + processingFee;
-
+  
       const payload = {
         MerchantCode: "PH01663",
         PaymentId: selectedPaymentMethod,
@@ -150,17 +150,17 @@ const CheckoutContent = () => {
         Remark: formData.message || "",
         Lang: process.env.NEXT_PUBLIC_IPAY88_LANG,
         SignatureType: process.env.NEXT_PUBLIC_IPAY88_SIGNATURE_TYPE,
-        ResponseURL: `${window.location.origin}/api/payment-response`,
+        ResponseURL: `${window.location.origin}/api/payment-response?iccid=${encodeURIComponent(iccid)}`, // ✅ ICCID added here
         BackendURL: `${window.location.origin}/api/payment-backend`,
-        ICCID: iccid, // Include ICCID in request body
+        ICCID: iccid, // ✅ Ensure ICCID is in the request body
       };
-
+  
       const response = await fetch("/api/initiate-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-
+  
       const data = await response.json();
       if (data.success) {
         localStorage.setItem("IPAY88_PAYLOAD", JSON.stringify(data.payload));
@@ -176,6 +176,7 @@ const CheckoutContent = () => {
       setIsProcessing(false);
     }
   };
+  
   const isValidEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
