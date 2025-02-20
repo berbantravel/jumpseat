@@ -95,36 +95,22 @@
 // app/api/payment-response/route.ts
 // 
 
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.formData();
-    const payload: Record<string, string> = {};
+    const payload = Object.fromEntries(body.entries());
 
-    for (const [key, value] of body.entries()) {
-      payload[key] = typeof value === "string" ? value : String(value);
-    }
+    // Process the payment data here if needed
+    // Update your database or perform other actions
 
-    // Retrieve ICCID from form data or query parameters
-    const url = new URL(request.url);
-    const iccid = payload.ICCID || url.searchParams.get("iccid") || "";
-
-    if (!iccid) {
-      return NextResponse.json({ error: "ICCID is required" }, { status: 400 });
-    }
-
-    // Construct the success URL
-    const host = request.headers.get("host");
-    const protocol = request.headers.get("x-forwarded-proto") || "https";
-    const successUrl = `${protocol}://${host}/success?iccid=${encodeURIComponent(iccid)}`;
-
-    console.log("Payment Response Body:", payload);
-    console.log("ICCID Retrieved:", iccid);
-
-    return NextResponse.redirect(successUrl, 303);
+    const searchParams = new URLSearchParams(payload as Record<string, string>);
+    console.log("Body:",searchParams)
+    return NextResponse.redirect(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
+    console.log(`${request.nextUrl.origin}/payment-response?${searchParams.toString()}`, 303);
   } catch (error) {
-    console.error("Error processing payment response:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    console.error('Error processing payment response:', error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }
