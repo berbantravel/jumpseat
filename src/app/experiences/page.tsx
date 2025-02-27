@@ -198,48 +198,48 @@ export default function Experiences() {
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4 xl:gap-x-8">
             {destinations.map((destination) => (
-              <div
-                key={destination.name}
-                onClick={() => handleCardClick(destination.name)}
-                className="hover-zoom relative mx-0 flex h-[550px] w-auto cursor-pointer flex-col overflow-hidden  px-4 pt-40 hover:opacity-95 sm:mx-0 md:h-[550px] md:w-auto lg:h-[550px] lg:w-auto xl:h-full xl:w-auto group"
-              >
-                <span aria-hidden="true" className="absolute inset-0">
-                  <Image
-                    src={destination.imageSrc}
-                    alt=""
-                    className="h-full w-full object-cover object-center"
-                    width={800}
-                    height={600}
-                  />
-                  <span className="absolute inset-0 bg-gradient-to-t from-black via-transparent"></span>
-                </span> 
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-gray-950 opacity-25"
-                />
-
-                <div className="relative mt-auto flex flex-col text-white ">
-                  <span className="text-md mb-4 text-left font-bold">
-                    {destination.name}
-                  </span>
-                  <span className="text-sm text-left font-medium">
-                    {destination.description}
-                  </span>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-[#ff9e39]">STARTS FROM:</span>
-                    <span className="text-xs px-1 font-bold text-[#ff9e39]">
-                      Php{destination.price}/pax
-                    </span>
-                  </div>
-                  <span className="my-4 flex items-center justify-center gap-x-6">
-                    <span className="w-full max-w-80 rounded-md py-2.5 text-center text-sm font-semibold text-white shadow-sm  hover:ring-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 hidden group-hover:flex justify-center bg-[#ff9e39]">
-                      VIEW DETAILS
-                    </span>
-                  </span>
-                </div>
-
-
+            <div
+            key={destination.name}
+            onClick={() => handleCardClick(destination.name)}
+            className="relative mx-0 flex h-[550px] w-auto cursor-pointer flex-col overflow-hidden px-4 pt-40 group transition-all duration-300 ease-in-out transform hover:scale-105 hover:opacity-95 sm:mx-0 md:h-[550px] md:w-auto lg:h-[550px] lg:w-auto xl:h-full xl:w-auto"
+          >
+            <span aria-hidden="true" className="absolute inset-0">
+              <Image
+                src={destination.imageSrc}
+                alt=""
+                className="h-full w-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-110"
+                width={800}
+                height={600}
+              />
+              <span className="absolute inset-0 bg-gradient-to-t from-black via-transparent"></span>
+            </span> 
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-gray-950 opacity-25"
+            />
+          
+            <div className="relative mt-auto flex flex-col text-white">
+              <span className="text-md mb-4 text-left font-bold">
+                {destination.name}
+              </span>
+              <span className="text-sm text-left font-medium">
+                {destination.description}
+              </span>
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium text-[#ff9e39]">STARTS FROM:</span>
+                <span className="text-xs px-1 font-bold text-[#ff9e39]">
+                  Php{destination.price}/pax
+                </span>
               </div>
+              <span className="my-4 flex items-center justify-center gap-x-6">
+                <span className="w-full max-w-80 rounded-md py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:ring-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 bg-[#ff9e39] opacity-0 translate-y-4 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-y-0">
+                  VIEW DETAILS
+                </span>
+              </span>
+            </div>
+          </div>
+          
+           
             ))}
           </div>
         </div>

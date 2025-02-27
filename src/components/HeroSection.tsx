@@ -107,7 +107,7 @@ const HeroSection = () => {
                   breakpoints={{
                     1024: { slidesPerView: 3, spaceBetween: 30 },
                     920: { slidesPerView: 2, spaceBetween: 25 },
-                    640: { slidesPerView: 2, spaceBetween: 20 },
+                    700: { slidesPerView: 2, spaceBetween: 20 },
                   }}
                   className="slider-container"
                   >                  
@@ -115,7 +115,7 @@ const HeroSection = () => {
                 <SwiperSlide key={destination.name}>
                   <div
                     onClick={() => handleCardClick(destination.name)}
-                    className="relative flex h-[400px] w-96 cursor-pointer flex-col overflow-hidden hover:opacity-95 md:h-[450px] lg:h-[450px]"
+                    className="relative flex rounded-2xl h-[400px] w-full cursor-pointer flex-col overflow-hidden hover:opacity-95 md:h-[450px] lg:h-[450px]"
                   >
                     <Image
                       src={destination.imageSrc}
@@ -143,7 +143,7 @@ const HeroSection = () => {
                 
                 </SwiperSlide>
               ))}
-              <div className="absolute left-0 z-10 transform -translate-y-1/2 bottom-0">
+              <div className="absolute left-0 top-[16rem] md:top-[19rem] z-10 transform -translate-y-1/2 bottom-0">
                   <div className="flex flex-col items-center justify-center gap-4">
                       <button id="slider-button-left" className="bg-transparent hover:bg-[#ff9e39] hover:text-white border-2 border-[#ff9e39]  text-2xl rounded-full h-10 w-10 flex justify-center items-center text-[#ff9e39]">
                           <i className='bx bx-chevron-left'></i>
@@ -152,7 +152,7 @@ const HeroSection = () => {
               </div>
 
           
-              <div className="absolute left-12 z-10 transform -translate-y-1/2 bottom-0">
+              <div className="absolute right-0 top-[16rem] md:top-[19rem] z-10 transform -translate-y-1/2 bottom-0">
                   <button id="slider-button-right" className="bg-transparent hover:bg-[#ff9e39] hover:text-white border-2 border-[#ff9e39]  text-2xl rounded-full h-10 w-10 flex justify-center items-center text-[#ff9e39]">
                   <i className='bx bx-chevron-right'></i>
                   </button>
@@ -225,7 +225,7 @@ const HeroSection = () => {
               {blogContents.slice(0, 3).map((blog) => (
                 <div
                   key={blog.id}
-                  className="group overflow-hidden rounded-lg bg-white shadow-md transition-all hover:shadow-xl"
+                  className="group overflow-hidden rounded-lg bg-white shadow-xl transition-all hover:shadow-2xl"
                 >
                   {/* Image Container */}
                   <div className="relative h-64 w-full overflow-hidden">
