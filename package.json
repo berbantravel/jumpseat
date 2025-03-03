@@ -18,6 +18,7 @@
     "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^14.0.4",
     "@nextui-org/react": "^2.4.8",
+    "@prisma/client": "^6.4.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.8",
     "@tailwindcss/typography": "^0.5.4",
@@ -27,8 +28,12 @@
     "@types/webpack-env": "^1.18.1",
     "autoprefixer": "^10.4.12",
     "axios": "^1.7.9",
+    "bcrypt": "^5.1.1",
     "cheerio": "^1.0.0-rc.12",
     "clsx": "^2.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "fast-glob": "^3.2.11",
     "feather-icons": "^4.29.2",
     "feed": "^4.2.2",
@@ -47,11 +52,13 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/nodemailer": "^6.4.16",
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.0.4",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "prisma": "^6.4.1",
     "sharp": "0.33.1",
     "webpack": "^5.95.0"
   }

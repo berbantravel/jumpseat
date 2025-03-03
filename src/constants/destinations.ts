@@ -1,3 +1,5 @@
+import SouthKorea from '@/images/south-korea.jpg'; // Adjust the path if needed
+
 export const destinations = [
   {
     name: 'PROSPEROUS HONGKONG',
@@ -6,6 +8,13 @@ export const destinations = [
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/2246789/pexels-photo-2246789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+  },
+  {
+    name: 'SOUTH KOREA',
+    description: 'LOOSEN UP AND EXPERIENCE A MARVELOUS HOLIDAY!',
+    price: '28,888',
+    href: '#',
+    imageSrc:SouthKorea
   },
   {
     name: 'TAIWAN',
@@ -56,14 +65,6 @@ export const destinations = [
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/2659475/pexels-photo-2659475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  },
-  {
-    name: 'SOUTH KOREA',
-    description: 'LOOSEN UP AND EXPERIENCE A MARVELOUS HOLIDAY!',
-    price: '28,888',
-    href: '#',
-    imageSrc:
-      'https://images.pexels.com/photos/3957774/pexels-photo-3957774.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
     name: 'THE PHILIPPINES',
