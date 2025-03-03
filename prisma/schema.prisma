@@ -9,9 +9,12 @@ datasource db {
 
 model User {
   id               String  @id @default(uuid())
-  name             String
+  firstName        String 
+  lastName         String  
+  companyName      String? 
   email            String  @unique
   password         String
+  phoneNumber      String? 
   verificationCode String?
   isVerified       Boolean @default(false)
   createdAt        DateTime @default(now())
