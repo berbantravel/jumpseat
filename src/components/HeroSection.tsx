@@ -145,7 +145,7 @@ const HeroSection = () => {
               ))}
               <div className="absolute left-0 top-[16rem] md:top-[19rem] z-10 transform -translate-y-1/2 bottom-0">
                   <div className="flex flex-col items-center justify-center gap-4">
-                      <button id="slider-button-left" className="bg-transparent hover:bg-[#ff9e39] hover:text-white border-2 border-[#ff9e39]  text-2xl rounded-full h-10 w-10 flex justify-center items-center text-[#ff9e39]">
+                      <button id="slider-button-left" className="bg-[#ff9e39] hover:bg-[#ff9e39] hover:text-white border-2 border-[#ff9e39]  text-2xl rounded-full h-10 w-10 flex justify-center items-center text-white">
                           <i className='bx bx-chevron-left'></i>
                       </button>
                   </div>
@@ -153,7 +153,7 @@ const HeroSection = () => {
 
           
               <div className="absolute right-0 top-[16rem] md:top-[19rem] z-10 transform -translate-y-1/2 bottom-0">
-                  <button id="slider-button-right" className="bg-transparent hover:bg-[#ff9e39] hover:text-white border-2 border-[#ff9e39]  text-2xl rounded-full h-10 w-10 flex justify-center items-center text-[#ff9e39]">
+                  <button id="slider-button-right" className="bg-[#ff9e39] hover:bg-[#ff9e39] hover:text-white border-2 border-[#ff9e39]  text-2xl rounded-full h-10 w-10 flex justify-center items-center text-white">
                   <i className='bx bx-chevron-right'></i>
                   </button>
               </div>

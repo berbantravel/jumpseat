@@ -207,7 +207,7 @@ export default function Experiences() {
               <Image
                 src={destination.imageSrc}
                 alt=""
-                className="h-full w-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-110"
+                className="h-full rounded-2xl w-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-110"
                 width={800}
                 height={600}
               />
