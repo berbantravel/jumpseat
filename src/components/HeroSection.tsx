@@ -7,7 +7,6 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper/modules'
-import Esim from '../app/e-sim/page'
 import homebackground from '@/images/homebackground.jpg'
 import ModalDialog from './ModalDialog'
 import destinationsphoto from '@/images/img-aboutus.webp'
@@ -15,7 +14,7 @@ import { blogContents } from '@/constants/blogs'
 import { useRouter } from 'next/navigation'
 import { destinations } from '@/constants/destinations'
 import MessengerIcon from './messenger-icon'
-import eSim from "./eSim"; 
+import PricingModal from './eSim'; 
 
 
 const HeroSection = () => {
@@ -215,7 +214,7 @@ const HeroSection = () => {
 {/* RECENT BLOGS SECTION */}
        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12">
             <div className=" max-w-full text-left">     
-              <h2 className="mt-2 font-poppinsSemiBold text-center text-3xl tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="font-poppinsSemiBold text-center text-3xl tracking-tight text-gray-900 sm:text-4xl">
              Recent Blogs
               </h2>
             </div>
@@ -285,7 +284,7 @@ const HeroSection = () => {
           <h2 className="mt-2 font-poppinsSemiBold text-center text-3xl tracking-tight text-gray-900 sm:text-4xl">
             E-SIM
           </h2>
-          <div> <Esim/></div>
+          <div> <PricingModal/></div>
           </div>
   
   )

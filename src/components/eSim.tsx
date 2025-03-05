@@ -1,37 +1,99 @@
-import React from "react";
-import { useRouter } from "next/router";
+// components/DataPlans.js
+import Link from 'next/link';
 import Image from 'next/image';
+import UsaFlag from '../images/usa-flag.jpg'; // Adjust the path as needed
 
-
-const plans = [
-  { data: "1 GB", duration: "7 Days", price: "$4.50" },
-  { data: "3 GB", duration: "30 Days", price: "$11.00" },
-  { data: "5 GB", duration: "30 Days", price: "$16.00" },
-];
-
-const PricingModal = () => {
-  const router = useRouter();
+const DataPlans = () => {
+  const plans = [
+    {
+      data: "1 GB",
+      validity: "7 Days",
+      coverage: "Philippines",
+      price: "$4.50",
+    },
+    {
+      data: "2 GB",
+      validity: "15 Days",
+      coverage: "Philippines",
+      price: "$7.00",
+    },
+    {
+      data: "3 GB",
+      validity: "30 Days",
+      coverage: "Philippines",
+      price: "$9.50",
+    },
+    {
+      data: "5 GB",
+      validity: "30 Days",
+      coverage: "Philippines",
+      price: "$13.00",
+    },
+    {
+      data: "10 GB",
+      validity: "30 Days",
+      coverage: "Philippines",
+      price: "$21.00",
+    },
+    {
+      data: "20 GB",
+      validity: "30 Days",
+      coverage: "Philippines",
+      price: "$32.00",
+    },
+  ];
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg max-w-lg w-full">
-        <h2 className="text-xl font-bold text-center mb-4">United States</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12"> {/* Section background */}
+      <div className="max-w-4xl mx-auto">
+        <div className="flex flex-wrap justify-between gap-4">
           {plans.map((plan, index) => (
-            <div key={index} className="bg-blue-900 text-white p-4 rounded-lg">
-              <div className="flex justify-center mb-2">
-                <Image src="/usa-flag.png" alt="US Flag" className="w-10 h-6" />
+            <div
+              key={index}
+              className="w-full sm:w-[calc(33.33%-1rem)] p-6 rounded-lg shadow-lg"
+              style={{ background: "linear-gradient(to right, #00359F, #2364E4)" }}
+            >
+              <div className="flex justify-between items-center pb-4">
+                
+                <h3 className="text-lg font-semibold text-white">
+                  {plan.data}-{plan.validity}
+                </h3>
+                <div className="w-fit h-full ">
+                  <Image
+                    src={UsaFlag}
+                    alt="USA Flag"
+                    width={80}
+                    height={80}
+                    className="rounded-lg"
+                  />
+                </div>
               </div>
-              <h3 className="text-lg font-semibold text-center">{plan.data} - {plan.duration}</h3>
-              <p className="text-center mt-2">Coverage: United States</p>
-              <p className="text-center">Data: {plan.data}</p>
-              <p className="text-center">Time: {plan.duration}</p>
-              <p className="text-center font-bold mt-2">Price: {plan.price}</p>
-              <button 
-                onClick={() => router.push("/e-sim")}
-                className="mt-4 w-full bg-white text-blue-900 font-bold py-2 rounded-lg">
-                BUY NOW
-              </button>
+
+              {/* Plan Details */}
+              <div className="space-y-2 flex flex-col">
+                <p className="text-white justify-between flex">
+                  <span className="font-semibold">Coverage:</span> {plan.coverage}
+                </p>
+                <div className='h-[2px] w-full bg-white '></div>
+                <p className="text-white justify-between flex">
+                  <span className="font-semibold">Data:</span> {plan.data}
+                </p>
+                <div className='h-[2px] w-full bg-white '></div>
+                <p className="text-white justify-between flex">
+                  <span className="font-semibold">Time:</span> {plan.validity}
+                </p>
+                <div className='h-[2px] w-full bg-white '></div>
+                <p className="text-white justify-between flex">
+                  <span className="font-semibold">Price:</span> {plan.price}
+                </p>
+              </div>
+
+              {/* Buy Now Button */}
+              <Link href="/e-sim">
+                <button className="w-full bg-white text-blue-600 py-2 px-4 rounded-lg hover:bg-opacity-90 transition-colors mt-6">
+                  BUY NOW
+                </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -40,4 +102,4 @@ const PricingModal = () => {
   );
 };
 
-export default PricingModal;
+export default DataPlans;
