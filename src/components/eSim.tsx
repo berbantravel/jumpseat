@@ -1,5 +1,7 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Image from 'next/image';
+
 
 const plans = [
   { data: "1 GB", duration: "7 Days", price: "$4.50" },
@@ -18,7 +20,7 @@ const PricingModal = () => {
           {plans.map((plan, index) => (
             <div key={index} className="bg-blue-900 text-white p-4 rounded-lg">
               <div className="flex justify-center mb-2">
-                <img src="/usa-flag.png" alt="US Flag" className="w-10 h-6" />
+                <Image src="/usa-flag.png" alt="US Flag" className="w-10 h-6" />
               </div>
               <h3 className="text-lg font-semibold text-center">{plan.data} - {plan.duration}</h3>
               <p className="text-center mt-2">Coverage: United States</p>

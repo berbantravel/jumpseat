@@ -4,6 +4,7 @@ import { useState, Suspense, useEffect, ChangeEvent } from 'react';
 import { useRouter } from "next/navigation";
 import PaymentMethodSection from '@/components/PaymentMethodSection';
 import { countries } from '@/constants/countries';
+import Image from 'next/image';
 
 import {
   CheckoutProvider,
@@ -635,7 +636,7 @@ const CheckoutContent = () => {
                               className="flex px-4 py-6 sm:px-6"
                             >
                               <div className="flex-shrink-0">
-                                <img alt="" src={selectedPackage.image} className="w-20 rounded-md" width={800} height={600}/>
+                                <Image alt="" src={selectedPackage.image} className="w-20 rounded-md" width={800} height={600}/>
                               </div>
                               <div className="ml-6 flex flex-1 flex-col">
                                 <div className="flex">
