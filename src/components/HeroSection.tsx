@@ -7,7 +7,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper/modules'
-
+import Esim from '../app/e-sim/page'
 import homebackground from '@/images/homebackground.jpg'
 import ModalDialog from './ModalDialog'
 import destinationsphoto from '@/images/img-aboutus.webp'
@@ -15,6 +15,8 @@ import { blogContents } from '@/constants/blogs'
 import { useRouter } from 'next/navigation'
 import { destinations } from '@/constants/destinations'
 import MessengerIcon from './messenger-icon'
+import eSim from "./eSim"; 
+
 
 const HeroSection = () => {
   const router = useRouter()
@@ -42,8 +44,7 @@ const HeroSection = () => {
 
   return (
 
-   
-    <>
+    <div>
        <MessengerIcon />
       <ModalDialog
         isOpen={isOpen}
@@ -88,13 +89,13 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-
+{/* POPULAR DESTINATIONS */}
       <div className="bg-white" id="packages">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:pb-32 lg:max-w-7xl lg:px-8">
           <h2 className="mb-8 font-poppinsSemiBold text-center text-3xl tracking-tight text-gray-900 sm:text-4xl">
             Popular Destinations
           </h2>
-          <div className="pb-40">
+          <div className="pb-16 sm:pb-0">
             <Swiper
                   modules={[Navigation, Pagination]}
                   pagination={{ clickable: true }}
@@ -150,8 +151,6 @@ const HeroSection = () => {
                       </button>
                   </div>
               </div>
-
-          
               <div className="absolute right-0 top-[16rem] md:top-[19rem] z-10 transform -translate-y-1/2 bottom-0">
                   <button id="slider-button-right" className="bg-[#ff9e39] hover:bg-[#ff9e39] hover:text-white border-2 border-[#ff9e39]  text-2xl rounded-full h-10 w-10 flex justify-center items-center text-white">
                   <i className='bx bx-chevron-right'></i>
@@ -162,7 +161,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-
+{/* COME TRAVEL WITH US SECTION */}
       <div className="-mt-14">
         <div
           className="relative flex h-40 w-full bg-transparent"
@@ -213,7 +212,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-
+{/* RECENT BLOGS SECTION */}
        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12">
             <div className=" max-w-full text-left">     
               <h2 className="mt-2 font-poppinsSemiBold text-center text-3xl tracking-tight text-gray-900 sm:text-4xl">
@@ -283,7 +282,12 @@ const HeroSection = () => {
               ))}
             </div>
           </div>
-    </>
+          <h2 className="mt-2 font-poppinsSemiBold text-center text-3xl tracking-tight text-gray-900 sm:text-4xl">
+            E-SIM
+          </h2>
+          <div> <Esim/></div>
+          </div>
+  
   )
 }
 
