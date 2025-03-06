@@ -29,7 +29,7 @@ export const sendSignUpEmail = async ({ to, userName }: SendEmailParams) => {
         <div style="font-family: Arial, sans-serif; text-align: center; max-width: 600px; margin: 0 auto;">
           
           <!-- Logo -->
-          <img src="${logoImage}" alt="Berban Logo" style="max-width: 200px; margin-bottom: 20px;">
+          <img src="${logoImage}" alt="Berban Logo" style=" max-width: 200px; margin-bottom: 20px;">
           
           <!-- Welcome Message -->
           <h1 style="color: #d32f2f; font-size: 24px;">Thank You for Signing Up and Becoming Our Partner!</h1>
