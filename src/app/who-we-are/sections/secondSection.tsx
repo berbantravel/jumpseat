@@ -18,7 +18,7 @@ export default function secondSection() {
           </h5>
           <div>
             <Image
-              src={berbanlogo}
+              src='/images/berbanlogo.png'
               alt="Berban Logo"
               className="h-12 w-full sm:h-12 md:h-14 lg:h-16"
               width={100}
