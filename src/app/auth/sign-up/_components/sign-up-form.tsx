@@ -16,12 +16,28 @@ export default function SignUp() {
     phoneNumber: "",
   });
 
+  // Handle form changes and trim whitespace
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value.trimStart() });
+  };
+
+  // Basic frontend validation
+  const validateForm = () => {
+    if (!form.firstName || !form.lastName || !form.email || !form.password) {
+      toast.error("All required fields must be filled.");
+      return false;
+    }
+    if (form.password.length < 6) {
+      toast.error("Password must be at least 6 characters.");
+      return false;
+    }
+    return true;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) return;
+
     setIsSubmitting(true);
 
     try {
@@ -37,6 +53,7 @@ export default function SignUp() {
         toast.error(data.message || "Something went wrong");
       } else {
         toast.success("Registration successful! Check your email for confirmation.");
+        
         // Redirect to home page after 3 seconds
         setTimeout(() => {
           router.push("/");
@@ -50,7 +67,9 @@ export default function SignUp() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-lg max-h-screen">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-lg">
+      
+      <label className="text-sm font-medium">First Name</label>
       <input 
         name="firstName" 
         placeholder="First Name" 
@@ -58,7 +77,10 @@ export default function SignUp() {
         required 
         className="border p-2 rounded"
         disabled={isSubmitting}
+        autoComplete="given-name"
       />
+
+      <label className="text-sm font-medium">Last Name</label>
       <input 
         name="lastName" 
         placeholder="Last Name" 
@@ -66,14 +88,20 @@ export default function SignUp() {
         required 
         className="border p-2 rounded"
         disabled={isSubmitting}
+        autoComplete="family-name"
       />
+
+      <label className="text-sm font-medium">Company Name (Optional)</label>
       <input 
         name="companyName" 
         placeholder="Company Name" 
         onChange={handleChange} 
         className="border p-2 rounded"
         disabled={isSubmitting}
+        autoComplete="organization"
       />
+
+      <label className="text-sm font-medium">Email</label>
       <input 
         name="email" 
         type="email" 
@@ -82,23 +110,31 @@ export default function SignUp() {
         required 
         className="border p-2 rounded"
         disabled={isSubmitting}
+        autoComplete="email"
       />
+
+      <label className="text-sm font-medium">Password</label>
       <input 
         name="password" 
         type="password" 
-        placeholder="Password" 
+        placeholder="Password (min. 6 characters)" 
         onChange={handleChange} 
         required 
         className="border p-2 rounded"
         disabled={isSubmitting}
+        autoComplete="new-password"
       />
+
+      <label className="text-sm font-medium">Phone Number (Optional)</label>
       <input 
         name="phoneNumber" 
         placeholder="Phone Number" 
         onChange={handleChange} 
         className="border p-2 rounded"
         disabled={isSubmitting}
+        autoComplete="tel"
       />
+
       <button 
         type="submit" 
         disabled={isSubmitting}
@@ -106,7 +142,14 @@ export default function SignUp() {
           ${isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#ff9e39] hover:bg-[#ff9e39]/90'}
           focus:outline-none focus:ring-2 focus:ring-[#ff9e39] focus:ring-offset-2`}
       >
-        {isSubmitting ? "Creating Account..." : "Sign Up"}
+        {isSubmitting ? (
+          <span className="flex items-center justify-center gap-2">
+            <span className="animate-spin border-2 border-white border-t-transparent rounded-full w-5 h-5"></span>
+            Creating Account...
+          </span>
+        ) : (
+          "Sign Up"
+        )}
       </button>
     </form>
   );
