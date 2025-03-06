@@ -113,7 +113,7 @@ export default function Experiences() {
               className="border cursor-pointer rounded-lg shadow-md bg-white p-5"
             >
               <div className='flex items-center gap-2'>
-                <Image src={pkg.image.url} className='h-auto w-10' alt={pkg.title} />
+                <img src={pkg.image.url} className='h-auto w-10' alt={pkg.title} />
                 <div>
                   <h2 className="font-semibold text-xs">{pkg.title}</h2>
                   <p className="text-xs text-gray-500">{pkg.country_code}</p>
@@ -168,7 +168,7 @@ export default function Experiences() {
                     >
                       <div className='flex items-center justify-between'> 
                         <p className='font-semibold'>{plan.title}</p>
-                        <Image src={selectedPackage!.image.url} className='h-auto w-16 sm:w-20' alt={operator.title} />
+                        <img src={selectedPackage!.image.url} className='h-auto w-16 sm:w-20' alt={operator.title} />
                       </div>
                       <div className='space-y-2'>
                       <div className='flex justify-between'>
