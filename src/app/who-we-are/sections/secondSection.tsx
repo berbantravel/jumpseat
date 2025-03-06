@@ -1,7 +1,8 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import berbanlogo from '@/public/berbanlogo.png'
+import berbanlogo from '../../../../public/images/berbanlogo.png'
+
 
 export default function secondSection() {
   return (
