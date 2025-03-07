@@ -7,15 +7,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id               String  @id @default(uuid())
-  firstName        String 
-  lastName         String  
-  companyName      String? 
-  email            String  @unique
-  password         String
-  phoneNumber      String? 
-  verificationCode String?
-  isVerified       Boolean @default(false)
-  createdAt        DateTime @default(now())
+model Company {
+  id                  String    @id @default(uuid())
+  companyName         String
+  companyAddress      String
+  phoneNumber         String?
+  email               String    @unique
+  website             String?
+  primaryContactTitle String
+  primaryContactOther String?
+  primaryFirstName    String
+  primaryLastName     String
+  primaryPosition     String
+  primaryEmail        String    
+  primaryMobile       String   
+  secondaryFirstName  String?
+  secondaryLastName   String?
+  secondaryPosition   String?
+  secondaryEmail      String?
+  secondaryMobile     String?
+  typeOfOperation     String
+  existingMarkets     String[]
+  productsServices    Json
+  companyType         String
+  companyTypeOther    String?
+  createdAt           DateTime  @default(now())
 }

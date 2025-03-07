@@ -1,54 +1,59 @@
 import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcryptjs";
-import { sendSignUpEmail } from "./email"; // Import from local email.ts
+import { sendSignUpEmail } from "./email";
 
 const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
   try {
-    const { firstName, lastName, companyName, email, password, phoneNumber } = await req.json();
-
-    if (!firstName || !lastName || !email || !password) {
-      return NextResponse.json({ message: "Missing required fields" }, { status: 400 });
-    }
-
-    const existingUser = await prisma.user.findUnique({ where: { email } });
-    if (existingUser) {
-      return NextResponse.json({ message: "User already exists" }, { status: 409 });
-    }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser = await prisma.user.create({
-      data: {
-        firstName,
-        lastName,
-        companyName,
-        email,
-        password: hashedPassword,
-        phoneNumber,
-        isVerified: false,
-      },
-    });
-
-    // Send email using the local email function
-    const emailSent = await sendSignUpEmail({ to: email, userName: firstName });
-
-    if (!emailSent) {
+    const formData = await req.json();
+    
+    // 1. Add explicit validation for required Prisma fields
+    if (!formData.companyName || !formData.email || !formData.primaryContactTitle) {
       return NextResponse.json(
-        { message: "User created but email failed to send" },
-        { status: 201 }
+        { error: "Missing required fields" },
+        { status: 400 }
       );
     }
 
-    return NextResponse.json(
-      { message: "User registered successfully! Welcome email sent." },
-      { status: 201 }
-    );
+    // 2. Fix JSON data handling
+    const payload = {
+      ...formData,
+      productsServices: formData.productsServices || [], // Ensure array exists
+    };
 
-  } catch (error) {
-    console.error("Signup error:", error);
-    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    // 3. Database operation with error handling
+    const newCompany = await prisma.company.create({
+      data: {
+        ...payload,
+        // Explicitly map all required fields
+        primaryContactTitle: payload.primaryContactTitle,
+        primaryContactOther: payload.primaryContactOther || null,
+        companyTypeOther: payload.companyTypeOther || null,
+      },
+    });
+
+    // 4. Email sending with error handling
+    try {
+      await sendSignUpEmail({
+        to: newCompany.primaryEmail,
+        userName: newCompany.primaryFirstName
+      });
+    } catch (emailError) {
+      console.error("Email failed but company created:", emailError);
+    }
+
+    return NextResponse.json(newCompany, { status: 201 });
+
+  } catch (error: any) {
+    console.error("FULL ERROR DETAILS:", {
+      error: error.message,
+      stack: error.stack,
+      receivedData: await req.json()
+    });
+    return NextResponse.json(
+      { error: "Database operation failed" },
+      { status: 500 }
+    );
   }
 }
