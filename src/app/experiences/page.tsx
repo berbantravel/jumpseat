@@ -201,13 +201,13 @@ export default function Experiences() {
             <div
             key={destination.name}
             onClick={() => handleCardClick(destination.name)}
-            className="relative mx-0 flex h-[550px] w-auto cursor-pointer flex-col overflow-hidden px-4 pt-40 group transition-all duration-300 ease-in-out transform hover:scale-105 hover:opacity-95 sm:mx-0 md:h-[550px] md:w-auto lg:h-[550px] lg:w-auto xl:h-full xl:w-auto"
+            className="relative rounded-2xl mx-0 flex h-[550px] w-auto cursor-pointer flex-col overflow-hidden px-4 pt-40 group transition-all duration-300 ease-in-out transform hover:scale-105 hover:opacity-95 sm:mx-0 md:h-[550px] md:w-auto lg:h-[550px] lg:w-auto xl:h-full xl:w-auto"
           >
             <span aria-hidden="true" className="absolute inset-0">
               <Image
                 src={destination.imageSrc}
                 alt=""
-                className="h-full rounded-2xl w-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-110"
+                className="h-full  w-full object-cover object-center transition-transform duration-300 ease-in-out group-hover:scale-110"
                 width={800}
                 height={600}
               />
