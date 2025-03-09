@@ -7,8 +7,8 @@ const prisma = new PrismaClient();
 export async function POST(req: Request) {
   try {
     const formData = await req.json();
-    
-    // 1. Add explicit validation for required Prisma fields
+
+    // Validate required fields
     if (!formData.companyName || !formData.email || !formData.primaryContactTitle) {
       return NextResponse.json(
         { error: "Missing required fields" },
@@ -16,40 +16,47 @@ export async function POST(req: Request) {
       );
     }
 
-    // 2. Fix JSON data handling
+    // Ensure `productsServices` is always an array
     const payload = {
       ...formData,
-      productsServices: formData.productsServices || [], // Ensure array exists
+      productsServices: JSON.stringify(formData.productsServices || []),
     };
 
-    // 3. Database operation with error handling
+    // Save to database
     const newCompany = await prisma.company.create({
       data: {
         ...payload,
-        // Explicitly map all required fields
         primaryContactTitle: payload.primaryContactTitle,
         primaryContactOther: payload.primaryContactOther || null,
         companyTypeOther: payload.companyTypeOther || null,
       },
     });
 
-    // 4. Email sending with error handling
+    // Gather emails, filter out null values, and ensure they are strings
+    const recipients: string[] = [newCompany.email, newCompany.primaryEmail, newCompany.secondaryEmail]
+      .filter((email): email is string => Boolean(email));
+
+    // Send email to all valid addresses
     try {
-      await sendSignUpEmail({
-        to: newCompany.primaryEmail,
-        userName: newCompany.primaryFirstName
-      });
+      await Promise.all(
+        recipients.map((to) =>
+          sendSignUpEmail({
+            to,
+            userName: newCompany.primaryFirstName,
+          })
+        )
+      );
     } catch (emailError) {
       console.error("Email failed but company created:", emailError);
     }
 
-    return NextResponse.json(newCompany, { status: 201 });
+    return NextResponse.json({ success: true, company: newCompany }, { status: 201 });
 
   } catch (error: any) {
     console.error("FULL ERROR DETAILS:", {
       error: error.message,
       stack: error.stack,
-      receivedData: await req.json()
+      receivedData: await req.json(),
     });
     return NextResponse.json(
       { error: "Database operation failed" },
