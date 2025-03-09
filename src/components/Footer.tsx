@@ -286,7 +286,7 @@ export function Footer() {
                             href="#"
                             className="captionRegular text-white hover:text-text-white-primary"
                           >
-                            mabuhay@jumpseat.com
+                           mabuhay@jumpseattours.com
                           </a>
                         </li>
                         <li className="flex items-center justify-start">
@@ -294,7 +294,7 @@ export function Footer() {
                             href="#"
                             className="captionRegular text-white hover:text-text-white-primary"
                           >
-                            www.jumpseat.com
+                          www.jumpseattours.com
                           </a>
                         </li>
                       </ul>

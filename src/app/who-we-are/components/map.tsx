@@ -60,10 +60,10 @@ export default function Map() {
                   <div>
                     <h4 className=" text-gray-900">or email us at:</h4>
                     <a
-                      href="mailto:meetasia@jumpseat.com"
+                      href="mailto:mabuhay@jumpseattours.com"
                       className="font-semibold text-[#ff9e39] hover:text-[#ff9e39]/90"
                     >
-                      meetasia@jumpseat.com
+                     mabuhay@jumpseattours.com
                     </a>
                   </div>
 
