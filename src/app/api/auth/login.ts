@@ -1,10 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '@/lib/prisma'; // Import from your prisma client file, not from @prisma/client
-import bcrypt from 'bcrypt';
+import prisma from '@/lib/prisma';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
 type ResponseData = {
   message: string;
-  user?: any;
+  token?: string;
 };
 
 export default async function handler(
@@ -19,28 +22,31 @@ export default async function handler(
     const { email, password } = req.body;
 
     // Find the user
-    const user = await prisma.user.findUnique({
+    const user = await prisma.company.findUnique({
       where: { email },
     });
 
-    if (!user) {
+    if (!user || !user.companyPassword) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
     // Compare passwords
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compare(password, user.companyPassword);
 
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    // Don't send the password back
-    const { password: _, ...userWithoutPassword } = user;
+    // Generate JWT
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      JWT_SECRET,
+      { expiresIn: '1h' }
+    );
 
-    // In a real app, you would create and send a JWT token here
     return res.status(200).json({
       message: 'Login successful',
-      user: userWithoutPassword,
+      token,
     });
   } catch (error) {
     console.error('Error during login:', error);
