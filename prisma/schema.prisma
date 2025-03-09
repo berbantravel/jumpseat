@@ -8,20 +8,17 @@ datasource db {
 }
 
 model Company {
-  id                  String    @id @default(uuid())
+  id                  String   @id @default(uuid())
   companyName         String
-  companyPassword     String?
   companyAddress      String
   phoneNumber         String?
-  email               String    @unique
+  email               String   @unique
   website             String?
   primaryContactTitle String
   primaryContactOther String?
   primaryFirstName    String
   primaryLastName     String
   primaryPosition     String
-  primaryEmail        String    
-  primaryMobile       String   
   secondaryFirstName  String?
   secondaryLastName   String?
   secondaryPosition   String?
@@ -29,8 +26,11 @@ model Company {
   secondaryMobile     String?
   typeOfOperation     String
   existingMarkets     String[]
-  productsServices    Json
   companyType         String
   companyTypeOther    String?
-  createdAt           DateTime  @default(now())
+  createdAt           DateTime @default(now())
+  productsServices    Json
+  primaryEmail        String
+  primaryMobile       String
+  companyPassword     String?
 }
