@@ -126,7 +126,7 @@ export function Footer() {
           }}
         >
           <div className="mx-auto max-w-7xl px-6 pb-8 pt-14 lg:px-8">
-            <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+            <div className="xl:grid xl:grid-cols-3 xl:gap-6">
               <div className="space-y-4 xl:col-span-1">
                 <div className="flex items-center">
                   <Image
@@ -278,17 +278,18 @@ export function Footer() {
                             className="captionRegular text-white hover:text-text-white-primary"
                           >
                             +63-912-746-6894
-                          </a>
+                          </a>  
                         </li>
-                        <li className="flex flex-row items-center justify-start">
-                          <Mail width={50} height={50} className="h-5 w-auto cursor-pointer text-white hover:text-text-white-primary" />
+                        <li>
                           <a
-                            href="#"
-                            className="captionRegular text-white hover:text-text-white-primary"
+                            href="mailto:mabuhay@jumpseat.com"
+                            className="captionRegular text-white hover:text-text-white-primary flex items-center gap-1"
                           >
-                           mabuhay@jumpseattours.com
+                            <Mail className="h-10 w-10" />
+                            mabuhay@jumpseat.com
                           </a>
                         </li>
+
                         <li className="flex items-center justify-start">
                           <a
                             href="#"
