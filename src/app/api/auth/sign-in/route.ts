@@ -1,24 +1,33 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET || "your-secret-key";
 
 export async function POST(req: NextRequest) {
   try {
     const { email, password } = await req.json();
 
-    const user = await prisma.user.findUnique({ where: { email } });
+    // Find the company in the database
+    const company = await prisma.company.findUnique({ where: { email } });
 
-    if (!user || !user.isVerified) {
-      return NextResponse.json({ error: "User not found or not verified" }, { status: 400 });
+    if (!company || !company.companyPassword) {
+      return NextResponse.json({ error: "Invalid email or password" }, { status: 400 });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    // Compare the hashed password
+    const isMatch = await bcrypt.compare(password, company.companyPassword);
     if (!isMatch) {
-      return NextResponse.json({ error: "Invalid credentials" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid email or password" }, { status: 400 });
     }
 
-    return NextResponse.json({ message: "Login successful" }, { status: 200 });
+    // Generate JWT token
+    const token = jwt.sign({ id: company.id, email: company.email }, JWT_SECRET, { expiresIn: "1h" });
+
+    return NextResponse.json({ message: "Login successful", token }, { status: 200 });
   } catch (error) {
+    console.error("Login error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
