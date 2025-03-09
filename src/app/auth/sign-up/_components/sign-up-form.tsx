@@ -699,6 +699,7 @@ export default function MultiStepForm() {
               type="submit"
               className="bg-[#ff9e39] text-white px-6 py-2 rounded hover:bg-[#ea9030] w-full disabled:bg-gray-400"
               disabled={isSubmitting}
+              onClick={handleSubmit}
             >
               {isSubmitting ? "Submitting..." : "Submit"}
             </button>

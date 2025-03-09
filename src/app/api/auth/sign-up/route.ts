@@ -5,18 +5,22 @@ import { sendSignUpEmail } from "./email";
 const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
+  let formData;
   try {
-    const formData = await req.json();
+    // Ensure request JSON is parsed safely
+    formData = await req.json();
+  } catch (error) {
+    console.error("❌ Failed to parse request JSON:", error);
+    return NextResponse.json({ error: "Invalid JSON data" }, { status: 400 });
+  }
 
+  try {
     // Validate required fields
     if (!formData.companyName || !formData.email || !formData.primaryContactTitle) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Ensure `productsServices` is always an array
+    // Ensure `productsServices` is always a JSON string
     const payload = {
       ...formData,
       productsServices: JSON.stringify(formData.productsServices || []),
@@ -32,35 +36,40 @@ export async function POST(req: Request) {
       },
     });
 
-    // Gather emails, filter out null values, and ensure they are strings
-    const recipients: string[] = [newCompany.email, newCompany.primaryEmail, newCompany.secondaryEmail]
-      .filter((email): email is string => Boolean(email));
+    // Gather valid email recipients
+    const recipients: string[] = [
+      newCompany.email,
+      newCompany.primaryEmail,
+      newCompany.secondaryEmail,
+    ].filter((email): email is string => Boolean(email));
 
-    // Send email to all valid addresses
-    try {
-      await Promise.all(
-        recipients.map((to) =>
-          sendSignUpEmail({
-            to,
-            userName: newCompany.primaryFirstName,
-          })
-        )
-      );
-    } catch (emailError) {
-      console.error("Email failed but company created:", emailError);
+    // Send email notifications
+    if (recipients.length > 0) {
+      try {
+        await Promise.all(
+          recipients.map((to) =>
+            sendSignUpEmail({
+              to,
+              userName: newCompany.primaryFirstName || "User",
+            })
+          )
+        );
+      } catch (emailError) {
+        console.error("❌ Email failed but company was created:", emailError);
+      }
     }
 
     return NextResponse.json({ success: true, company: newCompany }, { status: 201 });
 
   } catch (error: any) {
-    console.error("FULL ERROR DETAILS:", {
+    console.error("❌ Database operation failed:", {
       error: error.message,
       stack: error.stack,
-      receivedData: await req.json(),
+      receivedData: formData, // Use already-parsed formData
     });
-    return NextResponse.json(
-      { error: "Database operation failed" },
-      { status: 500 }
-    );
+
+    return NextResponse.json({ error: "Database operation failed" }, { status: 500 });
+  } finally {
+    await prisma.$disconnect(); // Ensure Prisma connection is closed
   }
 }
