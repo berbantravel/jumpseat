@@ -10,6 +10,7 @@ datasource db {
 model Company {
   id                  String    @id @default(uuid())
   companyName         String
+  companyPassword     String?
   companyAddress      String
   phoneNumber         String?
   email               String    @unique
