@@ -122,7 +122,6 @@ export default function MultiStepForm() {
     if (!validateCurrentStep()) return;
   
     setIsSubmitting(true);
-  
     try {
       // Clean payload with proper null handling
       const payload = {

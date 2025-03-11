@@ -5,6 +5,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  
 }
 
 model Company {
@@ -19,6 +20,8 @@ model Company {
   primaryFirstName    String
   primaryLastName     String
   primaryPosition     String
+  primaryEmail        String
+  primaryMobile       String
   secondaryFirstName  String?
   secondaryLastName   String?
   secondaryPosition   String?
@@ -30,7 +33,5 @@ model Company {
   companyTypeOther    String?
   createdAt           DateTime @default(now())
   productsServices    Json
-  primaryEmail        String
-  primaryMobile       String
   companyPassword     String?
 }
