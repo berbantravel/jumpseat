@@ -642,70 +642,89 @@ export default function MultiStepForm() {
       )}
 
       {/* Step 7: Company Type */}
-      {step === 7 && (
-        <div>
-          <h2 className="text-xl font-semibold mb-6">Company Type</h2>
-          <div className="space-y-3">
-            {[
-              "Philippine-based Travel Agency",
-              "Philippine-based Tour Operator",
-              "Foreign-based Travel Agency",
-              "Local Tourist Office/Organization",
-              "Foreign NTO/Organization",
-              "Theme Park/Entertainment",
-              "Cruise Liner / Shipping",
-              "Airline",
-              "Hotel",
-              "Resort",
-              "Insurance",
-              "Other"
-            ].map((type) => (
-              <label key={type} className="flex items-center gap-3">
-                <input
-                  type="radio"
-                  name="companyType"
-                  value={type}
-                  checked={form.companyType === type}
-                  onChange={handleChange}
-                  className="w-5 h-5"
-                  required
-                />
-                <span className="text-gray-700">{type}</span>
-              </label>
-            ))}
-          </div>
-          {form.companyType === "Other" && (
-            <div className="mt-4">
-              <input
-                name="companyTypeOther"
-                placeholder="Please specify company type"
-                value={form.companyTypeOther}
-                onChange={handleChange}
-                className="w-full p-2 border rounded"
-                required
-              />
-            </div>
-          )}
-          <div className="mt-8 flex justify-between gap-4">
-            <button
-              type="button"
-              onClick={prevStep}
-              className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 w-full"
-            >
-              Back
-            </button>
-            <button
-              type="submit"
-              className="bg-[#ff9e39] text-white px-6 py-2 rounded hover:bg-[#ea9030] w-full disabled:bg-gray-400"
-              disabled={isSubmitting}
-              onClick={handleSubmit}
-            >
-              {isSubmitting ? "Submitting..." : "Submit"}
-            </button>
-          </div>
-        </div>
-      )}
+{step === 7 && (
+  <div>
+    <h2 className="text-xl font-semibold mb-6">Company Type</h2>
+    <div className="space-y-3">
+      {[
+        "Philippine-based Travel Agency",
+        "Philippine-based Tour Operator",
+        "Foreign-based Travel Agency",
+        "Local Tourist Office/Organization",
+        "Foreign NTO/Organization",
+        "Theme Park/Entertainment",
+        "Cruise Liner / Shipping",
+        "Airline",
+        "Hotel",
+        "Resort",
+        "Insurance",
+        "Other"
+      ].map((type) => (
+        <label key={type} className="flex items-center gap-3">
+          <input
+            type="radio"
+            name="companyType"
+            value={type}
+            checked={form.companyType === type}
+            onChange={handleChange}
+            className="w-5 h-5"
+            required
+          />
+          <span className="text-gray-700">{type}</span>
+        </label>
+      ))}
+    </div>
 
+    {/* Other Company Type Input */}
+    {form.companyType === "Other" && (
+      <div className="mt-4">
+        <input
+          name="companyTypeOther"
+          placeholder="Please specify company type"
+          value={form.companyTypeOther}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+          required
+        />
+      </div>
+    )}
+
+    {/* Data Privacy Clause */}
+<div className="mt-6 flex items-start gap-3">
+  <input
+    type="checkbox"
+    id="agreePrivacy"
+    className="w-5 h-5"
+    required
+  />
+  <label htmlFor="agreePrivacy" className="text-gray-700 text-sm">
+    I confirm that I have read and agree to the{" "}
+    <a href="/privacy-policy" target="_blank" className="text-[#ff9e39] hover:underline">
+      Data Privacy Policy
+    </a>
+  </label>
+</div>
+
+
+    {/* Submit and Back Buttons */}
+<div className="mt-8 flex justify-between gap-4">
+  <button
+    type="button"
+    onClick={prevStep}
+    className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 w-full"
+  >
+    Back
+  </button>
+  <button
+    type="submit"
+    className="bg-[#ff9e39] text-white px-6 py-2 rounded hover:bg-[#ea9030] w-full disabled:bg-gray-400"
+    disabled={isSubmitting} 
+  >
+    {isSubmitting ? "Submitting..." : "Submit"}
+  </button>
+</div>
+</div>
+)}
       <div className="mt-6 text-center text-sm text-gray-600">
         Already have an account?{" "}
         <button

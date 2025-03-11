@@ -24,6 +24,8 @@ export async function POST(req: Request) {
     const payload = {
       ...formData,
       productsServices: JSON.stringify(formData.productsServices || []),
+      primaryEmail: formData.primaryEmail || formData.email, // Ensure primaryEmail exists
+      secondaryEmail: formData.secondaryEmail || null, // Ensure it's either a value or null
     };
 
     // Save to database
@@ -36,12 +38,16 @@ export async function POST(req: Request) {
       },
     });
 
+    console.log("✅ New company added:", newCompany);
+
     // Gather valid email recipients
     const recipients: string[] = [
       newCompany.email,
       newCompany.primaryEmail,
       newCompany.secondaryEmail,
     ].filter((email): email is string => Boolean(email));
+    
+    console.log("📩 Attempting to send email to:", recipients);
 
     // Send email notifications
     if (recipients.length > 0) {
@@ -54,9 +60,12 @@ export async function POST(req: Request) {
             })
           )
         );
+        console.log("✅ Emails sent successfully");
       } catch (emailError) {
         console.error("❌ Email failed but company was created:", emailError);
       }
+    } else {
+      console.warn("⚠ No valid email recipients found");
     }
 
     return NextResponse.json({ success: true, company: newCompany }, { status: 201 });
@@ -65,11 +74,22 @@ export async function POST(req: Request) {
     console.error("❌ Database operation failed:", {
       error: error.message,
       stack: error.stack,
-      receivedData: formData, // Use already-parsed formData
+      receivedData: formData,
     });
 
     return NextResponse.json({ error: "Database operation failed" }, { status: 500 });
   } finally {
     await prisma.$disconnect(); // Ensure Prisma connection is closed
+  }
+}
+
+// 🛠️ DEBUG: Test email sending manually
+export async function GET() {
+  try {
+    await sendSignUpEmail({ to: "yourtestemail@gmail.com", userName: "Test User" });
+    return NextResponse.json({ success: true, message: "Test email sent!" });
+  } catch (error: any) {
+    console.error("❌ Test email failed:", error);
+    return NextResponse.json({ success: false, error: error instanceof Error ? error.message : "Unknown error" });
   }
 }
