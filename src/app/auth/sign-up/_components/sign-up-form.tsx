@@ -155,7 +155,7 @@ export default function MultiStepForm() {
       if (!res.ok) throw await res.json();
       
       toast.success("Data saved successfully!");
-      router.push("/");
+      router.push("/thank-you");
     } catch (error: any) {
       toast.error(error.message || "Submission failed");
       console.error("Submission error details:", error);
@@ -206,12 +206,13 @@ export default function MultiStepForm() {
               />
             </div>
             <div>
-              <label className="block text-gray-700 mb-1">Company Address</label>
+              <label className="block text-gray-700 mb-1">Company Address *</label>
               <input
                 name="companyAddress"
                 value={form.companyAddress}
                 onChange={handleChange}
                 className="w-full p-2 border rounded"
+                required
               />
             </div>
             <div>
@@ -528,7 +529,7 @@ export default function MultiStepForm() {
       {/* Step 6: Products & Services */}
       {step === 6 && (
   <div>
-    <h2 className="text-xl font-semibold mb-6">Name of Product or Services</h2>
+    <h2 className="text-xl font-semibold ">Name of Product or Services</h2>
     <div className="space-y-4">
       {form.productsServices.map((item, index) => (
         <div key={index} className="border p-4 rounded-lg bg-gray-50">
@@ -679,7 +680,7 @@ export default function MultiStepForm() {
             value={type}
             checked={form.companyType === type}
             onChange={handleChange}
-            className="w-5 h-5"
+            className="text-[#ff9e39] w-4 h-4"
             required
           />
           <span className="text-gray-700">{type}</span>
