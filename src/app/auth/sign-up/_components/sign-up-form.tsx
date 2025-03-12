@@ -178,7 +178,7 @@ export default function MultiStepForm() {
         <h1 className="w-full font-poppinsSemiBold sm:text-4xl text-2xl font-semibold text-center text-gray-800 ">
           Join Our Travel Network
         </h1>
-        <p className="bodyRegular font-semibold  text-[#ff9e39] text-base sm:text-lg">Online Travel Agency</p>
+       
         </div>
         <div className="flex justify-center gap-2 ">
           {[1, 2, 3, 4, 5, 6, 7].map((s) => (
@@ -444,7 +444,7 @@ export default function MultiStepForm() {
         <div>
           <h2 className="text-xl font-semibold mb-6">Type of Operation</h2>
           <div className="space-y-3">
-            {["Inbound", "Outbound", "On-line Travel Agency"].map((operation) => (
+            {["Inbound", "Outbound", "Online Travel Agency"].map((operation) => (
               <label key={operation} className="flex items-center gap-3">
                 <input
                   type="radio"
@@ -539,7 +539,6 @@ export default function MultiStepForm() {
                 {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
               </span>
               <h3 className="mt-2 font-medium text-gray-800">{item.name}</h3>
-              <p className="text-gray-600 text-sm">{item.description}</p>
             </div>
             <button
               type="button"
@@ -591,21 +590,7 @@ export default function MultiStepForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-gray-700 mb-1">Description*</label>
-            <textarea
-              value={form.newProductServiceDescription}
-              onChange={(e) =>
-                setForm((prev) => ({
-                  ...prev,
-                  newProductServiceDescription: e.target.value,
-                }))
-              }
-              className="w-full p-2 border rounded"
-              rows={3}
-              placeholder="e.g. Hassle-free flight ticket bookings at the best prices. Includes flexible rescheduling and refund options."
-            />
-          </div>
+          
 
           <button
             type="button"

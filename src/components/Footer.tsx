@@ -5,13 +5,15 @@ import postfolioLogo from '@/images/logos/postfolio-logo-blue.png'
 import jumpseatLogo from '@/images/logos/jumpseat-logo.png'
 import jumpseatLogoWhite from '@/images/logos/jumpseat-logo-white.png'
 import MainBerbanLogo from '@/images/logos/berbanSuitcase.png'
-
+import { FaPhoneAlt } from "react-icons/fa";
+import { CiGlobe } from "react-icons/ci";
 import {
   BellIcon,
   XMarkIcon,
   ChevronRightIcon,
 } from '@heroicons/react/24/outline'
-import { Mail } from 'react-feather'
+import { CiMail } from "react-icons/ci";
+
 import whatsapp from '@/images/logos/whatsapp.png'
 import viber from '@/images/logos/viber.png'
 import kakaotalk from '@/images/logos/kakaotalk.png'
@@ -126,7 +128,7 @@ export function Footer() {
           }}
         >
           <div className="mx-auto max-w-7xl px-6 pb-8 pt-14 lg:px-8">
-            <div className="xl:grid xl:grid-cols-3 xl:gap-6">
+            <div className="xl:grid xl:grid-cols-3 xl:gap-8">
               <div className="space-y-4 xl:col-span-1">
                 <div className="flex items-center">
                   <Image
@@ -149,9 +151,9 @@ export function Footer() {
                   </p>
                 </div>
               </div>
-              <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 xl:col-span-2 xl:mt-0">
-                <div className="md:grid md:grid-cols-1 md:gap-8">
-                  <div>
+              <div className="mt-16 grid grid-cols-1 gap-8 sm:gap-2 lg:gap-8 sm:grid-cols-2 md:grid-cols-4 xl:col-span-2 xl:mt-0">
+                <div className="md:grid md:grid-cols-1 md:gap-6">
+                  <div className='w-fit'>
                     <h3 className="body2Medium text-white hover:text-text-white-primary">
                       Our Practical Guide
                     </h3>
@@ -242,6 +244,17 @@ export function Footer() {
                           </a>
                         </li>
                         <li className="flex items-center justify-start">
+                          <FaPhoneAlt
+                            className="mr-2 h-6 w-6 rounded-full border-[1.5px] p-[2px] border-black  bg-white"
+                          />
+                          <a
+                            href="#"
+                            className="captionRegular text-white hover:text-text-white-primary"
+                          >
+                            +63-946-513-8472
+                          </a>
+                        </li>
+                        <li className="flex items-center justify-start">
                           <Image
                             className="mr-2 h-7 w-auto cursor-pointer"
                             src={whatsapp}
@@ -251,7 +264,7 @@ export function Footer() {
                             href="#"
                             className="captionRegular text-white hover:text-text-white-primary"
                           >
-                            +63-995-015-8869
+                           +63-995-015-8869
                           </a>
                         </li>
                         <li className="flex items-center justify-start">
@@ -264,10 +277,10 @@ export function Footer() {
                             href="#"
                             className="captionRegular text-white hover:text-text-white-primary"
                           >
-                            +63-918-746-6894
+                           +63-918-746-6894
                           </a>
                         </li>
-                        <li className="flex items-center justify-start">
+                        {/* <li className="flex items-center justify-start">
                           <Image
                             className="mr-2 h-6 w-auto cursor-pointer"
                             src={kakaotalk}
@@ -279,25 +292,30 @@ export function Footer() {
                           >
                             +63-912-746-6894
                           </a>  
-                        </li>
-                        <li>
-                          <a
-                            href="mailto:mabuhay@jumpseat.com"
+                        </li> */}
+                         <li className="flex items-center justify-start">
+                          
+                         <a
+                            href="mailto:mabuhay@jumpseattours.com"
                             className="captionRegular text-white hover:text-text-white-primary flex items-center gap-1"
                           >
-                            <Mail className="h-10 w-10" />
-                            mabuhay@jumpseat.com
+                            <CiMail className="mr-1 h-6 w-6 text-wrap flex flex-wrap" />
+                            mabuhay@jumpseattours.com
                           </a>
                         </li>
-
+                       
                         <li className="flex items-center justify-start">
+                          <CiGlobe
+                            className="mr-1 h-6 w-6 text-white"
+                          />
                           <a
-                            href="#"
+                            href="/"
                             className="captionRegular text-white hover:text-text-white-primary"
                           >
                           www.jumpseattours.com
                           </a>
                         </li>
+                        
                       </ul>
                     </ul>
                   </div>
