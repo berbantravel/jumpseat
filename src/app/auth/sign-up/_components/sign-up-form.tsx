@@ -173,11 +173,14 @@ export default function MultiStepForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-8 text-center">
-        <h1 className="w-full font-poppinsSemiBold sm:text-4xl text-2xl font-semibold text-center text-gray-800 mb-4">
-          Join Our B2B Network
+      <div className="flex flex-col mb-8 text-center gap-4">
+        <div className="flex flex-col">
+        <h1 className="w-full font-poppinsSemiBold sm:text-4xl text-2xl font-semibold text-center text-gray-800 ">
+          Join Our Travel Network
         </h1>
-        <div className="flex justify-center gap-2 mb-4">
+        <p className="bodyRegular font-semibold  text-[#ff9e39] text-base sm:text-lg">Online Travel Agency</p>
+        </div>
+        <div className="flex justify-center gap-2 ">
           {[1, 2, 3, 4, 5, 6, 7].map((s) => (
             <div
               key={s}
@@ -524,122 +527,131 @@ export default function MultiStepForm() {
 
       {/* Step 6: Products & Services */}
       {step === 6 && (
-        <div>
-          <h2 className="text-xl font-semibold mb-6">Products & Services</h2>
-          <div className="space-y-4">
-            {form.productsServices.map((item, index) => (
-              <div key={index} className="border p-4 rounded-lg bg-gray-50">
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <span className="inline-block px-2 py-1 text-sm bg-[#ff9e39] text-white rounded">
-                      {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
-                    </span>
-                    <h3 className="mt-2 font-medium text-gray-800">{item.name}</h3>
-                    <p className="text-gray-600 text-sm">{item.description}</p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setForm(prev => ({
-                      ...prev,
-                      productsServices: prev.productsServices.filter((_, i) => i !== index)
-                    }))}
-                    className="text-red-500 hover:text-red-700 text-xl"
-                  >
-                    ×
-                  </button>
-                </div>
-              </div>
-            ))}
-
-            <div className="border-t pt-4 mt-4">
-              <div className="grid grid-cols-1 gap-4">
-                <div>
-                  <label className="block text-gray-700 mb-1">Type *</label>
-                  <select
-                    value={form.newProductServiceType}
-                    onChange={(e) => setForm(prev => ({
-                      ...prev,
-                      newProductServiceType: e.target.value
-                    }))}
-                    className="w-full p-2 border rounded"
-                  >
-                    <option value="product">Product</option>
-                    <option value="service">Service</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 mb-1">Name *</label>
-                  <input
-                    value={form.newProductServiceName}
-                    onChange={(e) => setForm(prev => ({
-                      ...prev,
-                      newProductServiceName: e.target.value
-                    }))}
-                    className="w-full p-2 border rounded"
-                    placeholder="Enter name"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-gray-700 mb-1">Description *</label>
-                  <textarea
-                    value={form.newProductServiceDescription}
-                    onChange={(e) => setForm(prev => ({
-                      ...prev,
-                      newProductServiceDescription: e.target.value
-                    }))}
-                    className="w-full p-2 border rounded"
-                    rows={3}
-                    placeholder="Enter description"
-                  />
-                </div>
-
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (form.newProductServiceName && form.newProductServiceDescription) {
-                      setForm(prev => ({
-                        ...prev,
-                        productsServices: [
-                          ...prev.productsServices,
-                          {
-                            type: prev.newProductServiceType,
-                            name: prev.newProductServiceName,
-                            description: prev.newProductServiceDescription
-                          }
-                        ],
-                        newProductServiceType: "product",
-                        newProductServiceName: "",
-                        newProductServiceDescription: ""
-                      }));
-                    }
-                  }}
-                  className="bg-[#ff9e39] text-white px-4 py-2 rounded hover:bg-[#ea9030]"
-                >
-                  Add {form.newProductServiceType.charAt(0).toUpperCase() + form.newProductServiceType.slice(1)}
-                </button>
-              </div>
+  <div>
+    <h2 className="text-xl font-semibold mb-6">Name of Product or Services</h2>
+    <div className="space-y-4">
+      {form.productsServices.map((item, index) => (
+        <div key={index} className="border p-4 rounded-lg bg-gray-50">
+          <div className="flex justify-between items-start mb-2">
+            <div>
+              <span className="inline-block px-2 py-1 text-sm bg-[#ff9e39] text-white rounded">
+                {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
+              </span>
+              <h3 className="mt-2 font-medium text-gray-800">{item.name}</h3>
+              <p className="text-gray-600 text-sm">{item.description}</p>
             </div>
-          </div>
-          <div className="mt-8 flex justify-between gap-4">
             <button
               type="button"
-              onClick={prevStep}
-              className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 w-full"
+              onClick={() =>
+                setForm((prev) => ({
+                  ...prev,
+                  productsServices: prev.productsServices.filter((_, i) => i !== index),
+                }))
+              }
+              className="text-red-500 hover:text-red-700 text-xl"
             >
-              Back
-            </button>
-            <button
-              type="button"
-              onClick={nextStep}
-              className="bg-[#ff9e39] text-white px-6 py-2 rounded hover:bg-[#ea9030] w-full"
-            >
-              Next
+              ×
             </button>
           </div>
         </div>
-      )}
+      ))}
+
+      <div className="border-t pt-4 mt-4">
+        <div className="grid grid-cols-1 gap-4">
+          <div>
+            <label className="block text-gray-700 mb-1">Type*</label>
+            <select
+              value={form.newProductServiceType}
+              onChange={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  newProductServiceType: e.target.value,
+                }))
+              }
+              className="w-full p-2 border rounded"
+            >
+              <option value="product">Product</option>
+              <option value="service">Service</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 mb-1">Name* </label>
+            <input
+              value={form.newProductServiceName}
+              onChange={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  newProductServiceName: e.target.value,
+                }))
+              }
+              className="w-full p-2 border rounded"
+              placeholder="e.g. Travel Insurance, Hotel Booking, Car Rental, Flight Ticket"
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-700 mb-1">Description*</label>
+            <textarea
+              value={form.newProductServiceDescription}
+              onChange={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  newProductServiceDescription: e.target.value,
+                }))
+              }
+              className="w-full p-2 border rounded"
+              rows={3}
+              placeholder="e.g. Hassle-free flight ticket bookings at the best prices. Includes flexible rescheduling and refund options."
+            />
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              if (form.newProductServiceName && form.newProductServiceDescription) {
+                setForm((prev) => ({
+                  ...prev,
+                  productsServices: [
+                    ...prev.productsServices,
+                    {
+                      type: prev.newProductServiceType,
+                      name: prev.newProductServiceName,
+                      description: prev.newProductServiceDescription,
+                    },
+                  ],
+                  newProductServiceType: "product",
+                  newProductServiceName: "",
+                  newProductServiceDescription: "",
+                }));
+              }
+            }}
+            className="bg-[#ff9e39] text-white px-4 py-2 rounded hover:bg-[#ea9030]"
+          >
+            Add {form.newProductServiceType.charAt(0).toUpperCase() + form.newProductServiceType.slice(1)}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div className="mt-8 flex justify-between gap-4">
+      <button
+        type="button"
+        onClick={prevStep}
+        className="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 w-full"
+      >
+        Back
+      </button>
+      <button
+        type="button"
+        onClick={nextStep}
+        className="bg-[#ff9e39] text-white px-6 py-2 rounded hover:bg-[#ea9030] w-full"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+)}
 
       {/* Step 7: Company Type */}
 {step === 7 && (
