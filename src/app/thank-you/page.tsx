@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import { FaCheckCircle } from "react-icons/fa";
- 
+"use client";
 
+import { useRouter } from "next/navigation";
+import { FaCheckCircle } from "react-icons/fa";
 
 export default function ThankYou() {
   const router = useRouter();
@@ -10,7 +10,7 @@ export default function ThankYou() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-6">
       <div className="bg-white p-8 rounded-lg shadow-lg text-center max-w-md">
         <FaCheckCircle className="w-16 h-16 text-green-500 mx-auto animate-bounce" />
-        <h1 className="text-4xl font-semibold text-gray-800 mt-4">Thank You!</h1>
+        <h1 className="text-2xl font-semibold text-gray-800 mt-4">Thank You!</h1>
         <p className="text-gray-600 mt-2">
           Your submission has been received successfully.
         </p>
