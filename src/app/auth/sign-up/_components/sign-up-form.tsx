@@ -186,7 +186,7 @@ export default function MultiStepForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mb-8 flex flex-col gap-4 text-center">
+      <div className="mb-8 flex flex-col gap-4 text-center ">
         <div className="flex flex-col">
           <h1 className="w-full text-center font-poppinsSemiBold text-2xl font-semibold text-gray-800 sm:text-4xl ">
             Join Our Travel Network
