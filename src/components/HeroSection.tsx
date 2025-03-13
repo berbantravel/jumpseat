@@ -142,7 +142,7 @@ const HeroSection = () => {
                 <div className="flex flex-col items-center justify-center gap-4">
                   <button
                     id="slider-button-left"
-                    className="flex h-10 w-10 items-center justify-center  rounded-full border-2 border-[#ff9e39] bg-[#ff9e39] text-2xl text-white hover:bg-[#ff9e39] hover:text-white"
+                    className="relative left-2 flex h-10 w-10 items-center justify-center  rounded-full border-2 border-[#ff9e39] bg-[#ff9e39] text-2xl text-white hover:bg-[#ff9e39] hover:text-white"
                   >
                     <i className="bx bx-chevron-left"></i>
                   </button>
@@ -151,7 +151,7 @@ const HeroSection = () => {
               <div className="absolute bottom-0 right-0 top-[16rem] z-10 -translate-y-1/2 transform md:top-[19rem]">
                 <button
                   id="slider-button-right"
-                  className="flex h-10 w-10 items-center justify-center  rounded-full border-2 border-[#ff9e39] bg-[#ff9e39] text-2xl text-white hover:bg-[#ff9e39] hover:text-white"
+                  className="relative right-2 flex h-10 w-10 items-center justify-center  rounded-full border-2 border-[#ff9e39] bg-[#ff9e39] text-2xl text-white hover:bg-[#ff9e39] hover:text-white"
                 >
                   <i className="bx bx-chevron-right"></i>
                 </button>
