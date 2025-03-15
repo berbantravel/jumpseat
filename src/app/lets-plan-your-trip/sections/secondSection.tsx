@@ -1,7 +1,20 @@
 'use client'
-import Image from 'next/image'
 import React, { useState } from 'react'
-import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
+import GettingReady from '../components/getting-ready'
+import MyTrip from '../components/my-trip'
+import Season from '../components/season';
+import Interest from '../components/interest';
+import Accommodation from '../components/accommodation';
+import Transport from '../components/transport';
+import MyDetails from '../components/my-details';
+import LetsGo from '../components/lets-go';
+
+// Remove the dependency on GettingReadyProps
+// Define your own interface for SecondSection if needed
+interface SecondSectionProps {
+  // Make any props optional with the ? symbol
+  onNext?: (data: any) => void;
+}
 
 interface Step {
   number: number
@@ -21,29 +34,111 @@ const steps: Step[] = [
   { number: 8, label: "Let's Go" },
 ]
 
-export default function SecondSection() {
+// Update the component to use the new props interface
+export default function SecondSection({ onNext }: SecondSectionProps) {
   const [currentStep, setCurrentStep] = useState(1)
-  const [formData, setFormData] = useState({ name: '', email: '' })
-  const [showModal, setShowModal] = useState(false)
+  const [formData, setFormData] = useState({ 
+    name: '', 
+    email: '',
+    selectedTrips: [],
+    // Add more fields for other steps as needed
+  })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (formData.name && formData.email) {
-      setCurrentStep(2)
-      setShowModal(true)
+  const nextStep = () => {
+    setCurrentStep(currentStep + 1)
+  }
+
+  const prevStep = () => {
+    setCurrentStep(currentStep - 1)
+  }
+
+  const handleStepData = (data: any) => {
+    setFormData({
+      ...formData,
+      ...data
+    })
+    
+    // If we're on the last step and onNext was provided, call it
+    if (currentStep === steps.length && onNext) {
+      onNext(formData);
+    } else {
+      nextStep();
     }
   }
 
+  // Rest of your component remains the same
+  const renderStepContent = () => {
+    switch (currentStep) {
+      case 1:
+        return (
+          <GettingReady 
+            onNext={handleStepData}
+          />
+        )
+      case 2:
+        return (
+          <MyTrip 
+            onNext={handleStepData}
+            onPrev={prevStep}
+          />
+        )
+      case 3:
+        return (
+          <Season
+            onNext={handleStepData}
+            onPrev={prevStep}
+          />
+        )
+
+      case 4:
+        return (
+          <Interest
+            onNext={handleStepData}
+            onPrev={prevStep}
+          />
+        )
+        case 5:
+          return (
+            <Accommodation
+              onNext={handleStepData}
+              onPrev={prevStep}
+            />
+          )
+          case 6:
+            return (
+              <Transport
+                onNext={handleStepData}
+                onPrev={prevStep}
+              />
+            )
+            case 7:
+            return (
+              <MyDetails
+                onNext={handleStepData}
+                onPrev={prevStep}
+                formData={formData} 
+              />
+            )
+            case 8:
+      return (
+        <LetsGo
+          formData={formData}
+        />
+      )
+        
+      // Add more cases for additional steps
+      default:
+        return <div>Step not found</div>
+    }
+  }
   return (
     <>
       <div className="mx-auto max-w-5xl px-4 py-8">
         {/* Progress Bar */}
         <div className="mb-12">
           <div className="flex items-center justify-between">
-            {steps.map((step, index) => (
+            {steps.map((step) => (
               <div key={step.number} className="flex flex-col items-center">
-                {/* Connector Line */}
-
                 {/* Circle */}
                 <div
                   className={`relative z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 ${
@@ -54,7 +149,7 @@ export default function SecondSection() {
                         : 'border-gray-400 bg-white text-gray-400'
                   }`}
                 >
-                  {step.number}
+                  {step.number < currentStep ? '✓' : step.number}
                 </div>
                 {/* Label */}
                 <span className="mt-2 text-sm text-gray-600">{step.label}</span>
@@ -63,95 +158,8 @@ export default function SecondSection() {
           </div>
         </div>
 
-        {/* Initial Form Section */}
-        {!showModal && (
-          <div className="mx-auto max-w-2xl">
-            <h1 className="mb-6 text-3xl font-bold text-gray-900">
-              Getting Ready
-            </h1>
-
-            <div className="mb-8">
-              <div className="flex items-center gap-4">
-                <Image
-                  src={jumpseatIcon}
-                  alt="Avatar"
-                  className="h-12 w-12 rounded-full border border-gray-500 p-1"
-                />
-                <div>
-                  <p className="text-black">
-                    Hi There! I'm Chrisse.{' '}
-                    <span className="font-semibold text-[#ff9e39]">
-                      LET'S PLAN YOUR TRIP!
-                    </span>
-                  </p>
-                </div>
-              </div>
-
-              <p className="mt-4 text-black">
-                Jumpseat is your avenue to the get through the most beautiful
-                spots in Asia. There are plenty of places to see among the best
-                spots in the region. Our travel associates&apos; and
-                specialists&apos; expertise are blended towards discerning and
-                adventurous travelers. If you are one of them, let&apos;s create
-                a travel plan according to your taste.
-              </p>
-
-              <p className="mt-4 text-black">
-                First of all, may I have your name and e-mail?
-              </p>
-            </div>
-
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#ff9e39] focus:outline-none"
-                  required
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  className="w-full rounded-md border border-gray-300 px-4 py-2 focus:border-[#ff9e39] focus:outline-none"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-md bg-[#ff9e39] py-2 text-white hover:bg-[#ff9e39]/90"
-              >
-                Let&apos;s Start!
-              </button>
-            </form>
-          </div>
-        )}
-
-        {/* Modal for next steps */}
-        {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-            <div className="w-full max-w-2xl rounded-lg bg-white p-8">
-              <h2 className="mb-4 text-2xl font-bold">My Trip</h2>
-              {/* Add your next step content here */}
-              <button
-                onClick={() => setCurrentStep(currentStep + 1)}
-                className="mt-4 rounded bg-[#ff9e39] px-4 py-2 text-white"
-              >
-                Next Step
-              </button>
-            </div>
-          </div>
-        )}
+        {/* Current Step Content */}
+        {renderStepContent()}
       </div>
     </>
   )

@@ -2,10 +2,11 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
-
 interface StepProps {
   onNext: (data: any) => void
   onPrev: () => void
+  formData?: any  
+  setFormData?: any 
 }
 
 interface TripOption {
@@ -112,20 +113,8 @@ export default function MyTrip({ onNext, onPrev }: StepProps) {
                 </div>
               </div>
               {selectedTrips.includes(trip.id) && (
-                <div className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[#ff9e39]">
-                  <svg
-                    className="h-4 w-4 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
+                <div className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[#ff9e39] text-white text-xs font-bold">
+                  ✓
                 </div>
               )}
             </div>
