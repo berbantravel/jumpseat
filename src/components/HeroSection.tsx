@@ -87,6 +87,9 @@ const HeroSection = () => {
       {/* POPULAR DESTINATIONS */}
       <div className="bg-white" id="packages">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:pb-32 lg:max-w-7xl lg:px-8">
+          <h2 className="mb-8 text-center font-poppinsSemiBold text-xl tracking-tight text-[#ff9e39] sm:text-xl">
+            Join Our Adventures
+          </h2>
           <h2 className="mb-8 text-center font-poppinsSemiBold text-3xl tracking-tight text-gray-900 sm:text-4xl">
             Popular Destinations
           </h2>
@@ -219,6 +222,9 @@ const HeroSection = () => {
       {/* RECENT BLOGS SECTION */}
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
         <div className=" max-w-full text-left">
+          <h2 className="mb-2 text-center font-poppinsSemiBold text-xl tracking-tight text-[#ff9e39] sm:text-xl">
+            Stay Updated
+          </h2>
           <h2 className="text-center font-poppinsSemiBold text-3xl tracking-tight text-gray-900 sm:text-4xl">
             Recent Blogs
           </h2>
@@ -285,6 +291,15 @@ const HeroSection = () => {
             </div>
           ))}
         </div>
+
+
+        <div className=" max-w-full text-center pt-20">
+         
+          <a href='/inspirations' className="text-center font-poppinsSemiBold  tracking-tight text-[#ff9e39] text-xl">
+            Discover All Blogs
+          </a>
+        </div>
+
       </div>
       <h2 className="mt-2 text-center font-poppinsSemiBold text-3xl tracking-tight text-gray-900 sm:text-4xl">
         E-SIM

@@ -20,7 +20,71 @@ export default function FirstSection() {
         </h2>
       </div>
 
-      <div className="mx-auto mt-16 grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+
+      <div className='mt-8'>
+        <h1 className='font-semibold text-4xl'>Popular Articles</h1>
+     
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 mt-8'>
+          <div>
+          {blogContents.slice(0, 1).map((blog) => ( 
+          <div key={blog.id}>
+            <div>
+            <Image
+                src={blog.heroImage}
+                alt={blog.title}
+                className="h-full w-full object-cover"
+                width={500}
+                height={300}
+                priority
+              />
+            </div>
+             
+              <h3 className="mb-1 mt-3 text-2xl font-semibold text-gray-900">
+                {blog.title}
+              </h3>
+              <span className="text-black">{blog.date}</span>
+               <p className="line-clamp-3 text-sm text-gray-600">
+                {blog.content.intro.text}
+              </p>
+
+          </div>
+          ))}
+
+          </div>
+         
+          <div className='space-y-4'>
+          {blogContents.slice(1, 4).map((blog) => ( 
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-4' key={blog.id}>
+            
+            <Image
+                  src={blog.heroImage}
+                  alt={blog.title}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+
+
+            <div className=' md:col-span-2'>
+              <h3 className="mb-1 mt-3 text-xl font-semibold text-gray-900">
+                {blog.title}
+              </h3>
+              <span className="text-black">{blog.date}</span>
+              <p className="line-clamp-3 text-sm text-gray-600">
+                {blog.content.intro.text}
+              </p>
+
+            </div>
+
+          </div>
+          ))}
+          </div>
+          
+        </div>
+      
+
+      </div>
+
+      <div className="mx-auto mt-8 grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {blogContents.map((blog) => (
           <div
             key={blog.id}
