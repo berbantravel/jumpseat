@@ -8,6 +8,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper/modules'
 import homebackground from '@/images/homebackground.jpg'
+import aboutusbackground from '@/images/background pattern.webp'
 import ModalDialog from './ModalDialog'
 import destinationsphoto from '@/images/img-aboutus.webp'
 import { blogContents } from '@/constants/blogs'
@@ -182,10 +183,20 @@ const HeroSection = () => {
             backgroundColor: '#ff9e39',
           }}
         >
+          <Image
+            src={aboutusbackground}
+            alt=""
+            layout="fill"
+            objectFit="cover"
+            className="absolute inset-0 -z-10 h-full w-full object-cover"
+          />
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-              <div className="lg:pr-8 lg:pt-28">
+              <div className="flex flex-col justify-between">
                 <div className="lg:max-w-lg">
+                  <p className="mt-2 text-xl  tracking-tight text-white ">
+                    About Us
+                  </p>
                   <p className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
                     Come and Travel with Us
                   </p>
@@ -196,6 +207,9 @@ const HeroSection = () => {
                     destination holds a new story, and every experience becomes
                     a cherished memory.
                   </p>
+                 
+                </div>
+
                   <div className="mt-10 flex items-center justify-start gap-x-6">
                     <a
                       href="#"
@@ -204,7 +218,6 @@ const HeroSection = () => {
                       View Details
                     </a>
                   </div>
-                </div>
               </div>
               <div className="mt-5">
                 <Image
