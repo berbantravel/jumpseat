@@ -8,7 +8,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper/modules'
 import homebackground from '@/images/homebackground.jpg'
-import aboutusbackground from '@/images/background pattern.webp'
+import aboutusbackground from '@/images/background.svg'
 import ModalDialog from './ModalDialog'
 import destinationsphoto from '@/images/img-aboutus.webp'
 import { blogContents } from '@/constants/blogs'
@@ -74,10 +74,10 @@ const HeroSection = () => {
               Are you ready to experience Asia? Learn more about our exclusive
               tours and curated experiences.
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="mt-10 flex items-center justify-center w-full gap-x-6">
               <a
                 href="/experiences"
-                className="rounded-md bg-[#ff9e39] px-16 py-4 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39]"
+                className="rounded-md bg-[#ff9e39] w-full md:w-60 lg:w-80 py-4 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9e39]"
               >
                 Experience Asia
               </a>
@@ -88,7 +88,7 @@ const HeroSection = () => {
       {/* POPULAR DESTINATIONS */}
       <div className="bg-white" id="packages">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:pb-32 lg:max-w-7xl lg:px-8">
-          <h2 className="mb-8 text-center font-poppinsSemiBold text-xl tracking-tight text-[#ff9e39] sm:text-xl">
+          <h2 className="mb-2 text-center font-poppinsSemiBold text-xl tracking-tight text-[#ff9e39] sm:text-xl">
             Join Our Adventures
           </h2>
           <h2 className="mb-8 text-center font-poppinsSemiBold text-3xl tracking-tight text-gray-900 sm:text-4xl">
@@ -194,7 +194,7 @@ const HeroSection = () => {
             <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
               <div className="flex flex-col justify-between">
                 <div className="lg:max-w-lg">
-                  <p className="mt-2 text-xl  tracking-tight text-white ">
+                  <p className="mb-2 text-xl  tracking-tight text-white ">
                     About Us
                   </p>
                   <p className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
