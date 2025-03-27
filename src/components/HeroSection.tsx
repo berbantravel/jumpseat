@@ -212,7 +212,7 @@ const HeroSection = () => {
 
                   <div className="mt-10 flex items-center justify-start gap-x-6">
                     <a
-                      href="#"
+                      href="/experiences"
                       className="w-full max-w-80 rounded-md bg-[#565555] py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-[#565555] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
                     >
                       View Details

@@ -16,6 +16,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, ChevronLeftIcon } from '@heroicons/react/24/outline'
 import jumpseatLogo from '@/images/logos/jumpseat-logo.png'
 import jumpseatIcon from '@/images/logos/jumpseat-icon.png'
+import { Button } from './ui/button'
 
 const navigation = [
   { name: "Let's Plan Your Trip!", href: '/lets-plan-your-trip' },
@@ -146,12 +147,14 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
                   </div>
                 </div>
                 <div className="my-2.5 hidden sm:flex lg:flex lg:items-center lg:justify-end xl:col-span-2">
-                  <button
+                  
+                  <Button
                     type="button"
                     className="rounded-md bg-[#565555] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800"
-                  >
+                  ><Link href='/lets-plan-your-trip'>
                     Let&apos;s Plan Your Trip!
-                  </button>
+                    </Link>
+                  </Button>
                 </div>
               </div>
             </div>

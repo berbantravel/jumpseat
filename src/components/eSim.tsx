@@ -1,45 +1,56 @@
 // components/DataPlans.js
 import Link from 'next/link'
 import Image from 'next/image'
-import UsaFlag from '../images/usa-flag.jpg' // Adjust the path as needed
+import Japan from '../images/japan-flag.png'
+import HongKong from '../images/hong-kong-flag.png' 
+import Malaysia from '../images/malaysia-flag.png' 
+import SouthKorea from '../images/south-korea-flag.png' 
+import Vietnam from '../images/vietnam-flag.png' 
+import Singapore from '../images/singapore-flag.png'
 
 const DataPlans = () => {
   const plans = [
     {
       data: '1 GB',
       validity: '7 Days',
-      coverage: 'Philippines',
+      coverage: 'Japan',
       price: '$4.50',
+      image: Japan,
     },
     {
       data: '2 GB',
       validity: '15 Days',
       coverage: 'Philippines',
       price: '$7.00',
+      image: HongKong,
     },
     {
       data: '3 GB',
       validity: '30 Days',
       coverage: 'Philippines',
       price: '$9.50',
+      image: Malaysia,
     },
     {
       data: '5 GB',
       validity: '30 Days',
       coverage: 'Philippines',
       price: '$13.00',
+      image: SouthKorea,
     },
     {
       data: '10 GB',
       validity: '30 Days',
       coverage: 'Philippines',
       price: '$21.00',
+      image: Singapore,
     },
     {
       data: '20 GB',
       validity: '30 Days',
       coverage: 'Philippines',
       price: '$32.00',
+      image: Vietnam,
     },
   ]
 
@@ -62,13 +73,15 @@ const DataPlans = () => {
                   {plan.data}-{plan.validity}
                 </h3>
                 <div className="h-full w-fit ">
-                  <Image
-                    src={UsaFlag}
-                    alt="USA Flag"
-                    width={80}
-                    height={80}
-                    className="rounded-lg"
-                  />
+                  {plan.image && (
+                    <Image
+                      src={plan.image}
+                      alt="Plan Flag"
+                      width={80}
+                      height={80}
+                      className="rounded-lg"
+                    />
+                  )}
                 </div>
               </div>
 
