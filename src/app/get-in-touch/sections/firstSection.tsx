@@ -9,6 +9,7 @@ import {
 import whatsapp from '@/images/logos/whatsapp.png'
 import viber from '@/images/logos/viber.png'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function FirstSection() {
   return (
@@ -39,7 +40,7 @@ export default function FirstSection() {
 
               <p className="text-gray-600">
                 <a
-                  href="tel:+63995015886"
+                href="https://wa.me/639950158869"
                   className="flex items-center justify-center gap-2"
                 >
                   <Image
@@ -52,7 +53,7 @@ export default function FirstSection() {
               </p>
               <p className="text-gray-600">
                 <a
-                  href="tel:+63918746684"
+                   href="viber://chat?number=+639187466894"
                   className="flex items-center justify-center gap-2"
                 >
                   <Image
@@ -83,7 +84,7 @@ export default function FirstSection() {
                   href="mailto:mabuhay@herbantravel.com"
                   className=" text-red-500 hover:underline "
                 >
-                  mabuhay@herbantravel.com
+                 mabuhay@jumpseattours.com
                 </a>
               </div>
             </div>
@@ -120,7 +121,7 @@ export default function FirstSection() {
                 create the perfect experience for you.
               </p>
               <button className="rounded-md bg-[#ff9e39] px-6 py-2 text-sm font-semibold text-white hover:bg-[#ff9e39]/90">
-                Talk to us
+                <a target="_blank" rel="noopener noreferrer" href="https://m.me/275091755680907"> Talk to us </a>
               </button>
             </div>
           </div>

@@ -244,42 +244,44 @@ export function Footer() {
                           </a>
                         </li>
                         <li className="flex items-center justify-start">
-                          <FaPhoneAlt
-                            className="mr-2 h-6 w-6 rounded-full border-[1.5px] p-[2px] border-black  bg-white"
-                          />
-                          <a
-                            href="#"
-                            className="captionRegular text-white hover:text-text-white-primary"
-                          >
-                            +63-946-513-8472
-                          </a>
-                        </li>
-                        <li className="flex items-center justify-start">
-                          <Image
-                            className="mr-2 h-7 w-auto cursor-pointer"
-                            src={whatsapp}
-                            alt="Your Company Icon"
-                          />
-                          <a
-                            href="#"
-                            className="captionRegular text-white hover:text-text-white-primary"
-                          >
-                           +63-995-015-8869
-                          </a>
-                        </li>
-                        <li className="flex items-center justify-start">
-                          <Image
-                            className="mr-2 h-7 w-auto cursor-pointer"
-                            src={viber}
-                            alt="Your Company Icon"
-                          />
-                          <a
-                            href="#"
-                            className="captionRegular text-white hover:text-text-white-primary"
-                          >
-                           +63-918-746-6894
-                          </a>
-                        </li>
+  <FaPhoneAlt
+    className="mr-2 h-6 w-6 rounded-full border-[1.5px] p-[2px] border-black  bg-white"
+  />
+  <a
+    href="tel:+63-946-513-8472"
+    className="captionRegular text-white hover:text-text-white-primary"
+  >
+    +63-946-513-8472
+  </a>
+</li>
+<li className="flex items-center justify-start">
+  <Image
+    className="mr-2 h-7 w-auto cursor-pointer"
+    src={whatsapp}
+    alt="Your Company Icon"
+  />
+  <a
+    href="https://wa.me/639950158869"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="captionRegular text-white hover:text-text-white-primary"
+  >
+    +63-995-015-8869
+  </a>
+</li>
+<li className="flex items-center justify-start">
+  <Image
+    className="mr-2 h-7 w-auto cursor-pointer"
+    src={viber}
+    alt="Your Company Icon"
+  />
+  <a
+    href="viber://chat?number=+639187466894"
+    className="captionRegular text-white hover:text-text-white-primary"
+  >
+    +63-918-746-6894
+  </a>
+</li>
                         {/* <li className="flex items-center justify-start">
                           <Image
                             className="mr-2 h-6 w-auto cursor-pointer"
