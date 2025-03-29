@@ -210,7 +210,7 @@ export function Footer() {
                     <ul role="list" className="mt-4 space-y-3">
                       <li>
                         <a
-                          href="#"
+                          href="/auth/sign-up"
                           className="body2Regular text-sm text-white hover:text-text-white-primary"
                         >
                           Partner With Us
@@ -244,9 +244,11 @@ export function Footer() {
                           </a>
                         </li>
                         <li className="flex items-center justify-start">
-  <FaPhoneAlt
+                          <Link href="tel:+63-946-513-8472">  <FaPhoneAlt
     className="mr-2 h-6 w-6 rounded-full border-[1.5px] p-[2px] border-black  bg-white"
   />
+  </Link>
+
   <a
     href="tel:+63-946-513-8472"
     className="captionRegular text-white hover:text-text-white-primary"
@@ -255,11 +257,13 @@ export function Footer() {
   </a>
 </li>
 <li className="flex items-center justify-start">
+<Link href={"https://wa.me/639950158869"}>
   <Image
     className="mr-2 h-7 w-auto cursor-pointer"
     src={whatsapp}
     alt="Your Company Icon"
   />
+  </Link>
   <a
     href="https://wa.me/639950158869"
     target="_blank"
@@ -270,11 +274,13 @@ export function Footer() {
   </a>
 </li>
 <li className="flex items-center justify-start">
+  <Link href={"viber://chat?number=+639187466894"}>
   <Image
     className="mr-2 h-7 w-auto cursor-pointer"
     src={viber}
     alt="Your Company Icon"
   />
+  </Link>
   <a
     href="viber://chat?number=+639187466894"
     className="captionRegular text-white hover:text-text-white-primary"
@@ -301,15 +307,19 @@ export function Footer() {
                             href="mailto:mabuhay@jumpseattours.com"
                             className="captionRegular text-white hover:text-text-white-primary flex items-center gap-1"
                           >
+                            <Link   href="mailto:mabuhay@jumpseattours.com">
                             <CiMail className="mr-1 h-6 w-6 text-wrap flex flex-wrap" />
+                            </Link>
                             mabuhay@jumpseattours.com
                           </a>
                         </li>
                        
                         <li className="flex items-center justify-start">
+                          <Link href="mailto:mabuhay@jumpseattours.com">
                           <CiGlobe
                             className="mr-1 h-6 w-6 text-white"
                           />
+                          </Link>
                           <a
                             href="/"
                             className="captionRegular text-white hover:text-text-white-primary"
