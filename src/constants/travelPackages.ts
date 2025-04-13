@@ -1,296 +1,570 @@
 import SouthKorea from '../assets/images/south-korea.jpg';
 
 export const travelPackages = {
-    'prosperous-hongkong': {
-      id: "1",
-      name: 'Prosperous Hongkong',
-      price: 20200,
-      rating: 4,
-      description: 'A fusion of dazzling innovation and rich tradition',
-      longDescription:
-        '<div class="font-bold mb-3 text-2xl">Prosperous Hongkong- Macau Guangdong 4 in 1 5D4N Tour (Sept)</div> <div class="font-semibold mb-4 text-lg">  Traveler: Families with Children, Friends, Young Couples and Honeymooners, Solo Travelers, Adventure Seekers and Outdoor Enthusiasts</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Guangdong</span> - is also famous for its Cantonese culture, including the Cantonese language, cuisine and traditional festivals. The Province attracts business professionals, investors, tourists, and cultural enthusiasts alike, making it a dynamic and diverse area with a global influence.</span> </div> <div class="text-normal"> <span class="text-lg"><span class="font-medium">Macau</span> - the city\'s historic center, a UNESCO World Heritage site, features beautifully preserved colonial architecture, including churches, temples, and fortresses. Macau is also known for its diverse culinary scene, combining Portuguese and Cantonese flavors, making it a haven for food lovers.</span></div>',
-      bestTimeToVisit: 'September',
-      listingDescription:
-        ' <div class="text-xl font-bold">Tour Dates Available:</div> <div class="text-normal font-semibold"> Sept. 12-16</div> <div class="text-normal font-semibold"> Sept. 19-23</div> <div class="text-normal font-bold">Child with bed(6-17 yrs.old):same rate as adults</div> <div class="text-normal font-bold">Child without bed(2-5 yrs. old):From USD 229/pax</div>',
-      daysOfStay: '5 Days & 4 Nights',
-      minimumGuests: 'No Minimum Guests',
-      heroImage:
-        'https://images.pexels.com/photos/2410300/pexels-photo-2410300.jpeg',
-      images: [
-        {
-          id: 1,
-          name: 'Seoul Skyline',
-          src: 'https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          alt: 'Seoul city skyline',
-        },
-        {
-          id: 2,
-          name: 'Traditional Palace',
-          src: 'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          alt: 'Traditional Korean palace',
-        },
-        {
-          id: 3,
-          name: 'Street Food',
-          src: 'https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          alt: 'Korean street food',
-        },
-        {
-          id: 4,
-          name: 'Cherry Blossoms',
-          src: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          alt: 'Cherry blossoms in South Korea',
-        },
-      ],
-      details: [
-        {
-          name: 'Inclusions',
-          items: [
-            '4 Nights room accommodation based on twin sharing at a choice hotel.',
-            'Daily hotel breakfast.',
-            'Private coach with an English speaking tour guide.',
-            'Sightseeing tours as specified above include the first way entrance fee needed.',
-            'Meal as listed.',
-            'Roundtrip airfare via Cebu Pacific (7kg. Hand Carry only).',
-            '144 Group visa.',
-          ],
-        },
-        {
-          name: 'Exclusions',
-          items: [
-            'Expenses of a personal nature like telephone calls, mini bar, etc.',
-            'Extra baggage allowance.',
-            'PH Travel Tax.',
-            'Optional Tour.',
-            'Tips for driver and guide: USD25/pax',
-            'Single supplement: USD99/pax',
-            'Covid-19 test if needed.',
-          ],
-        },
-        {
-          name: 'Optional package: USD 100/pax',
-          items: [
-            'HZM Bridge Luxury Cruise Tour + Jingshan Park + Cable Car + BBQ Dinner.',
-          ],
-        },
-      ],
-      itinerary: [
-        {
-          day: '1 ETA',
-          title: 'Arrive in Macau',
-          activities: [
-            'Meet the Macau guide at the airport.',
-            'Transfer to Macau-Zhuhai Port (queued yourself to pass the border).',
-            'Entry to Zhuhai and meet the Guangdong guide.',
-            'Transfer to hotel and check in.',
-          ],
-          image:
-            'https://images.pexels.com/photos/730778/pexels-photo-730778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        },
-        {
-          day: '2',
-          title: '',
-          activities: [
-            'Hotel Breakfast.',
-            'Check out and transfer to Guangzhou.',
-            'Take Zuiguanguang Tram',
-            'Visit Haixinsha Asian Games Park (tram tour).',
-            'Visit Canton Tower (outside view).',
-            'Visit Haixin Bridge.',
-            'Visit Huacheng Square.',
-            'Transfer to Hotel and Check in.',
-            'Special Complementary Romantic Show of Guangdong: ‘Eternal Show’',
-          ],
-          image:
-            'https://images.pexels.com/photos/1677358/pexels-photo-1677358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        },
-        {
-          day: '3',
-          title: '',
-          activities: [
-            'Hotel Breakfast.',
-            'Check out and Transfer to Zhongshan.',
-            'Visit Sun Yat-sen’s Former Residence.',
-            'Visit Latex Shop.',
-            'Visit Zhuhai Fisher Girl, Lovers Road.',
-            'Visit Haitian Posthouse Landscape Trestle Road.',
-            'Transfer to hotel and check in.',
-          ],
-          image:
-            'https://images.pexels.com/photos/18137607/pexels-photo-18137607/free-photo-of-zhongshan-studio-city-in-china.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        },
-        {
-          day: '4',
-          title: '',
-          activities: [
-            'Hotel Breakfast.',
-            'Visit Zhuhai Grand Theater.',
-            'Look far Hong Kong-Zhuhai-Macau Bridge.',
-            'Visit a Chinese Medicine Shop.',
-            'Visit New Yuan Ming Palace.',
-            'Visit the Silk Store.',
-            'Visit Huangyucheng Shopping Mall.',
-            'Back to the hotel.',
-          ],
-          image:
-            'https://images.pexels.com/photos/20599712/pexels-photo-20599712/free-photo-of-zhuhai-opera-on-sea-coast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        },
-        {
-          day: '5 ETD',
-          title: '',
-          activities: [
-            'Hotel Breakfast.',
-            'Check out',
-            'Visit the Jewelry Store.',
-            'Transfer to the border and entry to Macau.',
-            'Visit the Venetian Macau.',
-            'Lunch: Lisboeta Macau Meal Voucher.',
-            'Enjoy the Diamond Light Show.',
-            'Visit Macau Parisian Tower (outside view).',
-            'Visit Ruin of St.Paul’s Macau Souvenir Shop.',
-            'Visit Wynn Palace, Performance Lake+ Water Dance Show.',
-            'Transfer to the airport and fly back home.',
-          ],
-          image:
-            'https://images.pexels.com/photos/4369493/pexels-photo-4369493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        },
-      ],
-    },
-    'taiwan': {
-      id: '2',
-      name: 'Taiwan',
-      price: 20200,
-      rating: 4,
-      description: "Experience Taiwan's Rich Culture",
-      longDescription:
-        '<div class="font-bold mb-3 text-2xl">Prosperous Hongkong- Macau Guangdong 4 in 1 5D4N Tour (Sept)</div> <div class="font-semibold mb-4 text-lg">  Traveler: Family, Friends, Cultural Explorers, Tourists and Travelers</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Guangdong</span> - is also famous for its Cantonese culture, including the Cantonese language, cuisine and traditional festivals. The Province attracts business professionals, investors, tourists, and cultural enthusiasts alike, making it a dynamic and diverse area with a global influence.</span> </div> <div class="text-normal"> <span class="text-lg"><span class="font-medium">Macau</span> - the city\'s historic center, a UNESCO World Heritage site, features beautifully preserved colonial architecture, including churches, temples, and fortresses. Macau is also known for its diverse culinary scene, combining Portuguese and Cantonese flavors, making it a haven for food lovers.</span></div>',
-      bestTimeToVisit: 'September',
-      listingDescription:
-        ' <div class="text-xl font-bold">Tour Dates Available:</div> <div class="text-normal font-semibold"> Oct. 24-27</div> <div class="text-normal font-semibold"> Oct. 28-31 +PHP 3,000</div> <div class="text-normal font-semibold"> Oct. 29 - Nov. 1 +PHP 3,000</div> <div class="text-normal font-semibold"> Nov. 15-18</div><div class="text-normal font-semibold"> Nov. 22-25</div><div class="text-normal font-semibold"> Dec. 19-22 +PHP 5,000</div><div class="text-normal font-semibold"> Dec. 25-28 +PHP 5,000</div><div class="text-normal font-semibold"> Dec. 26-29 +PHP 5,000</div> <div class="text-normal font-bold">Child with bed: Same rate as adults</div> <div class="text-normal font-bold">Child without bed(2-5 yrs. old):From USD 229/pax</div>',
-      daysOfStay: '5 Days & 4 Nights',
-      minimumGuests: 'No Minimum Guests',
-      heroImage:
-        'https://images.pexels.com/photos/2410300/pexels-photo-2410300.jpeg',
-      images: [
-        {
-          id: 1,
-          name: 'Seoul Skyline',
-          src: 'https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          alt: 'Seoul city skyline',
-        },
-        {
-          id: 2,
-          name: 'Traditional Palace',
-          src: 'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          alt: 'Traditional Korean palace',
-        },
-        {
-          id: 3,
-          name: 'Street Food',
-          src: 'https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          alt: 'Korean street food',
-        },
-        {
-          id: 4,
-          name: 'Cherry Blossoms',
-          src: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          alt: 'Cherry blossoms in South Korea',
-        },
-      ],
-      details: [
-        {
-          name: 'Inclusions',
-          items: [
-            '3 nights room accommodation based on twin sharing at choice hotel',
-            'Daily breakfast.',
-            'Private coach with English speaking tour guide',
-            'Sightseeing tours as specified above include first way entrance fee needed.',
-            'Meal: 3 lunch as listed, include 1BBQ Buffet.',
-            'Roundtrip airfare via cebu pacific.',
-            '7 kilos hand carry baggage.',
-            'Basic travel insurance.',
-          ],
-        },
-        {
-          name: 'Exclusions',
-          items: [
-            'Expenses of a personal nature like telephone call, mini bar, etc.',
-            'Extra baggage allowance.',
-            'Tips for dinner and guide.',
-            'Single supplement.',
-            'Philippines Travel tax.',
-            'Covid 19 test if needed.',
-          ],
-        },
-        {
-          name: 'Optional package: USD 100/pax',
-          items: [
-            'HZM Bridge Luxury Cruise Tour + Jingshan Park + Cable Car + BBQ Dinner.',
-          ],
-        },
-      ],
-      itinerary: [
-        {
-          day: '1 ETA',
-          title: '',
-          activities: [
-            'Arrive at the airport',
-            'Meet the tour guide at Taoyuan airport.',
-            'Transfer to Taichung.',
-            'Visit Chungshe Flower Garden.',
-            'Visit Sun Moon Lake (including cruise ship).',
-            'Visit Tea Garden',
-            'Free time at Night Market.',
-            'Transfer at hotel and check in.',
-          ],
-          image:
-            'https://images.pexels.com/photos/730778/pexels-photo-730778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        },
-        {
-          day: '2',
-          title: '',
-          activities: [
-            'Hotel Breakfast.',
-            'Transfer to Taipei.',
-            'Visit Cake Shop.',
-            'Visit Chiang Kai-Shek Shilin Residence Garden.',
-            'Enjoy BBQ Buffet Lunch.',
-            'Visit Liberty Square, watch the honor guard perform.',
-            'Visit TAipei 101 (outside view).',
-            'Free shopping in Ximending.',
-            'Transfer to hotel and check in.',
-          ],
-          image:
-            'https://images.pexels.com/photos/1677358/pexels-photo-1677358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        },
-        {
-          day: '3',
-          title: '',
-          activities: [
-            'Hotel Breakfast.',
-            'Proceed to Jade Handcraft.',
-            'Visit Yehliu Geopark.',
-            'Visit Shifen Waterfall',
-            'Visit Shifen Old Street.',
-            'Chinese Lantern (1 lantern for 4pax included).',
-            'Visit a Duty free shop or Cosmetic shop.',
-            'Transfer back to the hotel.',
-          ],
-          image:
-            'https://images.pexels.com/photos/18137607/pexels-photo-18137607/free-photo-of-zhongshan-studio-city-in-china.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        },
-        {
-          day: '4',
-          title: '',
-          activities: [
-            'Hotel Breakfast.',
-            'Transfer to the airport for departure',
-          ],
-          image:
-            'https://images.pexels.com/photos/20599712/pexels-photo-20599712/free-photo-of-zhuhai-opera-on-sea-coast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-        },
-      ],
-    },
+'vietnam-da-nang-4d-3n': {
+    id: "1",
+    name: 'Vietnam Da Nang 4D 3N',
+    price: 32888,
+    rating: 4,
+    description: 'Experience the charm of Da Nang and Hoi An',
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Vietnam Da Nang 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: Family, Friends, Young Couples and Honeymooners, Solo Travelers, Adventure Seekers and Outdoor Enthusiasts</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Da Nang</span> - A vibrant coastal city known for its sandy beaches, rich history, and stunning mountain views. Experience the perfect blend of traditional Vietnamese culture and modern development.</span></div>',
+    bestTimeToVisit: 'February to April and September to October',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="text-normal font-semibold">Apr.26-29 2025</div>' +
+      '<div class="text-normal font-semibold">May 10-13 2025</div>' +
+      '<div class="text-normal font-semibold">May 17-20 2025</div>' +
+      '<div class="text-normal font-semibold">May 24-27 2025</div>' +
+      '<div class="text-normal font-semibold">June.21-24 2025</div>' +
+      '<div class="text-normal font-semibold">Jul.12-15 2025</div>' +
+      '<div class="text-normal font-semibold">Jul.26-29 2025</div>' +
+      '<div class="text-normal font-semibold">Aug.09-12 2025</div>' +
+      '<div class="text-normal font-semibold">Sept.06-09 2025</div>' +
+      '<div class="text-normal font-semibold">Sept.13-16 2025</div>' +
+      '<div class="text-normal font-semibold">Sept.27-30 2025</div>' +
+      '<div class="text-normal font-semibold">Oct.11-14 2025</div>' +
+      '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
+      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 32,388/pax</div>',
+    daysOfStay: '4 Days & 3 Nights',
+    minimumGuests: 'No Minimum Guests',
+    heroImage:
+      'https://images.pexels.com/photos/2582794/pexels-photo-2582794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    images: [
+      {
+        id: 1,
+        name: 'Golden Bridge Ba Na Hills',
+        src: 'https://images.pexels.com/photos/2582794/pexels-photo-2582794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Golden Bridge Ba Na Hills Vietnam'
+      },
+      {
+        id: 2,
+        name: 'Hoi An Ancient Town',
+        src: 'https://images.pexels.com/photos/2796643/pexels-photo-2796643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Hoi An Ancient Town'
+      },
+      {
+        id: 3,
+        name: 'Dragon Bridge Da Nang',
+        src: 'https://images.pexels.com/photos/20346283/pexels-photo-20346283/free-photo-of-flowers-and-da-nang-dragon-bridge-behind.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Dragon Bridge Da Nang'
+      },
+      {
+        id: 4,
+        name: 'Vietnamese Beach',
+        src: 'https://images.pexels.com/photos/29980197/pexels-photo-29980197/free-photo-of-happy-family-on-da-nang-beach-vietnam.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Da Nang Beach'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Economic Airfare & Tax via Cebu Airlines (roundtrip)',
+          '7kg Hand carry only',
+          '3 nights room accommodation based on twin sharing at choice hotel',
+          'Daily hotel breakfast',
+          'Private coach with English Speaking tour guide',
+          'Sightseeing tours as specified above include main entrance ticket',
+          'Meal as listed'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Visa if needed',
+          'Extra baggage allowance',
+          'Travel Insurance with coved 19 coverage',
+          'Single Supplement USD 65/pax',
+          'PH tax 1,620/pax',
+          'Tips for driver & guide: USD 5/pax/day x 4days=USD 20/pax',
+          'Expenses of a personal nature like telephone calls mini bar, etc'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1 ETA',
+        title: 'Day 1: ETA (X/X/X)',
+        activities: [
+          'Upon arrival',
+          'Meet guide at airport',
+          'Transfer to your hotel in Da Nang to rest',
+        ],
+        image: 'https://images.pexels.com/photos/1207515/pexels-photo-1207515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '2',
+        title: 'Day 2: (B/L/D)',
+        activities: [
+          'Breakfast',
+          'Transfer Cam Nam Island coconut village',
+          'We will take a distinctive round bamboo basket boat (can also learn to row this unique boat) & follow local fishermen to enjoy the beautiful scenery on both sides of the Thu Bon River, learn about Vietnamese culture & history',
+          'Transfer to Hi An Ancient own & admire the 17th century architecture of Hoi An Ancient Town',
+          'Visit local Fujian Guild Hall, Feng Xing Ancient House, Japanese The main Bridge, Thu Bon River & a temple dedicated to the god who can suppress water monsters & protect peace Bei Di Zhenwu',
+          'Wander freely in Hoi An Night Market',
+          'After enjoying it, transfer to the hotel',
+          'HOTEL: Grand Hotel or similar 4*'
+        ],
+        image: 'https://images.pexels.com/photos/2796643/pexels-photo-2796643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '3',
+        title: 'Day 3: (B/L/D)',
+        activities: [
+          'Breakfast',
+          'Transfer Ba Na Mountain',
+          'Take the longest single-line record cable car in the world to the mountain. On the mountain we can admire the beautiful of Ancient French Architecture (french Village)',
+          'Enjoy Buffet Lunch',
+          'Take a small on the mountainside to another secret garden in Ba Na Mountain',
+          'There is a winery museum, a garden with hundreds of flowers & a small maze',
+          'The seat of Sakyamuni Buddha',
+          'Pass by the Golden Bridge',
+          'Visit latex shop',
+        ],
+        image: 'https://images.pexels.com/photos/28297412/pexels-photo-28297412/free-photo-of-a-bridge-with-giant-hands-on-it-in-the-fog.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '4 ETD',
+        title: '',
+        activities: [
+          'Breakfast',
+          'Go to the Cham Museum',
+          'Visit Dragon Bridge, Love Bridge, APEC Park in Da Nang',
+          'Shanshui Beach (known as the Gold coast of Vietnam)',
+          'Visit Son Tra Peninsula',
+          'Visit silk shop, treasure shop',
+          'Transfer to the airport'
+        ],
+        image: 'https://images.pexels.com/photos/29980197/pexels-photo-29980197/free-photo-of-happy-family-on-da-nang-beach-vietnam.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      }
+    ],
+  },
+
+  'vietnam-da-nang-5d-4n': {
+    id: "2",
+    name: 'Vietnam Da Nang 5D4N',
+    price: 32888,
+    rating: 4,
+    description: 'Experience the charm of Da Nang and Hoi An',
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Vietnam Da Nang 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: Family, Friends, Young Couples and Honeymooners, Solo Travelers, Adventure Seekers and Outdoor Enthusiasts</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Da Nang</span> - A vibrant coastal city known for its sandy beaches, rich history, and stunning mountain views. Experience the perfect blend of traditional Vietnamese culture and modern development.</span></div>',
+    bestTimeToVisit: 'February to April and September to October',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="text-normal font-semibold">Apr.26-29 2025</div>' +
+      '<div class="text-normal font-semibold">May 10-13 2025</div>' +
+      '<div class="text-normal font-semibold">May 17-20 2025</div>' +
+      '<div class="text-normal font-semibold">May 24-27 2025</div>' +
+      '<div class="text-normal font-semibold">June.21-24 2025</div>' +
+      '<div class="text-normal font-semibold">Jul.12-15 2025</div>' +
+      '<div class="text-normal font-semibold">Jul.26-29 2025</div>' +
+      '<div class="text-normal font-semibold">Aug.09-12 2025</div>' +
+      '<div class="text-normal font-semibold">Sept.06-09 2025</div>' +
+      '<div class="text-normal font-semibold">Sept.13-16 2025</div>' +
+      '<div class="text-normal font-semibold">Sept.27-30 2025</div>' +
+      '<div class="text-normal font-semibold">Oct.11-14 2025</div>' +
+      '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
+      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 32,388/pax</div>',
+    daysOfStay: '4 Days & 3 Nights',
+    minimumGuests: 'No Minimum Guests',
+    heroImage:
+      'https://images.pexels.com/photos/2582794/pexels-photo-2582794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    images: [
+      {
+        id: 1,
+        name: 'Golden Bridge Ba Na Hills',
+        src: 'https://images.pexels.com/photos/2582794/pexels-photo-2582794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Golden Bridge Ba Na Hills Vietnam'
+      },
+      {
+        id: 2,
+        name: 'Hoi An Ancient Town',
+        src: 'https://images.pexels.com/photos/2796643/pexels-photo-2796643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Hoi An Ancient Town'
+      },
+      {
+        id: 3,
+        name: 'Dragon Bridge Da Nang',
+        src: 'https://images.pexels.com/photos/20346283/pexels-photo-20346283/free-photo-of-flowers-and-da-nang-dragon-bridge-behind.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Dragon Bridge Da Nang'
+      },
+      {
+        id: 4,
+        name: 'Vietnamese Beach',
+        src: 'https://images.pexels.com/photos/29980197/pexels-photo-29980197/free-photo-of-happy-family-on-da-nang-beach-vietnam.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Da Nang Beach'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Economic Airfare & Tax via Cebu Airlines (roundtrip)',
+          '7kg Hand carry only',
+          '3 nights room accommodation based on twin sharing at choice hotel',
+          'Daily hotel breakfast',
+          'Private coach with English Speaking tour guide',
+          'Sightseeing tours as specified above include main entrance ticket',
+          'Meal as listed'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Visa if needed',
+          'Extra baggage allowance',
+          'Travel Insurance with coved 19 coverage',
+          'Single Supplement USD 65/pax',
+          'PH tax 1,620/pax',
+          'Tips for driver & guide: USD 5/pax/day x 4days=USD 20/pax',
+          'Expenses of a personal nature like telephone calls mini bar, etc'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1 ETA',
+        title: 'Day 1: ETA (X/X/X)',
+        activities: [
+          'Upon arrival',
+          'Meet guide at airport',
+          'Transfer to your hotel in Da Nang to rest',
+        ],
+        image: 'https://images.pexels.com/photos/1207515/pexels-photo-1207515.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '2',
+        title: 'Day 2: (B/L/D)',
+        activities: [
+          'Breakfast',
+          'Transfer Cam Nam Island coconut village',
+          'We will take a distinctive round bamboo basket boat (can also learn to row this unique boat) & follow local fishermen to enjoy the beautiful scenery on both sides of the Thu Bon River, learn about Vietnamese culture & history',
+          'Transfer to Hi An Ancient own & admire the 17th century architecture of Hoi An Ancient Town',
+          'Visit local Fujian Guild Hall, Feng Xing Ancient House, Japanese The main Bridge, Thu Bon River & a temple dedicated to the god who can suppress water monsters & protect peace Bei Di Zhenwu',
+          'Wander freely in Hoi An Night Market',
+          'After enjoying it, transfer to the hotel',
+          'HOTEL: Grand Hotel or similar 4*'
+        ],
+        image: 'https://images.pexels.com/photos/2796643/pexels-photo-2796643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '3',
+        title: 'Day 3: (B/L/D)',
+        activities: [
+          'Breakfast',
+          'Transfer Ba Na Mountain',
+          'Take the longest single-line record cable car in the world to the mountain. On the mountain we can admire the beautiful of Ancient French Architecture (french Village)',
+          'Enjoy Buffet Lunch',
+          'Take a small on the mountainside to another secret garden in Ba Na Mountain',
+          'There is a winery museum, a garden with hundreds of flowers & a small maze',
+          'The seat of Sakyamuni Buddha',
+          'Pass by the Golden Bridge',
+          'Visit latex shop',
+        ],
+        image: 'https://images.pexels.com/photos/28297412/pexels-photo-28297412/free-photo-of-a-bridge-with-giant-hands-on-it-in-the-fog.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '4 ETD',
+        title: '',
+        activities: [
+          'Breakfast',
+          'Go to the Cham Museum',
+          'Visit Dragon Bridge, Love Bridge, APEC Park in Da Nang',
+          'Shanshui Beach (known as the Gold coast of Vietnam)',
+          'Visit Son Tra Peninsula',
+          'Visit silk shop, treasure shop',
+          'Transfer to the airport'
+        ],
+        image: 'https://images.pexels.com/photos/29980197/pexels-photo-29980197/free-photo-of-happy-family-on-da-nang-beach-vietnam.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      }
+    ],
+  },
+
+'taiwan-taipei-taichung-4d-3n': {
+    id: '4',
+    name: 'Taiwan Taipei Taichung',
+    price: 29988,
+    rating: 4,
+    description: "Experience Taiwan's Rich Culture",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Taiwan Taipei Taichung 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: Families, Friends, Cultural Explorers, Food Enthusiasts</div>' +
+      '<div class="text-lg font-bold mb-2">Destination:</div>' +
+      '<div class="text-normal mb-3">Experience the perfect blend of modern city life and natural wonders in Taiwan. From the vibrant streets of Taipei to the serene Sun Moon Lake in Taichung, discover Taiwan\'s rich cultural heritage and stunning landscapes.</div>',
+    bestTimeToVisit: 'March to May',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="text-normal font-semibold">April 06-09 2025</div>' +
+      '<div class="text-normal font-semibold">April 10-13 2025</div>' +
+      '<div class="text-normal font-semibold">April 26-29 2025</div>' +
+      '<div class="text-normal font-semibold">May 24-27 2025</div>' +
+      '<div class="text-normal font-semibold">June 13-16 2025</div>' +
+      '<div class="text-normal font-semibold">June 19-22 2025</div>' +
+      '<div class="text-normal font-semibold">June 27-30 2025</div>' +
+      '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
+      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 29,988/pax</div>',
+    daysOfStay: '4 Days & 3 Nights',
+    minimumGuests: 'No Minimum Guests',
+    heroImage: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    images: [
+      {
+        id: 1,
+        name: 'Taipei 101',
+        src: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Taipei 101 building'
+      },
+      {
+        id: 2,
+        name: 'Sun Moon Lake',
+        src: 'https://images.pexels.com/photos/5825608/pexels-photo-5825608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Sun Moon Lake Taichung'
+      },
+      {
+        id: 3,
+        name: 'Yehliu Geopark',
+        src: 'https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Yehliu Geopark rock formations'
+      },
+      {
+        id: 4,
+        name: 'Shifen Old Street',
+        src: 'https://images.pexels.com/photos/2943842/pexels-photo-2943842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Shifen Old Street with lanterns'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          '3 Nights room accommodation based on twin sharing',
+          'Daily breakfast',
+          'Sightseeing tours as specified above include the first way entrance fee needed',
+          'Private coach with English speaking tour guide',
+          'Meal as listed',
+          'Travel Insurance',
+          'Roundtrip Airfare via Cebu pacific',
+          '7kg hand carry only'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Expenses of a personal nature like telephone calls, mini bar, etc.',
+          'Tips for driver & guide',
+          'Philippines Travel Tax: Php1620/pax',
+          'Single supplement',
+          'Covid related procedures',
+          'Baggage allowance'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival Day (X/L/X)',
+        activities: [
+          'ETA 5J 312 MNL-TPE 0700-0915',
+          'Arrival',
+          'Meet the tour guide at Taoyuan airport',
+          'Transfer to Taichung',
+          'Visit Chungshe Flower Garden',
+          'Visit Sun Moon Lake (included cruise ship)',
+          'Visit Tea Garden',
+          'Free time at Night Market',
+          'Transfer to hotel & check in',
+          'HOTEL: Hotel in Shangrao 5*'
+        ],
+        image: 'https://images.pexels.com/photos/5825608/pexels-photo-5825608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '2',
+        title: 'Taipei Tour (B/L/X)',
+        activities: [
+          'Breakfast',
+          'Transfer to Taipei',
+          'Visit Cake Shop',
+          'Visit LOHAS Park (enjoy beautiful cherry blossom)',
+          'Enjoy BBQ Buffet Lunch',
+          'Visit Liberty Square, watch the honor guard perform',
+          'Visit Taipei 101 (outside view)',
+          'Free shopping in Ximending',
+          'Transfer back to hotel',
+          'HOTEL: Hotel in Taipei 4*'
+        ],
+        image: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '3',
+        title: 'Yehliu & Shifen Tour (B/L/X)',
+        activities: [
+          'Breakfast',
+          'Proceed to Jade Handicraft',
+          'Visit Yehliu Geopark',
+          'Visit Shifen Waterfall',
+          'Visit Shifen Old Street',
+          'Chinese Lantern (1 lantern for 4pax included)',
+          'Visit Duty free shop or cosmetic shop',
+          'Transfer to hotel & check in',
+          'HOTEL: Hotel in Taipei 4*'
+        ],
+        image: 'https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '4',
+        title: 'Departure (B/X/X)',
+        activities: [
+          'Breakfast',
+          'Transfer to the airport',
+          'ETD 5J 313 TPE-MNL 1030-1305'
+        ],
+        image: 'https://images.pexels.com/photos/2943842/pexels-photo-2943842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      }
+    ]
+  },
+    
+
+  'taiwan-alishan-kaohsiung-4d-3n': {
+    id: '4',
+    name: 'Taiwan Taipei Taichung',
+    price: 29988,
+    rating: 4,
+    description: "Experience Taiwan's Rich Culture",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Taiwan Taipei Taichung 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: Families, Friends, Cultural Explorers, Food Enthusiasts</div>' +
+      '<div class="text-lg font-bold mb-2">Destination:</div>' +
+      '<div class="text-normal mb-3">Experience the perfect blend of modern city life and natural wonders in Taiwan. From the vibrant streets of Taipei to the serene Sun Moon Lake in Taichung, discover Taiwan\'s rich cultural heritage and stunning landscapes.</div>',
+    bestTimeToVisit: 'March to May',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="text-normal font-semibold">April 06-09 2025</div>' +
+      '<div class="text-normal font-semibold">April 10-13 2025</div>' +
+      '<div class="text-normal font-semibold">April 26-29 2025</div>' +
+      '<div class="text-normal font-semibold">May 24-27 2025</div>' +
+      '<div class="text-normal font-semibold">June 13-16 2025</div>' +
+      '<div class="text-normal font-semibold">June 19-22 2025</div>' +
+      '<div class="text-normal font-semibold">June 27-30 2025</div>' +
+      '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
+      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 29,988/pax</div>',
+    daysOfStay: '4 Days & 3 Nights',
+    minimumGuests: 'No Minimum Guests',
+    heroImage: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    images: [
+      {
+        id: 1,
+        name: 'Taipei 101',
+        src: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Taipei 101 building'
+      },
+      {
+        id: 2,
+        name: 'Sun Moon Lake',
+        src: 'https://images.pexels.com/photos/5825608/pexels-photo-5825608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Sun Moon Lake Taichung'
+      },
+      {
+        id: 3,
+        name: 'Yehliu Geopark',
+        src: 'https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Yehliu Geopark rock formations'
+      },
+      {
+        id: 4,
+        name: 'Shifen Old Street',
+        src: 'https://images.pexels.com/photos/2943842/pexels-photo-2943842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Shifen Old Street with lanterns'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          '3 Nights room accommodation based on twin sharing',
+          'Daily breakfast',
+          'Sightseeing tours as specified above include the first way entrance fee needed',
+          'Private coach with English speaking tour guide',
+          'Meal as listed',
+          'Travel Insurance',
+          'Roundtrip Airfare via Cebu pacific',
+          '7kg hand carry only'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Expenses of a personal nature like telephone calls, mini bar, etc.',
+          'Tips for driver & guide',
+          'Philippines Travel Tax: Php1620/pax',
+          'Single supplement',
+          'Covid related procedures',
+          'Baggage allowance'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival Day (X/L/X)',
+        activities: [
+          'ETA 5J 312 MNL-TPE 0700-0915',
+          'Arrival',
+          'Meet the tour guide at Taoyuan airport',
+          'Transfer to Taichung',
+          'Visit Chungshe Flower Garden',
+          'Visit Sun Moon Lake (included cruise ship)',
+          'Visit Tea Garden',
+          'Free time at Night Market',
+          'Transfer to hotel & check in',
+          'HOTEL: Hotel in Shangrao 5*'
+        ],
+        image: 'https://images.pexels.com/photos/5825608/pexels-photo-5825608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '2',
+        title: 'Taipei Tour (B/L/X)',
+        activities: [
+          'Breakfast',
+          'Transfer to Taipei',
+          'Visit Cake Shop',
+          'Visit LOHAS Park (enjoy beautiful cherry blossom)',
+          'Enjoy BBQ Buffet Lunch',
+          'Visit Liberty Square, watch the honor guard perform',
+          'Visit Taipei 101 (outside view)',
+          'Free shopping in Ximending',
+          'Transfer back to hotel',
+          'HOTEL: Hotel in Taipei 4*'
+        ],
+        image: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '3',
+        title: 'Yehliu & Shifen Tour (B/L/X)',
+        activities: [
+          'Breakfast',
+          'Proceed to Jade Handicraft',
+          'Visit Yehliu Geopark',
+          'Visit Shifen Waterfall',
+          'Visit Shifen Old Street',
+          'Chinese Lantern (1 lantern for 4pax included)',
+          'Visit Duty free shop or cosmetic shop',
+          'Transfer to hotel & check in',
+          'HOTEL: Hotel in Taipei 4*'
+        ],
+        image: 'https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '4',
+        title: 'Departure (B/X/X)',
+        activities: [
+          'Breakfast',
+          'Transfer to the airport',
+          'ETD 5J 313 TPE-MNL 1030-1305'
+        ],
+        image: 'https://images.pexels.com/photos/2943842/pexels-photo-2943842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      }
+    ]
+  },
+
+
     'japan': {
       id: '3',
       name: 'Japan',
@@ -517,7 +791,7 @@ export const travelPackages = {
             'Transfer to Seoul.',
             'Visit COEX Starfield Library.',
             'Visit Kpop Road.',
-            'N’seoul Tower by Public EV shuttle bus (exclude lift).',
+            "N'seoul Tower by Public EV shuttle bus (exclude lift).",
             'Transfer to Incheon and check in at the hotel.',
           ],
           image:
@@ -581,9 +855,9 @@ export const travelPackages = {
         },
       ],
     },
-    'thailand': {
+    'legendary-thailand': {
   id: '4',
-  name: 'Thailand',
+  name: 'Legendary Thailand',
   price: 27888,
   rating: 5,
   description:
@@ -663,7 +937,7 @@ export const travelPackages = {
       itinerary: [
         {
           day: '1',
-          title: '',
+          title: 'Day 1: ETA (X/X/X)',
           activities: [
             'Arrival at BKK Airport',
             'Meet the tour guide.',
@@ -678,7 +952,7 @@ export const travelPackages = {
         },
         {
           day: '2',
-          title: '',
+          title: 'Day 2: ETA (B/L/D)',
           activities: [
             'Hotel breakfast.',
             'Visit Nong Nooch Tropical Garden with Buffet Lunch, Elephant Show',
@@ -691,7 +965,7 @@ export const travelPackages = {
         },
         {
           day: '3',
-          title: '',
+          title: 'Day 3: ETA (B/L/D)',
           activities: [
             'Hotel breakfast.',
             'Transfer to Bangkok',
@@ -706,7 +980,7 @@ export const travelPackages = {
         
         {
           day: '4',
-          title: '',
+          title: 'Day 4: ETA (B/L/D)',
           activities: [
             'Hotel breakfast.',
             'Transfer to the airport for flight back.',
@@ -716,6 +990,8 @@ export const travelPackages = {
         },
       ],
     },
+
+
     'singapore': {
   id: '5',
   name: 'Singapore + Kuala Lumpur',
@@ -799,7 +1075,7 @@ export const travelPackages = {
         'Day 1: Arrival in Singapore, Half day city tour including Suntec City, Fountain of Wealth, Merlion Park, and China Town.',
         'Day 2: Full day at Universal Studios Singapore.',
         'Day 3: Transfer to Kuala Lumpur, Check in at Kuala Lumpur hotel.',
-        'Day 4: Kuala Lumpur City Tour including KLCC Petronas Twin Tower, Chocolate Gallery, King’s Palace, and Sultan Abdul Samad Building.',
+        "Day 4: Kuala Lumpur City Tour including KLCC Petronas Twin Tower, Chocolate Gallery, King's Palace, and Sultan Abdul Samad Building.",
         'Day 5: Departure from Kuala Lumpur International Airport.',
       ],
     },
@@ -813,7 +1089,7 @@ export const travelPackages = {
         'Proceed to Half day city tour',
         'Pass by Suntec City',
         'En route, catch a glimpse of the Fountain of wealth',
-        'Pass by Padong (Saint Andrew’s Cathedral, City Hall, the Old Supreme Court Building and the City Hall MRT Station)',
+        "Pass by Padong (Saint Andrew's Cathedral, City Hall, the Old Supreme Court Building and the City Hall MRT Station)",
         'Visit Merlion Park',
         'Visit China Town & Chinese Temple',
         'Back to hotel',
@@ -852,7 +1128,7 @@ export const travelPackages = {
         'Garden City of Lights',
         'KLCC Petronas Twin Tower (photo stop)',
         'Chocolate Gallery',
-        'King’s Palace',
+        "King's Palace",
         'National Monument',
         'Independence Square',
         'Sultan Abdul Samad heritage Building',
@@ -1329,5 +1605,163 @@ export const travelPackages = {
 //     },
 //   ],
 // }
+
+
+// 'prosperous-hongkong': {
+//     id: "1",
+//     name: 'Prosperous Hongkong',
+//     price: 20200,
+//     rating: 4,
+//     description: 'A fusion of dazzling innovation and rich tradition',
+//     longDescription:
+//       '<div class="font-bold mb-3 text-2xl">Prosperous Hongkong- Macau Guangdong 4 in 1 5D4N Tour (Sept)</div> <div class="font-semibold mb-4 text-lg">  Traveler: Families with Children, Friends, Young Couples and Honeymooners, Solo Travelers, Adventure Seekers and Outdoor Enthusiasts</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Guangdong</span> - is also famous for its Cantonese culture, including the Cantonese language, cuisine and traditional festivals. The Province attracts business professionals, investors, tourists, and cultural enthusiasts alike, making it a dynamic and diverse area with a global influence.</span> </div> <div class="text-normal"> <span class="text-lg"><span class="font-medium">Macau</span> - the city\'s historic center, a UNESCO World Heritage site, features beautifully preserved colonial architecture, including churches, temples, and fortresses. Macau is also known for its diverse culinary scene, combining Portuguese and Cantonese flavors, making it a haven for food lovers.</span></div>',
+//     bestTimeToVisit: 'September',
+//     listingDescription:
+//       ' <div class="text-xl font-bold">Tour Dates Available:</div> <div class="text-normal font-semibold"> Sept. 12-16</div> <div class="text-normal font-semibold"> Sept. 19-23</div> <div class="text-normal font-bold">Child with bed(6-17 yrs.old):same rate as adults</div> <div class="text-normal font-bold">Child without bed(2-5 yrs. old):From USD 229/pax</div>',
+//     daysOfStay: '5 Days & 4 Nights',
+//     minimumGuests: 'No Minimum Guests',
+//     heroImage:
+//       'https://images.pexels.com/photos/2410300/pexels-photo-2410300.jpeg',
+//     images: [
+//       {
+//         id: 1,
+//         name: 'Seoul Skyline',
+//         src: 'https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//         alt: 'Seoul city skyline',
+//       },
+//       {
+//         id: 2,
+//         name: 'Traditional Palace',
+//         src: 'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//         alt: 'Traditional Korean palace',
+//       },
+//       {
+//         id: 3,
+//         name: 'Street Food',
+//         src: 'https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//         alt: 'Korean street food',
+//       },
+//       {
+//         id: 4,
+//         name: 'Cherry Blossoms',
+//         src: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//         alt: 'Cherry blossoms in South Korea',
+//       },
+//     ],
+//     details: [
+//       {
+//         name: 'Inclusions',
+//         items: [
+//           '4 Nights room accommodation based on twin sharing at a choice hotel.',
+//           'Daily hotel breakfast.',
+//           'Private coach with an English speaking tour guide.',
+//           'Sightseeing tours as specified above include the first way entrance fee needed.',
+//           'Meal as listed.',
+//           'Roundtrip airfare via Cebu Pacific (7kg. Hand Carry only).',
+//           '144 Group visa.',
+//         ],
+//       },
+//       {
+//         name: 'Exclusions',
+//         items: [
+//           'Expenses of a personal nature like telephone calls, mini bar, etc.',
+//           'Extra baggage allowance.',
+//           'PH Travel Tax.',
+//           'Optional Tour.',
+//           'Tips for driver and guide: USD25/pax',
+//           'Single supplement: USD99/pax',
+//           'Covid-19 test if needed.',
+//         ],
+//       },
+//       {
+//         name: 'Optional package: USD 100/pax',
+//         items: [
+//           'HZM Bridge Luxury Cruise Tour + Jingshan Park + Cable Car + BBQ Dinner.',
+//         ],
+//       },
+//     ],
+//     itinerary: [
+//       {
+//         day: '1 ETA',
+//         title: 'Arrive in Macau',
+//         activities: [
+//           'Meet the Macau guide at the airport.',
+//           'Transfer to Macau-Zhuhai Port (queued yourself to pass the border).',
+//           'Entry to Zhuhai and meet the Guangdong guide.',
+//           'Transfer to hotel and check in.',
+//         ],
+//         image:
+//           'https://images.pexels.com/photos/730778/pexels-photo-730778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//       },
+//       {
+//         day: '2',
+//         title: '',
+//         activities: [
+//           'Hotel Breakfast.',
+//           'Check out and transfer to Guangzhou.',
+//           'Take Zuiguanguang Tram',
+//           'Visit Haixinsha Asian Games Park (tram tour).',
+//           'Visit Canton Tower (outside view).',
+//           'Visit Haixin Bridge.',
+//           'Visit Huacheng Square.',
+//           'Transfer to Hotel and Check in.',
+//           'Special Complementary Romantic Show of Guangdong: ‘Eternal Show'
+//         ],
+//         image:
+//           'https://images.pexels.com/photos/1677358/pexels-photo-1677358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//       },
+//       {
+//         day: '3',
+//         title: '',
+//         activities: [
+//           'Hotel Breakfast.',
+//           'Check out and Transfer to Zhongshan.',
+//           'Visit Sun Yat-sen's Former Residence.',
+//           'Visit Latex Shop.',
+//           'Visit Zhuhai Fisher Girl, Lovers Road.',
+//           'Visit Haitian Posthouse Landscape Trestle Road.',
+//           'Transfer to hotel and check in.',
+//         ],
+//         image:
+//           'https://images.pexels.com/photos/18137607/pexels-photo-18137607/free-photo-of-zhongshan-studio-city-in-china.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//       },
+//       {
+//         day: '4',
+//         title: '',
+//         activities: [
+//           'Hotel Breakfast.',
+//           'Visit Zhuhai Grand Theater.',
+//           'Look far Hong Kong-Zhuhai-Macau Bridge.',
+//           'Visit a Chinese Medicine Shop.',
+//           'Visit New Yuan Ming Palace.',
+//           'Visit the Silk Store.',
+//           'Visit Huangyucheng Shopping Mall.',
+//           'Back to the hotel.',
+//         ],
+//         image:
+//           'https://images.pexels.com/photos/20599712/pexels-photo-20599712/free-photo-of-zhuhai-opera-on-sea-coast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//       },
+//       {
+//         day: '5 ETD',
+//         title: '',
+//         activities: [
+//           'Hotel Breakfast.',
+//           'Check out',
+//           'Visit the Jewelry Store.',
+//           'Transfer to the border and entry to Macau.',
+//           'Visit the Venetian Macau.',
+//           'Lunch: Lisboeta Macau Meal Voucher.',
+//           'Enjoy the Diamond Light Show.',
+//           'Visit Macau Parisian Tower (outside view).',
+//           'Visit Ruin of St.Paul's Macau Souvenir Shop.',
+//           'Visit Wynn Palace, Performance Lake+ Water Dance Show.',
+//           'Transfer to the airport and fly back home.',
+//         ],
+//         image:
+//           'https://images.pexels.com/photos/4369493/pexels-photo-4369493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+//       },
+//     ],
+//   },
+
    
   }
