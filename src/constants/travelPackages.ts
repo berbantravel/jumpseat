@@ -281,197 +281,190 @@ export const travelPackages = {
     ],
   },
 
-'taiwan-taipei-taichung-4d-3n': {
-    id: '4',
-    name: 'Taiwan Taipei Taichung',
-    price: 29988,
-    rating: 4,
-    description: "Experience Taiwan's Rich Culture",
-    longDescription:
-      '<div class="font-bold mb-3 text-2xl">Taiwan Taipei Taichung 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: Families, Friends, Cultural Explorers, Food Enthusiasts</div>' +
-      '<div class="text-lg font-bold mb-2">Destination:</div>' +
-      '<div class="text-normal mb-3">Experience the perfect blend of modern city life and natural wonders in Taiwan. From the vibrant streets of Taipei to the serene Sun Moon Lake in Taichung, discover Taiwan\'s rich cultural heritage and stunning landscapes.</div>',
-    bestTimeToVisit: 'March to May',
-    listingDescription:
-      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
-      '<div class="text-normal font-semibold">April 06-09 2025</div>' +
-      '<div class="text-normal font-semibold">April 10-13 2025</div>' +
-      '<div class="text-normal font-semibold">April 26-29 2025</div>' +
-      '<div class="text-normal font-semibold">May 24-27 2025</div>' +
-      '<div class="text-normal font-semibold">June 13-16 2025</div>' +
-      '<div class="text-normal font-semibold">June 19-22 2025</div>' +
-      '<div class="text-normal font-semibold">June 27-30 2025</div>' +
-      '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
-      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 29,988/pax</div>',
-    daysOfStay: '4 Days & 3 Nights',
-    minimumGuests: 'No Minimum Guests',
-    heroImage: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    images: [
-      {
-        id: 1,
-        name: 'Taipei 101',
-        src: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        alt: 'Taipei 101 building'
-      },
-      {
-        id: 2,
-        name: 'Sun Moon Lake',
-        src: 'https://images.pexels.com/photos/5825608/pexels-photo-5825608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        alt: 'Sun Moon Lake Taichung'
-      },
-      {
-        id: 3,
-        name: 'Yehliu Geopark',
-        src: 'https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        alt: 'Yehliu Geopark rock formations'
-      },
-      {
-        id: 4,
-        name: 'Shifen Old Street',
-        src: 'https://images.pexels.com/photos/2943842/pexels-photo-2943842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        alt: 'Shifen Old Street with lanterns'
-      }
-    ],
-    details: [
-      {
-        name: 'Inclusions',
-        items: [
-          '3 Nights room accommodation based on twin sharing',
-          'Daily breakfast',
-          'Sightseeing tours as specified above include the first way entrance fee needed',
-          'Private coach with English speaking tour guide',
-          'Meal as listed',
-          'Travel Insurance',
-          'Roundtrip Airfare via Cebu pacific',
-          '7kg hand carry only'
-        ]
-      },
-      {
-        name: 'Exclusions',
-        items: [
-          'Expenses of a personal nature like telephone calls, mini bar, etc.',
-          'Tips for driver & guide',
-          'Philippines Travel Tax: Php1620/pax',
-          'Single supplement',
-          'Covid related procedures',
-          'Baggage allowance'
-        ]
-      }
-    ],
-    itinerary: [
-      {
-        day: '1',
-        title: 'Arrival Day (X/L/X)',
-        activities: [
-          'ETA 5J 312 MNL-TPE 0700-0915',
-          'Arrival',
-          'Meet the tour guide at Taoyuan airport',
-          'Transfer to Taichung',
-          'Visit Chungshe Flower Garden',
-          'Visit Sun Moon Lake (included cruise ship)',
-          'Visit Tea Garden',
-          'Free time at Night Market',
-          'Transfer to hotel & check in',
-          'HOTEL: Hotel in Shangrao 5*'
-        ],
-        image: 'https://images.pexels.com/photos/5825608/pexels-photo-5825608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-      },
-      {
-        day: '2',
-        title: 'Taipei Tour (B/L/X)',
-        activities: [
-          'Breakfast',
-          'Transfer to Taipei',
-          'Visit Cake Shop',
-          'Visit LOHAS Park (enjoy beautiful cherry blossom)',
-          'Enjoy BBQ Buffet Lunch',
-          'Visit Liberty Square, watch the honor guard perform',
-          'Visit Taipei 101 (outside view)',
-          'Free shopping in Ximending',
-          'Transfer back to hotel',
-          'HOTEL: Hotel in Taipei 4*'
-        ],
-        image: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-      },
-      {
-        day: '3',
-        title: 'Yehliu & Shifen Tour (B/L/X)',
-        activities: [
-          'Breakfast',
-          'Proceed to Jade Handicraft',
-          'Visit Yehliu Geopark',
-          'Visit Shifen Waterfall',
-          'Visit Shifen Old Street',
-          'Chinese Lantern (1 lantern for 4pax included)',
-          'Visit Duty free shop or cosmetic shop',
-          'Transfer to hotel & check in',
-          'HOTEL: Hotel in Taipei 4*'
-        ],
-        image: 'https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-      },
-      {
-        day: '4',
-        title: 'Departure (B/X/X)',
-        activities: [
-          'Breakfast',
-          'Transfer to the airport',
-          'ETD 5J 313 TPE-MNL 1030-1305'
-        ],
-        image: 'https://images.pexels.com/photos/2943842/pexels-photo-2943842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
-      }
-    ]
+    'taiwan-taipei-taichung-4d-3n': {
+      id: '4',
+      name: 'Taiwan Taipei Taichung',
+      price: 30988, 
+      rating: 4,
+      description: "Experience Taiwan's Rich Culture",
+      longDescription:
+        '<div class="font-bold mb-3 text-2xl">Taiwan Taipei Taichung 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: Families, Friends, Cultural Explorers, Food Enthusiasts</div>' +
+        '<div class="text-lg font-bold mb-2">Destination:</div>' +
+        '<div class="text-normal mb-3">Experience the perfect blend of modern city life and natural wonders in Taiwan. From the vibrant streets of Taipei to the serene Sun Moon Lake in Taichung, discover Taiwan\'s rich cultural heritage and stunning landscapes.</div>',
+      bestTimeToVisit: 'March to May',
+      listingDescription:
+        '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+        '<div class="text-normal font-semibold">April 26-29 2025</div>' +
+        '<div class="text-normal font-semibold">May 24-27 2025</div>' +
+        '<div class="text-normal font-semibold">June 13-16 2025</div>' +
+        '<div class="text-normal font-semibold">June 19-22 2025</div>' +
+        '<div class="text-normal font-semibold">June 27-30 2025</div>' +
+        '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
+        '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 29,988/pax</div>',
+      daysOfStay: '4 Days & 3 Nights',
+      minimumGuests: 'No Minimum Guests',
+      heroImage: 'https://images.pexels.com/photos/1003611/pexels-photo-1003611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      images: [
+        {
+          id: 1,
+          name: 'Taipei 101',
+          src: 'https://images.pexels.com/photos/1003611/pexels-photo-1003611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+          alt: 'Taipei 101 building'
+        },
+        {
+          id: 2,
+          name: 'Taipei 101',
+          src: 'https://images.pexels.com/photos/14835186/pexels-photo-14835186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+          alt: 'Taipei 101'
+        },
+        {
+          id: 3,
+          name: 'Yehliu Geopark',
+          src: 'https://images.pexels.com/photos/15663351/pexels-photo-15663351/free-photo-of-eroded-rock-formation.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+          alt: 'Yehliu Geopark rock formations'
+        },
+        {
+          id: 4,
+          name: 'Shifen Waterfall',
+          src: 'https://images.pexels.com/photos/981148/pexels-photo-981148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+          alt: 'Shifen Waterfall'
+        }
+      ],
+      details: [
+        {
+          name: 'Inclusions',
+          items: [
+            '3 Nights room accommodation based on twin sharing',
+            'Daily breakfast',
+            'Sightseeing tours as specified above include the first way entrance fee needed',
+            'Private coach with English speaking tour guide',
+            'Meal as listed',
+            'Travel Insurance',
+            'Roundtrip Airfare via Cebu pacific',
+            '7kg hand carry only'
+          ]
+        },
+        {
+          name: 'Exclusions',
+          items: [
+            'Expenses of a personal nature like telephone calls, mini bar, etc.',
+            'Tips for driver & guide',
+            'Philippines Travel Tax: Php1620/pax',
+            'Single supplement',
+            'Covid related procedures',
+            'Baggage allowance'
+          ]
+        }
+      ],
+      itinerary: [
+        {
+          day: '1',
+          title: '',
+          activities: [
+            'Arrival',
+            'Meet the tour guide at Taoyuan airport',
+            'Transfer to Taichung',
+            'Visit Chungshe Flower Garden',
+            'Visit Sun Moon Lake (included cruise ship)',
+            'Visit Tea Garden',
+            'Free time at Night Market',
+            'Transfer to hotel & check in',
+          ],
+          image: 'https://images.pexels.com/photos/1003611/pexels-photo-1003611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+        },
+        {
+          day: '2',
+          title: '(B/L/X)',
+          activities: [
+            'Breakfast',
+            'Transfer to Taipei',
+            'Visit Cake Shop',
+            'Visit LOHAS Park (enjoy beautiful cherry blossom)',
+            'Enjoy BBQ Buffet Lunch',
+            'Visit Liberty Square, watch the honor guard perform',
+            'Visit Taipei 101 (outside view)',
+            'Free shopping in Ximending',
+            'Transfer back to hotel',
+          ],
+          image: 'https://images.pexels.com/photos/14835186/pexels-photo-14835186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+        },
+        {
+          day: '3',
+          title: '(B/L/X)',
+          activities: [
+            'Breakfast',
+            'Proceed to Jade Handicraft',
+            'Visit Yehliu Geopark',
+            'Visit Shifen Waterfall',
+            'Visit Shifen Old Street',
+            'Chinese Lantern (1 lantern for 4pax included)',
+            'Visit Duty free shop or cosmetic shop',
+            'Transfer to hotel & check in',
+          ],
+          image: 'https://images.pexels.com/photos/15663351/pexels-photo-15663351/free-photo-of-eroded-rock-formation.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+        },
+        {
+          day: '4',
+          title: 'Departure (B/X/X)',
+          activities: [
+            'Breakfast',
+            'Transfer to the airport'
+          ],
+          image: 'https://images.pexels.com/photos/13203013/pexels-photo-13203013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+        }
+      ]
   },
     
 
   'taiwan-alishan-kaohsiung-4d-3n': {
-    id: '4',
-    name: 'Taiwan Taipei Taichung',
-    price: 29988,
+    id: '5', 
+    name: 'Taiwan Alishan Kaohsiung',
+    price: 30564,
     rating: 4,
-    description: "Experience Taiwan's Rich Culture",
+    description: "Explore Alishan's Nature & Kaohsiung's Culture",
     longDescription:
-      '<div class="font-bold mb-3 text-2xl">Taiwan Taipei Taichung 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: Families, Friends, Cultural Explorers, Food Enthusiasts</div>' +
+      '<div class="font-bold mb-3 text-2xl">Alishan Kaohsiung 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: Nature Lovers, Cultural Explorers, Families</div>' +
       '<div class="text-lg font-bold mb-2">Destination:</div>' +
-      '<div class="text-normal mb-3">Experience the perfect blend of modern city life and natural wonders in Taiwan. From the vibrant streets of Taipei to the serene Sun Moon Lake in Taichung, discover Taiwan\'s rich cultural heritage and stunning landscapes.</div>',
-    bestTimeToVisit: 'March to May',
+      '<div class="text-normal mb-3">Experience the breathtaking mountain scenery of Alishan and the vibrant coastal city of Kaohsiung. From misty forests to cultural landmarks, discover Taiwan\'s diverse beauty.</div>',
+    bestTimeToVisit: 'April to June',
     listingDescription:
       '<div class="text-xl font-bold">Tour Dates Available:</div>' +
-      '<div class="text-normal font-semibold">April 06-09 2025</div>' +
-      '<div class="text-normal font-semibold">April 10-13 2025</div>' +
-      '<div class="text-normal font-semibold">April 26-29 2025</div>' +
-      '<div class="text-normal font-semibold">May 24-27 2025</div>' +
+      '<div class="text-normal font-semibold">April 11-14 2025</div>' +
+      '<div class="text-normal font-semibold">April 25-28 2025</div>' +
+      '<div class="text-normal font-semibold">May 02-05 2025</div>' +
+      '<div class="text-normal font-semibold">May 16-19 2025</div>' +
+      '<div class="text-normal font-semibold">May 23-26 2025</div>' +
+      '<div class="text-normal font-semibold">June 06-09 2025</div>' +
       '<div class="text-normal font-semibold">June 13-16 2025</div>' +
-      '<div class="text-normal font-semibold">June 19-22 2025</div>' +
-      '<div class="text-normal font-semibold">June 27-30 2025</div>' +
       '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
-      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 29,988/pax</div>',
+      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 29,564/pax</div>',
     daysOfStay: '4 Days & 3 Nights',
     minimumGuests: 'No Minimum Guests',
-    heroImage: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    heroImage: 'https://images.pexels.com/photos/1470405/pexels-photo-1470405.jpeg', // Sample Alishan image
     images: [
       {
         id: 1,
-        name: 'Taipei 101',
-        src: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        alt: 'Taipei 101 building'
+        name: 'Alishan Forest',
+        src: 'https://images.pexels.com/photos/16850680/pexels-photo-16850680/free-photo-of-trees-in-a-forest.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Alishan forest railway'
       },
       {
         id: 2,
-        name: 'Sun Moon Lake',
-        src: 'https://images.pexels.com/photos/5825608/pexels-photo-5825608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        alt: 'Sun Moon Lake Taichung'
+        name: 'Kaohsiung Lotus Pond',
+        src: 'https://images.unsplash.com/photo-1676705323675-320778422d30?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Lotus Pond Kaohsiung'
       },
       {
         id: 3,
-        name: 'Yehliu Geopark',
-        src: 'https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        alt: 'Yehliu Geopark rock formations'
+        name: 'Alishan Sunrise',
+        src: 'https://images.pexels.com/photos/9151506/pexels-photo-9151506.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Alishan sunrise view'
       },
       {
         id: 4,
-        name: 'Shifen Old Street',
-        src: 'https://images.pexels.com/photos/2943842/pexels-photo-2943842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-        alt: 'Shifen Old Street with lanterns'
+        name: 'Pier 2 Art Center',
+        src: 'https://images.unsplash.com/photo-1598919167604-fb86a732b787?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Kaohsiung art installations'
       }
     ],
     details: [
@@ -492,10 +485,10 @@ export const travelPackages = {
         name: 'Exclusions',
         items: [
           'Expenses of a personal nature like telephone calls, mini bar, etc.',
-          'Tips for driver & guide',
+          'Tips for driver & guide: USD20/pax',
           'Philippines Travel Tax: Php1620/pax',
-          'Single supplement',
-          'Covid related procedures',
+          'Single supplement: USD129/pax',
+          'Covid 19 test if needed',
           'Baggage allowance'
         ]
       }
@@ -503,67 +496,58 @@ export const travelPackages = {
     itinerary: [
       {
         day: '1',
-        title: 'Arrival Day (X/L/X)',
+        title: '',
         activities: [
-          'ETA 5J 312 MNL-TPE 0700-0915',
           'Arrival',
-          'Meet the tour guide at Taoyuan airport',
-          'Transfer to Taichung',
-          'Visit Chungshe Flower Garden',
-          'Visit Sun Moon Lake (included cruise ship)',
-          'Visit Tea Garden',
-          'Free time at Night Market',
-          'Transfer to hotel & check in',
-          'HOTEL: Hotel in Shangrao 5*'
+          'Meet the tour guide at Kaohsiung airport',
+          'Transfer to Chiayi',
+          'Check in at hotel',
         ],
-        image: 'https://images.pexels.com/photos/5825608/pexels-photo-5825608.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+        image: 'https://images.pexels.com/photos/11150272/pexels-photo-11150272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
       },
       {
         day: '2',
-        title: 'Taipei Tour (B/L/X)',
+        title: '(B/L/X)',
         activities: [
           'Breakfast',
-          'Transfer to Taipei',
+          'Visit Alishan National Forest Recreation Area, take the mountain train+battery bus',
+          'Visit Tea Garden',
+          'Visit Hinoki Village',
           'Visit Cake Shop',
-          'Visit LOHAS Park (enjoy beautiful cherry blossom)',
-          'Enjoy BBQ Buffet Lunch',
-          'Visit Liberty Square, watch the honor guard perform',
-          'Visit Taipei 101 (outside view)',
-          'Free shopping in Ximending',
-          'Transfer back to hotel',
-          'HOTEL: Hotel in Taipei 4*'
+          'Check in at hotel',
         ],
-        image: 'https://images.pexels.com/photos/2972352/pexels-photo-2972352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+        image: 'https://images.pexels.com/photos/16850680/pexels-photo-16850680/free-photo-of-trees-in-a-forest.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
       },
       {
         day: '3',
-        title: 'Yehliu & Shifen Tour (B/L/X)',
+        title: '(B/L/X)',
         activities: [
           'Breakfast',
-          'Proceed to Jade Handicraft',
-          'Visit Yehliu Geopark',
-          'Visit Shifen Waterfall',
-          'Visit Shifen Old Street',
-          'Chinese Lantern (1 lantern for 4pax included)',
-          'Visit Duty free shop or cosmetic shop',
-          'Transfer to hotel & check in',
-          'HOTEL: Hotel in Taipei 4*'
+          'Visit Xiziwan Scenic Area',
+          'Visit The heart of Love',
+          'Visit The British Consulate',
+          'Visit Holy Rosary Cathedral Basilica (outside view)',
+          'Visit Weiwuying Painting Community',
+          'Visit The Pier 2 art Center',
+          'Check in at hotel',
         ],
-        image: 'https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+        image: 'https://images.unsplash.com/photo-1598919167604-fb86a732b787?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
       {
         day: '4',
-        title: 'Departure (B/X/X)',
+        title: '',
         activities: [
           'Breakfast',
-          'Transfer to the airport',
-          'ETD 5J 313 TPE-MNL 1030-1305'
+          'Visit Fo Guang Shan Buddha Museum',
+          'Visit Lotus Pond & Dragon & Tiger Pagoda',
+          'Visit Jade & Pearl Handicraft',
+          'Free time shopping at SKM Park Outlets',
+          'Transfer to the airport'
         ],
-        image: 'https://images.pexels.com/photos/2943842/pexels-photo-2943842.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+        image: 'https://images.pexels.com/photos/9151506/pexels-photo-9151506.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
       }
     ]
   },
-
 
     'japan': {
       id: '3',
@@ -855,7 +839,7 @@ export const travelPackages = {
         },
       ],
     },
-    'legendary-thailand': {
+    'legendary-thailand-4d-3n': {
   id: '4',
   name: 'Legendary Thailand',
   price: 27888,
@@ -992,7 +976,7 @@ export const travelPackages = {
     },
 
 
-    'singapore': {
+    'singapore-kuala-lumpur-4d-3n': {
   id: '5',
   name: 'Singapore + Kuala Lumpur',
   price: 38277,
@@ -1151,6 +1135,899 @@ export const travelPackages = {
   ],
 },
 
+'south-korea-daebak-seoul-6d-4n': {
+    id: '7',
+    name: 'South Korea Daebak Seoul',
+    price: 33888,
+    rating: 4,
+    description: "Experience Korean Culture & Modern Seoul",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">South Korea Seoul 6D4N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: K-Pop Fans, Culture Enthusiasts, Families</div>' +
+      '<div class="text-lg font-bold mb-2">Destination:</div>' +
+      '<div class="text-normal mb-3">Discover the perfect blend of traditional Korean culture and modern Seoul attractions. From palaces to K-Star Road, experience the best of South Korea with exciting activities and cultural immersion.</div>',
+    bestTimeToVisit: 'May to August',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="text-normal font-semibold">May 7-12 2025</div>' +
+      '<div class="text-normal font-semibold">May 9-14 2025</div>' +
+      '<div class="text-normal font-semibold">May 10-15 2025</div>' +
+      '<div class="text-normal font-semibold">May 15-20 2025</div>' +
+      '<div class="text-normal font-semibold">May 17-22 2025</div>' +
+      '<div class="text-normal font-semibold">May 20-25 2025</div>' +
+      '<div class="text-normal font-semibold">May 27-Jun 1 2025</div>' +
+      '<div class="text-normal font-semibold">Jun 4-9 2025</div>' +
+      '<div class="text-normal font-semibold">Jun 17-22 2025</div>' +
+      '<div class="text-normal font-semibold">Jun 19-24 2025</div>' +
+      '<div class="text-normal font-semibold">Jun 21-26 2025</div>' +
+      '<div class="text-normal font-semibold">Jun 24-29 2025</div>' +
+      '<div class="text-normal font-semibold">Jun 26-Jul 1 2025</div>' +
+      '<div class="text-normal font-semibold">Jul 11-16 2025</div>' +
+      '<div class="text-normal font-semibold">Jul 15-20 2025</div>' +
+      '<div class="text-normal font-semibold">Aug 5-10 2025</div>' +
+      '<div class="text-normal font-semibold">Aug 12-17 2025</div>' +
+      '<div class="text-normal font-semibold">Aug 19-24 2025</div>' +
+      '<div class="text-normal font-semibold">Aug 26-31 2025</div>' +
+      '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
+      '<div class="text-normal font-bold">Child without bed (2-8 yrs old): From PHP 32,888/pax</div>',
+    daysOfStay: '6 Days & 4 Nights',
+    minimumGuests: 'No Minimum Guests',
+    heroImage: 'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', // Seoul cityscape
+    images: [
+      {
+        id: 1,
+        name: 'Gyeongbokgung Palace',
+        src: 'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Traditional Korean palace'
+      },
+      {
+        id: 2,
+        name: 'Nami Island',
+        src: 'https://images.unsplash.com/photo-1712739034224-2904f23c4c5f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Winter Sonata filming location'
+      },
+      {
+ 
+        id: 3,
+        name: 'N Seoul Tower',
+        src: 'https://images.pexels.com/photos/6896969/pexels-photo-6896969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Seoul city view from Namsan'
+      },
+      {
+        id: 4,
+        name: 'Myeongdong Market',
+        src: 'https://images.unsplash.com/photo-1574442274210-ba4925b7ae61?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Vibrant Seoul shopping district'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          '4 nights room accommodation base on twin sharing',
+          'Daily breakfast',
+          'Sightseeing tours as specified including all entrance fees',
+          'Private coach with English speaking tour guide',
+          'Meals as listed',
+          'Roundtrip airfare via Cebu Pacific',
+          '7kg hand carry'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Expenses of a personal nature like telephone calls, mini bars, etc.',
+          'Tips for driver & guide Php1,200/pax (collected with tour fee)',
+          'Philippines travel tax: Php1,620/pax',
+          'Single supplement',
+          'Extra baggage allowance',
+          'Travel insurance',
+          'Korea Visa'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival & Nami Island (X/L/X)',
+        activities: [
+          'Arrive at the airport',
+          'Meet the tour guide',
+          'Transfer to Chuncheon (2HR by bus)',
+          'Nami Island with ferry ride (Winter Sonata shooting place)',
+          'Soyanggang Skywalk',
+          'Transfer to Seoul',
+          'COEX Starfield Library',
+          'K Star Road',
+          'Transfer to hotel & check in',
+        ],
+        image: 'https://images.unsplash.com/photo-1712739034224-2904f23c4c5f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '2',
+        title: 'Cultural Seoul (B/L/X)',
+        activities: [
+          'Breakfast at the hotel',
+          'Blue House (pass by)',
+          'Gyeongbokgung Palace',
+          'National Folk Museum',
+          '(Optional premium hanbok wearing USD20/pax)',
+          'Bukchon Hanok Village',
+          'Ginseng Gallery',
+          'Cosmetic Outlet',
+          'Transfer to Myeongdong Market/Duty Free',
+        ],
+        image: 'https://images.pexels.com/photos/6896969/pexels-photo-6896969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '3',
+        title: 'Cultural Experiences (B/L/X)',
+        activities: [
+          'Breakfast at the hotel',
+          'Cheonggyecheon stream',
+          'Seaweed Museum with hanbok wearing experience, kimchi making',
+          'Red Pine Gallery',
+          'Amethyst Showcase',
+          'N Seoul Tower by Public EV shuttle Bus(exclude lift)',
+          'Hongdae shopping street',
+          'Transfer to hotel & check in',
+        ],
+        image: 'https://images.unsplash.com/photo-1574442274210-ba4925b7ae61?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '4',
+        title: 'Free Day or Everland (B/X/X)',
+        activities: [
+          'Breakfast at the hotel',
+          'Free day (without tour guide & transfer)',
+          'OPTIONAL TOUR: Everland Theme Park (including one day pass ticket, transfer)',
+          'Surcharge USD 100/pax (min. of 10pax to push through)',
+        ],
+        image: 'https://images.unsplash.com/photo-1701772890207-430df2e20b51?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '5/6',
+        title: 'Departure (B/X/X)',
+        activities: [
+          'Breakfast at the hotel',
+          'Transfer to Gimpo',
+          'Hyundai premium outlet',
+          '(Optional Hyundai cruise with lunch USD 30/pax)',
+          'Transfer to Incheon',
+          'Local Supermarket',
+          'Transfer to Incheon airport for flight back to Manila'
+        ],
+        image: 'https://images.unsplash.com/photo-1617882494925-faf197b5f0e2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+    optionalTours: [
+      {
+        name: 'Everland Theme Park',
+        price: 'USD 100/pax',
+        requirement: 'Minimum 10 pax'
+      },
+      {
+        name: 'Hyundai Cruise with Lunch',
+        price: 'USD 30/pax'
+      },
+      {
+        name: 'Premium Hanbok Wearing',
+        price: 'USD 20/pax'
+      }
+    ]
+  },
+
+'south-korea-spring-season-5d-4n': {
+    id: '8',
+    name: 'South Korea Spring Season',
+    price: 46658,
+    rating: 4.5,
+    description: "Cherry Blossoms & Cultural Delights",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">South Korea Spring Season 5D4N Tour</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Cherry Blossom Chasers, K-Drama Fans, Cultural Explorers</div>' +
+      '<div class="text-lg font-bold mb-2">Highlights:</div>' +
+      '<div class="text-normal mb-3">Experience Korea\'s magical spring season with cherry blossoms in full bloom. Visit iconic K-drama locations, wear traditional hanbok, and enjoy seasonal festivals at Everland.</div>',
+    bestTimeToVisit: 'April to May (Cherry Blossom Season)',
+    datePrices: [
+      { date: 'Apr.12-Apr.17 2025', price: 46658 },
+      { date: 'Apr.13-Apr.18 2025', price: 46658 },
+      { date: 'Apr.14-Apr.19 2025', price: 47857 },
+      { date: 'Apr.15-Apr.20 2025', price: 52108 },
+      { date: 'Apr.16-Apr.21 2025', price: 47857 },
+      { date: 'Apr.17-Apr.22 2025', price: 48293 },
+      { date: 'Apr.18-Apr.23 2025', price: 46658 },
+      { date: 'Apr.19-Apr.24 2025', price: 46658 },
+      { date: 'Apr.23-Apr.28 2025', price: 41753 },
+      { date: 'Apr.24-Apr.29 2025', price: 41753 },
+      { date: 'Apr.25-Apr.30 2025', price: 41753 },
+      { date: 'Apr.26-May.1 2025', price: 41753 },
+      { date: 'Apr.30-May.5 2025', price: 41317 },
+      { date: 'May.1-May.6 2025', price: 40227 },
+      { date: 'May.2-May.7 2025', price: 39137 },
+      { date: 'May.3-May.8 2025', price: 39573 },
+      { date: 'May.7-May.12 2025', price: 39137 },
+      { date: 'May.8-May.13 2025', price: 39028 },
+      { date: 'May.9-May.14 2025', price: 39573 },
+      { date: 'May.10-May.15 2025', price: 39028 },
+      { date: 'May.14-May.19 2025', price: 39137 },
+      { date: 'May.15-May.20 2025', price: 39028 },
+      { date: 'May.16-May.21 2025', price: 39137 },
+      { date: 'May.17-May.22 2025', price: 39028 },
+      { date: 'May.21-May.26 2025', price: 39137 },
+      { date: 'May.22-May.27 2025', price: 39028 },
+      { date: 'May.23-May.28 2025', price: 39137 },
+      { date: 'May.24-May.29 2025', price: 39028 },
+      { date: 'May.28-Jun.2 2025', price: 38592 },
+      { date: 'May.29-Jun.3 2025', price: 38592 },
+      { date: 'May.30-Jun.4 2025', price: 38592 },
+      { date: 'May.31-Jun.5 2025', price: 38592 }
+    ],
+    childPolicy: {
+      withBed: 'Same rate as adults',
+      withoutBed: 'From PHP 38,888/pax (2-5 yrs old)',
+      discount: 'Less Php 3,000 (3-7y/o)',
+      infant: 'Php 10,000 (2y/o below)'
+    },
+    singleSupplement: '+ Php 10,000',
+    reservationFee: 'Php 7,000 (non-refundable but rebookable)',
+    daysOfStay: '5 Days & 4 Nights',
+    minimumGuests: 'No Minimum Guests',
+    heroImage: 'https://images.unsplash.com/photo-1723975320627-44ee241abc3a?q=80&w=2079&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Cherry blossoms
+    images: [
+      {
+        id: 1,
+        name: 'Korean Dance Perfomance Wearing Hambok',
+        src: 'https://images.unsplash.com/photo-1707359181805-cae2edfd0c5e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Korean Dance Perfomance Wearing Hambok'
+      },
+      {
+        id: 2,
+        name: 'N Tower Korea',
+        src: 'https://images.pexels.com/photos/2848492/pexels-photo-2848492.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'N Tower Korea'
+      },
+      {
+        id: 3,
+        name: 'Gyeongbokgung',
+        src: 'https://images.pexels.com/photos/29562553/pexels-photo-29562553/free-photo-of-traditional-hanbok-at-gyeongbokgung-palace.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Palace with cherry blossoms'
+      },
+      {
+        id: 4,
+        name: 'Everland',
+        src: 'https://images.unsplash.com/photo-1701772890207-430df2e20b51?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Everland Theme Park'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Roundtrip airfare',
+          '4 nights Hotel accommodation',
+          'Daily guided tours with English speaking guide',
+          'Meals as per itinerary (B/L/D)',
+          'Admission tickets as stated',
+          'Travel Insurance for 60yrs.old and below'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Philippine Travel Tax (Php 1,620)',
+          'Visa Processing',
+          'Check In Baggage',
+          'Tipping to guide ($5/day)',
+          'Optional tours',
+          'Personal expenses'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival in Incheon (Snack)',
+        activities: [
+          'Arrive at Incheon Airport',
+          'Meeting and greeting English speaking guide',
+          'Transfer to hotel and check in',
+        ],
+        image: 'https://images.pexels.com/photos/31577102/pexels-photo-31577102/free-photo-of-aircraft-landing-at-melbourne-airport-in-australia.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '2',
+        title: 'Nami Island & Petite France (B/L/D)',
+        activities: [
+          'Breakfast at hotel',
+          'Visit Nami Island by ferry (Winter Sonata Shooting place)',
+          'Small France Culture Village ("My Lover from the star" drama location)',
+          'Italian Village Pinocchio Village',
+        ],
+        image: 'https://images.unsplash.com/photo-1712739034224-2904f23c4c5f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '3',
+        title: 'Everland Adventure (B/L/D)',
+        activities: [
+          'Breakfast at hotel',
+          'COEX Starfield Library',
+          'N Seoul tower with Love Lock area (public bus)',
+          '(Cable car optional tour: $20)',
+          'Transfer to Yongin',
+          'Enjoy Everland Theme Park with Seasonal Parade',
+          'Experience making Gimbab (if time permits)',
+        ],
+        image: 'https://images.unsplash.com/photo-1701772890207-430df2e20b51?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '4',
+        title: 'Cultural Seoul (B/L/D)',
+        activities: [
+          'Breakfast at hotel',
+          'Pass by the Blue House',
+          'Ginseng Museum',
+          'Gyeongbok Palace (hanbok wearing $15)',
+          'Shilla duty free shop',
+          'Free shopping at Myeongdong',
+        ],
+        image: 'https://images.pexels.com/photos/29562553/pexels-photo-29562553/free-photo-of-traditional-hanbok-at-gyeongbokgung-palace.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '5',
+        title: 'Departure (B/L/D)',
+        activities: [
+          'Breakfast at hotel',
+          'Red Pine Store',
+          'Experience making ssamjang',
+          'Korea Dance Performance & wearing Hanbok (optional: $20)',
+          'Amethyst Shop',
+          'Gimpo Hyundai Outlet',
+          'Transfer to Incheon airport'
+        ],
+        image: 'https://images.unsplash.com/photo-1707359181805-cae2edfd0c5e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+    optionalTours: [
+      { name: 'N Seoul Tower Cable Car', price: '$20' },
+      { name: 'Premium Hanbok Wearing', price: '$15' },
+      { name: 'Korean Dance Performance', price: '$20' }
+    ],
+    importantNotes: [
+      'Itinerary subject to change due to local conditions',
+      'Reservation Fee: Php 7,000 (non-refundable but rebookable)',
+      'Visa application required (not included)',
+      'Spring season may affect pricing and availability'
+    ]
+  },
+
+  'south-korea-summer-season-5d-4n': {
+    id: '10',
+    name: 'South Korea Summer Adventure',
+    price: 39028, // Default price for first date
+    rating: 4.5,
+    description: "Summer Festivals & K-Culture Experience",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">South Korea Summer Season 5D4N Tour</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Festival Goers, K-Culture Lovers, Summer Explorers</div>' +
+      '<div class="text-lg font-bold mb-2">Summer Highlights:</div>' +
+      '<div class="text-normal mb-3">Enjoy Korea\'s vibrant summer with special seasonal activities at Everland, night markets, and cool retreats to Nami Island. Experience both traditional culture and modern K-wave attractions.</div>',
+    bestTimeToVisit: 'June (Summer Festival Season)',
+    datePrices: [
+      { date: 'Jun.3-Jun.8 2025', price: 39028 },
+      { date: 'Jun.4-Jun.9 2025', price: 40227 },
+      { date: 'Jun.5-Jun.10 2025', price: 39028 },
+      { date: 'Jun.6-Jun.11 2025', price: 39028 },
+      { date: 'Jun.7-Jun.12 2025', price: 39573 },
+      { date: 'Jun.10-Jun.15 2025', price: 40227 },
+      { date: 'Jun.11-Jun.16 2025', price: 39137 },
+      { date: 'Jun.12-Jun.17 2025', price: 40118 },
+      { date: 'Jun.13-Jun.18 2025', price: 38592 },
+      { date: 'Jun.14-Jun.19 2025', price: 38592 },
+      { date: 'Jun.18-Jun.23 2025', price: 39028 },
+      { date: 'Jun.19-Jun.24 2025', price: 38592 },
+      { date: 'Jun.20-Jun.25 2025', price: 39028 },
+      { date: 'Jun.21-Jun.26 2025', price: 38592 },
+      { date: 'Jun.25-Jun.30 2025', price: 39028 }
+    ],
+    childPolicy: {
+      withBed: 'Same rate as adults',
+      withoutBed: 'From PHP 38,888/pax (2-5 yrs old)',
+      discount: 'Less Php 3,000 (3-7y/o)',
+      infant: 'Php 10,000 (2y/o below)'
+    },
+    singleSupplement: '+ Php 10,000',
+    reservationFee: 'Php 7,000 (non-refundable but rebookable)',
+    daysOfStay: '5 Days & 4 Nights',
+    minimumGuests: 'No Minimum Guests',
+    heroImage: 'https://images.unsplash.com/photo-1723975320627-44ee241abc3a?q=80&w=2079&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    images: [
+      {
+        id: 1,
+        name: 'Korean Dance Perfomance Wearing Hambok',
+        src: 'https://images.unsplash.com/photo-1707359181805-cae2edfd0c5e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Korean Dance Perfomance Wearing Hambok'
+      },
+      {
+        id: 2,
+        name: 'N Tower Korea',
+        src: 'https://images.pexels.com/photos/2848492/pexels-photo-2848492.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'N Tower Korea'
+      },
+      {
+        id: 3,
+        name: 'Gyeongbokgung',
+        src: 'https://images.pexels.com/photos/29562553/pexels-photo-29562553/free-photo-of-traditional-hanbok-at-gyeongbokgung-palace.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Palace with cherry blossoms'
+      },
+      {
+        id: 4,
+        name: 'Everland',
+        src: 'https://images.unsplash.com/photo-1701772890207-430df2e20b51?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Everland Theme Park'
+      }
+    ],
+
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Roundtrip airfare (Cebu Pacific)',
+          '4 nights hotel accommodation (3-4 star)',
+          'Daily breakfast + 4 lunches + 4 dinners',
+          'Everland 1-day pass with summer parade',
+          'All entrance fees to listed attractions',
+          'English speaking tour guide',
+          'Travel insurance (ages ≤60)'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Philippine Travel Tax (Php 1,620)',
+          'Visa processing fee',
+          'Optional activities (marked below)',
+          'Tips for guide ($5/day)',
+          'Personal shopping expenses'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival in Incheon',
+        activities: [
+          'Arrive at Incheon Airport',
+          'Meet English speaking guide',
+          'Transfer to hotel (Airsky/Emporium)',
+          'Free evening to rest'
+        ],
+        image: 'https://images.pexels.com/photos/31577102/pexels-photo-31577102/free-photo-of-aircraft-landing-at-melbourne-airport-in-australia.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '2',
+        title: 'Nami Island & Petite France',
+        activities: [
+          'Breakfast at hotel',
+          'Nami Island ferry ride',
+          'Petite France ("My Love From The Star" location)',
+          'Pinocchio Village visit',
+          'Return to Seoul for dinner'
+        ],
+        image: 'https://images.unsplash.com/photo-1712739034224-2904f23c4c5f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '3',
+        title: 'Seoul & Everland Adventure',
+        activities: [
+          'Breakfast at hotel',
+          'COEX Starfield Library & Star Garden',
+          'N Seoul Tower (cable car optional)',
+          'Full day at Everland Theme Park',
+          'Gimbab making (time permitting)'
+        ],
+        image: 'https://images.unsplash.com/photo-1701772890207-430df2e20b51?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '4',
+        title: 'Cultural Seoul',
+        activities: [
+          'Breakfast at hotel',
+          'Blue House photo stop',
+          'Ginseng Museum',
+          'Gyeongbok Palace (hanbok optional)',
+          'Myeongdong shopping time'
+        ],
+        image: 'https://images.pexels.com/photos/29562553/pexels-photo-29562553/free-photo-of-traditional-hanbok-at-gyeongbokgung-palace.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '5',
+        title: 'Departure Day',
+        activities: [
+          'Breakfast at hotel',
+          'Amethyst jewelry showcase',
+          'Korean cultural performance (optional)',
+          'Hyundai Outlet shopping',
+          'Airport transfer with souvenir time'
+        ],
+        image: 'https://images.unsplash.com/photo-1707359181805-cae2edfd0c5e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+    optionalTours: [
+      { name: 'N Seoul Tower Cable Car', price: '$20' },
+      { name: 'Premium Hanbok Experience', price: '$15' },
+      { name: 'Korean Dance Performance', price: '$20' }
+    ],
+    importantNotes: [
+      'Summer showers may affect outdoor activities',
+      'Reservation requires Php 7,000 deposit',
+      'Visa must be secured separately',
+      'Everland summer parade schedule subject to change'
+    ],
+    hotels: [
+      'Airsky Hotel/Emporium Hotel (Incheon)',
+      'Marina Bay Hotel/Insadong Ibis (Seoul)'
+    ],
+    summerFeatures: [
+      'Special Everland summer festival access',
+      'Extended evening shopping times',
+      'Indoor activity alternatives for rainy days',
+      'Summer-themed photo ops at all locations'
+    ]
+  },
+'south-korea-cherry-blossoms-5d-4n': {
+    id: '11',
+    name: 'South Korea Cherry Blossoms',
+    price: 39137, // Default price for first date
+    rating: 4.7,
+    description: "Magical Cherry Blossom Tour",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">South Korea Cherry Blossoms 5D4N Tour</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Nature Lovers, Photographers, K-Drama Fans</div>' +
+      '<div class="text-lg font-bold mb-2">Blossom Highlights:</div>' +
+      '<div class="text-normal mb-3">Immerse yourself in Korea\'s breathtaking cherry blossom season. From pink-canopied streets to blossom-framed palaces, experience spring\'s magic at prime viewing locations including Jamsil Lake and Nami Island.</div>',
+    bestTimeToVisit: 'Late March to Mid-April (Peak Bloom)',
+    datePrices: [
+      { date: 'Mar.28-Apr.2 2025', price: 39137 },
+      { date: 'Mar.29-Apr.3 2025', price: 41208 },
+      { date: 'Mar.30-Apr.4 2025', price: 43388 },
+      { date: 'Apr.1-Apr.6 2025', price: 43388 },
+      { date: 'Apr.2-Apr.7 2025', price: 43388 },
+      { date: 'Apr.3-Apr.8 2025', price: 42298 },
+      { date: 'Apr.4-Apr.9 2025', price: 44478 },
+      { date: 'Apr.5-Apr.10 2025', price: 42298 },
+      { date: 'Apr.6-Apr.11 2025', price: 45298 },
+      { date: 'Apr.8-Apr.13 2025', price: 45933 },
+      { date: 'Apr.9-Apr.14 2025', price: 44478 },
+      { date: 'Apr.10-Apr.15 2025', price: 45023 },
+      { date: 'Apr.11-Apr.16 2025', price: 45568 }
+    ],
+    childPolicy: {
+      withBed: 'Same rate as adults',
+      withoutBed: 'From PHP 38,888/pax (2-5 yrs old)',
+      discount: 'Less Php 3,000 (3-7y/o)',
+      infant: 'Php 10,000 (2y/o below)'
+    },
+    singleSupplement: '+ Php 10,000',
+    reservationFee: 'Php 7,000 (non-refundable but rebookable)',
+    daysOfStay: '5 Days & 4 Nights',
+    minimumGuests: 'No Minimum Guests',
+    heroImage: 'https://images.pexels.com/photos/31108431/pexels-photo-31108431/free-photo-of-beautiful-spring-cherry-blossoms-by-a-serene-lake.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', 
+    images: [
+      {
+        id: 1,
+        name: 'Korean Dance Perfomance Wearing Hambok',
+        src: 'https://images.unsplash.com/photo-1707359181805-cae2edfd0c5e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Korean Dance Perfomance Wearing Hambok'
+      },
+      {
+        id: 2,
+        name: 'N Tower Korea',
+        src: 'https://images.pexels.com/photos/2848492/pexels-photo-2848492.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'N Tower Korea'
+      },
+      {
+        id: 3,
+        name: 'Cheery Blossom Street',
+        src: 'https://images.pexels.com/photos/28738902/pexels-photo-28738902/free-photo-of-seoul-skyline-with-cherry-blossoms-in-spring.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Cherry Blossom Street'
+      },
+      {
+        id: 4,
+        name: 'Everland',
+        src: 'https://images.unsplash.com/photo-1701772890207-430df2e20b51?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Everland Theme Park'
+      }
+    ],
+
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Roundtrip airfare (Cebu Pacific)',
+          '4 nights hotel accommodation (3-4 star)',
+          'Daily breakfast + 4 lunches + 4 dinners',
+          'Everland 1-day pass with spring parade',
+          'All blossom site entrance fees',
+          'English speaking blossom tour guide',
+          'Travel insurance (ages ≤60)'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Philippine Travel Tax (Php 1,620)',
+          'Visa processing fee',
+          'Optional hanbok rental ($15)',
+          'Tips for guide ($5/day)',
+          'Personal shopping expenses'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival in Incheon',
+        activities: [
+          'Arrive at Incheon Airport',
+          'Meet English speaking guide',
+          'Transfer to hotel (Airsky/Emporium)',
+          'Evening at leisure'
+        ],
+        image: 'https://images.pexels.com/photos/31577102/pexels-photo-31577102/free-photo-of-aircraft-landing-at-melbourne-airport-in-australia.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '2',
+        title: 'Blossom Tour to Nami Island',
+        activities: [
+          'Breakfast at hotel',
+          'World Forest of Peace in Yeongjong Island',
+          'Nami Island ferry ride (Winter Sonata location)',
+          'Petite France ("My Love From The Star" site)',
+          'Pinocchio Village visit',
+          'Return to Seoul'
+        ],
+       image: 'https://images.unsplash.com/photo-1712739034224-2904f23c4c5f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '3',
+        title: 'Seoul Blossoms & Everland',
+        activities: [
+          'Breakfast at hotel',
+          'COEX Starfield Library',
+          'Jamsil Seokchon Lake (Cherry Blossom street)',
+          'Full day at Everland Theme Park',
+          'N Seoul Tower (cable car optional)'
+        ],
+        image: 'https://images.pexels.com/photos/28738902/pexels-photo-28738902/free-photo-of-seoul-skyline-with-cherry-blossoms-in-spring.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '4',
+        title: 'Cultural Seoul',
+        activities: [
+          'Breakfast at hotel',
+          'Ginseng Museum',
+          'Cosmetic Duty Free shopping',
+          'Dongdaemun Market visit',
+          'Gyeongbok Palace (hanbok optional)',
+          'Myeongdong shopping time'
+        ],
+      image: 'https://images.pexels.com/photos/29562553/pexels-photo-29562553/free-photo-of-traditional-hanbok-at-gyeongbokgung-palace.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '5',
+        title: 'Departure Day',
+        activities: [
+          'Breakfast at hotel',
+          'Red Pine cultural experience',
+          'Amethyst jewelry showcase',
+          'Hyundai Outlet shopping',
+          'Airport transfer with souvenir time'
+        ],
+         image: 'https://images.unsplash.com/photo-1707359181805-cae2edfd0c5e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+    blossomSpots: [
+      { name: 'Jamsil Seokchon Lake', peak: 'Early Apr' },
+      { name: 'Nami Island', peak: 'Mid Apr' },
+      { name: 'Gyeongbokgung Palace', peak: 'Early Apr' },
+      { name: 'Yeongjong Island', peak: 'Late Mar' }
+    ],
+    optionalTours: [
+      { name: 'N Seoul Tower Cable Car', price: '$20' },
+      { name: 'Premium Hanbok Experience', price: '$15' }
+    ],
+    importantNotes: [
+      'Blossom timing varies annually - itinerary may adjust',
+      'Reservation requires Php 7,000 deposit',
+      'Visa must be secured separately',
+      'Peak dates command premium pricing'
+    ],
+    hotels: [
+      'Airsky Hotel/Emporium Hotel (Incheon)',
+      'Marina Bay Hotel/Insadong Ibis (Seoul)'
+    ],
+    packingTips: [
+      'Light layers for changeable spring weather',
+      'Comfortable walking shoes',
+      'Camera with extra memory cards',
+      'Portable power bank'
+    ]
+  },
+
+  'charming-japan-6d-5n': {
+    id: '12',
+    name: 'Charming Japan',
+    price: 88347,
+    rating: 4.8,
+    description: "Classic Japan Highlights Tour",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Charming Japan 6D5N Tour</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: First-time Visitors, Culture Seekers, Anime Fans</div>' +
+      '<div class="text-lg font-bold mb-2">Journey Through:</div>' +
+      '<div class="text-normal mb-3">Experience Japan\'s perfect blend of ancient traditions and modern wonders - from Osaka\'s vibrant streets to Tokyo\'s high-tech districts, with majestic Mt. Fuji views and historic temples along the way.</div>',
+    bestTimeToVisit: 'April (Cherry Blossom Season)',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="text-normal font-semibold">Apr.05-Apr.10 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.19-Apr.24 2025</div>' +
+      '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
+      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 87,347/pax</div>',
+    daysOfStay: '6 Days & 5 Nights',
+    minimumGuests: 'Minimum 10 pax for optional tours',
+    heroImage: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3', // Mt. Fuji
+    images: [
+      {
+        id: 1,
+        name: 'Fushimi Inari',
+        src: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3',
+        alt: 'Vermilion torii gates'
+      },
+      {
+        id: 2,
+        name: 'Osaka Castle',
+        src: 'https://images.unsplash.com/photo-1559386037-86753a7c926f',
+        alt: 'Historic castle with cherry blossoms'
+      },
+      {
+        id: 3,
+        name: 'Lake Kawaguchi',
+        src: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989',
+        alt: 'Mt. Fuji reflection'
+      },
+      {
+        id: 4,
+        name: 'Shibuya Crossing',
+        src: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26',
+        alt: 'Busy Tokyo intersection'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          '5 nights accommodation (mix of 3-4 star hotels)',
+          'Daily breakfast + 3 lunches + 1 dinner',
+          'All entrance fees to listed attractions',
+          'Private air-conditioned coach',
+          'English-speaking guide',
+          'Roundtrip airfare (Cebu Pacific)',
+          '7kg hand carry allowance'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Japan visa fee',
+          'Travel insurance',
+          'Checked baggage',
+          'Tipping ($35/pax)',
+          'PH Travel Tax (Php 1,620)',
+          'Most dinners (free exploration time)'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival in Osaka',
+        activities: [
+          'Arrive at Kansai International Airport',
+          'Meet English-speaking guide',
+          'Transfer to 4-star hotel',
+          'Evening at leisure'
+        ],
+        image: 'https://images.unsplash.com/photo-1559386037-86753a7c926f'
+      },
+      {
+        day: '2',
+        title: 'Osaka & Kyoto Highlights',
+        activities: [
+          'Breakfast at hotel',
+          'Osaka Castle (photo stop)',
+          'Fushimi Inari Shrine (famous torii gates)',
+          'Nara Park (see wild deer)',
+          'Free shopping time at Shinsaibashi/Dotonbori'
+        ],
+        image: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3'
+      },
+      {
+        day: '3',
+        title: 'Free Day or USJ',
+        activities: [
+          'Breakfast at hotel',
+          'Free day to explore independently',
+          'OR Optional: Universal Studios Japan',
+          '(Includes 1-day pass + transfers, $199/pax)'
+        ],
+        image: 'https://images.unsplash.com/photo-1622397333309-3056849bc70b'
+      },
+      {
+        day: '4',
+        title: 'Nagoya Exploration',
+        activities: [
+          'Breakfast at hotel',
+          'Nagoya Castle (photo stop)',
+          'Osu Shopping Street',
+          'Jewelry duty-free shopping',
+          'Transfer to new hotel'
+        ],
+        image: 'https://images.unsplash.com/photo-1571988840298-38dbf8c5f2fa'
+      },
+      {
+        day: '5',
+        title: 'Mt. Fuji Area',
+        activities: [
+          'Breakfast at hotel',
+          'Lake Kawaguchi (Mt. Fuji views)',
+          'Oshino Hakkai (spring village)',
+          'Gotemba Premium Outlets shopping'
+        ],
+        image: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989'
+      },
+      {
+        day: '6',
+        title: 'Tokyo & Departure',
+        activities: [
+          'Breakfast at hotel',
+          'Asakusa Temple (historic Sensoji)',
+          'Tokyo Skytree (photo stop)',
+          'Shibuya Crossing & Hachiko Statue',
+          'Cosmeceuticals duty-free shopping',
+          'Evening airport transfer'
+        ],
+        image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26'
+      }
+    ],
+    optionalTours: [
+      {
+        name: 'Universal Studios Japan',
+        price: 'USD 199/pax',
+        includes: ['1-day pass', 'Roundtrip transfers'],
+        requirement: 'Minimum 10 participants'
+      }
+    ],
+    importantNotes: [
+      'April dates may coincide with cherry blossoms (varies yearly)',
+      '¥10,000-15,000 recommended for daily spending money',
+      'Comfortable walking shoes essential',
+      'Voltage converter needed for electronics'
+    ],
+    hotels: [
+      'Osaka: 4-star hotel (Day 1)',
+      'Osaka/Kyoto: 3-star hotel (Days 2-3)',
+      'Nagoya: 4-star hotel (Day 4)',
+      'Mt. Fuji Area: 3.5-star hotel (Day 5)'
+    ],
+    transport: {
+      coach: 'Private air-conditioned',
+      airport: 'Kansai (Osaka) arrival / Narita/Haneda (Tokyo) departure'
+    },
+    visaInfo: {
+      requirement: 'Required for PH passport holders',
+      processingTime: '7-10 working days',
+      documents: ['Bank cert', 'ITR', 'Itinerary']
+    }
+  },
 
 'malaysia': {
   id: '6',

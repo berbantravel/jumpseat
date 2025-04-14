@@ -19,7 +19,7 @@ export const destinations = [
       'https://images.pexels.com/photos/2582794/pexels-photo-2582794.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
   {
-    name: 'LEGENDARY THAILAND',
+    name: 'LEGENDARY THAILAND 4D 3N',
     description: 'A MOUTH WATERING JOURNEY THAT WILL TREAT YOUR TASTE BUDS',
     price: '24,000',
     href: '#',
@@ -43,11 +43,51 @@ export const destinations = [
       'https://images.pexels.com/photos/9867888/pexels-photo-9867888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
   {
-    name: 'SOUTH KOREA',
-    description: 'LOOSEN UP AND EXPERIENCE A MARVELOUS HOLIDAY!',
-    price: '28,888',
+    name: 'SINGAPORE KUALA LUMPUR 4D 3N',
+    description: "EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!",
+    price: '30,564',
     href: '#',
-    imageSrc:SouthKorea
+    imageSrc:
+      'https://images.pexels.com/photos/9867888/pexels-photo-9867888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  },
+  
+  {
+    name: 'SOUTH KOREA DAEBAK SEOUL 6D 4N',
+    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    price: '33,888',
+    href: '#',
+    imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
+
+  {
+    name: 'SOUTH KOREA SPRING SEASON 5D 4N',
+    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    price: '46,658',
+    href: '#',
+    imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
+
+  {
+    name: 'SOUTH KOREA SUMMER SEASON 5D 4N',
+    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    price: '39,028',
+    href: '#',
+    imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
+
+  {
+    name: 'SOUTH KOREA CHERRY BLOSSOMS 5D 4N',
+    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    price: '45,568',
+    href: '#',
+    imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
+  {
+    name: 'CHARMING JAPAN 6D 4N',
+    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    price: '45,568',
+    href: '#',
+    imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
   },
   
   
