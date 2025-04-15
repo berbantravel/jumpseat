@@ -48,7 +48,7 @@ export const destinations = [
     price: '30,564',
     href: '#',
     imageSrc:
-      'https://images.pexels.com/photos/9867888/pexels-photo-9867888.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+      'https://images.pexels.com/photos/12657483/pexels-photo-12657483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   },
   
   {
@@ -83,11 +83,28 @@ export const destinations = [
     imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
   },
   {
-    name: 'CHARMING JAPAN 6D 4N',
+    name: 'CHARMING JAPAN 6D 5N',
     description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
     price: '45,568',
     href: '#',
+    imageSrc:'https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=80&w=2031&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+
+
+  {
+    name: 'CANTON MACAU 4D 3N',
+    description: 'DISCOVER THE PERFECT BLEND OF TRADITION AND MODERNITY IN CANTON AND MACAU!',
+    price: '13,798',
+    href: '#',
     imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
+
+  {
+    name: 'DUBAI ABU DHABI 5D 4N',
+    description: ' EXPERIENCE LUXURY AND ADVENTURE IN DUBAI AND ABU DHABI!',
+    price: '76,828',
+    href: '#',
+    imageSrc:'https://images.pexels.com/photos/3763190/pexels-photo-3763190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
   },
   
   

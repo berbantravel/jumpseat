@@ -841,7 +841,7 @@ export const travelPackages = {
     },
     'legendary-thailand-4d-3n': {
   id: '4',
-  name: 'Legendary Thailand',
+  name: 'Legendary Thailand 4D 3N',
   price: 27888,
   rating: 5,
   description:
@@ -1874,30 +1874,30 @@ export const travelPackages = {
       '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 87,347/pax</div>',
     daysOfStay: '6 Days & 5 Nights',
     minimumGuests: 'Minimum 10 pax for optional tours',
-    heroImage: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3', // Mt. Fuji
+    heroImage: 'https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=80&w=2031&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Mt. Fuji
     images: [
       {
         id: 1,
         name: 'Fushimi Inari',
-        src: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3',
+        src: 'https://images.pexels.com/photos/31419678/pexels-photo-31419678/free-photo-of-fushimi-inari-shrine-path-with-torii-gates.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         alt: 'Vermilion torii gates'
       },
       {
         id: 2,
         name: 'Osaka Castle',
-        src: 'https://images.unsplash.com/photo-1559386037-86753a7c926f',
+        src: 'https://images.unsplash.com/photo-1731338634914-a22509394cf2?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         alt: 'Historic castle with cherry blossoms'
       },
       {
         id: 3,
         name: 'Lake Kawaguchi',
-        src: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989',
+        src: 'https://images.pexels.com/photos/14277387/pexels-photo-14277387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
         alt: 'Mt. Fuji reflection'
       },
       {
         id: 4,
         name: 'Shibuya Crossing',
-        src: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26',
+        src: 'https://images.unsplash.com/photo-1556032818-683e550a2c14?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
         alt: 'Busy Tokyo intersection'
       }
     ],
@@ -1936,7 +1936,7 @@ export const travelPackages = {
           'Transfer to 4-star hotel',
           'Evening at leisure'
         ],
-        image: 'https://images.unsplash.com/photo-1559386037-86753a7c926f'
+        image: 'https://images.pexels.com/photos/31388031/pexels-photo-31388031/free-photo-of-japan-airlines-plane-at-tokyo-airport-tarmac.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
       },
       {
         day: '2',
@@ -1948,7 +1948,7 @@ export const travelPackages = {
           'Nara Park (see wild deer)',
           'Free shopping time at Shinsaibashi/Dotonbori'
         ],
-        image: 'https://images.unsplash.com/photo-1492571350019-22de08371fd3'
+        image: 'https://images.pexels.com/photos/31419678/pexels-photo-31419678/free-photo-of-fushimi-inari-shrine-path-with-torii-gates.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
       },
       {
         day: '3',
@@ -1956,10 +1956,10 @@ export const travelPackages = {
         activities: [
           'Breakfast at hotel',
           'Free day to explore independently',
-          'OR Optional: Universal Studios Japan',
+          'OR Optional: c',
           '(Includes 1-day pass + transfers, $199/pax)'
         ],
-        image: 'https://images.unsplash.com/photo-1622397333309-3056849bc70b'
+        image: 'https://images.unsplash.com/photo-1731338634914-a22509394cf2?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
       {
         day: '4',
@@ -1971,7 +1971,7 @@ export const travelPackages = {
           'Jewelry duty-free shopping',
           'Transfer to new hotel'
         ],
-        image: 'https://images.unsplash.com/photo-1571988840298-38dbf8c5f2fa'
+        image: 'https://images.pexels.com/photos/14277387/pexels-photo-14277387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
       },
       {
         day: '5',
@@ -1982,7 +1982,7 @@ export const travelPackages = {
           'Oshino Hakkai (spring village)',
           'Gotemba Premium Outlets shopping'
         ],
-        image: 'https://images.unsplash.com/photo-1542051841857-5f90071e7989'
+        image: 'https://images.unsplash.com/photo-1556032818-683e550a2c14?q=80&w=2012&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       },
       {
         day: '6',
@@ -1995,7 +1995,7 @@ export const travelPackages = {
           'Cosmeceuticals duty-free shopping',
           'Evening airport transfer'
         ],
-        image: 'https://images.unsplash.com/photo-1503899036084-c55cdd92da26'
+        image: 'https://images.unsplash.com/photo-1628523197648-74f46812c7d7?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
       }
     ],
     optionalTours: [
@@ -2029,6 +2029,301 @@ export const travelPackages = {
     }
   },
 
+  'canton-macau-4d-3n': {
+    id: '15',
+    name: 'Canton Macau 4D 3N',
+    price: 13798,
+    rating: 4.3,
+    description: "Discover the Perfect Blend of Tradition and Modernity in Canton and Macau! ",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Canton Macau 4D3N Tour</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Culture Explorers, Foodies, First-Time China Visitors</div>' +
+      '<div class="text-lg font-bold mb-2">Experience:</div>' +
+      '<div class="text-normal mb-3">Discover the blend of ancient Lingnan culture and modern Macau glamour - from Jiangmen\'s water towns to Macau\'s neon-lit casinos, with authentic Cantonese cuisine throughout your journey.</div>',
+    bestTimeToVisit: 'April-May (Spring)',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="grid grid-cols-2 gap-2 mt-2">' +
+      '<div class="text-normal font-semibold">Apr.09-Apr.12 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.11-Apr.14 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.24-Apr.27 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.25-Apr.28 2025</div>' +
+      '<div class="text-normal font-semibold">May.08-May.11 2025</div>' +
+      '<div class="text-normal font-semibold">May.09-May.12 2025</div>' +
+      '<div class="text-normal font-semibold">May.15-May.18 2025</div>' +
+      '<div class="text-normal font-semibold">May.16-May.19 2025</div>' +
+      '<div class="text-normal font-semibold">May.22-May.25 2025</div>' +
+      '<div class="text-normal font-semibold">May.23-May.26 2025</div>' +
+      '</div>' +
+      '<div class="mt-3 text-normal font-bold">Child with bed: Same rate as adults</div>' +
+      '<div class="text-normal font-bold">Child without bed (2-7 yrs old): From PHP 12,798/pax</div>',
+    daysOfStay: '4 Days & 3 Nights',
+    minimumGuests: 'No Minimum',
+    heroImage: 'https://images.pexels.com/photos/28939969/pexels-photo-28939969/free-photo-of-stunning-night-view-of-macau-skyline-with-illuminated-hotels.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', // Venetian Macau
+    images: [
+      {
+        id: 1,
+        name: 'Chikan Ancient Town',
+        src: 'https://images.pexels.com/photos/20599712/pexels-photo-20599712/free-photo-of-zhuhai-opera-on-sea-coast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Cantonese water town'
+      },
+      {
+        id: 2,
+        name: 'Zhuhai Fisher Girl',
+        src: 'https://images.unsplash.com/photo-1724475439769-d2527cc4b188?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Coastal statue at sunset'
+      },
+      {
+        id: 3,
+        name: 'Ruins of St. Paul',
+        src: 'https://images.unsplash.com/photo-1611387886912-3a4f3f67538c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Historic stone facade'
+      },
+      {
+        id: 4,
+        name: 'Wynn Palace Fountain',
+        src: 'https://images.pexels.com/photos/4369493/pexels-photo-4369493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Dancing water show'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          '3 Nights room accommodation based on twin sharing at a choice hotel',
+          'Daily Breakfast',
+          'Private coach with English Speaking tour guide',
+          'Sightseeing tours as specified above include the first way entrance fee needed',
+          'Meal as listed',
+          'Roundtrip airfare via Cebu Pacific (7KG hand carry only)',
+          '144 Group Visa'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Expenses of a personal nature like telephone call, mini bar, etc.',
+          'Check in baggage allowance',
+          'PH Travel tax',
+          'Optional package USD 100/pax',
+          'Tips for Driver & Guide: USD 20/pax',
+          'Single Supplement: USD 99/pax',
+          'Covid 19 test if needed'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: ' ETA (X/L/X)',
+        activities: [
+          'Arrive in Hong Kong',
+          'Meet the tour guide at the airport Hall A Pole 3',
+          'Enter Zhuhai and meet the Guangdong guide',
+          'Transfer to visit Chikan Ancient Town: Peace Square, Toad Hall Stage, Pink Bell Tower, Water Light Show, Cantonese Opera, Wing Chun etc.',
+          'Transfer to hotel and check in',
+          'OPTIONAL PACKAGE: Experience taking the public of China style across the ancient town',
+        ],
+        image: 'https://images.pexels.com/photos/20302508/pexels-photo-20302508/free-photo-of-view-of-a-flying-airasia-airliner.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+   
+      },
+      {
+        day: '2',
+        title: 'Guangzhou Highlights (B/L/X)',
+        activities: [
+          'Breakfast',
+          'Check out and transfer to Guangzhou.',
+          'Take Zuiguanguang Tram',
+          'Visit Liuhua Lake Park & white castle',
+          'Visit Sacred Heart Cathedral (outside view)',
+          'Visit Fashion Tianhe Plaza',
+          'Transfer to hotel and check in.',
+          'OPTIONAL PACKAGE: Canton Tower 433M Sightseeing observation deck',
+        ],
+        image: 'https://images.unsplash.com/photo-1611387886912-3a4f3f67538c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      
+      },
+      {
+        day: '3',
+        title: 'Zhongshan & Zhuhai (B/L/X)',
+        activities: [
+          'Breakfast.',
+          'Check out and transfer to Zhongshan',
+          'Visit Chinese Medicine Shop',
+          'Visit Sun Yat-sen\'s Former Residence',
+          'Visit Latex Shop',
+          'Visit Zhuhai Grand Theater (outside view)',
+          'Visit Zhuhai Fisher Girl, Lovers Road',
+          'Visit Silk Shop',
+          'Transfer to hotel and check in',
+          'OPTIONAL PACKAGE: Super Big hot pot or BBQ dinner',
+        ],
+        image: 'https://images.unsplash.com/photo-1724475439769-d2527cc4b188?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        day: '4',
+        title: 'Macau & Departure (B/L/X)',
+        activities: [
+          'Breakfast.',
+          'Check out and visit Jewelry Shop',
+          'Transfer to border and entry to Macau',
+          'Visit The Venetian Macau',
+          'Lunch: Macau Meal Voucher',
+          'Enter The Diamond Light Show',
+          'Visit Ruins of St.Paul\'s',
+          'Visit Wynn Palace',
+          'Perform LAke+ Water Dance Show',
+          'Visit Golden Reel "8" Ferris wheel (outside view)',
+          'Transfer to the airport and fly back home.'
+        ],
+        image: 'https://images.pexels.com/photos/4369493/pexels-photo-4369493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      }
+    ],
+    
+  },
+
+  'dubai-abu-dhabi-5d-4n': {
+    id: '16',
+    name: 'Dubai Abu Dhabi 5D 4N',
+    price: 76828, 
+    rating: 4.5,
+    description: "Experience the Ultimate Blend of Modern Wonders and Desert Adventures in Dubai!",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Dubai 5D4N Tour</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Adventure Seekers, Luxury Lovers, Family Vacationers</div>' +
+      '<div class="text-lg font-bold mb-2">Experience:</div>' +
+      '<div class="text-normal mb-3">From towering skyscrapers to golden deserts, experience Dubai\'s spectacular mix of modern architecture, cultural heritage, and thrilling desert adventures.</div>',
+    bestTimeToVisit: 'October-April (Cooler Months)',
+    listingDescription: '',
+    daysOfStay: '5 Days & 4 Nights',
+    minimumGuests: 'No Minimum',
+    heroImage: 'https://images.pexels.com/photos/3763190/pexels-photo-3763190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', // Dubai skyline
+    images: [
+      {
+        id: 1,
+        name: 'Burj Khalifa',
+        src: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'World\'s tallest building'
+      },
+      {
+        id: 2,
+        name: 'Desert Safari',
+        src: 'https://images.unsplash.com/photo-1649826585999-789d69f0fec7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Dune bashing adventure'
+      },
+      {
+        id: 3,
+        name: 'Grand Mosque',
+        src: 'https://images.unsplash.com/photo-1567215378181-6ecf3590646f?q=80&w=2103&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Sheikh Zayed Grand Mosque'
+      },
+      {
+        id: 4,
+        name: 'Dubai Fountain',
+        src: 'https://images.unsplash.com/photo-1588314941393-af1c493f345c?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Musical fountain show'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Roundtrip airfare via Cebu Pacific',
+          '7KG hand carry',
+          '4 nights hotel accommodation inclusive of breakfast',
+          'Round Trip Dubai City tour (Old & New Dubai) + Dubai Musical Fountain Show with English speaking tour guide (12hrs.) & return hotel transfer.',
+          'Burj Khalifa entry ticket 124th floor non-prime hour with english speaking tour guide (5hrs) & return hotel transfer.',
+          'Afternoon desert Safari with BBQ Buffet Dinner-sharing camp & return hotel transfer using land cruiser.',
+          'Full day Abu Dhabi City tour + Ferrari World general ticket + Buffet Dinner at 1001 hot & Buffet Restaurant with english tour guide (12hrs) & return hotel transfer',
+          'Miracle Golden ticket + Mall of the Emirates Shopping with English speaking tour guide (8hrs) + Departure transfer.',
+          'Complimentary bottle of water during tours/per day.',
+          'UAE government taxes Tourism Dirham Fee.',
+          'Travel Insurance for 60yrs. Old and below.'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'PH Travel tax',
+          'Visa Processing Fee',
+          'Check in baggage',
+          'Expenses of a personal nature like telephone calls, mini bar, etc'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival in Dubai',
+        activities: [
+          'Upon arrival at Dubai airport',
+          'Transfer to hotel and rest',
+        ],
+        image: 'https://images.pexels.com/photos/30773906/pexels-photo-30773906/free-photo-of-emirates-airline-boeing-777-at-airport-runway.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+      },
+      {
+        day: '2',
+        title: 'Dubai City Tour (B/X/X)',
+        activities: [
+          'Breakfast in Hotel',
+          'Proceed to photoshop to Dubai Frame',
+          'Zabeel Mosque',
+          'Bastakiya Old House',
+          'Experience Abra Water Taxi',
+          'Visit Gold & Spice Souk',
+          'Photo stop to Jumeirah Mosque',
+          'Etihad Museum',
+          'Drive through Marjaan Art Islamic Gallery',
+          'Photo stop to Burj Al Arab',
+          'The Pointe Palm',
+          'Pass by atlantis the palm',
+          'Proceed to Global Village',
+          'Proceed to Dubai Mall & watch Musical Fountain Show',
+        ],
+        image: 'https://images.unsplash.com/photo-1589550086091-e8935294d806?q=80&w=2172&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '3',
+        title: 'Burj Khalifa & Desert Safari (B/X/D)',
+        activities: [
+          'Breakfast in Hotel',
+          'Visit Burj Khalifa at 24th floor (non-peak hour)',
+          'Proceed to shopping inside Dubai Mall',
+          'Depart from hotel for desert Safari with 4x4 Land Cruiser for Dunes Bashing (6 pax/jeep)',
+          'Proceed to fire show, Belly Dancing, Tanoura Dance, and Camel riding',
+          'Have dinner at desert Safari Camp',
+        ],
+        image: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '4',
+        title: 'Abu Dhabi Tour (B/X/D)',
+        activities: [
+          'Breakfast in hotel',
+          'Proceed to full day Abu Dhabi tour',
+          'Visit Grand Mosque',
+          'Photo stop at Emirates Palace',
+          'Pass by Presidential Palace',
+          'Photo stop Abu Dhabi Corniche',
+          'Have fun in Ferrari World Theme Park(entrance ticket included)',
+        ],
+        image: 'https://images.unsplash.com/photo-1567215378181-6ecf3590646f?q=80&w=2103&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '5',
+        title: 'Departure (B/X/X)',
+        activities: [
+          'After breakfast',
+          'Visit Miracle Garden',
+          'Free time shopping at mall of Emirates',
+          'Transfer to Dubai airport'
+        ],
+        image: 'https://images.unsplash.com/photo-1588314941393-af1c493f345c?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+  },
+
+  
 'malaysia': {
   id: '6',
   name: 'Malaysia Amazing Tour Langkawi',
