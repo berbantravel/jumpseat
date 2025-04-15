@@ -20,7 +20,7 @@ import { useRouter } from 'next/navigation'
 
 interface ProductDetailsProps {
   product: {
-    id: string // Add this line
+    id: string
     name: string
     price: number
     imageSrc: string
@@ -40,7 +40,7 @@ interface ProductDetailsProps {
       activities: string[]
       image: string
     }>
-    listingDescription: string
+    listingDescription?: string
   }
 }
 
@@ -166,7 +166,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 <div
                   className="space-y-6 text-base text-gray-700"
                   dangerouslySetInnerHTML={{
-                    __html: product.listingDescription,
+                    __html: product.listingDescription || '',
                   }}
                 />
               </div>
