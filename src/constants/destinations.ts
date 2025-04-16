@@ -106,6 +106,30 @@ export const destinations = [
     href: '#',
     imageSrc:'https://images.pexels.com/photos/3763190/pexels-photo-3763190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
   },
+
+  
+  {
+    name: 'SHANGHAI MINI KYOTO 6D 4N',
+    description: ' EXPERIENCE LUXURY AND ADVENTURE IN DUBAI AND ABU DHABI!',
+    price: '23,662',
+    href: '#',
+    imageSrc:'https://images.pexels.com/photos/3763190/pexels-photo-3763190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+  },
+
+  {
+    name: 'BALI 4D 3N',
+    description: "LET THE ISLAND'S MAGIC SWEEP YOU OFF YOUR FEET!",
+    price: '27,888',
+    href: '#',
+    imageSrc:'https://images.unsplash.com/photo-1680094513129-abe05d29eee1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
+  {
+    name: 'MONGOLIA WINTER TOUR 8D 7N',
+    description: "LET THE ISLAND'S MAGIC SWEEP YOU OFF YOUR FEET!",
+    price: '27,888',
+    href: '#',
+    imageSrc:'https://images.unsplash.com/photo-1680094513129-abe05d29eee1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+  },
   
   
   {

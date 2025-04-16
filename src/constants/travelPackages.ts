@@ -1144,6 +1144,7 @@ export const travelPackages = {
     longDescription:
       '<div class="font-bold mb-3 text-2xl">South Korea Seoul 6D4N Tour</div> <div class="font-semibold mb-4 text-lg">Traveler: K-Pop Fans, Culture Enthusiasts, Families</div>' +
       '<div class="text-lg font-bold mb-2">Destination:</div>' +
+      
       '<div class="text-normal mb-3">Discover the perfect blend of traditional Korean culture and modern Seoul attractions. From palaces to K-Star Road, experience the best of South Korea with exciting activities and cultural immersion.</div>',
     bestTimeToVisit: 'May to August',
     listingDescription:
@@ -2323,617 +2324,453 @@ export const travelPackages = {
     ],
   },
 
-  
-'malaysia': {
-  id: '6',
-  name: 'Malaysia Amazing Tour Langkawi',
-  price: 19080,
-  rating: 5,
-  description:
-    "Experience the beauty of Langkawi with its pristine beaches and vibrant culture.",
-  longDescription:
-    '<div class="font-bold mb-3 text-2xl">Malaysia Amazing Tour Langkawi 4D3N</div>' +
-    '<div class="font-semibold mb-4 text-lg">Traveler: Family, Friends, Young Couples and Honeymooners, Solo Travelers, Adventure Seekers, and Outdoor Enthusiasts.</div>' +
-    '<div class="text-lg font-bold mb-2">Destination:</div>' +
-    '<div class="text-normal mb-3">Langkawi - a tropical paradise known for its stunning beaches, lush rainforests, and rich cultural heritage.</div>',
-  bestTimeToVisit: 'November - March',
-  listingDescription:
-    '<div class="text-xl font-bold">Tour Dates Available:</div>' +
-    '<div class="text-normal font-semibold">Hotel & Tour ONLY</div>' +
-    '<div class="text-normal font-bold">Rate: PHP 19,080.00/pax</div>',
-  daysOfStay: '4 Days & 3 Nights',
-  minimumGuests: 'No Minimum Guests',
-  heroImage:
-    'https://images.pexels.com/photos/4143569/pexels-photo-4143569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-  images: [
-    {
-      id: 1,
-      name: 'Langkawi Beach',
-      src: 'https://images.pexels.com/photos/4143569/pexels-photo-4143569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      alt: 'Langkawi Beach',
-    },
-    {
-      id: 2,
-      name: 'Langkawi Island Hopping',
-      src: 'https://images.unsplash.com/photo-1710584455203-6524da94b857?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'Langkawi Island Hopping',
-    },
+   'shanghai-mini-kyoto-6d-4n': {
+    id: '17',
+    name: 'Shanghai Mini Kyoto',
+    price: 23662,
+    rating: 4.4,
+    description: "Discover China's Blend of Modern Shanghai and Traditional Kyoto-Style Charm",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Shanghai Mini Kyoto 6D4N Tour</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Culture Enthusiasts, First-Time China Visitors, Architecture Lovers</div>' +
+      '<div class="text-lg font-bold mb-2">Experience:</div>' +
+      '<div class="text-normal mb-3">From Shanghai\'s futuristic skyline to Wuxi\'s Kyoto-inspired Nianhua Bay, experience China\'s perfect blend of ancient traditions and modern wonders.</div>',
+    bestTimeToVisit: 'April (Spring)',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="text-normal font-semibold">Apr.14-19 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.15-20 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.16-21 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.17-22 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.18-23 2025</div>' +
+      '<div class="text-normal font-bold">Child with bed: Same rate as adults</div>' +
+      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 23,362/pax</div>',
+    daysOfStay: '6 Days & 4 Nights',
+    minimumGuests: 'Minimum 10 pax for optional tours',
+    heroImage: 'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b',
+    images: [
+      {
+        id: 1,
+        name: 'Nianhua Bay',
+        src: 'https://images.pexels.com/photos/15823876/pexels-photo-15823876/free-photo-of-illuminated-buildings-in-yu-garden-shanghai-china.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        alt: 'Kyoto-style architecture in China'
+      },
+      {
+        id: 2,
+        name: 'The Bund',
+        src: 'https://images.pexels.com/photos/9157204/pexels-photo-9157204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        alt: 'Shanghai waterfront'
+      },
+      {
+        id: 3,
+        name: 'Zhujiajiao',
+        src: 'https://images.unsplash.com/photo-1633851548815-207719ed2ed0?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Ancient water town'
+      },
+      {
+        id: 4,
+        name: 'Oriental Pearl',
+        src: 'https://images.unsplash.com/photo-1697859654964-3efe30b6f1ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Shanghai tower at night'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'In Economic Airfare and Tax Cebu Pacific Airlines (roundtrip)',
+          'Baggage Allowance: 7KG hand carry',
+          '4 nights room accommodation based on twin sharing at choice hotel (NO GUARANTEED TRIPLE ROOM)',
+          'Daily hotel breakfast',
+          'Private coach with English Speaking tour guide',
+          'Sightseeing tours as specified above include the first way entrance fee needed',
+          'Meal as listed'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Expenses of a personal nature like telephone calls, mini bars, etc.',
+          'Extra baggage allowance',
+          'Travel insurance',
+          'Philippines travel tax',
+          'CHINA Group Visa:40USD/pax (collected with tour fee)',
+          'Tips for driver & guide USD20/pax (collected with tour fee)',
+          'Single supplement: 90USD/pax',
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival in Shanghai',
+        activities: [
+          'Arrive',
+          'Meet the tour guide at airport',
+          'Transfer to hotel & check in',
+        ],
+        image: 'https://images.unsplash.com/photo-1713763413199-7087e0451efa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '2',
+        title: 'Shanghai to Wuxi (B/L/X)',
+        activities: [
+          'Breakfast at the hotel & check out',
+          'Chenghuang Temple of Shanghai',
+          'Compulsory tour in Latex shop',
+          'Proceed to Wuxi',
+          'Visit Changguangxi Wetland Park',
+          'Visit Nianhua Bay scenic spot, the Mini Kyoto in China',
+          'Check in at hotel'
+        ],
+        image: 'https://images.pexels.com/photos/15823876/pexels-photo-15823876/free-photo-of-illuminated-buildings-in-yu-garden-shanghai-china.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+      },
+      {
+        day: '3',
+        title: 'Wuxi to Shanghai (B/L/D)',
+        activities: [
+          'Breakfast at the hotel & check out',
+          'Compulsory shopping tour in Pearl Exhibition Center',
+          'Proceed to Shanghai',
+          'Compulsory shopping tour in Chinese medicine shop',
+          'Zhujiajiao Ancient Town',
+          'The Bund & Shanghai Oriental Pear Tower (outside view)'
+        ],
+        image: 'https://images.pexels.com/photos/9157204/pexels-photo-9157204.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+      },
+      {
+        day: '4',
+        title: 'Free Day (B/X/X)',
+        activities: [
+          'Breakfast at the hotel',
+          'Free day',
+          'OPTIONAL TOUR 1: Surcharge USD 120/pax Shanghai Disneyland (including ticket, Transfer & tour guide, min of 10pax push through)',
+          'OPTIONAL TOUR 2: Surcharge USD 60/pax Jinmao Tower 88th floor sightseeing hall + Huangpu River cruise (including ticket,transfer & tour guide, min of 10pax push through)'
+        ],
+        image: 'https://images.unsplash.com/photo-1633851548815-207719ed2ed0?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '5/6',
+        title: 'Departure (B/L/X)',
+        activities: [
+          'Breakfast at the hotel & check out',
+          'Compulsory shopping tour at Intangible Cultural Heritage Jade Craft Exhibition Center',
+          "The Asian’s Largest Starbucks Flagship store",
+          'Free shopping at Nanjing Road Walking street',
+          'Zhang Garden (Luxury gathering place)',
+          'Transfer to airport to fly home'
+        ],
+        image: 'https://images.unsplash.com/photo-1697859654964-3efe30b6f1ec?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      }
+    ],
+  },
 
-    {
-      id: 3,
-      name: 'Langkawi Island Night',
-      src: 'https://images.unsplash.com/photo-1703855467870-ec01a3853872?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'Langkawi Island Night',
-    },
-
-    {
-      id: 4,
-      name: 'Langkawi Island Day',
-      src: 'https://images.unsplash.com/photo-1703855433393-9cb72e7c04d2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'Langkawi Island Day',
-    },
+  'bali-4d-3n': {
+    id: '18',
+    name: 'Bali 4D 3N',
+    price: 27888,
+    rating: 4.5,
+    description: "Let the island’s magic sweep you off your feet!",
+    longDescription:
     
-  ],  
-  details: [
-    {
-      name: 'Inclusions',
-      items: [
-        'Accommodation as indicated above twin including all taxes and breakfast (normally check-in time: 14.00hrs & check-out time: 12.00hrs)',
-        'English speaking guide in SIC tour',
-        'Transportation in with air-conditioned',
-        'Meals as indicated in the detail itinerary (B: breakfast, L: lunch, D: dinner)',
-        '1 bottle of drinking water per day during the tour',
-        'Sightseeing tickets in SIC TOUR',
-      ],
-    },
-    {
-      name: 'Exclusions',
-      items: [
-        'Airfares (international) and airport tax',
-        'Early check-in, late check-out surcharge',
-        'Other meals not mentioned in the tour program',
-        'Drinks and personal expenses (phone call, laundry, tipping etc…)',
-        'Any services not mentioned in the program',
-        'Visa Letter',
-        'Not Included Tourism Tax (10 Ringgit per room per night)',
-      ],
-    },
-    {
-      name: 'Itinerary Highlights',
-      items: [
-        'Day 1: Arrival in Langkawi, transfer to hotel for check-in, free time to explore.',
-        'Day 2: Langkawi Island hopping tour including Pulau Beras Basah, Pregnant Maiden Lake, and eagle feeding session.',
-        'Day 3: Free time to explore Langkawi at your leisure.',
-        'Day 4: Departure from Langkawi, transfer to airport.',
-      ],
-    },
-  ],
-  itinerary: [
-    {
-      day: '1',
-      title: '',
-      activities: [
-        'Arrive to Langkawi - Hotel (No Meal) – No guide',
-        'Langkawi arrive',
-        'Driver pick up you from airport to hotel for check in (14:00pm check in time)',
-        'Free your time',
-        'Overnight in Langkawi',
-      ],
-      image:
-        'https://images.unsplash.com/photo-1641477563399-e5f2346453b7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      day: '2',
-      title: '',
-      activities: [
-        'Breakfast at hotel',
-        'Langkawi Island hopping tour - SIC TOUR 4 hours',
-        'Relax and unwind on the pristine beaches of Pulau Beras Basah',
-        'Immerse yourself in the mystical beauty of this island, home to the legendary Pregnant Maiden Lake',
-        'Witness the majestic eagles swooping down to catch their prey during the thrilling eagle feeding session',
-        'Overnight in Langkawi',
-      ],
-      image:
-        'https://images.unsplash.com/photo-1703855488636-36f466b49171?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      day: '3',
-      title: '',
-      activities: [
-        'Breakfast at hotel',
-        'Free time',
-        'Overnight in Langkawi',
-      ],
-      image:
-        'https://images.unsplash.com/photo-1703855467870-ec01a3853872?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      day: '4',
-      title: '',
-      activities: [
-        'Breakfast at hotel',
-        'Then Driver will pick you up to Airport',
-      ],
-      image:
-        'https://images.pexels.com/photos/19878019/pexels-photo-19878019/free-photo-of-commercial-airplane-on-a-green-airport-runway.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    },
-  ],
-},
-'indonesia': {
-  id: '7',
-  name: 'Indonesia - Bali',
-  price: 34888,
-  rating: 5,
-  description:
-    "Let the islands magic sweep you off your feet!",
-  longDescription:
-    '<div class="font-bold mb-3 text-2xl">Indonesia - Bali 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">  Traveler: Families with Children, Friends, Young Couples and Honeymooners, Solo Travelers, Adventure Seekers and Outdoor Enthusiasts</div>' +
-    '<div class="text-lg font-bold mb-2">Destination:</div>' +
-    '<div class="text-normal mb-3">Bali is an Indonesian island known for its diverse landscapes, including beautiful beaches, lush rice terraces, volcanic mountains, and vibrant coral reefs. Its a popular destination for tourists seeking relaxation, adventure, and cultural experiences.</div>'+
-    '<div class="font-semibold mb-4 text-lg">Packages:</div>' +
-    '<ul class="list-disc ml-5 mb-4">' +
-    '<li>Bali Adventure Escape (for travelers seeking outdoor activities)</li>' +
-    '<li>Bali Cultural Immersion (for those interested in exploring Balinese culture and traditions)</li>' +
-    '<li>Bali Beach Retreat (for travelers seeking relaxation and sunbathing)</li>' +
-    '<li>Bali Family Fun (for families looking for a memorable vacation together)</li>' +
-    '<li>Bali Romantic Getaway (for couples seeking a romantic escape)</li>' +
-    '</ul>' +
-    '<div class="text-lg font-bold mb-2">Bali Arrival Requirements:</div>' +
-    '<div class="text-normal mb-3">As a result of recent governmental regulations, incoming visitors to Bali are mandated to pay the International Tourism Levy (TAX), amounting to IDR 150,000 or Approx. USD 11 per person (NOTE: USD rate is subject to prevailing conversion rates). Payment can be facilitated either online or upon arrival at Bali airport. For Bali Customs Declaration (per pax), PLEASE REGISTER 1 DAY BEFORE your flight going to Bali.</div>',
-  bestTimeToVisit: 'April - October',
-  listingDescription:
-    '<div class="text-xl font-bold">Tour Dates Available:</div>' +
-    '<div class="text-normal font-semibold">MAR 21-MAR 24</div>' +
-    '<div class="text-normal font-semibold">APR 09-APR 12</div>' +
-    '<div class="text-normal font-semibold">MAY 15-MAY 18</div>' +
-    '<div class="text-normal font-semibold">JUN 27-JUN 30</div>' ,
-    '<div class="text-normal font-bold">Rate: PHP 34,888.00/pax</div>' :
-    '<div class="text-normal font-bold">CHILD RATE (7 YRS OLD AND BELOW)</div>' +
-    '<div class="text-normal">1 Adult + 1 Child w/ Bed - SAME AS ADULT</div>' +
-    '<div class="text-normal">2 Adults + 1 Child (Extra Bed - LESS PHP 2,888)</div>' +
-    '<div class="text-normal">2 Adults + 1 Child (No Bed - LESS PHP 4,888)</div>',
-  daysOfStay: '4 Days & 3 Nights',
-  minimumGuests: 'No Minimum Guests',
-  heroImage:
-    'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-  images: [
-    {
-      id: 1,
-      name: 'Bali Temple',
-      src: 'https://images.unsplash.com/photo-1641082918149-24470fe02c39?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'Bali Beach',
-    },
-    {
-      id: 2,
-      name: 'Bali Temple',
-      src: 'https://images.unsplash.com/photo-1680094513129-abe05d29eee1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'Bali Temple',
-    },
-    {
-      id: 3,
-      name: 'Bali Kintamani',
-      src: 'https://images.unsplash.com/photo-1640089061537-8fd7983395c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'Bali Kintamani',
-    },
-    {
-      id: 4,
-      name: 'Bali Rice Terraces',
-      src: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-      alt: 'Bali Rice Terraces',
-    },
-  ],
-  details: [
-    {
-      name: 'Inclusions',
-      items: [
-        'Roundtrip Airfare via Cebu Pacific',
-        '7KG Hand Carry',
-        '3 Nights Hotel Accommodation',
-        'Full Board meals (3B-3L-3D)',
-        'Private Coach',
-        'Fully Loaded Tours',
-        'English-Speaking Guide',
-      ],
-    },
-    {
-      name: 'Exclusions',
-      items: [
-        'Philippine Travel Tax - PHP 1,620 (TO BE PAID AT THE AIRPORT)',
-        'Tipping - PHP 1,200',
-        'Travel Insurance - PHP 560 (Up to 75 y/o only. If pax is 76 y/o and above, an additional charge applies.)',
-        'Check-in Baggage (SHOULD BE REQUESTED UPON BOOKING)',
-        'PRIOR DEPARTURE / UPON ISSUANCE',
-        '20 KG - PHP 1,500/way',
-        '32 KG - PHP 2,700/way',
-        '40 KG - PHP 3,500/way',
-        'ONCE DEPARTED / LESS THAN 48 HRS',
-        '20 KG - PHP 1,800/way',
-        '32 KG - PHP 2,900/way',
-        '40 KG - PHP 3,800/way',
-        'Tourism Tax - Approx. USD 11 (TO BE PAID AT BALI AIRPORT. USD RATE IS SUBJECT TO PREVAILING CONVERSION RATES)',
-      ],
-    },
-    {
-      name: 'Itinerary Highlights',
-      items: [
-        'Day 1: Arrival in Bali, Uluwatu Tour, Coffee Factory, check in at your hotel.',
-        'Day 2: Visit UC Silver Village, Batik Factory, Tampaksiring, Tirta Empul Temple, Kintamani, Ubud Terrace, Ubud Royal Palace, Ubud Market.',
-        'Day 3: Explore Mengwi Royal Temple, Ulun Danu Temple, Tanah Lot.',
-        'Day 4: Departure from Bali, transfer to airport.',
-      ],
-    },
-  ],
-  itinerary: [
-    {
-      day: '1',
-      title: 'Manila-Bali',
-      activities: [
-        'Departure from Manila, arrival in Bali.',
-        'Warm greeting at the airport.',
-        'Uluwatu Tour',
-        'Coffee Factory',
-        'Check in at your hotel',
-      ],
-      image:
-        'https://images.unsplash.com/photo-1594999791440-4d04cff7b752?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      day: '2',
-      title: 'BALI',
-      activities: [
-        'Breakfast at the hotel',
-        'UC Silver Village',
-        'Batik Factory',
-        'Tampaksiring',
-        'Tirta Empul Temple',
-        'Kintamani',
-        'Ubud Terrace',
-        'Ubud Royal Palace',
-        'Ubud Market',
-      ],
-      image:
-        'https://images.unsplash.com/photo-1641082918149-24470fe02c39?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      day: '3',
-      title: 'BALI',
-      activities: [
-        'Breakfast at the hotel',
-        'Mengwi Royal Temple',
-        'Ulun Danu Temple',
-        'Tanah Lot',
-      ],
-      image:
-        'https://images.unsplash.com/photo-1680094513129-abe05d29eee1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    },
-    {
-      day: '4',
-      title: 'BALI-Manila',
-      activities: [
-        'Breakfast at the hotel',
-        'Pickup from your hotel and transfer to the airport.',
-      ],
-      image:
-        'https://images.pexels.com/photos/11213163/pexels-photo-11213163.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    },
-  ],
-},
-// 'the-philippines': {
-//   id: '7',
-//   name: 'Philippines - Bali',
-//   price: 34888,
-//   rating: 5,
-//   description:
-//     "Let the island's magic sweep you off your feet!",
-//   longDescription:
-//     '<div class="font-bold mb-3 text-2xl">Indonesia - Bali 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">  Traveler: Families with Children, Friends, Young Couples and Honeymooners, Solo Travelers, Adventure Seekers and Outdoor Enthusiasts</div>' +
-//     '<div class="text-lg font-bold mb-2">Destination:</div>' +
-//     '<div class="text-normal mb-3">Bali is an Indonesian island known for its diverse landscapes, including beautiful beaches, lush rice terraces, volcanic mountains, and vibrant coral reefs. Its a popular destination for tourists seeking relaxation, adventure, and cultural experiences.</div>'+
-//     '<div class="font-semibold mb-4 text-lg">Packages:</div>' +
-//     '<ul class="list-disc ml-5 mb-4">' +
-//     '<li>Bali Adventure Escape (for travelers seeking outdoor activities)</li>' +
-//     '<li>Bali Cultural Immersion (for those interested in exploring Balinese culture and traditions)</li>' +
-//     '<li>Bali Beach Retreat (for travelers seeking relaxation and sunbathing)</li>' +
-//     '<li>Bali Family Fun (for families looking for a memorable vacation together)</li>' +
-//     '<li>Bali Romantic Getaway (for couples seeking a romantic escape)</li>' +
-//     '</ul>' +
-//     '<div class="text-lg font-bold mb-2">Bali Arrival Requirements:</div>' +
-//     '<div class="text-normal mb-3">As a result of recent governmental regulations, incoming visitors to Bali are mandated to pay the International Tourism Levy (TAX), amounting to IDR 150,000 or Approx. USD 11 per person (NOTE: USD rate is subject to prevailing conversion rates). Payment can be facilitated either online or upon arrival at Bali airport. For Bali Customs Declaration (per pax), PLEASE REGISTER 1 DAY BEFORE your flight going to Bali.</div>',
-//   bestTimeToVisit: 'April - October',
-//   listingDescription:
-//     '<div class="text-xl font-bold">Tour Dates Available:</div>' +
-//     '<div class="text-normal font-semibold">MAR 21-MAR 24</div>' +
-//     '<div class="text-normal font-semibold">APR 09-APR 12</div>' +
-//     '<div class="text-normal font-semibold">MAY 15-MAY 18</div>' +
-//     '<div class="text-normal font-semibold">JUN 27-JUN 30</div>' ,
-//     '<div class="text-normal font-bold">Rate: PHP 34,888.00/pax</div>' :
-//     '<div class="text-normal font-bold">CHILD RATE (7 YRS OLD AND BELOW)</div>' +
-//     '<div class="text-normal">1 Adult + 1 Child w/ Bed - SAME AS ADULT</div>' +
-//     '<div class="text-normal">2 Adults + 1 Child (Extra Bed - LESS PHP 2,888)</div>' +
-//     '<div class="text-normal">2 Adults + 1 Child (No Bed - LESS PHP 4,888)</div>',
-//   daysOfStay: '4 Days & 3 Nights',
-//   minimumGuests: 'No Minimum Guests',
-//   heroImage:
-//     'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-//   images: [
-//     {
-//       id: 1,
-//       name: 'Bali Temple',
-//       src: 'https://images.unsplash.com/photo-1641082918149-24470fe02c39?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-//       alt: 'Bali Beach',
-//     },
-//     {
-//       id: 2,
-//       name: 'Bali Temple',
-//       src: 'https://images.unsplash.com/photo-1680094513129-abe05d29eee1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-//       alt: 'Bali Temple',
-//     },
-//     {
-//       id: 3,
-//       name: 'Bali Kintamani',
-//       src: 'https://images.unsplash.com/photo-1640089061537-8fd7983395c5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-//       alt: 'Bali Kintamani',
-//     },
-//     {
-//       id: 4,
-//       name: 'Bali Rice Terraces',
-//       src: 'https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-//       alt: 'Bali Rice Terraces',
-//     },
-//   ],
-//   details: [
-//     {
-//       name: 'Inclusions',
-//       items: [
-//         'Roundtrip Airfare via Cebu Pacific',
-//         '7KG Hand Carry',
-//         '3 Nights Hotel Accommodation',
-//         'Full Board meals (3B-3L-3D)',
-//         'Private Coach',
-//         'Fully Loaded Tours',
-//         'English-Speaking Guide',
-//       ],
-//     },
-//     {
-//       name: 'Exclusions',
-//       items: [
-//         'Philippine Travel Tax - PHP 1,620 (TO BE PAID AT THE AIRPORT)',
-//         'Tipping - PHP 1,200',
-//         'Travel Insurance - PHP 560 (Up to 75 y/o only. If pax is 76 y/o and above, an additional charge applies.)',
-//         'Check-in Baggage (SHOULD BE REQUESTED UPON BOOKING)',
-//         'PRIOR DEPARTURE / UPON ISSUANCE',
-//         '20 KG - PHP 1,500/way',
-//         '32 KG - PHP 2,700/way',
-//         '40 KG - PHP 3,500/way',
-//         'ONCE DEPARTED / LESS THAN 48 HRS',
-//         '20 KG - PHP 1,800/way',
-//         '32 KG - PHP 2,900/way',
-//         '40 KG - PHP 3,800/way',
-//         'Tourism Tax - Approx. USD 11 (TO BE PAID AT BALI AIRPORT. USD RATE IS SUBJECT TO PREVAILING CONVERSION RATES)',
-//       ],
-//     },
-//     {
-//       name: 'Itinerary Highlights',
-//       items: [
-//         'Day 1: Arrival in Bali, Uluwatu Tour, Coffee Factory, check in at your hotel.',
-//         'Day 2: Visit UC Silver Village, Batik Factory, Tampaksiring, Tirta Empul Temple, Kintamani, Ubud Terrace, Ubud Royal Palace, Ubud Market.',
-//         'Day 3: Explore Mengwi Royal Temple, Ulun Danu Temple, Tanah Lot.',
-//         'Day 4: Departure from Bali, transfer to airport.',
-//       ],
-//     },
-//   ],
-//   itinerary: [
-//     {
-//       day: '1',
-//       title: 'Manila-Bali',
-//       activities: [
-//         'Departure from Manila, arrival in Bali.',
-//         'Warm greeting at the airport.',
-//         'Uluwatu Tour',
-//         'Coffee Factory',
-//         'Check in at your hotel',
-//       ],
-//       image:
-//         'https://images.unsplash.com/photo-1594999791440-4d04cff7b752?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-//     },
-//     {
-//       day: '2',
-//       title: 'BALI',
-//       activities: [
-//         'Breakfast at the hotel',
-//         'UC Silver Village',
-//         'Batik Factory',
-//         'Tampaksiring',
-//         'Tirta Empul Temple',
-//         'Kintamani',
-//         'Ubud Terrace',
-//         'Ubud Royal Palace',
-//         'Ubud Market',
-//       ],
-//       image:
-//         'https://images.unsplash.com/photo-1641082918149-24470fe02c39?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-//     },
-//     {
-//       day: '3',
-//       title: 'BALI',
-//       activities: [
-//         'Breakfast at the hotel',
-//         'Mengwi Royal Temple',
-//         'Ulun Danu Temple',
-//         'Tanah Lot',
-//       ],
-//       image:
-//         'https://images.unsplash.com/photo-1680094513129-abe05d29eee1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-//     },
-//     {
-//       day: '4',
-//       title: 'BALI-Manila',
-//       activities: [
-//         'Breakfast at the hotel',
-//         'Pickup from your hotel and transfer to the airport.',
-//       ],
-//       image:
-//         'https://images.pexels.com/photos/11213163/pexels-photo-11213163.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-//     },
-//   ],
-// }
-
-
-// 'prosperous-hongkong': {
-//     id: "1",
-//     name: 'Prosperous Hongkong',
-//     price: 20200,
-//     rating: 4,
-//     description: 'A fusion of dazzling innovation and rich tradition',
-//     longDescription:
-//       '<div class="font-bold mb-3 text-2xl">Prosperous Hongkong- Macau Guangdong 4 in 1 5D4N Tour (Sept)</div> <div class="font-semibold mb-4 text-lg">  Traveler: Families with Children, Friends, Young Couples and Honeymooners, Solo Travelers, Adventure Seekers and Outdoor Enthusiasts</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Guangdong</span> - is also famous for its Cantonese culture, including the Cantonese language, cuisine and traditional festivals. The Province attracts business professionals, investors, tourists, and cultural enthusiasts alike, making it a dynamic and diverse area with a global influence.</span> </div> <div class="text-normal"> <span class="text-lg"><span class="font-medium">Macau</span> - the city\'s historic center, a UNESCO World Heritage site, features beautifully preserved colonial architecture, including churches, temples, and fortresses. Macau is also known for its diverse culinary scene, combining Portuguese and Cantonese flavors, making it a haven for food lovers.</span></div>',
-//     bestTimeToVisit: 'September',
-//     listingDescription:
-//       ' <div class="text-xl font-bold">Tour Dates Available:</div> <div class="text-normal font-semibold"> Sept. 12-16</div> <div class="text-normal font-semibold"> Sept. 19-23</div> <div class="text-normal font-bold">Child with bed(6-17 yrs.old):same rate as adults</div> <div class="text-normal font-bold">Child without bed(2-5 yrs. old):From USD 229/pax</div>',
-//     daysOfStay: '5 Days & 4 Nights',
-//     minimumGuests: 'No Minimum Guests',
-//     heroImage:
-//       'https://images.pexels.com/photos/2410300/pexels-photo-2410300.jpeg',
-//     images: [
-//       {
-//         id: 1,
-//         name: 'Seoul Skyline',
-//         src: 'https://images.pexels.com/photos/237211/pexels-photo-237211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//         alt: 'Seoul city skyline',
-//       },
-//       {
-//         id: 2,
-//         name: 'Traditional Palace',
-//         src: 'https://images.pexels.com/photos/373290/pexels-photo-373290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//         alt: 'Traditional Korean palace',
-//       },
-//       {
-//         id: 3,
-//         name: 'Street Food',
-//         src: 'https://images.pexels.com/photos/2105237/pexels-photo-2105237.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//         alt: 'Korean street food',
-//       },
-//       {
-//         id: 4,
-//         name: 'Cherry Blossoms',
-//         src: 'https://images.pexels.com/photos/2070033/pexels-photo-2070033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//         alt: 'Cherry blossoms in South Korea',
-//       },
-//     ],
-//     details: [
-//       {
-//         name: 'Inclusions',
-//         items: [
-//           '4 Nights room accommodation based on twin sharing at a choice hotel.',
-//           'Daily hotel breakfast.',
-//           'Private coach with an English speaking tour guide.',
-//           'Sightseeing tours as specified above include the first way entrance fee needed.',
-//           'Meal as listed.',
-//           'Roundtrip airfare via Cebu Pacific (7kg. Hand Carry only).',
-//           '144 Group visa.',
-//         ],
-//       },
-//       {
-//         name: 'Exclusions',
-//         items: [
-//           'Expenses of a personal nature like telephone calls, mini bar, etc.',
-//           'Extra baggage allowance.',
-//           'PH Travel Tax.',
-//           'Optional Tour.',
-//           'Tips for driver and guide: USD25/pax',
-//           'Single supplement: USD99/pax',
-//           'Covid-19 test if needed.',
-//         ],
-//       },
-//       {
-//         name: 'Optional package: USD 100/pax',
-//         items: [
-//           'HZM Bridge Luxury Cruise Tour + Jingshan Park + Cable Car + BBQ Dinner.',
-//         ],
-//       },
-//     ],
-//     itinerary: [
-//       {
-//         day: '1 ETA',
-//         title: 'Arrive in Macau',
-//         activities: [
-//           'Meet the Macau guide at the airport.',
-//           'Transfer to Macau-Zhuhai Port (queued yourself to pass the border).',
-//           'Entry to Zhuhai and meet the Guangdong guide.',
-//           'Transfer to hotel and check in.',
-//         ],
-//         image:
-//           'https://images.pexels.com/photos/730778/pexels-photo-730778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//       },
-//       {
-//         day: '2',
-//         title: '',
-//         activities: [
-//           'Hotel Breakfast.',
-//           'Check out and transfer to Guangzhou.',
-//           'Take Zuiguanguang Tram',
-//           'Visit Haixinsha Asian Games Park (tram tour).',
-//           'Visit Canton Tower (outside view).',
-//           'Visit Haixin Bridge.',
-//           'Visit Huacheng Square.',
-//           'Transfer to Hotel and Check in.',
-//           'Special Complementary Romantic Show of Guangdong: ‘Eternal Show'
-//         ],
-//         image:
-//           'https://images.pexels.com/photos/1677358/pexels-photo-1677358.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//       },
-//       {
-//         day: '3',
-//         title: '',
-//         activities: [
-//           'Hotel Breakfast.',
-//           'Check out and Transfer to Zhongshan.',
-//           'Visit Sun Yat-sen's Former Residence.',
-//           'Visit Latex Shop.',
-//           'Visit Zhuhai Fisher Girl, Lovers Road.',
-//           'Visit Haitian Posthouse Landscape Trestle Road.',
-//           'Transfer to hotel and check in.',
-//         ],
-//         image:
-//           'https://images.pexels.com/photos/18137607/pexels-photo-18137607/free-photo-of-zhongshan-studio-city-in-china.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//       },
-//       {
-//         day: '4',
-//         title: '',
-//         activities: [
-//           'Hotel Breakfast.',
-//           'Visit Zhuhai Grand Theater.',
-//           'Look far Hong Kong-Zhuhai-Macau Bridge.',
-//           'Visit a Chinese Medicine Shop.',
-//           'Visit New Yuan Ming Palace.',
-//           'Visit the Silk Store.',
-//           'Visit Huangyucheng Shopping Mall.',
-//           'Back to the hotel.',
-//         ],
-//         image:
-//           'https://images.pexels.com/photos/20599712/pexels-photo-20599712/free-photo-of-zhuhai-opera-on-sea-coast.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//       },
-//       {
-//         day: '5 ETD',
-//         title: '',
-//         activities: [
-//           'Hotel Breakfast.',
-//           'Check out',
-//           'Visit the Jewelry Store.',
-//           'Transfer to the border and entry to Macau.',
-//           'Visit the Venetian Macau.',
-//           'Lunch: Lisboeta Macau Meal Voucher.',
-//           'Enjoy the Diamond Light Show.',
-//           'Visit Macau Parisian Tower (outside view).',
-//           'Visit Ruin of St.Paul's Macau Souvenir Shop.',
-//           'Visit Wynn Palace, Performance Lake+ Water Dance Show.',
-//           'Transfer to the airport and fly back home.',
-//         ],
-//         image:
-//           'https://images.pexels.com/photos/4369493/pexels-photo-4369493.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-//       },
-//     ],
-//   },
-
-   
+      '<div class="font-bold mb-3 text-2xl">Indonesia - Bali 4D3N Tour</div> <div class="font-semibold mb-4 text-lg">Adventure Seekers, Luxury Travelers, Backpackers and Budget Travelers,Honeymooners and Couples, Family Travelers.</div> <div class="text-lg font-bold mb-2">Destination:</div> <div class="text-normal mb-3"> <span class="text-lg"><span class="font-medium">Bali</span> -  is an Indonesian island known for its diverse landscapes, including beautiful beaches, lush rice terraces, volcanic mountains, and vibrant coral reefs. It’s a popular destination for tourists seeking relaxation, adventure, and cultural experiences.</span> </div> <div class="text-normal"> <span class="text-lg"></div>' +
+      '<div class="font-semibold mb-4 text-lg">Package Options:</div>' +
+      '<div class="grid grid-cols-2 gap-2">' +
+      '<div class="text-normal">• Bali Adventure Escape</div>' +
+      '<div class="text-normal">• Bali Cultural Immersion</div>' +
+      '<div class="text-normal">• Bali Beach Retreat</div>' +
+      '<div class="text-normal">• Bali Family Fun</div>' +
+      '<div class="text-normal">• Bali Romantic Getaway</div>' +
+      '</div>' ,
+    bestTimeToVisit: 'April-December (Dry Season)',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="grid grid-cols-2 gap-2 mt-2">' +
+      '<div class="text-normal font-semibold">Apr.24-27 2025</div>' +
+      '<div class="text-normal font-semibold">May.29-Jun.1 2025</div>' +
+      '<div class="text-normal font-semibold">Jun.19-22 2025</div>' +
+      '<div class="text-normal font-semibold">Jul.17-20 2025</div>' +
+      '<div class="text-normal font-semibold">Sep.18-21 2025</div>' +
+      '<div class="text-normal font-semibold">Oct.16-19 2025</div>' +
+      '<div class="text-normal font-semibold">Nov.13-16 2025</div>' +
+      '<div class="text-normal font-semibold">Dec.25-28 2025</div>' +
+      '</div>' +
+      '<div class="mt-3 text-normal font-bold">Child with bed: Same rate as adults</div>' +
+      '<div class="text-normal font-bold">Child without bed (2-5 yrs old): From PHP 27,588/pax</div>',
+    daysOfStay: '4 Days & 3 Nights',
+    minimumGuests: 'No Minimum',
+    heroImage: 'https://images.unsplash.com/photo-1680094513129-abe05d29eee1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    images: [
+      {
+        id: 1,
+        name: 'Tanah Lot',
+        src: 'https://images.unsplash.com/photo-1624935851312-845758a99160?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Tanah Lot'
+      },
+      {
+        id: 2,
+        name: 'Uluwatu',
+        src: 'https://images.unsplash.com/photo-1598751240191-fbe4a9a30e02?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Uluwatu'
+      },
+      {
+        id: 3,
+        name: 'Tukad Waterfall',
+        src: 'https://images.pexels.com/photos/5272925/pexels-photo-5272925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        alt: 'Bali jungle waterfall'
+      },
+      {
+        id: 4,
+        name: 'Uluwatu',
+        src: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4',
+        alt: 'Cliffside temple'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Roundtrip Airfare via Cebu Pacific',
+          '7KG Hand Carry',
+          '3 Nights Hotel Accommodation (4-star)',
+          'Sightseeing tours including all entrance fees',
+          'Private coach with English speaking tour guide',
+          'Meals as listed in itinerary'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Expenses of a personal nature',
+          'Tips for driver & guide (USD20/pax)',
+          'Single supplement',
+          'Travel insurance',
+          'Extra baggage allowance',
+          'Philippines travel tax'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Manila-Bali (X/L/D)',
+        activities: [
+          'Arrive in Bali',
+          'Meet the tour guide at airport',
+          'Proceed to visit Ulun Danu Temple',
+          'Beratan Lake',
+          'Visit Secret Garden Village',
+          'Visit Tanah Lot',
+          'After dinner transfer to hotel & check in',
+        ],
+        image: 'https://images.unsplash.com/photo-1624935851312-845758a99160?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '2',
+        title: 'BALI (B/L/X)',
+        activities: [
+          'Breakfast at the hotel',
+          'Proceed to visit Tanjung Benoa Beach (watersport optional)',
+          'Visit Coffee 3d shop',
+          'Visit Uluwatu',
+          'Visit Polo shop',
+          'Dinner by own at Jimbaran Plaza Food Court',
+        ],
+        image: 'https://images.unsplash.com/photo-1598751240191-fbe4a9a30e02?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+      },
+      {
+        day: '3',
+        title: 'BALI (B/L/X)',
+        activities: [
+          'Breakfast at the hotel',
+          'Visit Latex shop',
+          'Visit d tukad waterfall',
+          'Visit jewelry shop',
+          'Dinner by own at Jimbaran Plaza Food Court',
+        ],
+        image: 'https://images.pexels.com/photos/5272925/pexels-photo-5272925.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+      },
+      {
+        day: '4',
+        title: 'BALI-Manila (B/X/X)',
+        activities: [
+          'Breakfast at the hotel',
+          'Check out & transfer to airport'
+        ],
+        image: 'https://images.pexels.com/photos/20324750/pexels-photo-20324750/free-photo-of-garuda-indonesia-airlines-airplane-in-departure.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+      }
+    ],
+  },
+  'mongolia-winter-tour-8d-7n': {
+    id: '19',
+    name: 'Mongolia Winter Tour 8D 7N',
+    price: 78880, 
+    rating: 4.7,
+    description: "Experience Mongolia's Winter Wilderness - From Ice Deserts to Dog Sledding!",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Mongolia Winter Tour 8D7N</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Adventure Seekers, Nature Lovers, Culture Explorers</div>' +
+      '<div class="text-lg font-bold mb-2">Winter Highlights:</div>' +
+      '<div class="text-normal mb-3">Journey through snow-covered landscapes, experience nomadic culture, and enjoy winter activities from dog sledding to camel riding in the Gobi Desert.</div>',
+    bestTimeToVisit: 'November - March (Winter Season)',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Availability:</div>' +
+      '<div class="text-normal font-semibold">November 2024 - 10 March 2025</div>',
+    daysOfStay: '8 Days & 7 Nights',
+    minimumGuests: 'No Minimum',
+    heroImage: 'https://images.unsplash.com/photo-1710560188942-31e28e9bb671?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Mongolian winter landscape
+    images: [
+      {
+        id: 1,
+        name: 'Genghis Khan Statue',
+        src: 'https://images.unsplash.com/photo-1710560188942-31e28e9bb671?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: '40m tall equestrian statue'
+      },
+      {
+        id: 2,
+        name: 'Erdene Zuu Monastery',
+        src: 'https://images.pexels.com/photos/4324951/pexels-photo-4324951.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        alt: 'Snow-covered Buddhist monastery'
+      },
+      {
+        id: 3,
+        name: 'Camel Riding',
+        src: 'https://images.unsplash.com/photo-1638873011371-db3dd6da4591?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Camel Riding Sand Dunes'
+      },
+      {
+        id: 4,
+        name: 'Horse Riding',
+        src: 'https://images.pexels.com/photos/5275478/pexels-photo-5275478.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+        alt: 'Horse Riding'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'English speaking tour guide at all times',
+          "6nights accommodations based on double/ twin occupancy; - Hotel 4* in Ulaanbaatar – 3nights, - Local Hotel – 3 nights, - Tourist Ger camp – 1 night.",
+          'All meals as specified in the itinerary',
+          'All relevant private transfers and transportation + Experienced driver, *A county (minibus) to 45-seater Coach bus depending on number of people in a group',
+          'All sightseeing and entrance fees as described in the itinerary',
+          'Camel riding at Elsen Tasarkhai sand dunes ~ 30 minutes',
+          'Horse riding in Terelj National Park ~ 1hour',
+          'Dog sledding trip in Terelj N.P',
+          'Sky ski resort',
+          'Complementary drink water during the tour',
+          'All service charge, local and government Taxes'
+        ]
+      },
+      {
+        name: 'Exclusions',
+        items: [
+          'Visa to Mongolia (Get in advance)',
+          'International flights &Travels insurance',
+          'Hotel early check-in and late check-out,',
+          'Early check-in/late check-out',
+          'Tipping and other personal expenses',
+          'Other services not mentioned in the itinerary'
+        ]
+      }
+    ],
+    itinerary: [
+      {
+        day: '1',
+        title: 'Arrival in Ulaanbaatar (L/D)',
+        activities: [
+          'Arrive at 11:55 AM',
+          'Transfer to city for lunch',
+          'Visit National Museum of Mongolia',
+          'Sukhbaatar Square & Parliament House',
+          'See Sukhbaatar & Genghis Khan statues',
+          'Dinner and hotel check-in'
+        ],
+        image: 'https://images.unsplash.com/photo-1710560188942-31e28e9bb671?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        day: '2',
+        title: 'Kharkhorin & Erdene Zuu (B/L/D)',
+        activities: [
+          'Breakfast at hotel',
+          'Drive to ancient capital Kharkhorin',
+          'Visit Karakorum Museum',
+          'Explore Erdene Zuu Monastery',
+          'Transfer to Tourist Ger camp'
+        ],
+        image: 'https://images.pexels.com/photos/4324951/pexels-photo-4324951.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      },
+      {
+        day: '3',
+        title: 'Elsen Tasarkhai Dunes (B/L/D)',
+        activities: [
+          'Breakfast at camp',
+          'Morning monk chanting experience',
+          'Travel to Elsen Tasarkhai sand dunes',
+          'Camel herder family visit & riding',
+          'Transfer to Hustai NP Ger camp'
+        ],
+        image: 'https://images.unsplash.com/photo-1638873011371-db3dd6da4591?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        day: '4',
+        title: 'Hustai NP → Ulaanbaatar (B/L/D)',
+        activities: [
+          'Breakfast at camp',
+          'Wild Przewalski horses viewing',
+          'Short hike in Hustai National Park',
+          'Return to Ulaanbaatar',
+          'Visit Gandan Monastery',
+          'Dinner and hotel check-in'
+        ],
+        image: 'https://images.unsplash.com/photo-1613297479052-6f72bb30805e?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      },
+      {
+        day: '5',
+        title: 'Genghis Khan Statue → Terelj NP (B/L/D)',
+        activities: [
+          'Breakfast at hotel',
+          'Visit 40m Genghis Khan Statue',
+          'Explore Turtle Rock',
+          'c visit',
+          'Check in to Terelj hotel'
+        ],
+        image: 'https://images.pexels.com/photos/6466767/pexels-photo-6466767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      },
+      {
+        day: '6',
+        title: 'Terelj Winter Activities (B/L/D)',
+        activities: [
+          'Breakfast at hotel',
+          '1-hour horseback riding',
+          '5km dog sledding adventure',
+          'Free time at hotel'
+        ],
+        image: 'https://images.pexels.com/photos/5275478/pexels-photo-5275478.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      },
+      {
+        day: '7',
+        title: 'Ulaanbaatar City Tour (B/L/D)',
+        activities: [
+          'Breakfast at hotel',
+          'Sky Ski Resort (2hrs winter sports)',
+          'Zaisan Hill Memorial visit',
+          'Bogd Khaan Palace Museum',
+          'Cashmere shopping',
+          'Farewell dinner'
+        ],
+        image: 'https://images.pexels.com/photos/30481725/pexels-photo-30481725/free-photo-of-aerial-view-of-ulaanbaatar-s-zaisan-monument-in-winter.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      },
+      {
+        day: '8',
+        title: 'Departure (B)',
+        activities: [
+          'Breakfast at hotel',
+          'Free time',
+          'Airport transfer'
+        ],
+        image: 'https://images.pexels.com/photos/17946131/pexels-photo-17946131/free-photo-of-commercial-plane-on-the-runway.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      }
+    ],
+  }
   }
