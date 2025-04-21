@@ -53,7 +53,7 @@ export const destinations = [
   
   {
     name: 'SOUTH KOREA DAEBAK SEOUL 6D 4N',
-    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    description: "IMMERSE YOURSELF IN KOREA’S TRADITION, CULTURE, AND SEASONAL BEAUTY!",
     price: '33,888',
     href: '#',
     imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -61,7 +61,7 @@ export const destinations = [
 
   {
     name: 'SOUTH KOREA SPRING SEASON 5D 4N',
-    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    description: "IMMERSE YOURSELF IN KOREA’S TRADITION, CULTURE, AND SEASONAL BEAUTY!",
     price: '46,658',
     href: '#',
     imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -69,7 +69,7 @@ export const destinations = [
 
   {
     name: 'SOUTH KOREA SUMMER SEASON 5D 4N',
-    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    description: "IMMERSE YOURSELF IN KOREA’S TRADITION, CULTURE, AND SEASONAL BEAUTY!",
     price: '39,028',
     href: '#',
     imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -77,14 +77,14 @@ export const destinations = [
 
   {
     name: 'SOUTH KOREA CHERRY BLOSSOMS 5D 4N',
-    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    description: "IMMERSE YOURSELF IN KOREA’S TRADITION, CULTURE, AND SEASONAL BEAUTY!",
     price: '45,568',
     href: '#',
     imageSrc:'https://images.pexels.com/photos/4840854/pexels-photo-4840854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
   },
   {
     name: 'CHARMING JAPAN 6D 5N',
-    description: 'EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!',
+    description: "EXPERIENCE THE CHARM OF JAPAN THROUGH TEMPLES, TECH, AND CHERRY BLOSSOMS!",
     price: '45,568',
     href: '#',
     imageSrc:'https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=80&w=2031&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
@@ -101,7 +101,7 @@ export const destinations = [
 
   {
     name: 'DUBAI ABU DHABI 5D 4N',
-    description: ' EXPERIENCE LUXURY AND ADVENTURE IN DUBAI AND ABU DHABI!',
+    description: 'EXPERIENCE LUXURY AND ADVENTURE IN DUBAI AND ABU DHABI!',
     price: '76,828',
     href: '#',
     imageSrc:'https://images.pexels.com/photos/3763190/pexels-photo-3763190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -110,7 +110,7 @@ export const destinations = [
   
   {
     name: 'SHANGHAI MINI KYOTO 6D 4N',
-    description: ' EXPERIENCE LUXURY AND ADVENTURE IN DUBAI AND ABU DHABI!',
+    description: "STEP INTO A WORLD WHERE TRADITION MEETS FUTURISTIC MARVELS IN SHANGHAI & MINI KYOTO!",
     price: '23,662',
     href: '#',
     imageSrc:'https://images.pexels.com/photos/3763190/pexels-photo-3763190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
@@ -125,47 +125,13 @@ export const destinations = [
   },
   {
     name: 'MONGOLIA WINTER TOUR 8D 7N',
-    description: "LET THE ISLAND'S MAGIC SWEEP YOU OFF YOUR FEET!",
+    description: "DISCOVER THE MAJESTIC SNOWY STEPPES AND NOMADIC CULTURE OF MONGOLIA!",
     price: '27,888',
     href: '#',
     imageSrc:'https://images.unsplash.com/photo-1680094513129-abe05d29eee1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   
   
-  {
-    name: 'SINGAPORE',
-    description:
-      'LEAVE YOURSELF BEHIND AND GO BEYOND WHAT SINGAPORE HAS TO OFFER',
-    price: '25,000',
-    href: '#',
-    imageSrc:
-      'https://images.pexels.com/photos/1507730/pexels-photo-1507730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  },
-  {
-    name: 'MALAYSIA',
-    description: 'FULLFILL YOURSELF WITH A BREATHTAKING VOYAGE',
-    price: '22,000',
-    href: '#',
-    imageSrc:
-      'https://images.pexels.com/photos/433989/pexels-photo-433989.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  },
-  {
-    name: 'JAPAN',
-    description:
-      'DISCOVER UNRIVALED SCENERIES AND A PLACE RICH IN HISTORY IN THE EAST',
-    price: '58,550',
-    href: '#',
-    imageSrc:
-      'https://images.pexels.com/photos/3408353/pexels-photo-3408353.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  },
-  {
-    name: 'INDONESIA',
-    description: 'EXPERIENCE WHAT NATURE HAS TO OFFER',
-    price: '21,000',
-    href: '#',
-    imageSrc:
-      'https://images.pexels.com/photos/2659475/pexels-photo-2659475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  },
   {
     name: 'THE PHILIPPINES',
     description: "HEART-WARMING DESTINATION THAT UNCOVERS NATURE'S GLAMOR",
