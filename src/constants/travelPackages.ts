@@ -1678,7 +1678,7 @@ export const travelPackages = {
 'south-korea-cherry-blossoms-5d-4n': {
     id: '11',
     name: 'South Korea Cherry Blossoms',
-    price: 39137, // Default price for first date
+    price: 45568, 
     rating: 4.7,
     description: "Magical Cherry Blossom Tour",
     longDescription:
@@ -2327,7 +2327,7 @@ export const travelPackages = {
    'shanghai-mini-kyoto-6d-4n': {
     id: '17',
     name: 'Shanghai Mini Kyoto',
-    price: 23662,
+    price: 21342,
     rating: 4.4,
     description: "Discover China's Blend of Modern Shanghai and Traditional Kyoto-Style Charm",
     longDescription:

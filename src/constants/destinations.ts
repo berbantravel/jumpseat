@@ -21,7 +21,7 @@ export const destinations = [
   {
     name: 'LEGENDARY THAILAND 4D 3N',
     description: 'A MOUTH WATERING JOURNEY THAT WILL TREAT YOUR TASTE BUDS',
-    price: '24,000',
+    price: '27,888',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/1682748/pexels-photo-1682748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
@@ -45,7 +45,7 @@ export const destinations = [
   {
     name: 'SINGAPORE KUALA LUMPUR 4D 3N',
     description: "EXPLORE THE BEST OF SINGAPORE AND KUALA LUMPUR IN ONE UNFORGETTABLE ADVENTURE!",
-    price: '30,564',
+    price: '38,277',
     href: '#',
     imageSrc:
       'https://images.pexels.com/photos/12657483/pexels-photo-12657483.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
@@ -85,7 +85,7 @@ export const destinations = [
   {
     name: 'CHARMING JAPAN 6D 5N',
     description: "EXPERIENCE THE CHARM OF JAPAN THROUGH TEMPLES, TECH, AND CHERRY BLOSSOMS!",
-    price: '45,568',
+    price: '88,347',
     href: '#',
     imageSrc:'https://images.unsplash.com/photo-1590253230532-a67f6bc61c9e?q=80&w=2031&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
@@ -111,9 +111,9 @@ export const destinations = [
   {
     name: 'SHANGHAI MINI KYOTO 6D 4N',
     description: "STEP INTO A WORLD WHERE TRADITION MEETS FUTURISTIC MARVELS IN SHANGHAI & MINI KYOTO!",
-    price: '23,662',
+    price: '21,342',
     href: '#',
-    imageSrc:'https://images.pexels.com/photos/3763190/pexels-photo-3763190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
+    imageSrc:'https://images.unsplash.com/photo-1538428494232-9c0d8a3ab403?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
 
   {
@@ -126,9 +126,9 @@ export const destinations = [
   {
     name: 'MONGOLIA WINTER TOUR 8D 7N',
     description: "DISCOVER THE MAJESTIC SNOWY STEPPES AND NOMADIC CULTURE OF MONGOLIA!",
-    price: '27,888',
+    price: '78,880',
     href: '#',
-    imageSrc:'https://images.unsplash.com/photo-1680094513129-abe05d29eee1?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    imageSrc:'https://images.pexels.com/photos/6466767/pexels-photo-6466767.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'
   },
   
   
