@@ -102,7 +102,7 @@ export default function Experiences() {
       {error ? (
         <p className="text-red-500 text-center mt-3">Error: {error}</p>
       ) : packages.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {packages.map((pkg) => (
             <div 
               key={pkg.slug} 
@@ -113,7 +113,7 @@ export default function Experiences() {
               className="border cursor-pointer rounded-lg shadow-md bg-white p-5"
             >
               <div className='flex items-center gap-2'>
-                <img src={pkg.image.url} className='h-auto w-10' alt={pkg.title} />
+                <Image width={150} height={100} src={pkg.image.url} className='h-auto w-12' alt={pkg.title} />
                 <div>
                   <h2 className="font-semibold text-xs">{pkg.title}</h2>
                   <p className="text-xs text-gray-500">{pkg.country_code}</p>
@@ -168,7 +168,7 @@ export default function Experiences() {
                     >
                       <div className='flex items-center justify-between'> 
                         <p className='font-semibold'>{plan.title}</p>
-                        <img src={selectedPackage!.image.url} className='h-auto w-16 sm:w-20' alt={operator.title} />
+                        <Image width={150} height={100} src={selectedPackage!.image.url} className='h-auto w-16 sm:w-20' alt={operator.title} />
                       </div>
                       <div className='space-y-2'>
                       <div className='flex justify-between'>

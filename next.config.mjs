@@ -7,6 +7,10 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   images: {
+    domains: [
+      'cdn.airalo.com',
+      'sandbox.airalo.com', 
+    ],
     remotePatterns: [
       {
         protocol: 'https',
@@ -43,6 +47,11 @@ const nextConfig = {
         hostname: 'via.placeholder.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'airalo.com',
+        pathname: '**',
+      }
     ],
   },
   env: {
