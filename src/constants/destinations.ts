@@ -133,19 +133,43 @@ export const destinations = [
   
   
   {
-    name: 'THE PHILIPPINES',
-    description: "HEART-WARMING DESTINATION THAT UNCOVERS NATURE'S GLAMOR",
-    price: '21,000',
+    name: 'PUERTO PRINCESA PHILIPPINES 3D 2N',
+    description: "NATURE'S MASTERPIECE IN EVERY CORNER",
+    price: '9,898',
     href: '#',
     imageSrc:
-      'https://images.pexels.com/photos/2407265/pexels-photo-2407265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      'https://images.unsplash.com/photo-1611088223900-9ff3d76f9a70?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
-  //    {
-  //   name: 'PROSPEROUS HONGKONG',
-  //   description: 'A FUSION OF DAZZLING INNOVATION AND RICH TRADITION',
-  //   price: '20,200',
-  //   href: '#',
-  //   imageSrc:
-  //     'https://images.pexels.com/photos/2246789/pexels-photo-2246789.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  // },
+  {
+    name: 'CORON PHILIPPINES 3D 2N',
+    description: "DIVING INTO THE WORLD OF HIDDEN TREASURES",
+    price: '17,878',
+    href: '#',
+    imageSrc:
+      'https://images.pexels.com/photos/2346015/pexels-photo-2346015.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  },
+  {
+    name: 'EL NIDO PHILIPPINES 3D 2N',
+    description: "SECRET LAGOONS, UNFORGETTABLE JOURNEYS",
+    price: '12,451',
+    href: '#',
+    imageSrc:
+      'https://images.pexels.com/photos/13874296/pexels-photo-13874296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  },
+  {
+    name: 'CEBU PHILIPPINES 3D 2N',
+    description: "WHERE EVERY SPLASH LEADS TO DISCOVERY",
+    price: '12,119',
+    href: '#',
+    imageSrc:
+      'https://images.pexels.com/photos/6530409/pexels-photo-6530409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  },
+  {
+    name: 'BORACAY PHILIPPINES 3D 2N',
+    description: "COME AND VISIT THE ISLAND OF BORACAY",
+    price: '15,368',
+    href: '#',
+    imageSrc:
+      'https://images.unsplash.com/photo-1551322127-bc5c4f4700d0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
 ]

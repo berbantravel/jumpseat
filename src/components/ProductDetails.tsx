@@ -157,7 +157,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
                 <div className="mt-3">
                   <div className="font-semibold">Days of Stay</div>
                   <p className="text-3xl font-medium tracking-tight text-[#ff9e39]">
-                    5 Days
+                    {product.daysOfStay}
                   </p>
                 </div>
               </div>
@@ -241,55 +241,58 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           </div>
         </div>
       </div>
-      <div className="bg-white text-center font-poppinsSemiBold text-4xl tracking-tight text-[#ff9e39] sm:text-5xl">
-        Itineraries
-      </div>
-      {product.itinerary && (
-        <div className="mt-0">
-          {product.itinerary.map((day, index) => (
-            <div
-              key={day.day}
-              className={`flex flex-col items-center justify-center bg-white px-4 py-12 lg:flex-row ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              } lg:px-24`}
-            >
-              <div className="hover-zoom w-full overflow-hidden md:w-1/2 md:max-w-xl">
-                <Image
-                  className="w-full object-cover object-center shadow-2xl"
-                  src={day.image}
-                  alt={`Day ${day.day} - ${day.title}`}
-                  width={800}
-                  height={600}
-                  layout="responsive"
-                />
-              </div>
+
+      {product.itinerary && product.itinerary.length > 0 && (
+        <>
+          <div className="bg-white text-center font-poppinsSemiBold text-4xl tracking-tight text-[#ff9e39] sm:text-5xl">
+            Itineraries
+          </div>
+          <div className="mt-0">
+            {product.itinerary.map((day, index) => (
               <div
-                className={`z-10 mt-8 w-full bg-white px-10 shadow-md md:mt-0 md:w-full md:max-w-xl ${
-                  index % 2 === 0 ? 'md:-ml-32' : 'md:-mr-32'
-                }`}
+                key={day.day}
+                className={`flex flex-col items-center justify-center bg-white px-4 py-12 lg:flex-row ${
+                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                } lg:px-24`}
               >
-                <div className="relative space-y-6 px-6 py-16 text-left">
-                  <h2
-                    className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
-                    id={`day-${day.day}-heading`}
-                  >
-                    DAY {day.day}
-                  </h2>
-                  <h3 className="text-xl font-semibold text-gray-900">
-                    {day.title}
-                  </h3>
-                  <ul className="list-disc space-y-2 pl-5">
-                    {day.activities.map((activity, actIndex) => (
-                      <li key={actIndex} className="text-lg text-black">
-                        {activity}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="hover-zoom w-full overflow-hidden md:w-1/2 md:max-w-xl">
+                  <Image
+                    className="w-full object-cover object-center shadow-2xl"
+                    src={day.image}
+                    alt={`Day ${day.day} - ${day.title}`}
+                    width={800}
+                    height={600}
+                    layout="responsive"
+                  />
+                </div>
+                <div
+                  className={`z-10 mt-8 w-full bg-white px-10 shadow-md md:mt-0 md:w-full md:max-w-xl ${
+                    index % 2 === 0 ? 'md:-ml-32' : 'md:-mr-32'
+                  }`}
+                >
+                  <div className="relative space-y-6 px-6 py-16 text-left">
+                    <h2
+                      className="text-3xl font-semibold tracking-tight text-[#ff9e39]"
+                      id={`day-${day.day}-heading`}
+                    >
+                      DAY {day.day}
+                    </h2>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      {day.title}
+                    </h3>
+                    <ul className="list-disc space-y-2 pl-5">
+                      {day.activities.map((activity, actIndex) => (
+                        <li key={actIndex} className="text-lg text-black">
+                          {activity}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
       <div className="bg-white">
         <div className="mx-auto max-w-2xl divide-y divide-gray-200 border-t px-4 py-16 sm:px-6 sm:py-16 lg:max-w-7xl lg:px-8">

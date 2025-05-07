@@ -2772,5 +2772,265 @@ export const travelPackages = {
         image: 'https://images.pexels.com/photos/17946131/pexels-photo-17946131/free-photo-of-commercial-plane-on-the-runway.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       }
     ],
-  }
+  },
+  'puerto-princesa-philippines-3d-2n': {
+    id: '20',
+    name: 'Puerto Princesa Philippines 3D 2N',
+    price: 9898, 
+    rating: 4.7,
+    description: "Nature's Masterpiece in every corner",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Puerto Princesa Philippines 3D2N</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Adventure Seekers, Nature Lovers, Culture Explorers</div>' ,
+
+    bestTimeToVisit: 'March - April (Summer Season)',
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="grid grid-cols-2 gap-2 mt-2">' +
+      '<div class="text-normal font-semibold">Mar.03-05 2025</div>' +
+      '<div class="text-normal font-semibold">Mar.21-Mar.23 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.11-13 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.22-24 2025</div>' +
+      '<div class="text-normal font-semibold">Apr.28-30 2025</div>' +
+      '</div>' ,
+    daysOfStay: '3 Days & 2 Nights',
+    minimumGuests: 'No Minimum',
+    heroImage: 'https://images.unsplash.com/photo-1611088223900-9ff3d76f9a70?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 
+    images: [
+      {
+        id: 1,
+        name: 'Puerto Princessa',
+        src: 'https://images.unsplash.com/photo-1611088223900-9ff3d76f9a70?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: '40m tall equestrian statue'
+      },
+      {
+        id: 2,
+        name: 'BM Beach',
+        src: 'https://images.unsplash.com/photo-1633416963871-182a155ab86a?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Snow-covered Buddhist monastery'
+      },
+      {
+        id: 3,
+        name: 'Puerto Princessa Cave',
+        src: 'https://images.unsplash.com/photo-1660849259228-603fad947b89?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Camel Riding Sand Dunes'
+      },
+     
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Accomodation',
+          "Daily Breakfast",
+          'Sightseeing Tour',
+          'Roundtrip AirFare',
+          'Roundtrip Transfer'
+        ]
+      },
+     
+    ],
+    itinerary: [
+      
+    ],
+  },
+  'coron-philippines-3d-2n': {
+    id: '21',
+    name: 'Coron Philippines 3D 2N', // Uppercase as in image
+    price: 17878, // "P17,878" from image
+    rating: 4.9, // ★★★★★ Made-up (high rating for Coron diving)
+    description: "DIVING INTO A WORLD OF HIDDEN TREASURES", // Exact from image
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Coron Philippines 3D2N</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Adventure Seekers, Nature Lovers, Culture Explorers</div>' +
+ '<div class="text-normal mb-3">Dive into a magical underwater world at Coron, Palawan. A place brimming with marine. Meet some of the rare marine life creatures and discover some sunken Japanese warships at sea depths between 10 and 40 meters and many more to explore.</div>',
+
+    listingDescription:
+      '<div class="text-xl font-bold">Tour Dates Available:</div>' +
+      '<div class="grid grid-cols-2 gap-2 mt-2">' +
+      '<div class="text-normal font-semibold">Mar 15-17 2025</div>' +
+      '<div class="text-normal font-semibold">Mar 22-24 2025</div>' +
+      '<div class="text-normal font-semibold">Apr 02-04 2025</div>' +
+      '<div class="text-normal font-semibold">Apr 27-29 2025</div>' +
+      '<div class="text-normal font-semibold">Apr 28-30 2025</div>' +
+      '</div>',
+    
+    bestTimeToVisit: 'March - April (Best Visibility)',
+    daysOfStay: '3 Days & 2 Nights',
+    minimumGuests: 'No Minimum',
+    heroImage: 'https://images.pexels.com/photos/2346015/pexels-photo-2346015.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2', 
+    images: [
+      {
+        id: 1,
+        name: 'Kayangan Lake',
+        src: 'https://images.pexels.com/photos/2346015/pexels-photo-2346015.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Kayangan Lake cliff view'
+      },
+      {
+        id: 2,
+        name: 'Barracuda Lake',
+        src: 'https://images.pexels.com/photos/2346007/pexels-photo-2346007.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Diver exploring Barracuda Lake'
+      },
+      {
+        id: 3,
+        name: 'Kayangan Lake',
+        src: 'https://images.pexels.com/photos/14511599/pexels-photo-14511599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Kayangan Lake cliff view'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Accomodation',
+          'Daily Breakfast',
+          'Sightseeing Tour',
+          'Roundtrip AirFare',
+          'Roundtrip Transfer'
+        ]
+      }
+    ],
+    
+    itinerary: [],
+},
+'el-nido-philippines-3d-2n': {
+    id: '22',
+    name: 'El Nido Philippines 3D 2N',
+    price: 12451,
+    rating: 4.8,
+    description: "SECRET LAGOONS, UNFORGETTABLE JOURNEYS",
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">El Nido Philippines 3D2N</div>' +
+      '<div class="font-semibold mb-4 text-lg">Traveler: Adventure Seekers, Nature Lovers, Beach Enthusiasts</div>' +
+      '<div class="text-normal mb-3">With its dramatic rock formations surrounded by blue waters, El Nido Palawan is a must visit destination. Home of genuine and local hospitality in an incredible natures island.</div>',
+
+    // Updated dates from new image (grid format)
+    listingDescription:
+      '<div class="text-xl font-bold">2025 Tour Dates Available:</div>' +
+      '<div class="grid grid-cols-4 gap-2 mt-2">' + // Changed to 4 columns
+      '<div class="text-normal font-semibold">Apr 01-03</div>' +
+      '<div class="text-normal font-semibold">Apr 03-05</div>' +
+      '<div class="text-normal font-semibold">Apr 04-06</div>' +
+      '<div class="text-normal font-semibold">Apr 07-09</div>' +
+      '<div class="text-normal font-semibold">Apr 09-11</div>' +
+      '<div class="text-normal font-semibold">Apr 11-13</div>' +
+      '<div class="text-normal font-semibold">Apr 21-23</div>' +
+      '<div class="text-normal font-semibold">Apr 23-25</div>' +
+      '<div class="text-normal font-semibold">Apr 25-27</div>' +
+      '<div class="text-normal font-semibold">Apr 28-30</div>' +
+      '<div class="text-normal font-semibold">May 02-04</div>' +
+      '<div class="text-normal font-semibold">May 05-07</div>' +
+      '<div class="text-normal font-semibold">May 07-09</div>' +
+      '<div class="text-normal font-semibold">May 09-11</div>' +
+      '<div class="text-normal font-semibold">May 12-14</div>' +
+      '<div class="text-normal font-semibold">May 14-16</div>' +
+      '</div>',
+    
+    bestTimeToVisit: 'April - June (Dry Season)',
+    daysOfStay: '3 Days & 2 Nights',
+    minimumGuests: 'No Minimum',
+    heroImage: 'https://images.unsplash.com/photo-1611652931799-66ed1b8e27ba?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    images: [
+      {
+        id: 1,
+        name: 'Big Lagoon',
+        src: 'https://images.unsplash.com/photo-1611652931799-66ed1b8e27ba?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'El Nido Big Lagoon'
+      },
+      {
+        id: 2,
+        name: 'Nacpan Beach',
+        src: 'https://images.unsplash.com/photo-1654846417877-9aa89d4b8365?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Nacpan Beach twin beaches'
+      },
+      {
+        id: 3,
+        name: 'Nacpan Beach',
+        src: 'https://images.unsplash.com/photo-1619628921505-515676d59541?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Nacpan Beach twin beaches'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Accommodation',
+          'Daily Breakfast',
+          'Sightseeing Tour',
+          'Rounatrip Airfare',
+          'RounatripTransfer'
+        ]
+      }
+    ],
+    itinerary: []
+},
+'cebu-philippines-3d-2n': {
+    id: '23',
+    name: 'Cebu Philippines 3D 2N',
+    price: 12119, 
+    rating: 4.7,
+    description: "WHERE EVERY SPLASH LEADS TO DISCOVERY", 
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Cebu Philippines 3D2N</div>' +
+     '<div class="font-semibold mb-4 text-lg">Traveler: Adventure Seekers, Nature Lovers, Culture Explorers</div>' +
+      '<div class="text-normal mb-3">Explore the rich cultural heritage of Cebu City on this sightseeing tour of the “Queen City of the South.” Explore and visit the famous churches, and iconic structures, this trip is perfect for those who are into history and sight-seeing.</div>',
+
+    listingDescription:
+      '<div class="text-xl font-bold">2025 Tour Dates Available:</div>' +
+      '<div class="grid grid-cols-4 gap-2 mt-2">' +
+      '<div class="text-normal font-semibold">Apr 01-03</div>' +
+      '<div class="text-normal font-semibold">Apr 03-05</div>' +
+      '<div class="text-normal font-semibold">Apr 04-06</div>' +
+      '<div class="text-normal font-semibold">Apr 05-07</div>' +
+      '<div class="text-normal font-semibold">Apr 06-08</div>' +
+      '<div class="text-normal font-semibold">Apr 08-10</div>' +
+      '<div class="text-normal font-semibold">Apr 11-13</div>' +
+      '<div class="text-normal font-semibold">Apr 12-14</div>' +
+      '<div class="text-normal font-semibold">Apr 21-23</div>' +
+      '<div class="text-normal font-semibold">Apr 25-27</div>' +
+      '<div class="text-normal font-semibold">May 01-03</div>' +
+      '<div class="text-normal font-semibold">May 02-04</div>' +
+      '</div>',
+
+    bestTimeToVisit: 'April - June (Summer Season)',
+    daysOfStay: '3 Days & 2 Nights',
+    minimumGuests: 'No Minimum', 
+    heroImage: 'https://images.pexels.com/photos/6530409/pexels-photo-6530409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    images: [
+      {
+        id: 1,
+        name: 'Kawasan Falls',
+        src: 'https://images.pexels.com/photos/6530409/pexels-photo-6530409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Turquoise waters of Kawasan Falls'
+      },
+      {
+        id: 2,
+        name: 'Magellans Cross',
+        src: 'https://images.unsplash.com/photo-1580650048194-a08154fa8111?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Historical Magellan\'s Cross'
+      },
+      {
+        id: 3,
+        name: 'Simala',
+        src: 'https://images.unsplash.com/photo-1586242828809-08196433675a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Historical Magellan\'s Cross'
+      }
+    ],
+
+    // Inclusions from image (with corrected typo)
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Accommodation',
+          'Daily Breakfast',
+          'Sightseeing Tour',
+          'Roundtrip Airfare' 
+        ]
+      }
+    ],
+    
+    itinerary: [] 
+}
   }

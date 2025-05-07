@@ -95,53 +95,54 @@ const HeroSection = () => {
             Popular Destinations
           </h2>
           <div className="pb-16 sm:pb-0">
-            <Swiper
-              modules={[Navigation, Pagination]}
-              pagination={{ clickable: true }}
-              spaceBetween={20}
-              slidesPerView={1}
-              navigation={{
-                nextEl: '#slider-button-right',
-                prevEl: '#slider-button-left',
-              }}
-              breakpoints={{
-                1024: { slidesPerView: 3, spaceBetween: 30 },
-                920: { slidesPerView: 2, spaceBetween: 25 },
-                700: { slidesPerView: 2, spaceBetween: 20 },
-              }}
-              className="slider-container"
-            >
-              {destinations.map((destination) => (
-                <SwiperSlide key={destination.name}>
-                  <div
-                    onClick={() => handleCardClick(destination.name)}
-                    className="relative flex h-[400px] w-full cursor-pointer flex-col overflow-hidden rounded-2xl hover:opacity-95 md:h-[450px] lg:h-[450px]"
-                  >
-                    <Image
-                      src={destination.imageSrc}
-                      alt={destination.name}
-                      className="h-full w-full object-cover"
-                      width={600}
-                      height={600}
-                    />
-                    <div className="absolute bottom-0 w-full bg-gradient-to-t from-black via-transparent p-4 text-white">
-                      <h3 className="text-md font-bold">{destination.name}</h3>
-                      <p className="text-sm ">{destination.description}</p>
-                      <div className="flex justify-between text-[#ff9e39]">
-                        <span className="text-xs font-bold">STARTS FROM:</span>
-                        <span className="text-xs font-bold">
-                          Php{destination.price}/pax
-                        </span>
-                      </div>
-                      <span className="my-4 flex items-center justify-center gap-x-6">
-                        <span className="w-full max-w-80 rounded-md border-2 py-2.5 text-center  text-sm font-semibold text-white shadow-sm hover:border-[#ff9e39]  hover:bg-[#ff9e39] hover:ring-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2  focus-visible:outline-indigo-400">
-                          VIEW DETAILS
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
+          <Swiper
+  modules={[Navigation, Pagination]}
+  pagination={{ clickable: true }}
+  spaceBetween={20}
+  slidesPerView={1}
+  loop={true} // Ensure this is set to true
+  navigation={{
+    nextEl: '#slider-button-right',
+    prevEl: '#slider-button-left',
+  }}
+  breakpoints={{
+    1024: { slidesPerView: 3, spaceBetween: 30 },
+    920: { slidesPerView: 2, spaceBetween: 25 },
+    700: { slidesPerView: 2, spaceBetween: 20 },
+  }}
+  className="slider-container"
+>
+  {destinations.map((destination) => (
+    <SwiperSlide key={destination.name}>
+      <div
+        onClick={() => handleCardClick(destination.name)}
+        className="relative flex h-[400px] w-full cursor-pointer flex-col overflow-hidden rounded-2xl hover:opacity-95 md:h-[450px] lg:h-[450px]"
+      >
+        <Image
+          src={destination.imageSrc}
+          alt={destination.name}
+          className="h-full w-full object-cover"
+          width={600}
+          height={600}
+        />
+        <div className="absolute bottom-0 w-full bg-gradient-to-t from-black via-transparent p-4 text-white">
+          <h3 className="text-md font-bold">{destination.name}</h3>
+          <p className="text-sm ">{destination.description}</p>
+          <div className="flex justify-between text-[#ff9e39]">
+            <span className="text-xs font-bold">STARTS FROM:</span>
+            <span className="text-xs font-bold">
+              Php{destination.price}/pax
+            </span>
+          </div>
+          <span className="my-4 flex items-center justify-center gap-x-6">
+            <span className="w-full max-w-80 rounded-md border-2 py-2.5 text-center  text-sm font-semibold text-white shadow-sm hover:border-[#ff9e39]  hover:bg-[#ff9e39] hover:ring-[#ff9e39] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2  focus-visible:outline-indigo-400">
+              VIEW DETAILS
+            </span>
+          </span>
+        </div>
+      </div>
+    </SwiperSlide>
+  ))}
               <div className="absolute bottom-0 left-0 top-[16rem] z-10 -translate-y-1/2 transform md:top-[19rem]">
                 <div className="flex flex-col items-center justify-center gap-4">
                   <button
