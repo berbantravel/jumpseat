@@ -2834,12 +2834,12 @@ export const travelPackages = {
       
     ],
   },
-  'coron-philippines-3d-2n': {
+    'coron-philippines-3d-2n': {
     id: '21',
-    name: 'Coron Philippines 3D 2N', // Uppercase as in image
-    price: 17878, // "P17,878" from image
-    rating: 4.9, // ★★★★★ Made-up (high rating for Coron diving)
-    description: "DIVING INTO A WORLD OF HIDDEN TREASURES", // Exact from image
+    name: 'Coron Philippines 3D 2N', 
+    price: 17878, 
+    rating: 4.9, 
+    description: "DIVING INTO A WORLD OF HIDDEN TREASURES",
     longDescription:
       '<div class="font-bold mb-3 text-2xl">Coron Philippines 3D2N</div>' +
       '<div class="font-semibold mb-4 text-lg">Traveler: Adventure Seekers, Nature Lovers, Culture Explorers</div>' +
@@ -2883,11 +2883,12 @@ export const travelPackages = {
       {
         name: 'Inclusions',
         items: [
-          'Accomodation',
-          'Daily Breakfast',
-          'Sightseeing Tour',
-          'Roundtrip AirFare',
-          'Roundtrip Transfer'
+          'Airport transfer, transportation at road throughout',
+          'Accommodation with breakfast',
+          'Locally guided experiences',
+          'Snorkeling and Kayak',
+          'Experience the Must See Islands',
+          '*Scuba Diving Activity (Optional)'
         ]
       }
     ],
@@ -2955,11 +2956,11 @@ export const travelPackages = {
       {
         name: 'Inclusions',
         items: [
-          'Accommodation',
-          'Daily Breakfast',
-          'Sightseeing Tour',
-          'Rounatrip Airfare',
-          'RounatripTransfer'
+          'Airport transfer, transportation at road throughout',
+          'Accommodation with breakfast',
+          'Locally guided experiences',
+          'Experience the Must See Islands',
+          '*Scuba Diving Activity (Optional)'
         ]
       }
     ],
@@ -3017,20 +3018,155 @@ export const travelPackages = {
         alt: 'Historical Magellan\'s Cross'
       }
     ],
-
-    // Inclusions from image (with corrected typo)
     details: [
       {
         name: 'Inclusions',
         items: [
-          'Accommodation',
-          'Daily Breakfast',
-          'Sightseeing Tour',
-          'Roundtrip Airfare' 
+          'Airport transfer, transportation at road throughout',
+          'Accommodation with breakfast',
+          'Locally guided experiences',
+          'Historic and Iconic Attractions like Temple of Leah' ,
+          "Magellan’s Cross, and Simala Shrine"
         ]
       }
     ],
     
     itinerary: [] 
-}
+},
+'boracay-philippines-3d-2n': {
+    id: '24',
+    name: 'Boracay Philippines 3D 2N',
+    price: 15368, 
+    rating: 4.7,
+    description: "COME AND VISIT THE ISLAND OF BORACAY", 
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Boracay Philippines 3D2N</div>' +
+     '<div class="font-semibold mb-4 text-lg">Traveler: Adventure Seekers, Nature Lovers, Culture Explorers</div>' +
+      '<div class="text-normal mb-3">Swap the daily grind for a jaw-dropping adventure at Boracay. A white beach island famous to foreign nationalities. Prepare your swimwear, pull out your shades and take off for a lazy walk on the white sand.</div>',
+
+    listingDescription:
+      '<div class="text-xl font-bold">2025 Tour Dates Available:</div>' +
+      '<div class="grid grid-cols-4 gap-2 mt-2">' +
+      '<div class="text-normal font-semibold">Apr 01-03</div>' +
+      '<div class="text-normal font-semibold">Apr 04-06</div>' +
+      '<div class="text-normal font-semibold">Apr 05-07</div>' +
+      '<div class="text-normal font-semibold">Apr 06-08</div>' +
+      '<div class="text-normal font-semibold">Apr 10-12</div>' +
+      '<div class="text-normal font-semibold">Apr 13-15</div>' +
+      '<div class="text-normal font-semibold">Apr 14-16</div>' +
+      '<div class="text-normal font-semibold">May 03-05</div>' +
+      '<div class="text-normal font-semibold">May 04-06</div>' +
+      '<div class="text-normal font-semibold">May 05-07</div>' +
+      '<div class="text-normal font-semibold">May 10-12</div>' +
+      '<div class="text-normal font-semibold">May 12-14</div>' +
+      '</div>',
+
+    bestTimeToVisit: 'April - June (Summer Season)',
+    daysOfStay: '3 Days & 2 Nights',
+    minimumGuests: 'No Minimum', 
+    heroImage: 'https://images.unsplash.com/photo-1551322127-bc5c4f4700d0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    images: [
+      {
+        id: 1,
+        name:'Boracay Beach',
+        src: 'https://images.unsplash.com/photo-1551322127-bc5c4f4700d0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Boracay Beach'
+      },
+      {
+        id: 2,
+        name: 'Boracay Sand Castle',
+        src: 'https://images.unsplash.com/photo-1553195029-754fbd369560?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Boracay Sand Castle'
+      },
+      {
+        id: 3,
+        name: 'Coconuts Boracay',
+        src: 'https://images.pexels.com/photos/2416906/pexels-photo-2416906.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Coconuts Boracay'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Airport transfer, transportation at road throughout',
+          'Accommodation with breakfast',
+          'Locally guided experiences',
+          'Island Hopping' ,
+          "Adrenaline Rides and Exclusive Water Jet ski"
+        ]
+      }
+    ],
+    
+    itinerary: [] 
+},
+'bohol-philippines-3d-2n': {
+    id: '25',
+    name: 'Bohol Philippines 3D 2N',
+    price: 15016, 
+    rating: 4.7,
+    description: "WHERE PARADISE MEETS ADVENTURE", 
+    longDescription:
+      '<div class="font-bold mb-3 text-2xl">Bohol Philippines 3D2N</div>' +
+     '<div class="font-semibold mb-4 text-lg">Traveler: Adventure Seekers, Nature Lovers, Culture Explorers</div>' +
+      '<div class="text-normal mb-3">Unload the stress of city life and stretch out your legs to the province of Bohol. With a good range of wonderful nature’s spots, get fascinated with the chocolate hills and the Tarsiers – the world’s smallest primate plus a whole lot more to watch a few holiday snaps.</div>',
+
+    listingDescription:
+      '<div class="text-xl font-bold">2025 Tour Dates Available:</div>' +
+      '<div class="grid grid-cols-4 gap-2 mt-2">' +
+      '<div class="text-normal font-semibold">Apr 09-11</div>' +
+      '<div class="text-normal font-semibold">Apr 11-13</div>' +
+      '<div class="text-normal font-semibold">Apr 21-23</div>' +
+      '<div class="text-normal font-semibold">Apr 25-27</div>' +
+      '<div class="text-normal font-semibold">Apr 28-30</div>' +
+      '<div class="text-normal font-semibold">May 02-04</div>' +
+      '<div class="text-normal font-semibold">May 05-07</div>' +
+      '<div class="text-normal font-semibold">May 09-11</div>' +
+      '<div class="text-normal font-semibold">May 12-14</div>' +
+      '<div class="text-normal font-semibold">May 14-16</div>' +
+      '<div class="text-normal font-semibold">May 16-18</div>' +
+      '<div class="text-normal font-semibold">May 19-21</div>' +
+      '</div>',
+
+    bestTimeToVisit: 'April - June (Summer Season)',
+    daysOfStay: '3 Days & 2 Nights',
+    minimumGuests: 'No Minimum', 
+    heroImage: 'https://images.pexels.com/photos/757444/pexels-photo-757444.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    images: [
+      {
+        id: 1,
+        name: 'Chocolate Hills',
+        src: 'https://images.pexels.com/photos/757444/pexels-photo-757444.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+        alt: 'Chocolate Hills'
+      },
+      {
+        id: 2,
+        name: 'Loboc River',
+        src: 'https://images.unsplash.com/photo-1591506557489-e8ca407063e7?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Loboc River'
+      },
+      {
+        id: 3,
+        name: 'Tarsier Watching',
+        src: 'https://images.unsplash.com/photo-1567856776071-bbabd34e396a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+        alt: 'Tarsier Watching'
+      }
+    ],
+    details: [
+      {
+        name: 'Inclusions',
+        items: [
+          'Airport transfer, transportation at road throughout',
+          'Accommodation with breakfast',
+          'Locally guided experiences',
+          'Loboc River Cruising',
+          'Chocolate Hills and Butterfly Garden' ,
+          "Man-Made Forest and Tarsier Sightseeing"
+        ]
+      }
+    ],
+    itinerary: [] 
+},
+
+
   }

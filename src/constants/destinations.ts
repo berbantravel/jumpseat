@@ -172,4 +172,12 @@ export const destinations = [
     imageSrc:
       'https://images.unsplash.com/photo-1551322127-bc5c4f4700d0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
+  {
+    name: 'BOHOL PHILIPPINES 3D 2N',
+    description: "WHERE PARADISE MEETS ADVENTURE",
+    price: '15,016',
+    href: '#',
+    imageSrc:
+      'https://images.pexels.com/photos/757444/pexels-photo-757444.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  },
 ]
